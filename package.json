@@ -1,0 +1,13 @@
+{
+  "name": "headless-cms",
+  "private": true,
+  "scripts": {
+    "dev": "lerna run dev --stream"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.2.0"
+  }
+}
