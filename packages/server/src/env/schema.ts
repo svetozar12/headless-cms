@@ -4,11 +4,8 @@ export const serverSchema = z.object({
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
-  DISCORD_ID: z.string(),
-  DISCORD_SECRET: z.string(),
-  DISCORD_CALLBACK: z.string(),
-  SESSION_SECRET: z.string(),
-  PORT: z.string(),
-  CLIENT_URL: z.string(),
+  PORT: z.string().default("5000"),
   DATABASE_URL: z.string(),
+  JWT_ACCESS_TOKEN_SECRET: z.string(),
+  JWT_REFRESH_TOKEN_SECRET: z.string(),
 });
