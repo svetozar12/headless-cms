@@ -1,0 +1,14 @@
+0 silly argv {
+0 silly argv   _: [ 'create' ],
+0 silly argv   lernaVersion: '5.5.4',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
+0 silly argv   name: 'trpc-server'
+0 silly argv }
+1 notice cli v5.5.4
+2 verbose rootPath E:\coding_journey\headless-cms
+3 error Error: Command failed with exit code 1: git config --get user.email
+3 error     at makeError (E:\coding_journey\headless-cms\node_modules\execa\lib\error.js:60:11)
+3 error     at Function.module.exports.sync (E:\coding_journey\headless-cms\node_modules\execa\index.js:194:17)
+3 error     at Object.execSync (E:\coding_journey\headless-cms\node_modules\@lerna\child-process\index.js:39:16)
+3 error     at CreateCommand.gitConfig (E:\coding_journey\headless-cms\node_modules\@lerna\create\index.js:180:25)
+3 error     at CreateCommand.initialize (E:\coding_journey\headless-cms\node_modules\@lerna\create\index.js:106:47)
