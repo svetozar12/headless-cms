@@ -1,0 +1,68 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\zaaun\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Go\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\zaaun\AppData\Local\Microsoft\WindowsApps;;C:\Users\zaaun\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\zaaun\AppData\Roaming\npm;C:\Users\zaaun\go\bin;C:\Users\zaaun\WebStorm 2022.2\bin;;E:\coding_journey\headless-cms\node_modules\.bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: E:\coding_journey\headless-cms\packages\trpc-server\package.json: Unexpected token } in JSON at position 453
+      at JSON.parse (<anonymous>)
+      at C:\Users\zaaun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\zaaun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\zaaun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@headless-cms/trpc-server",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "author": "svetozar12 <zaauna@abv.bg>",
+    "homepage": "https://github.com/svetozar12/headless-cms#readme",
+    "license": "ISC",
+    "main": "lib/trpc-server.js",
+    "scripts": {
+      "build": "tsc",
+      "prestart": "yarn build",
+      "start": "node dist/index.js",
+      "predev": "yarn build",
+      "tsc-w": "tsc -w",
+      "dev": "nodemon dist/index.js",
+    },
+    "dependencies": {
+      "@prisma/client": "^4.5.0",
+      "@types/jsonwebtoken": "^8.5.9",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "jsonwebtoken": "^8.5.1",
+      "prisma": "^4.5.0",
+      "zod": "^3.19.1"
+    },
+    "devDependencies": {
+      "@types/cors": "^2.8.12",
+      "@types/express": "^4.17.14",
+      "jest": "^29.2.1",
+      "nodemon": "^2.0.20",
+      "ts-node": "^10.9.1",
+      "typescript": "^4.8.4"
+    },
+    "publishConfig": {
+      "directory": "dist"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

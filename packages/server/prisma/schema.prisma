@@ -1,0 +1,34 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  username     String
+  password     String
+  ContentModel ContentModel[]
+}
+
+model ContentModel {
+  id      Int       @id @default(autoincrement())
+  userId  Int
+  text    Boolean?
+  json    Boolean?
+  number  Boolean?
+  user    User      @relation(fields: [userId], references: [id])
+  Content Content[]
+}
+
+model Content {
+  id             Int          @id @default(autoincrement())
+  contentModelId Int
+  text           String?
+  json           Json?
+  number         Int?
+  contentModel   ContentModel @relation(fields: [contentModelId], references: [id])
+}
