@@ -10,7 +10,6 @@
     "target": "esnext",
     "module": "commonjs",
     "allowSyntheticDefaultImports": true,
-    "types": ["vitest/global"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

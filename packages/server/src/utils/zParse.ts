@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { AnyZodObject, z } from "zod";
 import { CustomError } from "../common/errorModel";
+import logger from "./logger";
 
 const zParse = async <T extends AnyZodObject>(
   schema: T,
@@ -20,7 +21,9 @@ const zMiddleware = <T extends AnyZodObject>(schema: T) => {
       const {
         error: { issues },
       } = zSchema;
+      logger(["zMiddleware", "error", issues]);
       issues.forEach((issue) => {
+        logger(["zMiddleware", issue.message]);
         next(CustomError.badRequest(issue.message));
       });
     }
