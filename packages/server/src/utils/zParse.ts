@@ -24,7 +24,9 @@ const zMiddleware = <T extends AnyZodObject>(schema: T) => {
       logger(["zMiddleware", "error", issues]);
       issues.forEach((issue) => {
         logger(["zMiddleware", issue.message]);
-        next(CustomError.badRequest(issue.message));
+        next(
+          CustomError.badRequest(`${issue.message} ${issue.path.join(".")}`)
+        );
       });
     }
     next();

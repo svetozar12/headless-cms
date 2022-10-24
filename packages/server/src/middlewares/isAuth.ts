@@ -7,11 +7,11 @@ const isAuth = (tokenType: jwtType) => {
     const bearerHeader = req.headers["authorization"];
 
     if (typeof bearerHeader === "undefined")
-      return next(CustomError.unauthorized("Forbidden"));
+      return next(CustomError.unauthorized("Unauthorized"));
     const token = bearerHeader.split(" ")[1];
-    if (!token) return res.status(403).send("Forbidden");
+    if (!token) return next(CustomError.unauthorized("Unauthorized"));
     req.user = verifyToken(tokenType, token) as typeof req.user;
-    if (!req.user) res.status(403).send("Forbidden");
+    if (!req.user) return next(CustomError.unauthorized("Unauthorized"));
     return next();
   };
 };
