@@ -27,6 +27,21 @@ const api = {
           .catch((err) => Promise.reject(err.response.data)),
     },
   },
+  auth: {
+    auth: (
+      grant_type: "password" | "refresh_token",
+      password?: { username: string; password: string },
+      refreshToken?: string
+    ): Promise<{ user: User; accessToken: string; refreshToken: string }> => {
+      if (grant_type === "password") {
+        return instance.post(`/auth`, {
+          grant_type,
+          ...password,
+        });
+      }
+      return instance.post(`/auth`, { grant_type, refreshToken });
+    },
+  },
 };
 
 export default api;

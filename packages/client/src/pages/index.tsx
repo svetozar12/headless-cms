@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 import { User } from "@headless-cms/server";
+import { withAuthSync } from "../utils/auth";
 
 const Home: NextPage = () => {
   const { isLoading, error, data } = useQuery<User>(["repoData"], () =>
@@ -18,5 +19,7 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export const getServerSideProps = withAuthSync();
 
 export default Home;
