@@ -1,5 +1,5 @@
 {
-  "name": "@headless-cms/trpc-server",
+  "name": "@headless-cms/server",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "svetozar12 <zaauna@abv.bg>",
@@ -7,6 +7,7 @@
   "license": "ISC",
   "main": "lib/trpc-server.js",
   "scripts": {
+    "prebuild": "rimraf dist && yarn prisma generate",
     "build": "tsc",
     "prestart": "yarn build",
     "start": "node dist/index.js",

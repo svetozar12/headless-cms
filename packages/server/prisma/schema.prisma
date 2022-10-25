@@ -16,7 +16,7 @@ model User {
 
 model ContentModel {
   id      Int       @id @default(autoincrement())
-  userId  Int
+  userId  Int 
   text    Boolean?
   json    Boolean?
   number  Boolean?

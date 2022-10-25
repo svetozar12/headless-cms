@@ -48,7 +48,7 @@ user.delete(
   zMiddleware(commonUserSchema),
   async (req, res, next) => {
     const user = await userMe(req, res, next);
-    await prisma.user.delete({ where: { id: user.id } });
+    await prisma.user.delete({ where: user });
     return res.status(204).send();
   }
 );

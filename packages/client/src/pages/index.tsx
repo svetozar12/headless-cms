@@ -1,16 +1,20 @@
 import type { NextPage } from "next";
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
-import { getHealth } from "../types/api";
+import { User } from "@headless-cms/server";
 
 const Home: NextPage = () => {
-  const { data } = useQuery<getHealth>(["getHealth"], api.health.get);
-
-  if (!data) return <>...loading</>;
+  const { isLoading, error, data } = useQuery<User>(["repoData"], () =>
+    api.user.me.get(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ecJpZCI6MSwiaWF0IjoxNjY2NzI0ODQxLCJleHAiOjE2NjY3MjQ5MDF9.vTSWubAKoTpUgHrgSGge8w6IO1P_qxESwAerpznF-YY"
+    )
+  );
+  if (isLoading) return <>...loading</>;
+  if (error) return <>{JSON.stringify(error)}</>;
+  const { id, username } = data as User;
   return (
     <div>
-      <h1>Server status</h1>
-      <h2>{data.message || "down"}</h2>
+      <h1>Welcome {username}</h1>
     </div>
   );
 };
