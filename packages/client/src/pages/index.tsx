@@ -1,17 +1,14 @@
 import type { NextPage } from "next";
-import { useQuery } from "@tanstack/react-query";
-import api from "../utils/api";
 import { User } from "@headless-cms/server";
 import { withAuthSync } from "../utils/auth";
+import useSession from "../hooks/useSession";
 
 const Home: NextPage = () => {
-  const { isLoading, error, data } = useQuery<User>(["repoData"], () =>
-    api.user.me.get(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ecJpZCI6MSwiaWF0IjoxNjY2NzI0ODQxLCJleHAiOjE2NjY3MjQ5MDF9.vTSWubAKoTpUgHrgSGge8w6IO1P_qxESwAerpznF-YY"
-    )
-  );
+  const { data, isLoading, error, setToken } = useSession();
+
   if (isLoading) return <>...loading</>;
   if (error) return <>{JSON.stringify(error)}</>;
+
   const { id, username } = data as User;
   return (
     <div>

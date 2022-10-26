@@ -21,36 +21,45 @@ export interface ICtx extends NextPageContext {
   resolvedUrl: string;
 }
 
+export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
+  const cookie = nookies.get(ctx);
+  try {
+    const checkAuth = await api.auth.auth(
+      "refresh_token",
+      undefined,
+      cookie.refreshToken
+    );
+
+    if (checkAuth) {
+      nookies.set(ctx, "accessToken", checkAuth.accessToken);
+      nookies.set(ctx, "refreshToken", checkAuth.refreshToken);
+      return true;
+    }
+    nookies.destroy(ctx, "accessToken");
+    nookies.destroy(ctx, "refreshToken");
+    return false;
+  } catch (e: any) {
+    nookies.destroy(ctx, "accessToken");
+    nookies.destroy(ctx, "refreshToken");
+    return false;
+  }
+};
+
 const isAuth = async (ctx: ICtx) => {
   try {
     const cookies = nookies.get(ctx);
     const accessToken = cookies.accessToken;
     const refreshToken = cookies.refreshToken;
-    if (!accessToken) {
-      if (!refreshToken) {
-        const checkAuth = await api.auth.auth(
-          "refresh_token",
-          undefined,
-          refreshToken
-        );
-
-        if (checkAuth) {
-          nookies.set(ctx, "accessToken", checkAuth.accessToken);
-          nookies.set(ctx, "refreshToken", checkAuth.refreshToken);
-          return true;
-        }
-        return false;
-      }
-    }
-    return true;
-  } catch {
+    if (!accessToken && !refreshToken) return false;
+    const IsAuth = await checkAuth(refreshToken as string, ctx);
+    return IsAuth;
+  } catch (e) {
     return false;
   }
 };
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
-  const isUserAuth = true;
-  console.log(isUserAuth);
+  const isUserAuth = await isAuth(ctx);
   const currPath = ctx.resolvedUrl;
 
   if (!isUserAuth) return redirectTo(LOGIN, ctx, currPath);
@@ -72,10 +81,9 @@ export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
 
 export const isAlreadyAuth =
   (getServerSideProps?: any) => async (ctx: ICtx) => {
-    const isUserAuth = true;
+    const isUserAuth = await isAuth(ctx);
     const currPath = ctx.resolvedUrl;
-
-    if (isUserAuth && ctx.resolvedUrl !== currPath)
+    if (isUserAuth && ctx.resolvedUrl === currPath)
       return redirectTo(HOME, ctx, currPath);
     if (getServerSideProps) {
       const gssp = await getServerSideProps(ctx);
