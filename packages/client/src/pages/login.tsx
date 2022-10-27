@@ -28,7 +28,7 @@ const LoginPage: NextPage = () => {
 
   return (
     <div className="flex h-screen w-full items-center justify-center bg-mainBlack ">
-      <form className="flex w-1/4 flex-col justify-center gap-3 rounded-md bg-offBlack py-5 px-10">
+      <form className="flex h-2/4 w-5/6 flex-col justify-center gap-3 rounded-md bg-offBlack py-5 px-10 md:w-3/4 xl:w-2/4">
         <Heading type="h1" text="Sign in" />
         <p className="text-center text-sm text-white">
           Don&apos;t have account ?{" "}
@@ -48,7 +48,12 @@ const LoginPage: NextPage = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit" text="Login" onClick={handleSubmit} />
+        <Button
+          type="submit"
+          text="Login"
+          onClick={handleSubmit}
+          isDisabled={!username || !password}
+        />
       </form>
     </div>
   );
