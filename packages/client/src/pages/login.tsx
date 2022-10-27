@@ -4,6 +4,11 @@ import { useState } from "react";
 import api from "../utils/api";
 import { setCookie } from "nookies";
 import Router from "next/router";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import Heading from "../components/Heading";
+import Link from "next/link";
+import { REGISTER } from "../constants/routes";
 
 const LoginPage: NextPage = () => {
   const [username, setUsername] = useState("");
@@ -12,33 +17,38 @@ const LoginPage: NextPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      console.log("submit");
       const res = await api.auth.auth("password", { username, password });
-      console.log(res);
       setCookie(null, "accessToken", res.accessToken);
       setCookie(null, "refreshToken", res.refreshToken);
-      Router.push("/");
+      await Router.push("/");
     } catch {
-      console.log("error");
+      return false;
     }
   };
 
   return (
-    <div>
-      <form>
-        <input
+    <div className="flex h-screen w-full items-center justify-center bg-mainBlack ">
+      <form className="flex w-1/4 flex-col justify-center gap-3 rounded-md bg-offBlack py-5 px-10">
+        <Heading type="h1" text="Sign in" />
+        <p className="text-center text-sm text-white">
+          Don&apos;t have account ?{" "}
+          <Link href={REGISTER}>
+            <span className="cursor-pointer text-textPurple">
+              Register here
+            </span>
+          </Link>
+        </p>
+        <Input
           type="text"
           placeholder="username"
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <Input
           type="password"
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={handleSubmit} type="submit">
-          Login
-        </button>
+        <Button type="submit" text="Login" onClick={handleSubmit} />
       </form>
     </div>
   );
