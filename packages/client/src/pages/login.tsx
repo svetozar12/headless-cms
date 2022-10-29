@@ -8,7 +8,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import Link from "next/link";
-import { REGISTER } from "../constants/routes";
+import { HOME, REGISTER } from "../constants/routes";
 import FormWrapper from "../components/FormWrapper";
 import { z } from "zod";
 
@@ -36,7 +36,7 @@ const LoginPage: NextPage = () => {
         const res = await api.auth.auth("password", data);
         setCookie(null, "accessToken", res.accessToken);
         setCookie(null, "refreshToken", res.refreshToken);
-        await Router.push("/");
+        Router.push(HOME);
       }
     } catch (e: any) {
       setError(e.message);
@@ -49,8 +49,7 @@ const LoginPage: NextPage = () => {
   };
 
   return (
-    <FormWrapper>
-      {error && <p className="text-center text-sm text-red-500">{error}</p>}
+    <FormWrapper error={error}>
       <Heading type="h1" text="Sign in" />
       <p className="text-center text-sm text-white">
         Don&apos;t have account ?{" "}

@@ -49,8 +49,7 @@ const RegisterPage: NextPage = () => {
   };
 
   return (
-    <FormWrapper>
-      {error && <p className="text-center text-sm text-red-500">{error}</p>}
+    <FormWrapper error={error}>
       <Heading type="h1" text="Register" />
       <p className="text-center text-sm text-white">
         Already registered ?{" "}
