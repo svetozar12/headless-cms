@@ -7,7 +7,7 @@ const Heading = (props: IHeadingProps): JSX.Element => {
   const { text, type } = props;
 
   const getHeading = (): JSX.Element => {
-    const headingClassname = "text-white font-bold";
+    const headingClassname = "text-white font-bold text-2xl";
     switch (type) {
       case "h1":
         return <h1 className={headingClassname}>{text}</h1>;

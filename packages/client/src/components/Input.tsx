@@ -1,4 +1,5 @@
 interface IInputProps {
+  name: string;
   type:
     | "text"
     | "password"
@@ -26,18 +27,24 @@ interface IInputProps {
 }
 
 const Input = (props: IInputProps) => {
-  const { type, placeholder, onChange } = props;
+  const { name, type, placeholder, onChange } = props;
   return (
-    <div className="m-2  rounded-md bg-inputBlack p-1">
-      <input
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        className={
-          "w-full bg-transparent p-2 text-white autofill:bg-transparent active:border-0"
-        }
-      />
-    </div>
+    <>
+      <label htmlFor={name} className="px-2 text-white">
+        {name}
+      </label>
+      <div className="m-2  rounded-md bg-inputBlack p-1">
+        <input
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          onChange={onChange}
+          className={
+            "w-full bg-transparent p-2 text-white autofill:bg-transparent active:border-0"
+          }
+        />
+      </div>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const Button = (props: IButtonProps) => {
       <button
         disabled={isDisabled}
         type={type}
-        className="m-2 cursor-not-allowed rounded-md bg-gray-500 p-2 text-white"
+        className="mx-2 my-4 cursor-not-allowed rounded-md bg-gray-500 p-2 text-white"
       >
         {text}
       </button>
@@ -20,12 +20,12 @@ const Button = (props: IButtonProps) => {
   }
 
   return (
-    <div className={"flex items-center justify-center"}>
+    <div className={"mt-1 flex items-center justify-center"}>
       <button
         type={type}
         onClick={onClick}
         className={
-          "m-2 w-full rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
+          "mx-2 my-4 w-full rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
         }
       >
         {text}
