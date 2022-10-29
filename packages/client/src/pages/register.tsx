@@ -8,7 +8,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import Link from "next/link";
-import { REGISTER } from "../constants/routes";
+import { LOGIN } from "../constants/routes";
 import FormWrapper from "../components/FormWrapper";
 import { z } from "zod";
 
@@ -17,7 +17,7 @@ const schema = z.object({
   password: z.string().min(3).max(20),
 });
 
-const LoginPage: NextPage = () => {
+const RegisterPage: NextPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -33,7 +33,7 @@ const LoginPage: NextPage = () => {
         });
       } else {
         const { data } = isParse;
-        const res = await api.auth.auth("password", data);
+        const res = await api.user.create(data);
         setCookie(null, "accessToken", res.accessToken);
         setCookie(null, "refreshToken", res.refreshToken);
         await Router.push("/");
@@ -51,11 +51,11 @@ const LoginPage: NextPage = () => {
   return (
     <FormWrapper>
       {error && <p className="text-center text-sm text-red-500">{error}</p>}
-      <Heading type="h1" text="Sign in" />
+      <Heading type="h1" text="Register" />
       <p className="text-center text-sm text-white">
-        Don&apos;t have account ?{" "}
-        <Link href={REGISTER}>
-          <span className="cursor-pointer text-textPurple">Register here</span>
+        Already registered ?{" "}
+        <Link href={LOGIN}>
+          <span className="cursor-pointer text-textPurple">SignIn here</span>
         </Link>
       </p>
       <Input
@@ -74,7 +74,7 @@ const LoginPage: NextPage = () => {
       />
       <Button
         type="submit"
-        text="Login"
+        text="Register"
         onClick={handleSubmit}
         isDisabled={!username || !password}
       />
@@ -83,4 +83,4 @@ const LoginPage: NextPage = () => {
 };
 export const getServerSideProps = isAlreadyAuth();
 
-export default LoginPage;
+export default RegisterPage;

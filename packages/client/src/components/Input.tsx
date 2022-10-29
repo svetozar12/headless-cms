@@ -23,11 +23,12 @@ interface IInputProps {
     | "reset"
     | "button";
   placeholder: string;
+  value: string;
   onChange: (e: any) => void;
 }
 
 const Input = (props: IInputProps) => {
-  const { name, type, placeholder, onChange } = props;
+  const { name, type, placeholder, value, onChange } = props;
   return (
     <>
       <label htmlFor={name} className="px-2 text-white">
@@ -35,6 +36,8 @@ const Input = (props: IInputProps) => {
       </label>
       <div className="m-2  rounded-md bg-inputBlack p-1">
         <input
+          value={value}
+          autoComplete={value}
           name={name}
           type={type}
           placeholder={placeholder}

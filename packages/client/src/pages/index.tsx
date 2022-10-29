@@ -4,7 +4,7 @@ import { withAuthSync } from "../utils/auth";
 import useSession from "../hooks/useSession";
 
 const Home: NextPage = () => {
-  const { data, isLoading, error, setToken } = useSession();
+  const { data, isLoading, error } = useSession();
 
   if (isLoading) return <>...loading</>;
   if (error) return <>{JSON.stringify(error)}</>;
