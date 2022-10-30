@@ -7,10 +7,8 @@ import { useRouter } from "next/router";
 const useSession = () => {
   const cookie = parseCookies();
   const router = useRouter();
-  const query = useQuery(
-    ["session"],
-    () => api.user.getMe(cookie.accessToken as string),
-    {}
+  const query = useQuery(["session"], () =>
+    api.user.getMe(cookie.accessToken as string)
   );
   useQuery(["refresh"], () => checkAuth(cookie.refreshToken as string));
 

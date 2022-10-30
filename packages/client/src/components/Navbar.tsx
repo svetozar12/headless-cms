@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const logout = () => {
     for (const key in cookie) destroyCookie(null, key);
+    window.location.reload();
   };
 
   return (
@@ -22,9 +23,7 @@ const Navbar = () => {
       <div className="flex w-full items-center justify-center gap-5">
         <Link href="/dashboard">Dashboard</Link>
         <Link href="/profile">Profile</Link>
-        <Link href="/login">
-          <p onClick={logout}>Logout</p>
-        </Link>
+        <button onClick={logout}>LogOut</button>
       </div>
     </nav>
   );
