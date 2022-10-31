@@ -10,7 +10,7 @@ const Button = (props: IButtonProps) => {
   if (isDisabled) {
     return (
       <button
-        disabled={isDisabled}
+        disabled={true}
         type={type}
         className="mx-2 my-4 cursor-not-allowed rounded-md bg-gray-500 p-2 text-white"
       >

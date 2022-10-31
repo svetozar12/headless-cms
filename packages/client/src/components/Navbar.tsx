@@ -4,9 +4,10 @@ import { SiCraftcms } from "react-icons/si";
 import { destroyCookie, parseCookies } from "nookies";
 
 const Navbar = () => {
-  const { data, isLoggedIn } = useSession();
+  const { isLoggedIn } = useSession();
   const cookie = parseCookies();
-  if (!isLoggedIn && !data) return null;
+  console.log(isLoggedIn);
+  if (!isLoggedIn) return null;
 
   const logout = () => {
     for (const key in cookie) destroyCookie(null, key);

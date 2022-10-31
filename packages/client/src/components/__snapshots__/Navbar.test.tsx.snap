@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`Navbar component > should render navbar 1`] = `ReactWrapper {}`;
+
+exports[`Navbar component > should render navbar while logged 1`] = `ReactWrapper {}`;
