@@ -1,5 +1,12 @@
 import { makeTestRequest } from "../utils";
+import logger from "../../dist/utils/logger";
 
+let user;
+let tokens: { accessToken: string; refreshToken: string };
+const testUser = {
+  username: "test",
+  password: "test",
+};
 const zodTestCases = [
   {
     body: {
@@ -19,8 +26,7 @@ const zodTestCases = [
   },
   {
     body: {
-      username: "greg",
-      password: "greg",
+      ...testUser,
       grant_type: 1,
     },
     expect:
@@ -40,14 +46,26 @@ const zodTestCases = [
   },
 ];
 
+beforeAll(async () => {
+  const token = await makeTestRequest("post", "/user", testUser);
+  const { user: User, ...Tokens } = token.body;
+  user = User;
+  logger(["tokens", Tokens, user]);
+  tokens = Tokens;
+});
+afterAll(async () => {
+  const { accessToken } = tokens;
+  await makeTestRequest("delete", "/user/me", {}, accessToken);
+});
+
 describe("/auth", () => {
   describe("POST", () => {
     describe("/", () => {
       it("should return AccessToken and RefreshToken(201) grant_type=password", async () => {
         const expectedProperties = ["accessToken", "refreshToken"];
+        console.log(testUser);
         const res = await makeTestRequest("post", "/auth", {
-          username: "greg",
-          password: "greg",
+          ...testUser,
           grant_type: "password",
         });
         expectedProperties.forEach((property) => {
@@ -59,16 +77,13 @@ describe("/auth", () => {
       });
       it("should return AccessToken and RefreshToken(201) grant_type=refresh_token", async () => {
         const expectedProperties = ["accessToken", "refreshToken"];
-        const token = await makeTestRequest("post", "/auth", {
-          username: "greg",
-          password: "greg",
-          grant_type: "password",
-        });
-        const { refreshToken } = token.body;
+        const { refreshToken } = tokens;
         const res = await makeTestRequest("post", "/auth", {
           grant_type: "refresh_token",
           refreshToken,
         });
+        console.log(res, "TOKENS");
+
         expectedProperties.forEach((property) => {
           expect(res.body).toHaveProperty(property);
           expect(typeof res.body[property]).toBe("string");

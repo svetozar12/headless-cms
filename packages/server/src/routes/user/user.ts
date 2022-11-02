@@ -21,21 +21,25 @@ user.get(
 );
 
 user.post("/", zMiddleware(userSchema), async (req, res, next) => {
-  const { body } = await zParse(userSchema, req);
-  const isUserExist = await prisma.user.findFirst({ where: body });
+  const {
+    body: { username, password },
+  } = await zParse(userSchema, req);
+  const isUserExist = await prisma.user.findFirst({
+    where: { username },
+  });
   if (isUserExist)
     return res.status(409).json({ message: "User already exist" });
 
-  const user = await prisma.user.create({ data: body });
+  const user = await prisma.user.create({ data: { username, password } });
   const accessToken = await signToken(
     jwtType.ACCESS,
-    { id: user.id, ...body },
+    { id: user.id, username },
     parseInt(env.JWT_ACCESS_TOKEN_EXPIRES_IN)
   );
 
   const refreshToken = await signToken(
     jwtType.ACCESS,
-    { id: user.id, ...body },
+    { id: user.id, username },
     parseInt(env.JWT_REFRESH_TOKEN_EXPIRES_IN)
   );
 

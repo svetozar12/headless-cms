@@ -4,7 +4,7 @@ import * as bcrypt from "bcrypt";
 const prisma = new PrismaClient();
 
 prisma.$use(async (params, next) => {
-  if (params.model == "User" && params.action == "create") {
+  if (params.model === "User" && params.action === "create") {
     const user = params.args.data;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(user.password, salt);

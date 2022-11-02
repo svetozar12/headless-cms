@@ -4,6 +4,7 @@ import { authSchema } from "./schema";
 import { zMiddleware, zParse } from "../../utils/zParse";
 import { prisma } from "../../utils/prisma";
 import bcrypt from "bcrypt";
+import { env } from "../../env/server";
 
 const auth = Router();
 
@@ -13,8 +14,10 @@ auth.post("/", zMiddleware(authSchema), async (req, res) => {
   } = await zParse(authSchema, req);
   if (grant_type === "password") {
     const { body } = await zParse(authSchema, req);
-    const { grant_type, password, ...userObj } = body;
-    const user = await prisma.user.findFirst({ where: userObj });
+    const { password, username } = body;
+
+    const user = await prisma.user.findFirst({ where: { username } });
+    console.log(user);
     if (!user) return res.status(404).json({ message: "User doesn't exist" });
     const comparePassword = bcrypt.compareSync(
       password as string,
@@ -23,8 +26,16 @@ auth.post("/", zMiddleware(authSchema), async (req, res) => {
     if (!comparePassword)
       return res.status(400).json({ message: "Invalid password" });
 
-    const accessToken = await signToken(jwtType.ACCESS, { id: user.id }, 60);
-    const refreshToken = await signToken(jwtType.REFRESH, { id: user.id }, 120);
+    const accessToken = await signToken(
+      jwtType.ACCESS,
+      { id: user.id },
+      parseInt(env.JWT_ACCESS_TOKEN_EXPIRES_IN)
+    );
+    const refreshToken = await signToken(
+      jwtType.REFRESH,
+      { id: user.id },
+      parseInt(env.JWT_REFRESH_TOKEN_EXPIRES_IN)
+    );
     return res.status(201).json({ accessToken, refreshToken });
   }
   if (grant_type === "refresh_token") {
