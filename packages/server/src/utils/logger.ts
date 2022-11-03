@@ -1,7 +1,5 @@
-import { env } from "../env/server";
-
 const logger = (args: Parameters<typeof console.log>) => {
-  if (env.NODE_ENV !== "development") return;
+  // if (env.NODE_ENV === "development" || env.NODE_ENV === "test") return;
   console.log(...args);
 };
 

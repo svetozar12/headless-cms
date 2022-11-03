@@ -1,5 +1,4 @@
 import { makeTestRequest } from "../utils";
-import logger from "../../dist/utils/logger";
 
 let user;
 let tokens: { accessToken: string; refreshToken: string };
@@ -48,14 +47,17 @@ const zodTestCases = [
 
 beforeAll(async () => {
   const token = await makeTestRequest("post", "/user", testUser);
-  const { user: User, ...Tokens } = token.body;
+  const { user: User } = token.body;
   user = User;
-  logger(["tokens", Tokens, user]);
-  tokens = Tokens;
+
+  tokens = {
+    accessToken: token.body.accessToken,
+    refreshToken: token.body.refreshToken,
+  };
 });
 afterAll(async () => {
   const { accessToken } = tokens;
-  await makeTestRequest("delete", "/user/me", {}, accessToken);
+  await makeTestRequest("delete", "/user/me", undefined, accessToken);
 });
 
 describe("/auth", () => {

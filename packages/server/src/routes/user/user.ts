@@ -38,7 +38,7 @@ user.post("/", zMiddleware(userSchema), async (req, res, next) => {
   );
 
   const refreshToken = await signToken(
-    jwtType.ACCESS,
+    jwtType.REFRESH,
     { id: user.id, username },
     parseInt(env.JWT_REFRESH_TOKEN_EXPIRES_IN)
   );
@@ -52,7 +52,8 @@ user.delete(
   zMiddleware(commonUserSchema),
   async (req, res, next) => {
     const user = await userMe(req, res, next);
-    await prisma.user.delete({ where: user });
+    const { id } = user;
+    await prisma.user.delete({ where: { id } });
     return res.status(204).send();
   }
 );
