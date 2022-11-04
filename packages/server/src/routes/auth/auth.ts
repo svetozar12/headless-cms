@@ -5,7 +5,6 @@ import { zMiddleware, zParse } from "../../utils/zParse";
 import { prisma } from "../../utils/prisma";
 import bcrypt from "bcrypt";
 import { env } from "../../env/server";
-import logger from "../../utils/logger";
 
 const auth = Router();
 
@@ -39,12 +38,10 @@ auth.post("/", zMiddleware(authSchema), async (req, res) => {
     return res.status(201).json({ accessToken, refreshToken });
   }
   if (grant_type === "refresh_token") {
-    logger(["refresh_tokenar", body]);
     const decodedToken = verifyToken(
       jwtType.REFRESH,
       body.refreshToken as string
     ) as typeof req.user;
-    logger([decodedToken, "ALAFADA"]);
     if (!decodedToken)
       return res.status(401).json({ message: "Invalid refresh token" });
     const user = await prisma.user.findFirst({

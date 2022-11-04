@@ -4,19 +4,21 @@ import { createContentSchema } from "./content.schema";
 import { prisma } from "../../utils/prisma";
 import isAuth from "../../middlewares/isAuth";
 import { jwtType } from "../auth/utils";
-import contentModel from "../../utils/pre/contentModel";
 import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
+import { preResource, Resource } from "../../utils/pre/preMiddleware";
 
 const content = Router();
 
 content.get(
   "/",
-  zMiddleware(commonUserSchema),
   isAuth(jwtType.ACCESS),
+  zMiddleware(commonUserSchema),
+  preResource([Resource.User, Resource.ContentModel]),
   async (req, res, next: NextFunction) => {
-    const model = await contentModel(req, res, next);
+    const { model } = req.pre;
+    const { id } = model;
     const content = await prisma.content.findMany({
-      where: { contentModelId: model!.id },
+      where: { contentModelId: id },
     });
 
     return res.status(200).json({ content });
@@ -25,13 +27,14 @@ content.get(
 
 content.get(
   "/:id",
-  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
   isAuth(jwtType.ACCESS),
+  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
+  preResource([Resource.ContentModel]),
   async (req, res, next: NextFunction) => {
     const {
       params: { id },
     } = await zParse(commonIdParamSchema, req);
-    const model = await contentModel(req, res, next);
+    const { model } = req.pre;
     const content = await prisma.content.findMany({
       where: { id, contentModelId: model!.id },
     });
@@ -42,22 +45,16 @@ content.get(
 
 content.post(
   "/",
-  zMiddleware(createContentSchema),
   isAuth(jwtType.ACCESS),
+  zMiddleware(createContentSchema),
+  preResource([Resource.ContentModel]),
   async (req, res, next) => {
     const {
       user,
       body,
       body: { contentModelId },
     } = await zParse(createContentSchema, req);
-    const model = await prisma.contentModel.findFirst({
-      where: { userId: user.id, id: contentModelId },
-    });
-
-    if (!model)
-      return res
-        .status(404)
-        .json({ message: "Can't create content without content model" });
+    const { model } = req.pre;
 
     const isDuplicate = await prisma.content.findFirst({
       where: { ...body, contentModelId: model.id },
@@ -76,25 +73,18 @@ content.post(
 
 content.delete(
   "/:id",
-  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
   isAuth(jwtType.ACCESS),
+  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
+  preResource([Resource.Content]),
   async (req, res, next: NextFunction) => {
-    const {
-      params: { id },
-    } = await zParse(commonIdParamSchema, req);
-
-    const model = await contentModel(req, res, next);
-    const content = await prisma.content.findFirst({
-      where: { id, contentModelId: model!.id },
-    });
-
-    if (!content) return res.status(404).json({ message: "Content not found" });
+    const { content } = req.pre;
+    const { id, contentModelId } = content;
 
     await prisma.content.delete({
-      where: { id, contentModelId: model!.id } as any,
+      where: { id, contentModelId } as any,
     });
 
-    return res.status(204).json({ Message: "Content deleted" });
+    return res.status(204).send();
   }
 );
 

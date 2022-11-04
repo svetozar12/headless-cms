@@ -5,6 +5,7 @@ import { zMiddleware, zParse } from "../../utils/zParse";
 import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { contentModelSchema } from "./contentModel.schema";
 import { prisma } from "../../utils/prisma";
+import { preResource, Resource } from "../../utils/pre/preMiddleware";
 
 const contentModel = Router();
 
@@ -34,22 +35,10 @@ contentModel.get(
   "/:id",
   zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
   isAuth(jwtType.ACCESS),
+  preResource([Resource.ContentModel]),
   async (req, res, next) => {
-    const {
-      user: { id },
-      params: { id: contentModelId },
-    } = await zParse(commonIdParamSchema.merge(commonUserSchema), req);
-
-    const contentModel = await prisma.contentModel.findFirst({
-      where: { userId: id, id: contentModelId },
-    });
-
-    if (!contentModel)
-      return res
-        .status(404)
-        .json({ message: "You don't have content models !" });
-
-    return res.json({ contentModel });
+    const { model } = req.pre;
+    return res.json({ model });
   }
 );
 
@@ -75,22 +64,13 @@ contentModel.delete(
   "/:id",
   zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
   isAuth(jwtType.ACCESS),
+  preResource([Resource.ContentModel]),
   async (req, res, next) => {
-    const {
-      user: { id },
-      params: { id: contentModelId },
-    } = await zParse(commonIdParamSchema.merge(commonUserSchema), req);
+    const { model } = req.pre;
 
-    const contentModel = await prisma.contentModel.findFirst({
-      where: { id: contentModelId, userId: id },
-    });
+    await prisma.contentModel.delete({ where: { id: model.id } });
 
-    if (!contentModel)
-      return res.status(404).json({ message: "Content model doesn't exist" });
-
-    await prisma.contentModel.delete({ where: { id: contentModel.id } });
-
-    return res.status(204);
+    return res.status(204).send();
   }
 );
 

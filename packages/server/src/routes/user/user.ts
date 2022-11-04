@@ -5,8 +5,8 @@ import isAuth from "../../middlewares/isAuth";
 import { jwtType, signToken } from "../auth/utils";
 import { commonUserSchema } from "../../common/schema";
 import { prisma } from "../../utils/prisma";
-import userMe from "../../utils/pre/user";
 import { env } from "../../env/server";
+import { preResource, Resource } from "../../utils/pre/preMiddleware";
 
 const user = Router();
 
@@ -14,8 +14,9 @@ user.get(
   "/me",
   isAuth(jwtType.ACCESS),
   zMiddleware(commonUserSchema),
+  preResource([Resource.User]),
   async (req, res, next) => {
-    const user = await userMe(req, res, next);
+    const { user } = req.pre;
     return res.status(200).json(user);
   }
 );
@@ -42,16 +43,17 @@ user.post("/", zMiddleware(userSchema), async (req, res, next) => {
     { id: user.id, username },
     parseInt(env.JWT_REFRESH_TOKEN_EXPIRES_IN)
   );
-
-  return res.status(201).json({ user, accessToken, refreshToken });
+  const { password: _, ...userObj } = user;
+  return res.status(201).json({ user: userObj, accessToken, refreshToken });
 });
 
 user.delete(
   "/me",
   isAuth(jwtType.ACCESS),
   zMiddleware(commonUserSchema),
+  preResource([Resource.User]),
   async (req, res, next) => {
-    const user = await userMe(req, res, next);
+    const { user } = req.pre;
     const { id } = user;
     await prisma.user.delete({ where: { id } });
     return res.status(204).send();
