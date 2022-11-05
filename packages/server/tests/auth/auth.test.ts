@@ -1,3 +1,4 @@
+import logger from "../../src/utils/logger";
 import { makeTestRequest } from "../utils";
 
 let user;
@@ -77,9 +78,11 @@ describe("/auth", () => {
         });
         expect(res.status).toBe(201);
       });
+      // todo -fix
       it("should return AccessToken and RefreshToken(201) grant_type=refresh_token", async () => {
         const expectedProperties = ["accessToken", "refreshToken"];
         const { refreshToken } = tokens;
+        logger([refreshToken, "ujioawdhuoawdhuoawdhuiwd"]);
         const res = await makeTestRequest("post", "/auth", {
           grant_type: "refresh_token",
           refreshToken,
@@ -97,7 +100,7 @@ describe("/auth", () => {
         const { body, expect: message } = testCase;
         it(`testing zod schema with body: ${JSON.stringify(
           body,
-          undefined
+          undefined,
         )}`, async () => {
           const res = await makeTestRequest("post", "/auth", body);
           expect(res.body.message).toBe(message);

@@ -1,5 +1,5 @@
 export * from "./utils/prisma";
-
+import { init } from "./preinit";
 import express from "express";
 import cors from "cors";
 import { env } from "./env/server";
@@ -12,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  init(res, req, next);
+});
 // init routes
 initRoutes(app);
 app.use(handleError);

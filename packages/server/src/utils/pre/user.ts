@@ -7,7 +7,7 @@ import logger from "../logger";
 
 const userMe = async (
   req: Request,
-  returnPassword?: boolean
+  returnPassword?: boolean,
 ): Promise<void> => {
   const {
     user: { id },
@@ -18,8 +18,9 @@ const userMe = async (
   if (!user) return CustomError.notFound("User doesn't exist");
 
   const { password, ...userObj } = user;
-  logger(["userMdawdawdawe", userObj]);
+  logger([userObj, "userObjdawawawawawawawawawawawawaw", req.pre]);
   req.pre.user = userObj;
+  logger([req.pre, "req.pre.userdwaaaaaaaaaaaaaaa"]);
   return;
 };
 
