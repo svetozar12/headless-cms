@@ -1,5 +1,6 @@
 import app from "../src/index";
 import request from "supertest";
+import logger from "../src/utils/logger";
 
 const instance = request(app);
 
@@ -10,6 +11,13 @@ export const makeTestRequest = (
   jwtToken?: string
 ): Promise<any> => {
   if (jwtToken)
-    return instance[method](url).set("Authorization", `Bearer ${jwtToken}`);
-  return instance[method](url).send(data);
+    return instance[method](url)
+      .set({
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      })
+      .send(data);
+  return instance[method](url)
+    .set("Content-Type", "application/json")
+    .send(data);
 };

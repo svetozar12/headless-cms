@@ -10,7 +10,7 @@ const routes = [
   { path: "/health", router: health },
   { path: "/auth", router: auth },
   { path: "/user", router: user },
-  { path: "/contentModel.ts", router: contentModel },
+  { path: "/contentModel", router: contentModel },
   { path: "/content", router: content },
 ];
 

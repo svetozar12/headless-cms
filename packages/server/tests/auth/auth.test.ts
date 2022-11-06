@@ -1,4 +1,3 @@
-import logger from "../../src/utils/logger";
 import { makeTestRequest } from "../utils";
 
 let user;
@@ -66,7 +65,6 @@ describe("/auth", () => {
     describe("/", () => {
       it("should return AccessToken and RefreshToken(201) grant_type=password", async () => {
         const expectedProperties = ["accessToken", "refreshToken"];
-        console.log(testUser);
         const res = await makeTestRequest("post", "/auth", {
           ...testUser,
           grant_type: "password",
@@ -82,12 +80,10 @@ describe("/auth", () => {
       it("should return AccessToken and RefreshToken(201) grant_type=refresh_token", async () => {
         const expectedProperties = ["accessToken", "refreshToken"];
         const { refreshToken } = tokens;
-        logger([refreshToken, "ujioawdhuoawdhuoawdhuiwd"]);
         const res = await makeTestRequest("post", "/auth", {
           grant_type: "refresh_token",
           refreshToken,
         });
-        console.log(res, "TOKENS");
 
         expectedProperties.forEach((property) => {
           expect(res.body).toHaveProperty(property);
@@ -100,7 +96,7 @@ describe("/auth", () => {
         const { body, expect: message } = testCase;
         it(`testing zod schema with body: ${JSON.stringify(
           body,
-          undefined,
+          undefined
         )}`, async () => {
           const res = await makeTestRequest("post", "/auth", body);
           expect(res.body.message).toBe(message);

@@ -1,4 +1,10 @@
 import { z } from "zod";
+import { stringify } from "ts-jest";
+
+const reqBoolean = z
+  .string()
+  .transform((val) => val === "true")
+  .optional();
 
 const commonUserSchema = z.object({
   user: z.object({
@@ -12,4 +18,4 @@ const commonIdParamSchema = z.object({
   }),
 });
 
-export { commonUserSchema, commonIdParamSchema };
+export { reqBoolean, commonUserSchema, commonIdParamSchema };

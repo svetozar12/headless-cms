@@ -3,12 +3,8 @@ import { commonUserSchema } from "../../common/schema";
 import { prisma } from "../prisma";
 import { Request } from "express";
 import { CustomError } from "../../common/errorModel";
-import logger from "../logger";
 
-const userMe = async (
-  req: Request,
-  returnPassword?: boolean,
-): Promise<void> => {
+const userMe = async (req: Request): Promise<void> => {
   const {
     user: { id },
   } = await zParse(commonUserSchema, req);
@@ -18,9 +14,7 @@ const userMe = async (
   if (!user) return CustomError.notFound("User doesn't exist");
 
   const { password, ...userObj } = user;
-  logger([userObj, "userObjdawawawawawawawawawawawawaw", req.pre]);
   req.pre.user = userObj;
-  logger([req.pre, "req.pre.userdwaaaaaaaaaaaaaaa"]);
   return;
 };
 

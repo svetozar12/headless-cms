@@ -21,6 +21,8 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "prettier"],
   rules: {
+    "prettier/prettier": "error",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "no-console": "error",
   },
   settings: {

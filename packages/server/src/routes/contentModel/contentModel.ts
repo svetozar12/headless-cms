@@ -6,6 +6,8 @@ import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { contentModelSchema } from "./contentModel.schema";
 import { prisma } from "../../utils/prisma";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
+import userMe from "../../utils/pre/user";
+import logger from "../../utils/logger";
 
 const contentModel = Router();
 
@@ -44,13 +46,13 @@ contentModel.get(
 
 contentModel.post(
   "/",
-  zMiddleware(contentModelSchema),
   isAuth(jwtType.ACCESS),
+  zMiddleware(contentModelSchema),
+  preResource([Resource.User]),
   async (req, res, next) => {
-    const {
-      user: { id },
-      body,
-    } = await zParse(contentModelSchema, req);
+    const { body } = await zParse(contentModelSchema, req);
+    const { id } = req.pre.user;
+    logger([body, req.body, "hujoawhuwdhuo"]);
 
     const contentModel = await prisma.contentModel.create({
       data: { ...body, userId: id },

@@ -9,7 +9,6 @@ export const preContent = async (req: Request): Promise<void> => {
   const content = await prisma.content.findFirst({
     where: { contentModelId: model.id },
   });
-  console.log(content);
   //@ts-ignore
   if (!content) return CustomError.notFound("You don't have content !");
 

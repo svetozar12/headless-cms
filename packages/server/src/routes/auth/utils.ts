@@ -44,7 +44,6 @@ const verifyToken = (type: jwtType, token: string) => {
       logger(["error", err]);
       user = false;
     }
-    console.log(decoded, "DECODED");
     user = decoded;
   });
   return user;

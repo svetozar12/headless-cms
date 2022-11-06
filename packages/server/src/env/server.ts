@@ -1,11 +1,14 @@
 // @ts-check
-require("dotenv").config();
+import { config } from "dotenv";
+
+config();
 
 import { serverSchema } from "./schema";
+import logger from "../utils/logger";
 const _serverEnv = serverSchema.safeParse(process.env);
 
 if (!_serverEnv.success) {
-  console.error("❌ Invalid environment variables:\n", _serverEnv.error);
+  logger(["❌ Invalid environment variables:\n", _serverEnv.error]);
   const {
     error: { issues },
   } = _serverEnv;

@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="546e9778-3774-44c3-8f8c-82f4020d7f3e" name="Changes" comment="">
+    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/server/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lerna-debug.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/common/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/common/schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/env/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/env/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/preinit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/preinit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/auth/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/auth/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/health/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/health/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/utils/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/logger.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/utils/pre/content.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/pre/content.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/utils/pre/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/pre/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/tests/auth/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/auth/auth.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/yarn-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/tests/user/user.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/user/user.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/tests/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,30 +37,48 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2H95l5JitUr1mgW2XbqAGXA1yEW" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HBR1JtU7QZ4YccAPfi2hffmvOw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/coding_journey/headless-cms/packages/server/tests/contentModel&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\coding_journey\\headless-cms\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\coding_journey\headless-cms\packages\server\tests\contentModel" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="546e9778-3774-44c3-8f8c-82f4020d7f3e" name="Changes" comment="" />
-      <created>1667684610807</created>
+      <changelist id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="" />
+      <created>1667756277465</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1667684610807</updated>
-      <workItem from="1667684612580" duration="14000" />
+      <updated>1667756277465</updated>
+      <workItem from="1667756279207" duration="242000" />
+      <workItem from="1667756535430" duration="12177000" />
+      <workItem from="1667771210545" duration="503000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,4 @@
 import { makeTestRequest } from "../utils";
-import logger from "../../dist/utils/logger";
 
 let user;
 let tokens: { accessToken: string; refreshToken: string };
@@ -33,7 +32,6 @@ describe("/user", () => {
     });
     const { user: User, ...Tokens } = token.body;
     user = User;
-    logger(["tokens", Tokens]);
     tokens = Tokens;
   });
 
