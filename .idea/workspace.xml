@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/server/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="~">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/common/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/common/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/env/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/env/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/preinit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/preinit.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/auth/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/auth/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/health/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/health/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/utils/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/logger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/utils/pre/content.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/pre/content.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/utils/pre/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/utils/pre/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/tests/auth/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/auth/auth.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/tests/user/user.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/user/user.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/tests/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +18,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectId" id="2HBR1JtU7QZ4YccAPfi2hffmvOw" />
   <component name="ProjectViewState">
@@ -58,7 +40,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\coding_journey\\headless-cms\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -78,8 +60,17 @@
       <updated>1667756277465</updated>
       <workItem from="1667756279207" duration="242000" />
       <workItem from="1667756535430" duration="12177000" />
-      <workItem from="1667771210545" duration="503000" />
+      <workItem from="1667771210545" duration="2780000" />
+      <workItem from="1667846742022" duration="6317000" />
     </task>
+    <task id="LOCAL-00001" summary="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)">
+      <created>1667771820512</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667771820512</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +86,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)" />
+    <option name="LAST_COMMIT_MESSAGE" value="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)" />
   </component>
 </project>

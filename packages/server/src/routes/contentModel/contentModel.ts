@@ -6,15 +6,13 @@ import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { contentModelSchema } from "./contentModel.schema";
 import { prisma } from "../../utils/prisma";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
-import userMe from "../../utils/pre/user";
-import logger from "../../utils/logger";
 
 const contentModel = Router();
 
 contentModel.get(
   "/",
-  zMiddleware(commonUserSchema),
   isAuth(jwtType.ACCESS),
+  zMiddleware(commonUserSchema),
   async (req, res, next) => {
     const {
       user: { id },
@@ -35,12 +33,12 @@ contentModel.get(
 
 contentModel.get(
   "/:id",
-  zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
   isAuth(jwtType.ACCESS),
-  preResource([Resource.ContentModel]),
+  zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
+  preResource([Resource.User, Resource.ContentModel]),
   async (req, res, next) => {
     const { model } = req.pre;
-    return res.json({ model });
+    return res.json({ contentModel: model });
   }
 );
 
@@ -52,7 +50,6 @@ contentModel.post(
   async (req, res, next) => {
     const { body } = await zParse(contentModelSchema, req);
     const { id } = req.pre.user;
-    logger([body, req.body, "hujoawhuwdhuo"]);
 
     const contentModel = await prisma.contentModel.create({
       data: { ...body, userId: id },
@@ -64,12 +61,11 @@ contentModel.post(
 
 contentModel.delete(
   "/:id",
-  zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
   isAuth(jwtType.ACCESS),
-  preResource([Resource.ContentModel]),
+  zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
+  preResource([Resource.User, Resource.ContentModel]),
   async (req, res, next) => {
     const { model } = req.pre;
-
     await prisma.contentModel.delete({ where: { id: model.id } });
 
     return res.status(204).send();

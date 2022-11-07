@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { stringify } from "ts-jest";
 
 const reqBoolean = z
   .string()
@@ -14,7 +13,7 @@ const commonUserSchema = z.object({
 
 const commonIdParamSchema = z.object({
   params: z.object({
-    id: z.number(),
+    id: z.string().transform((val) => parseInt(val)),
   }),
 });
 
