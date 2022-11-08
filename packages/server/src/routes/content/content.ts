@@ -49,15 +49,11 @@ content.post(
   zMiddleware(createContentSchema),
   preResource([Resource.ContentModel]),
   async (req, res, next) => {
-    const {
-      user,
-      body,
-      body: { contentModelId },
-    } = await zParse(createContentSchema, req);
+    const { user, body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
 
     const isDuplicate = await prisma.content.findFirst({
-      where: { ...body, contentModelId: model.id },
+      where: { ...body, contentModel: model },
     });
 
     if (isDuplicate)

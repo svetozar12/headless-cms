@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="~">
+    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="finished with contentModel tests">
+      <change afterPath="$PROJECT_DIR$/packages/server/tests/content/content.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/server/src/common/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/common/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/tests/contentModel/contentModel.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/content.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/content.schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/content.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/content.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\coding_journey\\headless-cms\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -61,7 +63,11 @@
       <workItem from="1667756279207" duration="242000" />
       <workItem from="1667756535430" duration="12177000" />
       <workItem from="1667771210545" duration="2780000" />
-      <workItem from="1667846742022" duration="6317000" />
+      <workItem from="1667846742022" duration="6715000" />
+      <workItem from="1667860053920" duration="92000" />
+      <workItem from="1667860158101" duration="197000" />
+      <workItem from="1667860368205" duration="453000" />
+      <workItem from="1667934700567" duration="5441000" />
     </task>
     <task id="LOCAL-00001" summary="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)">
       <created>1667771820512</created>
@@ -70,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667771820512</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finished with contentModel tests">
+      <created>1667854550870</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667854550870</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)" />
-    <option name="LAST_COMMIT_MESSAGE" value="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)" />
+    <MESSAGE value="finished with contentModel tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished with contentModel tests" />
   </component>
 </project>

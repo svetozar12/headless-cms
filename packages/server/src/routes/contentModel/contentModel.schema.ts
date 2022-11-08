@@ -1,13 +1,12 @@
 import { z } from "zod";
-import { commonUserSchema, reqBoolean } from "../../common/schema";
-import { stringify } from "ts-jest";
+import { commonUserSchema, parseBoolean } from "../../common/schema";
 
 const contentModelSchema = z
   .object({
     body: z.object({
-      text: reqBoolean,
-      number: reqBoolean,
-      json: reqBoolean,
+      text: parseBoolean,
+      number: parseBoolean,
+      json: parseBoolean,
     }),
   })
   .merge(commonUserSchema);

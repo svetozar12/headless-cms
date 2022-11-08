@@ -1,13 +1,17 @@
 import { z } from "zod";
-import { commonUserSchema } from "../../common/schema";
+import {
+  commonUserSchema,
+  parseJson,
+  parseStringToInt,
+} from "../../common/schema";
 
 const createContentSchema = z
   .object({
     body: z.object({
-      contentModelId: z.number(),
+      contentModelId: parseStringToInt,
       text: z.string().optional(),
-      json: z.object({}).optional(),
-      number: z.number().optional(),
+      json: parseJson.optional(),
+      number: parseStringToInt.optional(),
     }),
   })
   .merge(commonUserSchema);

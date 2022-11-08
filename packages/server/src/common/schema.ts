@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const reqBoolean = z
+const parseBoolean = z
   .string()
   .transform((val) => val === "true")
   .optional();
@@ -17,4 +17,14 @@ const commonIdParamSchema = z.object({
   }),
 });
 
-export { reqBoolean, commonUserSchema, commonIdParamSchema };
+const parseStringToInt = z.string().transform((val) => parseInt(val));
+
+const parseJson = z.string().transform((val) => JSON.parse(val));
+
+export {
+  parseBoolean,
+  parseJson,
+  parseStringToInt,
+  commonUserSchema,
+  commonIdParamSchema,
+};
