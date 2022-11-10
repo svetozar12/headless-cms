@@ -6,6 +6,7 @@ import isAuth from "../../middlewares/isAuth";
 import { jwtType } from "../auth/utils";
 import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
+import logger from "../../utils/logger";
 
 const content = Router();
 
@@ -51,9 +52,9 @@ content.post(
   async (req, res, next) => {
     const { user, body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
-
+    const { json, ...Body } = body;
     const isDuplicate = await prisma.content.findFirst({
-      where: { ...body, contentModel: model },
+      where: { ...Body, json: { equals: json }, contentModelId: model.id },
     });
 
     if (isDuplicate)
@@ -74,10 +75,10 @@ content.delete(
   preResource([Resource.Content]),
   async (req, res, next: NextFunction) => {
     const { content } = req.pre;
-    const { id, contentModelId } = content;
+    const { id } = content;
 
     await prisma.content.delete({
-      where: { id, contentModelId } as any,
+      where: { id } as any,
     });
 
     return res.status(204).send();

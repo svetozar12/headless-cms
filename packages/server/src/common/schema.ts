@@ -1,4 +1,5 @@
 import { z } from "zod";
+import logger from "../utils/logger";
 
 const parseBoolean = z
   .string()
@@ -19,7 +20,10 @@ const commonIdParamSchema = z.object({
 
 const parseStringToInt = z.string().transform((val) => parseInt(val));
 
-const parseJson = z.string().transform((val) => JSON.parse(val));
+const parseJson = z.string().transform((val) => {
+  logger([val, typeof JSON.parse(val), "dormak"]);
+  return JSON.parse(val);
+});
 
 export {
   parseBoolean,

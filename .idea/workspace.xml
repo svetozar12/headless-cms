@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="finished with contentModel tests">
-      <change afterPath="$PROJECT_DIR$/packages/server/tests/content/content.test.ts" afterDir="false" />
+    <list default="true" id="7b8029f1-4f59-4ca5-8933-b4342f8645f0" name="Changes" comment="started writing content tests">
+      <change beforePath="$PROJECT_DIR$/.idea/headless-cms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/headless-cms.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/common/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/common/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/content.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/content.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/content/content.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/content/content.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/src/routes/contentModel/contentModel.schema.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +37,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\coding_journey\\headless-cms\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -67,7 +62,23 @@
       <workItem from="1667860053920" duration="92000" />
       <workItem from="1667860158101" duration="197000" />
       <workItem from="1667860368205" duration="453000" />
-      <workItem from="1667934700567" duration="5441000" />
+      <workItem from="1667934700567" duration="5476000" />
+      <workItem from="1667940650116" duration="2000" />
+      <workItem from="1667981986532" duration="963000" />
+      <workItem from="1667982971586" duration="67000" />
+      <workItem from="1667983237628" duration="16000" />
+      <workItem from="1667983549771" duration="36000" />
+      <workItem from="1667983778970" duration="4000" />
+      <workItem from="1667983813308" duration="74000" />
+      <workItem from="1667983902582" duration="11000" />
+      <workItem from="1667987935378" duration="7000" />
+      <workItem from="1667988010699" duration="120000" />
+      <workItem from="1667988268127" duration="16000" />
+      <workItem from="1667988417102" duration="12000" />
+      <workItem from="1668007235819" duration="3000" />
+      <workItem from="1668028474490" duration="39000" />
+      <workItem from="1668028587405" duration="24000" />
+      <workItem from="1668029300686" duration="216000" />
     </task>
     <task id="LOCAL-00001" summary="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)">
       <created>1667771820512</created>
@@ -83,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667854550870</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="started writing content tests">
+      <created>1667940278345</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667940278345</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +121,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="writing some tests for contentModel, added eslint config and fixed some errors(found by the tests)" />
     <MESSAGE value="finished with contentModel tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished with contentModel tests" />
+    <MESSAGE value="started writing content tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="started writing content tests" />
   </component>
 </project>
