@@ -16,4 +16,10 @@ const createContentSchema = z
   })
   .merge(commonUserSchema);
 
-export { createContentSchema };
+const deleteContentSchema = z.object({
+  body: z.object({
+    contentModelId: parseStringToInt,
+  }),
+});
+
+export { createContentSchema, deleteContentSchema };

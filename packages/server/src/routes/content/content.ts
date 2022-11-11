@@ -1,6 +1,6 @@
 import { NextFunction, Router } from "express";
 import { zMiddleware, zParse } from "../../utils/zParse";
-import { createContentSchema } from "./content.schema";
+import { createContentSchema, deleteContentSchema } from "./content.schema";
 import { prisma } from "../../utils/prisma";
 import isAuth from "../../middlewares/isAuth";
 import { jwtType } from "../auth/utils";
@@ -52,16 +52,12 @@ content.post(
   async (req, res, next) => {
     const { user, body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
-    const { json, ...Body } = body;
-    const isDuplicate = await prisma.content.findFirst({
-      where: { ...Body, json: { equals: json }, contentModelId: model.id },
-    });
-
-    if (isDuplicate)
-      return res.status(409).json({ message: "Content already exists" });
 
     const content = await prisma.content.create({
-      data: { ...body } as any,
+      data: {
+        ...body,
+        contentModelId: model.id,
+      },
     });
 
     return res.status(201).json({ content });
@@ -74,6 +70,7 @@ content.delete(
   zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
   preResource([Resource.Content]),
   async (req, res, next: NextFunction) => {
+    const { body } = await zParse(deleteContentSchema, req);
     const { content } = req.pre;
     const { id } = content;
 

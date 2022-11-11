@@ -4,6 +4,7 @@ import logger from "../../src/utils/logger";
 
 describe("content", () => {
   let tokens: { accessToken: string; refreshToken: string };
+  let contentModel: ContentModel;
   let content: Content;
   beforeAll(async () => {
     await makeTestRequest("post", "/user", {
@@ -14,7 +15,6 @@ describe("content", () => {
       tokens = { accessToken, refreshToken };
     });
     const { accessToken } = tokens;
-    let contentModel: ContentModel;
     await makeTestRequest(
       "post",
       "/contentModel",
@@ -25,10 +25,8 @@ describe("content", () => {
       },
       accessToken
     ).then((res) => {
-      logger([res.body, "wdawdawdawd"]);
       contentModel = res.body.contentModel;
     });
-    logger([contentModel, "baidragoi"]);
     await makeTestRequest(
       "post",
       "/content",
@@ -40,7 +38,6 @@ describe("content", () => {
       },
       accessToken
     ).then((res) => {
-      logger([res.body, "sefjiosefhuo"]);
       content = res.body.content;
     });
   });
@@ -63,20 +60,49 @@ describe("content", () => {
         expect(res.status).toBe(401);
         expect(res.body).toEqual({ message: "Unauthorized" });
       });
-      // it("should return 404 without content", async () => {
-      //   const { accessToken } = tokens;
-      //   logger([content, "CONTENTNENTN"]);
-      //   await makeTestRequest(
-      //     "delete",
-      //     `/content/${content.id}`,
-      //     {},
-      //     accessToken
-      //   ).then((res) => logger([res, "efjiosefhuefhu"]));
-      //   const res = await makeTestRequest("get", "/content", {}, accessToken);
-      //   logger([content, "darvotonanaroda"]);
-      //   expect(res.status).toBe(404);
-      //   expect(res.body).toEqual({ message: "Content not found" });
-      // });
+      it("should return 404 without content", () => {
+        const { accessToken } = tokens;
+        makeTestRequest(
+          "delete",
+          `/content/${content.id}`,
+          { contentModelId: contentModel.id },
+          accessToken
+        ).then(async (val) => {
+          const res = await makeTestRequest("get", "/content", {}, accessToken);
+          expect(res.status).toBe(404);
+          expect(res.body).toEqual({ message: "Content not found" });
+        });
+      });
+    });
+  });
+  describe("POST", () => {
+    describe("/content", () => {
+      it("should return 201", async () => {
+        const expectProps: { prop: string; value: any }[] = [
+          { prop: "json", value: { german: "12" } },
+          { prop: "text", value: null },
+          { prop: "number", value: null },
+        ];
+        const { accessToken } = tokens;
+        const res = await makeTestRequest(
+          "post",
+          "/content",
+          {
+            contentModelId: contentModel.id,
+            json: JSON.stringify({ german: "12" }),
+          },
+          accessToken
+        );
+        expectProps.forEach(({ prop, value }) => {
+          expect(res.body.content[prop]).toEqual(value);
+        });
+        expect(res.status).toBe(201);
+        await makeTestRequest(
+          "delete",
+          `/content/${contentModel.id}`,
+          accessToken
+        );
+      });
     });
   });
 });
