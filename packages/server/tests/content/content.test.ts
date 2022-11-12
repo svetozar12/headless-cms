@@ -68,6 +68,7 @@ describe("content", () => {
           { contentModelId: contentModel.id },
           accessToken
         ).then(async (val) => {
+          logger([val, "anastas"]);
           const res = await makeTestRequest("get", "/content", {}, accessToken);
           expect(res.status).toBe(404);
           expect(res.body).toEqual({ message: "Content not found" });

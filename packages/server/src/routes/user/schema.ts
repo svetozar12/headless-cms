@@ -7,4 +7,9 @@ const userSchema = z.object({
   }),
 });
 
-export { userSchema };
+const updateUserSchema = z.object({
+  body: z.object({
+    username: z.string().optional(),
+  }),
+});
+export { userSchema, updateUserSchema };
