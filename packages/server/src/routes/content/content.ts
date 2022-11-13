@@ -1,6 +1,10 @@
 import { NextFunction, Router } from "express";
 import { zMiddleware, zParse } from "../../utils/zParse";
-import { createContentSchema, deleteContentSchema } from "./content.schema";
+import {
+  createContentSchema,
+  deleteContentSchema,
+  updateContentSchema,
+} from "./content.schema";
 import { prisma } from "../../utils/prisma";
 import isAuth from "../../middlewares/isAuth";
 import { jwtType } from "../auth/utils";
@@ -50,7 +54,7 @@ content.post(
   zMiddleware(createContentSchema),
   preResource([Resource.ContentModel]),
   async (req, res, next) => {
-    const { user, body } = await zParse(createContentSchema, req);
+    const { body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
 
     const content = await prisma.content.create({
@@ -61,6 +65,42 @@ content.post(
     });
 
     return res.status(201).json({ content });
+  }
+);
+
+content.put(
+  "/",
+  isAuth(jwtType.ACCESS),
+  zMiddleware(updateContentSchema),
+  preResource([Resource.Content]),
+  async (req, res, next) => {
+    const {
+      body: { text, json, number },
+    } = await zParse(updateContentSchema, req);
+    const {
+      content: { id, text: preText, json: preJson, number: preNumber },
+    } = req.pre;
+    const updatesReq =
+      !!text ||
+      !!json ||
+      !!number ||
+      text !== preText ||
+      number !== preNumber ||
+      JSON.stringify(json) !== JSON.stringify(preJson);
+    logger([!!!json, "hambunda"]);
+    if (!updatesReq)
+      return res.status(409).json({ message: "Content wasn't updated" });
+    const updateContent = await prisma.content.update({
+      where: {
+        id,
+      },
+      data: {
+        text: text || preText,
+        number: number || preNumber,
+        json: json || preJson,
+      },
+    });
+    return res.status(201).json({ content: updateContent });
   }
 );
 

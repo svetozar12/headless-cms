@@ -67,8 +67,7 @@ user.put(
         id,
       },
       data: {
-        // @ts-ignore
-        username: username || undefined,
+        username: username,
       },
     });
     return res.status(201).json({ user: updatedUser });
