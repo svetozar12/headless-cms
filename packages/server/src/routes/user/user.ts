@@ -49,7 +49,7 @@ user.post("/", zMiddleware(userSchema), async (req, res, next) => {
 });
 
 user.put(
-  "/",
+  "/me",
   isAuth(jwtType.ACCESS),
   zMiddleware(updateUserSchema),
   preResource([Resource.User]),
@@ -58,16 +58,17 @@ user.put(
       body: { username },
     } = await zParse(updateUserSchema, req);
     const { user: preUser } = req.pre;
-    const { username: preUsername } = req.pre.user;
+    const { id, username: preUsername } = req.pre.user;
     const noUpdatesReq = !!username;
-    if (username === preUsername || noUpdatesReq)
+    if (username === preUsername || !noUpdatesReq)
       return res.status(409).json({ message: "User wasn't updated" });
     const updatedUser = await prisma.user.update({
+      where: {
+        id,
+      },
       data: {
         // @ts-ignore
         username: username || undefined,
-        // @ts-ignore
-        password: undefined,
       },
     });
     return res.status(201).json({ user: updatedUser });

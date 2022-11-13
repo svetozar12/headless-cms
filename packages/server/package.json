@@ -15,7 +15,7 @@
     "predev": "yarn build",
     "tsc-w": "tsc -w",
     "pretest": "yarn build",
-    "test": "jest --forceExit",
+    "test": "jest",
     "dev": "nodemon dist/index.js"
   },
   "dependencies": {

@@ -99,6 +99,38 @@ describe("/user", () => {
     }
   });
 
+  describe("PUT", () => {
+    it("/user/me should return 201", async () => {
+      const { accessToken } = tokens;
+      const res = await makeTestRequest(
+        "put",
+        "/user/me",
+        { username: "newUser" },
+        accessToken
+      );
+      expect(res.body.user.username).toBe("newUser");
+      expect(res.status).toBe(201);
+    });
+    it("user/me should return 409 No Updates Required", async () => {
+      const { accessToken } = tokens;
+      const res = await makeTestRequest(
+        "put",
+        "/user/me",
+        { username: "newUser" },
+        accessToken
+      );
+      expect(res.body).toEqual({ message: "User wasn't updated" });
+      expect(res.status).toBe(409);
+    });
+    it("user/me expect 401 without token", async () => {
+      const res = await makeTestRequest("put", "/user/me", {
+        username: "newUser",
+      });
+      expect(res.status).toBe(401);
+      expect(res.body).toEqual({ message: "Unauthorized" });
+    });
+  });
+
   describe("DELETE", () => {
     it("/user/me expect 204", async () => {
       const { accessToken } = tokens;
