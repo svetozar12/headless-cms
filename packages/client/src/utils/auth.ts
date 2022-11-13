@@ -1,4 +1,4 @@
-import nookies from "nookies";
+import nookies, { parseCookies } from "nookies";
 import api from "./api";
 import { NextPageContext } from "next";
 import { HOME, LOGIN } from "../constants/routes";
@@ -12,7 +12,7 @@ const redirectTo = (
     destination: `${
       // prevPath ? `${redirectURL}?callback=${prevPath}` : redirectURL
       redirectURL
-    }`,
+      }`,
     permanent: false,
   },
 });
@@ -47,7 +47,7 @@ export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
 
 const isAuth = async (ctx: ICtx) => {
   try {
-    const cookies = nookies.get(ctx);
+    const cookies = parseCookies(ctx);
     const accessToken = cookies.accessToken;
     const refreshToken = cookies.refreshToken;
     if (!accessToken && !refreshToken) return false;
@@ -61,20 +61,20 @@ const isAuth = async (ctx: ICtx) => {
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
   const isUserAuth = await isAuth(ctx);
   const currPath = ctx.resolvedUrl;
-
+  const cookies = parseCookies(ctx);
   if (!isUserAuth) return redirectTo(LOGIN, ctx, currPath);
   if (getServerSideProps) {
     const gssp = await getServerSideProps(ctx);
     return {
       props: {
-        cookie: ctx.req?.headers.cookie ?? "",
+        cookie: { cookies } ?? "",
         ...gssp.props,
       },
     };
   }
   return {
     props: {
-      cookie: ctx.req?.headers.cookie ?? "",
+      cookie: { cookies } ?? "",
     },
   };
 };
