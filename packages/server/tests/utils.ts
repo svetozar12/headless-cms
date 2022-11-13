@@ -1,6 +1,5 @@
 import app from "../src/index";
 import request from "supertest";
-import logger from "../src/utils/logger";
 
 const instance = request(app);
 

@@ -68,7 +68,6 @@ describe("content", () => {
           { contentModelId: contentModel.id },
           accessToken
         ).then(async (val) => {
-          logger([val, "anastas"]);
           const res = await makeTestRequest("get", "/content", {}, accessToken);
           expect(res.status).toBe(404);
           expect(res.body).toEqual({ message: "Content not found" });
@@ -104,6 +103,35 @@ describe("content", () => {
           accessToken
         );
       });
+      it("should return 401 without token", async () => {
+        const res = await makeTestRequest("post", "/content", {
+          contentModelId: contentModel.id,
+          json: JSON.stringify({ german: "12" }),
+        });
+        expect(res.status).toBe(401);
+        expect(res.body).toEqual({ message: "Unauthorized" });
+      });
+      const testCaseTypes = [
+        {
+          model: { json: true },
+          content: { json: JSON.stringify({ hallo: "12" }) },
+        },
+        {
+          model: { json: true, text: true },
+          content: {
+            json: JSON.stringify({ hallo: "12" }),
+            text: "random text",
+          },
+        },
+        {
+          model: { json: true, text: true, number: true },
+          content: {
+            json: JSON.stringify({ hallo: "12" }),
+            text: "random text",
+            number: 12,
+          },
+        },
+      ];
     });
   });
 });

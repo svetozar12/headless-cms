@@ -11,6 +11,7 @@ import { jwtType } from "../auth/utils";
 import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
 import logger from "../../utils/logger";
+import { checkContentTypes } from "../../middlewares/checkContentTypes";
 
 const content = Router();
 
@@ -53,6 +54,7 @@ content.post(
   isAuth(jwtType.ACCESS),
   zMiddleware(createContentSchema),
   preResource([Resource.ContentModel]),
+  checkContentTypes(),
   async (req, res, next) => {
     const { body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
@@ -73,6 +75,7 @@ content.put(
   isAuth(jwtType.ACCESS),
   zMiddleware(updateContentSchema),
   preResource([Resource.Content]),
+  checkContentTypes(),
   async (req, res, next) => {
     const {
       body: { text, json, number },
