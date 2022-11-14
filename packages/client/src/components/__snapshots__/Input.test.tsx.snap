@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Button component > should render button 1`] = `ReactWrapper {}`;
-
-exports[`Button component > should render input 1`] = `ReactWrapper {}`;
-
-exports[`Input component > should render input 1`] = `ReactWrapper {}`;

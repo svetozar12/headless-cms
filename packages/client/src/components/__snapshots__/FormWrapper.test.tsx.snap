@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Button component > should render with error 1`] = `ReactWrapper {}`;
-
-exports[`Button component > should render without error 1`] = `ReactWrapper {}`;
