@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Router from "next/router";
 import { setCookie } from "nookies";
-import Input from "../Input";
 import { useState } from "react";
 import z from "zod";
+import { LOGIN } from "../../constants/routes";
 import api from "../../utils/api";
+import Button from "../Button";
 import FormWrapper from "../FormWrapper";
 import Heading from "../Heading";
-import { LOGIN } from "../../constants/routes";
-import Button from "../Button";
+import Input from "../Input";
 
 const schema = z.object({
   username: z.string().min(3).max(20),
@@ -41,7 +41,6 @@ const Register: React.FunctionComponent = () => {
       setTimeout(() => {
         setError("");
       }, 3000);
-      console.log(e, "error");
       return false;
     }
   };
@@ -77,6 +76,6 @@ const Register: React.FunctionComponent = () => {
       />
     </FormWrapper>
   );
-}
+};
 
 export default Register;

@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 import { destroyCookie, parseCookies } from "nookies";
 import React, { useEffect, useState } from "react";
 import { AiFillHome, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
-import { FaUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { MdDashboard, MdOutlineDashboard } from "react-icons/md";
 import { SiCraftcms } from "react-icons/si";
 import { DASHBOARD, HOME, PROFILE } from "../constants/routes";
@@ -12,13 +13,20 @@ const Navbar = () => {
   const { isLoggedIn } = useSession();
   const [activeTab, setActiveTab] = useState("home");
   const cookie = parseCookies();
+  const router = useRouter();
 
   useEffect(() => {
-    if (window.location.pathname === "/") setActiveTab("home");
+    if (window.location.pathname === "/") setActiveTab("");
     else if (window.location.pathname === "/dashboard")
       setActiveTab("dashboard");
     else if (window.location.pathname === "/profile") setActiveTab("profile");
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("useEffect fired!", { asPath: router.asPath });
+    }
+  }, [router.asPath]);
 
   if (!isLoggedIn) return null;
 
@@ -28,12 +36,15 @@ const Navbar = () => {
   };
 
   const NavLinks = [
-    { Icon: activeTab === "home" ? AiFillHome : AiOutlineHome, href: HOME },
+    { Icon: activeTab === "" ? AiFillHome : AiOutlineHome, href: HOME },
     {
       Icon: activeTab === "dashboard" ? MdDashboard : MdOutlineDashboard,
       href: DASHBOARD,
     },
-    { Icon: FaUserCircle, href: PROFILE },
+    {
+      Icon: activeTab === "profile" ? FaUserCircle : FaRegUserCircle,
+      href: PROFILE,
+    },
   ];
 
   return (
@@ -50,7 +61,11 @@ const Navbar = () => {
               <Icon
                 size="1.75rem"
                 className="cursor-pointer"
-                onClick={() => setActiveTab(href.slice(1, href.length))}
+                onClick={() => {
+                  activeTab !== href.slice(1, href.length) &&
+                    setActiveTab(href.slice(1, href.length));
+                  typeof window !== "undefined" && router.push(href);
+                }}
               />
             </Link>
           );

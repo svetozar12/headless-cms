@@ -1,5 +1,5 @@
-import { instance } from "../index";
 import { User } from "@headless-cms/server";
+import { instance } from "../index";
 
 const user = {
   getMe: (token: string): Promise<User> =>
@@ -8,7 +8,6 @@ const user = {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.status);
         return res.data;
       })
       .catch((err) => Promise.reject(err.response.data)),
@@ -19,7 +18,6 @@ const user = {
     instance
       .post(`/user`, user)
       .then((res) => {
-        console.log(res.status);
         return res.data;
       })
       .catch((err) => Promise.reject(err.response.data)),

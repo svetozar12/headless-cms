@@ -1,15 +1,14 @@
 import Link from "next/link";
 import Router from "next/router";
-import Input from "../Input";
+import { setCookie } from "nookies";
 import React, { useState } from "react";
 import z from "zod";
 import { HOME, REGISTER } from "../../constants/routes";
+import api from "../../utils/api";
+import Button from "../Button";
 import FormWrapper from "../FormWrapper";
 import Heading from "../Heading";
-import api from "../../utils/api";
-import { setCookie } from "nookies";
-import Button from "../Button";
-
+import Input from "../Input";
 
 const schema = z.object({
   username: z.string().min(3).max(20),
@@ -20,9 +19,11 @@ const Login: React.FunctionComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const isParse = schema.safeParse({ username, password });
       if (!isParse.success) {
@@ -42,8 +43,9 @@ const Login: React.FunctionComponent = () => {
       setTimeout(() => {
         setError("");
       }, 3000);
-      console.log(e, "error");
       return false;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,9 +77,10 @@ const Login: React.FunctionComponent = () => {
         text="Login"
         onClick={handleSubmit}
         isDisabled={!username || !password}
+        isLoading={isLoading}
       />
     </FormWrapper>
   );
 };
 
-export default Login
+export default Login;

@@ -1,5 +1,5 @@
-import { instance } from "../index";
 import { User } from "@headless-cms/server";
+import { instance } from "../index";
 
 const auth = {
   auth: async (
@@ -14,7 +14,6 @@ const auth = {
           ...password,
         })
         .then((res) => {
-          console.log(res.status);
           return res.data;
         })
         .catch((err) => Promise.reject(err.response.data));
@@ -27,7 +26,6 @@ const auth = {
         refreshToken,
       })
       .then((res) => {
-        console.log(res.status);
         return res.data;
       })
       .catch((err) => Promise.reject(err.response.data));
