@@ -31,7 +31,7 @@ const Button = (props: IButtonProps) => {
         type={type}
         onClick={onClick}
         className={
-          "mx-2 my-4 w-full rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
+          "mx-2 my-4 flex w-full items-center justify-center rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
         }
       >
         {content}

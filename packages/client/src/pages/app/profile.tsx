@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import { isAlreadyAuth } from "../utils/auth";
+import { isAlreadyAuth, withAuthSync } from "../../utils/auth";
 
 const ProfilePage: NextPage = () => <div>profile</div>;
 
-export const getServerSideProps = isAlreadyAuth();
+export const getServerSideProps = withAuthSync();
 
 export default ProfilePage;

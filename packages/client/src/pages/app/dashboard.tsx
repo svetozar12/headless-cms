@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import { isAlreadyAuth } from "../utils/auth";
+import { withAuthSync } from "../../utils/auth";
 
 const DashBoardPage: NextPage = () => <div>dashboard</div>;
 
-export const getServerSideProps = isAlreadyAuth();
+export const getServerSideProps = withAuthSync();
 
 export default DashBoardPage;

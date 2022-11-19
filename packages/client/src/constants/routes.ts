@@ -1,5 +1,5 @@
-export const HOME = "/";
 export const LOGIN = "/login";
 export const REGISTER = "/register";
-export const DASHBOARD = "/dashboard";
-export const PROFILE = "/profile";
+export const HOME = "/app/home";
+export const DASHBOARD = "/app/dashboard";
+export const PROFILE = "/app/profile";

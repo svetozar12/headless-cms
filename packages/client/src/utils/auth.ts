@@ -1,7 +1,8 @@
-import nookies, { parseCookies } from "nookies";
-import api from "./api";
 import { NextPageContext } from "next";
+import Router from "next/router";
+import nookies, { destroyCookie, parseCookies } from "nookies";
 import { HOME, LOGIN } from "../constants/routes";
+import api from "./api";
 
 const redirectTo = (
   redirectURL: string,
@@ -12,7 +13,7 @@ const redirectTo = (
     destination: `${
       // prevPath ? `${redirectURL}?callback=${prevPath}` : redirectURL
       redirectURL
-      }`,
+    }`,
     permanent: false,
   },
 });
@@ -31,16 +32,12 @@ export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
     );
 
     if (checkAuth) {
-      nookies.set(ctx, "accessToken", checkAuth.accessToken);
-      nookies.set(ctx, "refreshToken", checkAuth.refreshToken);
       return true;
     }
-    nookies.destroy(ctx, "accessToken");
-    nookies.destroy(ctx, "refreshToken");
+    logout(cookie);
     return false;
   } catch (e: any) {
-    nookies.destroy(ctx, "accessToken");
-    nookies.destroy(ctx, "refreshToken");
+    logout(cookie);
     return false;
   }
 };
@@ -58,8 +55,14 @@ const isAuth = async (ctx: ICtx) => {
   }
 };
 
+export const logout = (cookie: Record<string, any>) => {
+  for (const key in cookie) destroyCookie(null, key);
+  Router.push(LOGIN);
+};
+
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
   const isUserAuth = await isAuth(ctx);
+
   const currPath = ctx.resolvedUrl;
   const cookies = parseCookies(ctx);
   if (!isUserAuth) return redirectTo(LOGIN, ctx, currPath);
