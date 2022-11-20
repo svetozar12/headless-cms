@@ -1,5 +1,5 @@
 export const LOGIN = "/login";
 export const REGISTER = "/register";
-export const HOME = "/app/home";
-export const DASHBOARD = "/app/dashboard";
+export const CONTENT_MODELS = "/app/contentModel";
+export const CONTENT = "/app/content";
 export const PROFILE = "/app/profile";

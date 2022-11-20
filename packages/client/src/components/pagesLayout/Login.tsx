@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { setCookie } from "nookies";
 import React, { useState } from "react";
 import z from "zod";
-import { HOME, REGISTER } from "../../constants/routes";
+import { CONTENT_MODELS, REGISTER } from "../../constants/routes";
 import api from "../../utils/api";
 import Button from "../Button";
 import FormWrapper from "../FormWrapper";
@@ -20,6 +20,7 @@ const Login: React.FunctionComponent = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const Login: React.FunctionComponent = () => {
         const res = await api.auth.auth("password", data);
         setCookie(null, "accessToken", res.accessToken);
         setCookie(null, "refreshToken", res.refreshToken);
-        Router.push(HOME);
+        Router.push(CONTENT_MODELS);
       }
     } catch (e: any) {
       setError(e.message);

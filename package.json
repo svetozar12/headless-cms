@@ -8,7 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna bootstrap && lerna link"
+    "postinstall": "lerna bootstrap && lerna link",
+    "dev": "lerna run dev --stream --no-sort"
   },
   "devDependencies": {
     "lerna": "^5.2.0"

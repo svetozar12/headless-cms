@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { withAuthSync } from "../../utils/auth";
 
-const DashBoardPage: NextPage = () => <div>dashboard</div>;
+const ContentPage: NextPage = () => <div>content</div>;
 
 export const getServerSideProps = withAuthSync();
 
-export default DashBoardPage;
+export default ContentPage;
