@@ -25,10 +25,18 @@ const parseJson = z.string().transform((val) => {
   return JSON.parse(val);
 });
 
+const paginationSchema = z.object({
+  query: z.object({
+    page: parseStringToInt.default("1"),
+    pageSize: parseStringToInt.default("10"),
+  }),
+});
+
 export {
   parseBoolean,
   parseJson,
   parseStringToInt,
+  paginationSchema,
   commonUserSchema,
   commonIdParamSchema,
 };

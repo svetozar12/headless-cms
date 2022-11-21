@@ -1,11 +1,16 @@
 import { Router } from "express";
+import {
+  commonIdParamSchema,
+  commonUserSchema,
+  paginationSchema,
+} from "../../common/schema";
 import isAuth from "../../middlewares/isAuth";
-import { jwtType } from "../auth/utils";
-import { zMiddleware, zParse } from "../../utils/zParse";
-import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
-import { contentModelSchema } from "./contentModel.schema";
-import { prisma } from "../../utils/prisma";
+import logger from "../../utils/logger";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
+import { prisma } from "../../utils/prisma";
+import { zMiddleware, zParse } from "../../utils/zParse";
+import { jwtType } from "../auth/utils";
+import { contentModelSchema } from "./contentModel.schema";
 
 const contentModel = Router();
 
@@ -16,10 +21,14 @@ contentModel.get(
   async (req, res, next) => {
     const {
       user: { id },
-    } = await zParse(commonUserSchema, req);
-
+      query: { page, pageSize },
+    } = await zParse(commonUserSchema.merge(paginationSchema), req);
+    const totalContentModels = await prisma.contentModel.count();
+    logger([page, page - 1]);
     const contentModel = await prisma.contentModel.findMany({
       where: { userId: id },
+      skip: page === 1 ? 0 : page - 1 * pageSize,
+      take: pageSize,
     });
 
     if (contentModel.length === 0)
@@ -27,8 +36,11 @@ contentModel.get(
         .status(404)
         .json({ message: "You don't have content models !" });
 
-    return res.json({ contentModel: contentModel });
-  }
+    return res.json({
+      contentModel: contentModel,
+      pagination: { page, pageSize, total: totalContentModels },
+    });
+  },
 );
 
 contentModel.get(
@@ -39,7 +51,7 @@ contentModel.get(
   async (req, res, next) => {
     const { model } = req.pre;
     return res.json({ contentModel: model });
-  }
+  },
 );
 
 contentModel.post(
@@ -56,7 +68,7 @@ contentModel.post(
     });
 
     return res.status(201).json({ contentModel });
-  }
+  },
 );
 
 contentModel.delete(
@@ -69,7 +81,7 @@ contentModel.delete(
     await prisma.contentModel.delete({ where: { id: model.id } });
 
     return res.status(204).send();
-  }
+  },
 );
 
 export default contentModel;

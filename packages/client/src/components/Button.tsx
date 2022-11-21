@@ -1,16 +1,12 @@
-import Spinner from "./Spinner";
-
 interface IButtonProps {
   text: string;
   onClick: (e: any) => void;
   type: "button" | "submit" | "reset";
   isDisabled?: boolean;
-  isLoading?: boolean;
 }
 
 const Button = (props: IButtonProps) => {
-  const { text, onClick, type, isDisabled, isLoading } = props;
-  const content = isLoading ? <Spinner /> : text;
+  const { text, onClick, type, isDisabled } = props;
   if (isDisabled) {
     return (
       <div className={"mt-1 flex items-center justify-center"}>
@@ -19,7 +15,7 @@ const Button = (props: IButtonProps) => {
           type={type}
           className="mx-2 my-4 w-full rounded-md bg-mainPurple p-2 font-bold text-white opacity-30 duration-200 ease-in-out autofill:bg-transparent"
         >
-          {content}
+          {text}
         </button>
       </div>
     );
@@ -34,7 +30,7 @@ const Button = (props: IButtonProps) => {
           "mx-2 my-4 flex w-full items-center justify-center rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
         }
       >
-        {content}
+        {text}
       </button>
     </div>
   );

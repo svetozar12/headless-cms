@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import Spinner from "../Spinner";
 import Pagination from "./subcomponents/Pagination";
 import s from "./Table.module.css";
 
@@ -13,18 +14,29 @@ interface IColumns {
   render?: ReactNode;
 }
 
+interface IDataSource {
+  data: Record<string, any>[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+  };
+}
+
 interface ITable {
-  dataSource: Record<string, any>[];
+  dataSource: IDataSource;
   columns: IColumns[];
+  isLoading?: boolean;
+  onTableChange?: () => Promise<void>;
   extraProps?: IExtraProps;
 }
 
 const Table: React.FC<ITable> = (props) => {
-  const { extraProps, columns, dataSource } = props;
+  const { extraProps, columns, isLoading, dataSource, onTableChange } = props;
   const { className, ...restProps } = extraProps || {};
-  const [data, setData] = useState<typeof dataSource>([]);
-  const currentPage = 1;
-  const pageSize = 10;
+  const { data: resourceData, pagination } = dataSource;
+  const { page, pageSize, total } = pagination;
+  const [data, setData] = useState<typeof resourceData>([]);
 
   const renderHeading = () => {
     return (
@@ -39,12 +51,16 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   useEffect(() => {
-    setData(dataSource.slice(currentPage - 1, pageSize));
+    onTableChange?.()
+      .then(() => {
+        setData(resourceData.slice(page - 1, pageSize));
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const onChange = (pageNumber: number) => {
     setData(
-      dataSource.slice(
+      resourceData.slice(
         (pageNumber - 1) * pageSize,
         (pageNumber - 1) * pageSize + pageSize
       )
@@ -53,7 +69,8 @@ const Table: React.FC<ITable> = (props) => {
 
   const renderContent = () => {
     return (
-      <>
+      <div className="relative">
+        <Spinner isLoading={!!isLoading} />
         {data.map((item) => {
           return (
             <div className="rounded-md hover:bg-table-headerBackground">
@@ -71,7 +88,7 @@ const Table: React.FC<ITable> = (props) => {
             </div>
           );
         })}
-      </>
+      </div>
     );
   };
 
@@ -81,11 +98,7 @@ const Table: React.FC<ITable> = (props) => {
         {renderHeading()}
       </div>
       {renderContent()}
-      <Pagination
-        total={dataSource.length}
-        current={currentPage}
-        onChange={onChange}
-      />
+      <Pagination total={total} current={page} onChange={onChange} />
     </table>
   );
 };

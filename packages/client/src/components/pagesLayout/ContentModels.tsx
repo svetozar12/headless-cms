@@ -40,7 +40,10 @@ const ContentModels: React.FC = () => {
               ),
             },
           ]}
-          dataSource={arr}
+          dataSource={{
+            data: arr,
+            pagination: { page: 1, pageSize: 10, total: arr.length },
+          }}
         />
       </div>
     </div>

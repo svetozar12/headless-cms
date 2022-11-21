@@ -9,6 +9,7 @@ import Button from "../Button";
 import FormWrapper from "../FormWrapper";
 import Heading from "../Heading";
 import Input from "../Input";
+import Spinner from "../Spinner";
 
 const schema = z.object({
   username: z.string().min(3).max(20),
@@ -52,6 +53,7 @@ const Login: React.FunctionComponent = () => {
 
   return (
     <FormWrapper error={error}>
+      <Spinner isLoading={isLoading} />
       <Heading type="h1" text="Sign in" />
       <p className="text-center text-sm text-white">
         Don&apos;t have account ?{" "}
@@ -78,7 +80,6 @@ const Login: React.FunctionComponent = () => {
         text="Login"
         onClick={handleSubmit}
         isDisabled={!username || !password}
-        isLoading={isLoading}
       />
     </FormWrapper>
   );

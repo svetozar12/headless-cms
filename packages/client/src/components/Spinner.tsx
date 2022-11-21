@@ -1,11 +1,20 @@
-import React from "react";
+import React, { Children } from "react";
 
-const Spinner = () => {
+interface ISpinner {
+  isLoading: boolean;
+}
+
+const Spinner: React.FC<ISpinner> = ({ isLoading }): JSX.Element | null => {
+  if (!isLoading) return null;
+
   return (
-    <div>
+    <div
+      style={{ background: "rgba(223, 223, 223, 0.6)" }}
+      className="absolute flex h-full w-full items-center justify-center"
+    >
       <svg
         aria-hidden="true"
-        className="mr-2 h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
+        className="mr-2 h-1/4 w-1/4 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +28,6 @@ const Spinner = () => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
     </div>
   );
 };
