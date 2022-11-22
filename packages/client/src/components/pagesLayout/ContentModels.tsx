@@ -1,14 +1,21 @@
 import { User } from "@headless-cms/server";
+import { useQuery } from "@tanstack/react-query";
+import { parseCookies } from "nookies";
 import { MdDelete, MdUpdate } from "react-icons/md";
 import useSession from "../../hooks/useSession";
+import api from "../../utils/api";
 import ActionButtons from "../ActionButtons";
 import Table from "../Table";
 
 const ContentModels: React.FC = () => {
-  const { data, isLoading, error } = useSession();
-
+  const { data, error } = useSession();
+  const cookie = parseCookies();
+  const { data: contentModel, isLoading } = useQuery(["content"], () =>
+    api.ContentModel.get.all(cookie.accessToken as string)
+  );
   if (isLoading) return <>...loading</>;
   if (error) return <>{JSON.stringify(error)}</>;
+  console.log(contentModel);
 
   const { id, username } = data as User;
   let arr = [];
@@ -24,9 +31,9 @@ const ContentModels: React.FC = () => {
       <div className="w-2/4">
         <Table
           columns={[
-            { title: "Name", dataIndex: "name" },
-            { title: "Age", dataIndex: "age" },
-            { title: "Job", dataIndex: "job" },
+            { title: "Number", dataIndex: "number" },
+            { title: "Text", dataIndex: "text" },
+            { title: "Json", dataIndex: "json" },
 
             {
               title: "Action",
@@ -40,10 +47,7 @@ const ContentModels: React.FC = () => {
               ),
             },
           ]}
-          dataSource={{
-            data: arr,
-            pagination: { page: 1, pageSize: 10, total: arr.length },
-          }}
+          dataSource={contentModel}
         />
       </div>
     </div>

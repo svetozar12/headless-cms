@@ -34,7 +34,7 @@ interface ITable {
 const Table: React.FC<ITable> = (props) => {
   const { extraProps, columns, isLoading, dataSource, onTableChange } = props;
   const { className, ...restProps } = extraProps || {};
-  const { data: resourceData, pagination } = dataSource;
+  const { contentModel: resourceData, pagination } = dataSource;
   const { page, pageSize, total } = pagination;
   const [data, setData] = useState<typeof resourceData>([]);
 
@@ -51,11 +51,16 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   useEffect(() => {
+    console.log(resourceData, dataSource);
+
+    if (!onTableChange) setData(resourceData.slice(page - 1, pageSize));
     onTableChange?.()
       .then(() => {
         setData(resourceData.slice(page - 1, pageSize));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const onChange = (pageNumber: number) => {
@@ -78,9 +83,15 @@ const Table: React.FC<ITable> = (props) => {
                 className={`flex py-2 duration-150 ease-in-out hover:border-transparent ${s.borderBottom} ${s.borderTop}`}
               >
                 {columns.map(({ dataIndex, render }) => {
+                  console.log(dataIndex, dataIndex && String(item[dataIndex]));
+
                   return (
                     <td className="flex flex-1 justify-center font-semibold text-gray-700">
-                      {render ? render : dataIndex ? item[dataIndex] : ""}
+                      {render
+                        ? render
+                        : dataIndex
+                        ? String(item[dataIndex])
+                        : ""}
                     </td>
                   );
                 })}

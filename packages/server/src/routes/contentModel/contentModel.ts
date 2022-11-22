@@ -8,6 +8,7 @@ import isAuth from "../../middlewares/isAuth";
 import logger from "../../utils/logger";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
 import { prisma } from "../../utils/prisma";
+import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
 import { jwtType } from "../auth/utils";
 import { contentModelSchema } from "./contentModel.schema";
@@ -24,11 +25,9 @@ contentModel.get(
       query: { page, pageSize },
     } = await zParse(commonUserSchema.merge(paginationSchema), req);
     const totalContentModels = await prisma.contentModel.count();
-    logger([page, page - 1]);
     const contentModel = await prisma.contentModel.findMany({
       where: { userId: id },
-      skip: page === 1 ? 0 : page - 1 * pageSize,
-      take: pageSize,
+      ...withPagination(page, pageSize),
     });
 
     if (contentModel.length === 0)
@@ -40,7 +39,7 @@ contentModel.get(
       contentModel: contentModel,
       pagination: { page, pageSize, total: totalContentModels },
     });
-  },
+  }
 );
 
 contentModel.get(
@@ -51,7 +50,7 @@ contentModel.get(
   async (req, res, next) => {
     const { model } = req.pre;
     return res.json({ contentModel: model });
-  },
+  }
 );
 
 contentModel.post(
@@ -68,7 +67,7 @@ contentModel.post(
     });
 
     return res.status(201).json({ contentModel });
-  },
+  }
 );
 
 contentModel.delete(
@@ -81,7 +80,7 @@ contentModel.delete(
     await prisma.contentModel.delete({ where: { id: model.id } });
 
     return res.status(204).send();
-  },
+  }
 );
 
 export default contentModel;

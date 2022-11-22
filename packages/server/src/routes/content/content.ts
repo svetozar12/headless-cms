@@ -1,17 +1,22 @@
 import { NextFunction, Router } from "express";
+import {
+  commonIdParamSchema,
+  commonUserSchema,
+  paginationSchema,
+} from "../../common/schema";
+import { checkContentTypes } from "../../middlewares/checkContentTypes";
+import isAuth from "../../middlewares/isAuth";
+import logger from "../../utils/logger";
+import { preResource, Resource } from "../../utils/pre/preMiddleware";
+import { prisma } from "../../utils/prisma";
+import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
+import { jwtType } from "../auth/utils";
 import {
   createContentSchema,
   deleteContentSchema,
   updateContentSchema,
 } from "./content.schema";
-import { prisma } from "../../utils/prisma";
-import isAuth from "../../middlewares/isAuth";
-import { jwtType } from "../auth/utils";
-import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
-import { preResource, Resource } from "../../utils/pre/preMiddleware";
-import logger from "../../utils/logger";
-import { checkContentTypes } from "../../middlewares/checkContentTypes";
 
 const content = Router();
 
@@ -21,13 +26,21 @@ content.get(
   zMiddleware(commonUserSchema),
   preResource([Resource.User, Resource.ContentModel]),
   async (req, res, next: NextFunction) => {
+    const {
+      query: { page, pageSize },
+    } = await zParse(paginationSchema, req);
+
     const { model } = req.pre;
     const { id } = model;
+    const totalContent = await prisma.content.count();
     const content = await prisma.content.findMany({
       where: { contentModelId: id },
+      ...withPagination(page, pageSize),
     });
 
-    return res.status(200).json({ content });
+    return res
+      .status(200)
+      .json({ content, pagination: { page, pageSize, total: totalContent } });
   }
 );
 
