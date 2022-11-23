@@ -13,10 +13,10 @@ const auth = {
           grant_type,
           ...password,
         })
-        .then((res) => {
-          return res.data;
-        })
+        .then((res) => Promise.resolve(res.data))
         .catch((err) => Promise.reject(err.response.data));
+      console.log(resPassword, "blag angus");
+
       return resPassword;
     }
 
@@ -25,9 +25,7 @@ const auth = {
         grant_type,
         refreshToken,
       })
-      .then((res) => {
-        return res.data;
-      })
+      .then((res) => Promise.resolve(res.data))
       .catch((err) => Promise.reject(err.response.data));
     return resRefreshToken;
   },

@@ -1,7 +1,6 @@
 import { NextPageContext } from "next";
-import Router from "next/router";
-import nookies, { destroyCookie, parseCookies } from "nookies";
-import { HOME, LOGIN } from "../constants/routes";
+import { useCookie, Cookie } from "next-cookie";
+import { CONTENT_MODELS, LOGIN } from "../constants/routes";
 import api from "./api";
 
 const redirectTo = (
@@ -23,18 +22,19 @@ export interface ICtx extends NextPageContext {
 }
 
 export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
-  const cookie = nookies.get(ctx);
+  const cookie = useCookie(ctx);
   try {
     const checkAuth = await api.auth.auth(
       "refresh_token",
       undefined,
-      cookie.refreshToken
+      cookie.get("refreshToken")
     );
-    console.log(checkAuth, "baiivan e pedal");
+    console.log(checkAuth, "ti mrusono negro");
 
     if (checkAuth) {
       return checkAuth;
     }
+
     logout(cookie);
     return false;
   } catch (e: any) {
@@ -45,47 +45,37 @@ export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
 
 const isAuth = async (ctx: ICtx) => {
   try {
-    const cookies = parseCookies(ctx);
-    const accessToken = cookies.accessToken;
-    const refreshToken = cookies.refreshToken;
-    if (!accessToken && !refreshToken) return false;
-    const IsAuth = await checkAuth(refreshToken as string, ctx);
-    console.log(isAuth, "tumori");
+    const cookie = useCookie(ctx);
+    const refreshToken = cookie.get("refreshToken");
+    console.log(!!(await checkAuth(refreshToken as string, ctx)));
 
-    return IsAuth;
+    return !!(await checkAuth(refreshToken as string, ctx));
   } catch (e) {
-    console.log(e, "ginka");
-
     return false;
   }
 };
 
-export const logout = async (cookie: Record<string, any>) => {
-  destroyCookie(null, "accessToken");
-  destroyCookie(null, "refreshToken");
-
-  await Router.push(LOGIN);
+export const logout = async (cookie: Cookie) => {
+  cookie.remove("accessToken");
+  cookie.remove("refreshToken");
 };
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
   const isUserAuth = await isAuth(ctx);
+  console.log(isUserAuth, "kurleji");
 
   const currPath = ctx.resolvedUrl;
-  const cookies = parseCookies(ctx);
   if (!isUserAuth) return redirectTo(LOGIN, ctx, currPath);
   if (getServerSideProps) {
     const gssp = await getServerSideProps(ctx);
     return {
       props: {
-        cookie: { cookies } ?? "",
         ...gssp.props,
       },
     };
   }
   return {
-    props: {
-      cookie: { cookies } ?? "",
-    },
+    props: {},
   };
 };
 
@@ -94,7 +84,7 @@ export const isAlreadyAuth =
     const isUserAuth = await isAuth(ctx);
     const currPath = ctx.resolvedUrl;
     if (isUserAuth && ctx.resolvedUrl === currPath)
-      return redirectTo(HOME, ctx, currPath);
+      return redirectTo(CONTENT_MODELS, ctx, currPath);
     if (getServerSideProps) {
       const gssp = await getServerSideProps(ctx);
       return {

@@ -10,7 +10,7 @@ const Spinner: React.FC<ISpinner> = ({ isLoading }): JSX.Element | null => {
   return (
     <div
       style={{ background: "rgba(223, 223, 223, 0.6)" }}
-      className="absolute flex h-full w-full items-center justify-center"
+      className="absolute top-0 left-0 z-40 flex h-full w-full items-center justify-center"
     >
       <svg
         aria-hidden="true"

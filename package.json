@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "postinstall": "lerna bootstrap && lerna link",
+    "build": "lerna run build --stream --no-sort",
     "dev": "lerna run dev --stream --no-sort"
   },
   "devDependencies": {

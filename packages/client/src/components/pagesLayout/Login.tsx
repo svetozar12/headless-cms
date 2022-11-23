@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import { setCookie } from "nookies";
+import { useCookie } from "next-cookie";
 import React, { useState } from "react";
 import z from "zod";
 import { CONTENT_MODELS, REGISTER } from "../../constants/routes";
@@ -21,7 +21,7 @@ const Login: React.FunctionComponent = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const cookie = useCookie();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -36,8 +36,13 @@ const Login: React.FunctionComponent = () => {
       } else {
         const { data } = isParse;
         const res = await api.auth.auth("password", data);
-        setCookie(null, "accessToken", res.accessToken);
-        setCookie(null, "refreshToken", res.refreshToken);
+
+        cookie.set("accessToken", res.accessToken, {
+          sameSite: "strict",
+        });
+        cookie.set("refreshToken", res.refreshToken, {
+          sameSite: "strict",
+        });
         Router.push(CONTENT_MODELS);
       }
     } catch (e: any) {

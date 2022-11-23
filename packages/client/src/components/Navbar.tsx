@@ -3,18 +3,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { FaBoxes, FaUserCircle } from "react-icons/fa";
-import {
-  MdContentPaste,
-  MdDashboard,
-  MdOutlineContentPaste,
-  MdOutlineDashboard,
-} from "react-icons/md";
-import { CONTENT, CONTENT_MODELS, PROFILE } from "../constants/routes";
+import { MdContentPaste } from "react-icons/md";
+import { CONTENT, CONTENT_MODELS, LOGOUT, PROFILE } from "../constants/routes";
 import useSession from "../hooks/useSession";
-import { logout } from "../utils/auth";
+import { useCookie } from "next-cookie";
 
 const Navbar = () => {
-  const { isLogged } = useSession();
+  const cookie = useCookie();
+  const { isLogged, setTokens } = useSession();
   const [activeTab, setActiveTab] = useState("app/home");
   const router = useRouter();
 
@@ -23,6 +19,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    setTokens();
     if (window.location.pathname === CONTENT_MODELS)
       setActiveTab(HrefToTab(CONTENT_MODELS));
     else if (window.location.pathname === CONTENT)
@@ -30,8 +27,6 @@ const Navbar = () => {
     else if (window.location.pathname === PROFILE)
       setActiveTab(HrefToTab(PROFILE));
   }, []);
-
-  if (!isLogged) return null;
 
   const NavLinks = [
     { Icon: FaBoxes, href: CONTENT_MODELS },
@@ -73,7 +68,7 @@ const Navbar = () => {
               </div>
             );
           })}
-          <button type="button" onClick={logout}>
+          <button type="button" onClick={() => router.push(LOGOUT)}>
             <AiOutlineLogout size="1.75rem" className="cursor-pointer" />
           </button>
         </div>
@@ -81,7 +76,7 @@ const Navbar = () => {
     );
   };
 
-  return <>{render()}</>;
+  return <>{cookie.get("accessToken") && render()}</>;
 };
 
 export default Navbar;

@@ -4,7 +4,7 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialActions"]
 }
 
@@ -17,19 +17,21 @@ model User {
 
 model ContentModel {
   id      Int       @id @default(autoincrement())
-  userId  Int 
+  title   String
+  userId  Int
   text    Boolean?
   json    Boolean?
   number  Boolean?
-  user    User      @relation(fields: [userId], references: [id],onDelete: Cascade)
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   Content Content[]
 }
 
 model Content {
   id             Int          @id @default(autoincrement())
+  title          String
   contentModelId Int
   text           String?
   json           Json?
   number         Int?
-  contentModel   ContentModel @relation(fields: [contentModelId], references: [id] ,onDelete: Cascade)
+  contentModel   ContentModel @relation(fields: [contentModelId], references: [id], onDelete: Cascade)
 }

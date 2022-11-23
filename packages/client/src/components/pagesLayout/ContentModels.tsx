@@ -1,22 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
-import { parseCookies } from "nookies";
-import { FaAccusoft, FaPlus } from "react-icons/fa";
+import { useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 import { MdDelete, MdUpdate } from "react-icons/md";
 import useSession from "../../hooks/useSession";
 import api from "../../utils/api";
 import ActionButtons from "../ActionButtons";
 import Button from "../Button";
 import Table from "../Table";
+import { useCookie } from "next-cookie";
 
 const ContentModels: React.FC = () => {
-  useSession();
-  const cookie = parseCookies();
+  const { setTokens } = useSession();
+  const cookie = useCookie();
   const { data, isLoading } = useQuery(["contentModel"], () =>
-    api.ContentModel.get.all(cookie.accessToken as string)
+    api.ContentModel.get.all(cookie.get("accessToken") as string)
   );
+
+  useEffect(() => {
+    setTokens();
+  }, []);
+
   if (isLoading) return <>...loading</>;
 
   const columns = [
+    { title: "Title", dataIndex: "title" },
     { title: "Number", dataIndex: "number" },
     { title: "Text", dataIndex: "text" },
     { title: "Json", dataIndex: "json" },

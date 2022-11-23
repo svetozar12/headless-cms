@@ -6,9 +6,8 @@ import {
 } from "../../common/schema";
 import { checkContentTypes } from "../../middlewares/checkContentTypes";
 import isAuth from "../../middlewares/isAuth";
-import logger from "../../utils/logger";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
-import { prisma } from "../../utils/prisma";
+import { prisma, Content } from "../../utils/prisma";
 import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
 import { jwtType } from "../auth/utils";
@@ -91,26 +90,24 @@ content.put(
   checkContentTypes(),
   async (req, res, next) => {
     const {
-      body: { text, json, number },
+      body: { title, text, json, number },
     } = await zParse(updateContentSchema, req);
     const {
-      content: { id, text: preText, json: preJson, number: preNumber },
+      content: {
+        id,
+        title: preTitle,
+        text: preText,
+        json: preJson,
+        number: preNumber,
+      },
     } = req.pre;
-    const updatesReq =
-      !!text ||
-      !!json ||
-      !!number ||
-      text !== preText ||
-      number !== preNumber ||
-      JSON.stringify(json) !== JSON.stringify(preJson);
-    logger([!!!json, "hambunda"]);
-    if (!updatesReq)
-      return res.status(409).json({ message: "Content wasn't updated" });
+
     const updateContent = await prisma.content.update({
       where: {
         id,
       },
       data: {
+        title: title || preTitle,
         text: text || preText,
         number: number || preNumber,
         json: json || preJson,
