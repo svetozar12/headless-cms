@@ -14,7 +14,7 @@ import useSession from "../hooks/useSession";
 import { logout } from "../utils/auth";
 
 const Navbar = () => {
-  const { data } = useSession();
+  const { isLogged } = useSession();
   const [activeTab, setActiveTab] = useState("app/home");
   const router = useRouter();
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       setActiveTab(HrefToTab(PROFILE));
   }, []);
 
-  if (!data) return null;
+  if (!isLogged) return null;
 
   const NavLinks = [
     { Icon: FaBoxes, href: CONTENT_MODELS },
@@ -55,6 +55,7 @@ const Navbar = () => {
 
             return (
               <div
+                key={href}
                 className={`flex h-10 w-10 items-center justify-center rounded-md duration-500 ease-out bg-transparent${
                   isActiveTab && "rounded-md bg-textPurple"
                 }`}

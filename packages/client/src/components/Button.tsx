@@ -1,20 +1,23 @@
+import { IconType } from "react-icons/lib";
 interface IButtonProps {
-  text: string;
   onClick: (e: any) => void;
   type: "button" | "submit" | "reset";
+  text?: string;
   isDisabled?: boolean;
+  Icon?: IconType;
 }
 
 const Button = (props: IButtonProps) => {
-  const { text, onClick, type, isDisabled } = props;
+  const { Icon, text, onClick, type, isDisabled } = props;
   if (isDisabled) {
     return (
-      <div className={"mt-1 flex items-center justify-center"}>
+      <div className={"flex items-center justify-center"}>
         <button
           disabled={true}
           type={type}
-          className="mx-2 my-4 w-full rounded-md bg-mainPurple p-2 font-bold text-white opacity-30 duration-200 ease-in-out autofill:bg-transparent"
+          className="mx-2 my-4 w-full cursor-not-allowed rounded-md bg-mainPurple p-2 font-bold text-white opacity-30 duration-200 ease-in-out autofill:bg-transparent"
         >
+          {Icon && <Icon className={`${text && "mr-1"}`} />}
           {text}
         </button>
       </div>
@@ -22,7 +25,7 @@ const Button = (props: IButtonProps) => {
   }
 
   return (
-    <div className={"mt-1 flex items-center justify-center"}>
+    <div className={"flex items-center justify-center"}>
       <button
         type={type}
         onClick={onClick}
@@ -30,6 +33,7 @@ const Button = (props: IButtonProps) => {
           "mx-2 my-4 flex w-full items-center justify-center rounded-md bg-mainPurple p-2 font-bold !text-white duration-200 ease-in-out autofill:bg-transparent hover:opacity-90 active:opacity-80"
         }
       >
+        {Icon && <Icon className={`${text && "mr-1"}`} />}
         {text}
       </button>
     </div>

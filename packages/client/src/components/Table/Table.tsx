@@ -14,29 +14,30 @@ interface IColumns {
   render?: ReactNode;
 }
 
-interface IDataSource {
-  data: Record<string, any>[];
-  pagination: {
-    page: number;
-    pageSize: number;
-    total: number;
-  };
-}
-
 interface ITable {
-  dataSource: IDataSource;
+  dataSource: any;
+  dataSourceIndex: string;
   columns: IColumns[];
   isLoading?: boolean;
+  customHeader?: ReactNode;
   onTableChange?: () => Promise<void>;
   extraProps?: IExtraProps;
 }
 
 const Table: React.FC<ITable> = (props) => {
-  const { extraProps, columns, isLoading, dataSource, onTableChange } = props;
+  const {
+    extraProps,
+    columns,
+    isLoading,
+    dataSource,
+    dataSourceIndex,
+    onTableChange,
+    customHeader,
+  } = props;
   const { className, ...restProps } = extraProps || {};
-  const { contentModel: resourceData, pagination } = dataSource;
+  const { pagination } = dataSource as any;
   const { page, pageSize, total } = pagination;
-  const [data, setData] = useState<typeof resourceData>([]);
+  const [data, setData] = useState([]);
 
   const renderHeading = () => {
     return (
@@ -51,12 +52,11 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   useEffect(() => {
-    console.log(resourceData, dataSource);
-
-    if (!onTableChange) setData(resourceData.slice(page - 1, pageSize));
+    if (!onTableChange)
+      setData(dataSource[dataSourceIndex].slice(page - 1, pageSize));
     onTableChange?.()
       .then(() => {
-        setData(resourceData.slice(page - 1, pageSize));
+        setData(dataSource[dataSourceIndex].slice(page - 1, pageSize));
       })
       .catch((err) => {
         console.log(err);
@@ -65,7 +65,7 @@ const Table: React.FC<ITable> = (props) => {
 
   const onChange = (pageNumber: number) => {
     setData(
-      resourceData.slice(
+      dataSource[dataSourceIndex].slice(
         (pageNumber - 1) * pageSize,
         (pageNumber - 1) * pageSize + pageSize
       )
@@ -76,17 +76,21 @@ const Table: React.FC<ITable> = (props) => {
     return (
       <div className="relative">
         <Spinner isLoading={!!isLoading} />
-        {data.map((item) => {
+        {data.map((item, index) => {
           return (
-            <div className="rounded-md hover:bg-table-headerBackground">
+            <div
+              key={index}
+              className="rounded-md hover:bg-table-headerBackground"
+            >
               <tr
                 className={`flex py-2 duration-150 ease-in-out hover:border-transparent ${s.borderBottom} ${s.borderTop}`}
               >
                 {columns.map(({ dataIndex, render }) => {
-                  console.log(dataIndex, dataIndex && String(item[dataIndex]));
-
                   return (
-                    <td className="flex flex-1 justify-center font-semibold text-gray-700">
+                    <td
+                      key={dataIndex}
+                      className="flex flex-1 justify-center font-semibold text-gray-700"
+                    >
                       {render
                         ? render
                         : dataIndex
@@ -104,8 +108,9 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   return (
-    <table className={`${className} my-2 w-full`} {...restProps}>
+    <table className={`${className} w-full`} {...restProps}>
       <div className="w-full rounded-t-md bg-table-headerBackground">
+        {customHeader}
         {renderHeading()}
       </div>
       {renderContent()}

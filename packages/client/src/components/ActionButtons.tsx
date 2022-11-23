@@ -14,10 +14,11 @@ const ActionButtons: React.FC<IActionButtons> = (props) => {
   const { buttons } = props;
   return (
     <div className="flex items-center">
-      {buttons.map(({ Icon, handler }) => {
+      {buttons.map(({ Icon, handler }, index) => {
         return (
           <button
-            className="flex flex-1 justify-center"
+            key={index}
+            className="flex justify-center p-2 duration-150 hover:bg-gray-900 hover:bg-opacity-20"
             type="button"
             onClick={handler}
           >

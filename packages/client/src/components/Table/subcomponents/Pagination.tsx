@@ -34,6 +34,7 @@ const Pagination: React.FC<IPagination> = (props) => {
           const isActive = readablePage === page;
           return (
             <button
+              key={readablePage}
               onClick={() => !isActive && onPageChange(readablePage)}
               className={`mx-2 my-1 flex h-8 w-8 items-center justify-center rounded-md duration-100 ease-in ${
                 isActive

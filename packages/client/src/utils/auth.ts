@@ -30,9 +30,10 @@ export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
       undefined,
       cookie.refreshToken
     );
+    console.log(checkAuth, "baiivan e pedal");
 
     if (checkAuth) {
-      return true;
+      return checkAuth;
     }
     logout(cookie);
     return false;
@@ -49,15 +50,21 @@ const isAuth = async (ctx: ICtx) => {
     const refreshToken = cookies.refreshToken;
     if (!accessToken && !refreshToken) return false;
     const IsAuth = await checkAuth(refreshToken as string, ctx);
+    console.log(isAuth, "tumori");
+
     return IsAuth;
   } catch (e) {
+    console.log(e, "ginka");
+
     return false;
   }
 };
 
-export const logout = (cookie: Record<string, any>) => {
-  for (const key in cookie) destroyCookie(null, key);
-  Router.push(LOGIN);
+export const logout = async (cookie: Record<string, any>) => {
+  destroyCookie(null, "accessToken");
+  destroyCookie(null, "refreshToken");
+
+  await Router.push(LOGIN);
 };
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
