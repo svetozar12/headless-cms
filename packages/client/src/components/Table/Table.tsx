@@ -20,7 +20,7 @@ interface ITable {
   columns: IColumns[];
   isLoading?: boolean;
   customHeader?: ReactNode;
-  onTableChange?: () => Promise<void>;
+  onTableChange?: (page: number) => Promise<void>;
   extraProps?: IExtraProps;
 }
 
@@ -52,27 +52,20 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   useEffect(() => {
-    if (!onTableChange)
-      setData(dataSource[dataSourceIndex].slice(page - 1, pageSize));
-    onTableChange?.()
-      .then(() => {
-        setData(dataSource[dataSourceIndex].slice(page - 1, pageSize));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(dataSource);
+
+    setData(dataSource[dataSourceIndex]);
   }, []);
 
   const onChange = (pageNumber: number) => {
-    setData(
-      dataSource[dataSourceIndex].slice(
-        (pageNumber - 1) * pageSize,
-        (pageNumber - 1) * pageSize + pageSize
-      )
-    );
+    onTableChange?.(pageNumber).then(() => {
+      setData(dataSource[dataSourceIndex]);
+    });
   };
 
   const renderContent = () => {
+    console.log(data);
+
     return (
       <div className="relative">
         <Spinner isLoading={!!isLoading} />

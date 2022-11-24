@@ -3,9 +3,15 @@ import { instance } from "../index";
 
 const ContentModel = {
   get: {
-    all: async (token: string): Promise<ContentModel[]> => {
+    all: async (
+      token: string,
+      page?: number
+    ): Promise<{
+      pagination: { page: number; pageSize: number; total: number };
+      contentModel: ContentModel[];
+    }> => {
       try {
-        const res = await instance.get("/contentModel", {
+        const res = await instance.get(`/contentModel?page=${page || 1}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         return res.data;

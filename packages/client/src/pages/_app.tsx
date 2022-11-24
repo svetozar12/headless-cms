@@ -4,7 +4,7 @@ import type { AppType } from "next/app";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (

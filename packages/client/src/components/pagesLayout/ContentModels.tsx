@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { MdDelete, MdUpdate } from "react-icons/md";
 import useSession from "../../hooks/useSession";
@@ -8,19 +8,29 @@ import ActionButtons from "../ActionButtons";
 import Button from "../Button";
 import Table from "../Table";
 import { useCookie } from "next-cookie";
+import { useRouter } from "next/router";
+import { CONTENT_MODELS } from "../../constants/routes";
+import { queryClient } from "../../pages/_app";
 
 const ContentModels: React.FC = () => {
   const { setTokens } = useSession();
+  const router = useRouter();
   const cookie = useCookie();
-  const { data, isLoading } = useQuery(["contentModel"], () =>
-    api.ContentModel.get.all(cookie.get("accessToken") as string)
+  const { data, refetch, isLoading } = useQuery(
+    ["contentModel", router.query.page || 1],
+    () =>
+      api.ContentModel.get.all(
+        cookie.get("accessToken") as string,
+        router.query.page as any
+      )
   );
+  const [loading, setLoading] = useState(isLoading);
 
   useEffect(() => {
     setTokens();
   }, []);
 
-  if (isLoading) return <>...loading</>;
+  if (!data) return <>...loading</>;
 
   const columns = [
     { title: "Title", dataIndex: "title" },
@@ -53,11 +63,20 @@ const ContentModels: React.FC = () => {
     );
   };
 
+  const onTableChange = async (page: number) => {
+    setLoading(true);
+    router.push(`${CONTENT_MODELS}/?page=${page}`).then(() => {
+      setLoading(false);
+    });
+  };
+
   const render = () => {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="w-2/4">
           <Table
+            isLoading={loading}
+            onTableChange={onTableChange}
             customHeader={renderActionButtons()}
             columns={columns}
             dataSourceIndex="contentModel"

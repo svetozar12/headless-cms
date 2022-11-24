@@ -11,7 +11,7 @@ import { useCookie } from "next-cookie";
 const Navbar = () => {
   const cookie = useCookie();
   const { isLogged, setTokens } = useSession();
-  const [activeTab, setActiveTab] = useState("app/home");
+  const [activeTab, setActiveTab] = useState(CONTENT_MODELS);
   const router = useRouter();
 
   const HrefToTab = (href: string) => {

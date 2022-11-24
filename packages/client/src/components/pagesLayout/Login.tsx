@@ -22,6 +22,7 @@ const Login: React.FunctionComponent = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const cookie = useCookie();
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -43,7 +44,7 @@ const Login: React.FunctionComponent = () => {
         cookie.set("refreshToken", res.refreshToken, {
           sameSite: "strict",
         });
-        Router.push(CONTENT_MODELS);
+        router.push(CONTENT_MODELS);
       }
     } catch (e: any) {
       setError(e.message);

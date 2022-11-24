@@ -4,6 +4,4 @@ import { withAuthSync } from "../utils/auth";
 
 const LogoutPage: NextPage = () => <Logout />;
 
-export const getServerSideProps = withAuthSync();
-
 export default LogoutPage;

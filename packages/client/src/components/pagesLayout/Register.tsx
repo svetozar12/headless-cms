@@ -1,6 +1,6 @@
+import { useCookie } from "next-cookie";
 import Link from "next/link";
 import Router from "next/router";
-import { setCookie } from "nookies";
 import { useState } from "react";
 import z from "zod";
 import { LOGIN } from "../../constants/routes";
@@ -19,6 +19,7 @@ const Register: React.FunctionComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const cookie = useCookie();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -32,8 +33,9 @@ const Register: React.FunctionComponent = () => {
       } else {
         const { data } = isParse;
         const res = await api.user.create(data);
-        setCookie(null, "accessToken", res.accessToken);
-        setCookie(null, "refreshToken", res.refreshToken);
+
+        cookie.set("accessToken", res.accessToken);
+        cookie.set("refreshToken", res.refreshToken);
         await Router.push("/");
       }
     } catch (e: any) {

@@ -1,6 +1,6 @@
 import { NextPageContext } from "next";
 import { useCookie, Cookie } from "next-cookie";
-import { CONTENT_MODELS, LOGIN } from "../constants/routes";
+import { CONTENT_MODELS, LOGIN, LOGOUT } from "../constants/routes";
 import api from "./api";
 
 const redirectTo = (
@@ -62,10 +62,9 @@ export const logout = async (cookie: Cookie) => {
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
   const isUserAuth = await isAuth(ctx);
-  console.log(isUserAuth, "kurleji");
 
   const currPath = ctx.resolvedUrl;
-  if (!isUserAuth) return redirectTo(LOGIN, ctx, currPath);
+  if (!isUserAuth) return redirectTo(LOGOUT, ctx, currPath);
   if (getServerSideProps) {
     const gssp = await getServerSideProps(ctx);
     return {
