@@ -21,38 +21,30 @@ export interface ICtx extends NextPageContext {
   resolvedUrl: string;
 }
 
-export const checkAuth = async (refreshToken: string, ctx?: ICtx) => {
+export const checkAuth = async (ctx?: ICtx) => {
   const cookie = useCookie(ctx);
-  try {
-    const checkAuth = await api.auth.auth(
-      "refresh_token",
-      undefined,
-      cookie.get("refreshToken")
-    );
-    console.log(checkAuth, "ti mrusono negro");
+  const accessToken: string = cookie.get("accessToken");
+  const refreshToken: string = cookie.get("refreshToken");
 
-    if (checkAuth) {
-      return checkAuth;
+  if (!accessToken) {
+    if (refreshToken) {
+      try {
+        const checkAuth = await api.auth.auth(
+          "refresh_token",
+          undefined,
+          refreshToken
+        );
+
+        if (checkAuth) return !!checkAuth;
+
+        return false;
+      } catch (e: any) {
+        return false;
+      }
     }
-
-    logout(cookie);
-    return false;
-  } catch (e: any) {
-    logout(cookie);
     return false;
   }
-};
-
-const isAuth = async (ctx: ICtx) => {
-  try {
-    const cookie = useCookie(ctx);
-    const refreshToken = cookie.get("refreshToken");
-    console.log(!!(await checkAuth(refreshToken as string, ctx)));
-
-    return !!(await checkAuth(refreshToken as string, ctx));
-  } catch (e) {
-    return false;
-  }
+  return true;
 };
 
 export const logout = async (cookie: Cookie) => {
@@ -61,10 +53,14 @@ export const logout = async (cookie: Cookie) => {
 };
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
-  const isUserAuth = await isAuth(ctx);
+  const isUserAuth = await checkAuth(ctx);
+  const cookie = useCookie(ctx);
 
   const currPath = ctx.resolvedUrl;
-  if (!isUserAuth) return redirectTo(LOGOUT, ctx, currPath);
+  if (!isUserAuth) {
+    logout(cookie);
+    return redirectTo(LOGOUT, ctx, currPath);
+  }
   if (getServerSideProps) {
     const gssp = await getServerSideProps(ctx);
     return {
@@ -80,7 +76,7 @@ export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
 
 export const isAlreadyAuth =
   (getServerSideProps?: any) => async (ctx: ICtx) => {
-    const isUserAuth = await isAuth(ctx);
+    const isUserAuth = await checkAuth(ctx);
     const currPath = ctx.resolvedUrl;
     if (isUserAuth && ctx.resolvedUrl === currPath)
       return redirectTo(CONTENT_MODELS, ctx, currPath);

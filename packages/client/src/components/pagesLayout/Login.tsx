@@ -37,14 +37,17 @@ const Login: React.FunctionComponent = () => {
       } else {
         const { data } = isParse;
         const res = await api.auth.auth("password", data);
-
+        const expiresIn = new Date();
+        expiresIn.setHours(expiresIn.getHours() + 1);
         cookie.set("accessToken", res.accessToken, {
-          sameSite: "strict",
+          expires: expiresIn,
+          maxAge: 7200,
         });
         cookie.set("refreshToken", res.refreshToken, {
-          sameSite: "strict",
+          expires: expiresIn,
+          maxAge: 7200,
         });
-        router.push(CONTENT_MODELS);
+        await router.push(CONTENT_MODELS);
       }
     } catch (e: any) {
       setError(e.message);

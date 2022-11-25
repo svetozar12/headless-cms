@@ -24,11 +24,12 @@ const ContentModels: React.FC = () => {
         router.query.page as any
       )
   );
-  const [loading, setLoading] = useState(isLoading);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTokens();
-  }, []);
+    if (data) setLoading(false);
+  }, [data]);
 
   if (!data) return <>...loading</>;
 
