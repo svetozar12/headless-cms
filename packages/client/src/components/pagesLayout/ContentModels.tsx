@@ -11,13 +11,14 @@ import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
 import { CONTENT_MODELS } from "../../constants/routes";
 import { queryClient } from "../../pages/_app";
+import Modal from "../Modal";
 
 const ContentModels: React.FC = () => {
   const { setTokens } = useSession();
   const router = useRouter();
   const cookie = useCookie();
   const { data, refetch, isLoading } = useQuery(
-    ["contentModel", router.query.page || 1],
+    ["contentModel", router.query.page],
     () =>
       api.ContentModel.get.all(
         cookie.get("accessToken") as string,
@@ -66,14 +67,19 @@ const ContentModels: React.FC = () => {
 
   const onTableChange = async (page: number) => {
     setLoading(true);
-    router.push(`${CONTENT_MODELS}/?page=${page}`).then(() => {
-      setLoading(false);
-    });
+    router
+      .push(`${CONTENT_MODELS}/?page=${page}`, undefined, { shallow: true })
+      .then(() => {
+        setLoading(false);
+      });
   };
 
   const render = () => {
     return (
       <div className="flex flex-col items-center justify-center">
+        <Modal isOpen={true}>
+          <h1>modal</h1>
+        </Modal>
         <div className="w-2/4">
           <Table
             isLoading={loading}

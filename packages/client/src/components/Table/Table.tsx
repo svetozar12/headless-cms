@@ -55,7 +55,7 @@ const Table: React.FC<ITable> = (props) => {
     console.log(dataSource);
 
     setData(dataSource[dataSourceIndex]);
-  }, []);
+  }, [dataSource]);
 
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {
