@@ -4,14 +4,22 @@ interface IModal {
   children: React.ReactNode;
   isOpen: boolean;
   footer?: React.ReactNode;
+  onOverlayClick?: () => void;
 }
 
 const Modal: React.FC<IModal> = (props) => {
-  const { children, footer, isOpen } = props;
+  const { children, footer, isOpen, onOverlayClick } = props;
 
   const renderFooter = () => {
     if (!footer) return null;
-    return <div>{footer}</div>;
+    return (
+      <div
+        style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}
+        className="flex justify-end  pt-2"
+      >
+        {footer}
+      </div>
+    );
   };
 
   if (!isOpen) return null;
@@ -19,9 +27,10 @@ const Modal: React.FC<IModal> = (props) => {
   const renderOverlay = () => {
     return (
       <div
+        onClick={onOverlayClick}
         style={{
           width: "100vw",
-          height: "100vh",
+          height: "190vh",
           overflow: "hidden",
         }}
         className="absolute bg-gray-700 bg-opacity-50"
@@ -31,24 +40,14 @@ const Modal: React.FC<IModal> = (props) => {
 
   const renderContent = () => {
     return (
-      <div
-        style={{
-          width: "",
-          height: "50vh",
-          transform: " translate(-50%, 50%)",
-        }}
-        className="absolute left-2/4 z-50 rounded-md bg-white"
-      >
-        {children}
-        {renderFooter()}
+      <div className="absolute z-50 flex h-1/6 w-1/4 flex-col justify-between rounded-md bg-white p-2">
+        <div>{children}</div>
+        <div>{renderFooter()}</div>
       </div>
     );
   };
   return (
-    <div
-      className="absolute z-50"
-      style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
-    >
+    <div className="absolute z-50 flex h-full w-full items-center justify-center">
       {renderOverlay()}
       {renderContent()}
     </div>
