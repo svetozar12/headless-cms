@@ -1,39 +1,25 @@
-interface IInputProps {
+export interface IInputProps {
   name: string;
-  type:
-    | "text"
-    | "password"
-    | "email"
-    | "number"
-    | "tel"
-    | "url"
-    | "search"
-    | "date"
-    | "time"
-    | "datetime-local"
-    | "month"
-    | "week"
-    | "color"
-    | "range"
-    | "file"
-    | "checkbox"
-    | "radio"
-    | "submit"
-    | "image"
-    | "reset"
-    | "button";
-  placeholder: string;
-  value: string;
+  type: string;
   onChange: (e: any) => void;
+  value?: string;
+  label?: string;
+  placeholder?: string;
+  extraProps?: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >;
 }
 
 const Input = (props: IInputProps) => {
-  const { name, type, placeholder, value, onChange } = props;
+  const { name, label, type, placeholder, value, onChange } = props;
   return (
     <>
-      <label htmlFor={name} className="px-2 text-white">
-        {name}
-      </label>
+      {label && (
+        <label htmlFor={name} className="px-2 text-white">
+          {label}
+        </label>
+      )}
       <div className="m-2  rounded-md bg-inputBlack p-1">
         <input
           value={value}

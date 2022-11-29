@@ -15,7 +15,7 @@ const Modal: React.FC<IModal> = (props) => {
     return (
       <div
         style={{ borderTop: "1px solid rgba(0,0,0,0.1)" }}
-        className="flex justify-end  pt-2"
+        className="flex justify-end pt-2"
       >
         {footer}
       </div>
@@ -40,7 +40,7 @@ const Modal: React.FC<IModal> = (props) => {
 
   const renderContent = () => {
     return (
-      <div className="absolute z-50 flex h-1/6 w-1/4 flex-col justify-between rounded-md bg-white p-2">
+      <div className="min-h-1/6 absolute z-50 flex w-1/4 flex-col justify-between rounded-md bg-white p-2">
         <div>{children}</div>
         <div>{renderFooter()}</div>
       </div>

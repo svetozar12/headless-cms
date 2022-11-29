@@ -34,9 +34,10 @@ const Table: React.FC<ITable> = (props) => {
     onTableChange,
     customHeader,
   } = props;
+  if (isLoading) return <Spinner isLoading={isLoading} />;
   const { className, ...restProps } = extraProps || {};
-  const { pagination } = dataSource as any;
-  const { page, pageSize, total } = pagination;
+  const { pagination } = dataSource;
+  const { page, total } = pagination;
   const [data, setData] = useState([]);
 
   const renderHeading = () => {
@@ -52,8 +53,6 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   useEffect(() => {
-    console.log(dataSource);
-
     setData(dataSource[dataSourceIndex]);
   }, [dataSource]);
 

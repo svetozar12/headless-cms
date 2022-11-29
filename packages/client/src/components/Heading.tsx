@@ -1,13 +1,14 @@
 interface IHeadingProps {
   text: string;
   type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  className?: string;
 }
 
 const Heading = (props: IHeadingProps): JSX.Element => {
-  const { text, type } = props;
+  const { text, type, className } = props;
 
   const getHeading = (): JSX.Element => {
-    const headingClassname = "text-white font-bold text-2xl";
+    const headingClassname = `text-white font-bold text-2xl ${className}`;
     switch (type) {
       case "h1":
         return <h1 className={headingClassname}>{text}</h1>;

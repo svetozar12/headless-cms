@@ -88,7 +88,7 @@ const ModelTable: FC<IModelTable> = (props) => {
     );
   };
 
-  return <div className="w-2/4">{render()}</div>;
+  return <div className="relative w-2/4">{render()}</div>;
 };
 
 export default ModelTable;

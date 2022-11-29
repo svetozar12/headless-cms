@@ -1,15 +1,12 @@
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useCookie } from "next-cookie";
 import React, { useState } from "react";
 import z from "zod";
-import { CONTENT_MODELS, REGISTER } from "../../constants/routes";
-import api from "../../utils/api";
-import Button from "../Button";
-import FormWrapper from "../FormWrapper";
-import Heading from "../Heading";
-import Input from "../Input";
-import Spinner from "../Spinner";
+import { CONTENT_MODELS } from "../../../constants/routes";
+import api from "../../../utils/api";
+import Form from "../../Form";
+import Header from "./subcomponents/Header";
+import { getFields } from "./utils";
 
 const schema = z.object({
   username: z.string().min(3).max(20),
@@ -61,36 +58,20 @@ const Login: React.FunctionComponent = () => {
   };
 
   return (
-    <FormWrapper error={error}>
-      <Spinner isLoading={isLoading} />
-      <Heading type="h1" text="Sign in" />
-      <p className="text-center text-sm text-white">
-        Don&apos;t have account ?{" "}
-        <Link href={REGISTER}>
-          <span className="cursor-pointer text-textPurple">Register here</span>
-        </Link>
-      </p>
-      <Input
-        value={username}
-        name="username"
-        type="text"
-        placeholder="username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <Input
-        value={password}
-        name="password"
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button
-        type="submit"
-        text="Login"
-        onClick={handleSubmit}
-        isDisabled={!username || !password}
-      />
-    </FormWrapper>
+    <div className="flex h-screen w-full items-center justify-center bg-mainBlack">
+      <div className="w-5/6 bg-offBlack md:w-2/4 xl:w-2/5">
+        <Form
+          formHeader={<Header />}
+          fields={getFields(
+            { username, password },
+            { setUsername, setPassword }
+          )}
+          error={error}
+          handleSubmit={handleSubmit}
+          isLoading={isLoading}
+        />
+      </div>
+    </div>
   );
 };
 
