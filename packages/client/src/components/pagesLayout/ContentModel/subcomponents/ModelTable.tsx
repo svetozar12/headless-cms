@@ -63,7 +63,7 @@ const ModelTable: FC<IModelTable> = (props) => {
 
   const renderActionButtons = () => {
     return (
-      <div className="mt-5 flex justify-end rounded-t-xl border-2 border-black border-opacity-5 bg-table-headerBackground">
+      <div className="mt-5 flex justify-end rounded-t-xl border-2 border-black border-opacity-5 bg-offBlack">
         <Button onClick={() => setIsModal(true)} type="button" Icon={FaPlus} />
       </div>
     );

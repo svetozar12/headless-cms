@@ -6,6 +6,18 @@ import Spinner from "../Spinner";
 import { useCookie } from "next-cookie";
 
 const Logout = () => {
+  const { isLoading } = useLogout();
+  return (
+    <div className="relative h-full w-full">
+      <Spinner isLoading={isLoading} />
+      Logging out
+    </div>
+  );
+};
+
+export default Logout;
+
+const useLogout = () => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const cookie = useCookie();
@@ -17,12 +29,5 @@ const Logout = () => {
     });
   }, []);
 
-  return (
-    <div className="relative h-full w-full">
-      <Spinner isLoading={isLoading} />
-      Logging out
-    </div>
-  );
+  return { isLoading };
 };
-
-export default Logout;

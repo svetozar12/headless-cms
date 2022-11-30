@@ -8,25 +8,15 @@ import { CONTENT, CONTENT_MODELS, LOGOUT, PROFILE } from "../constants/routes";
 import useSession from "../hooks/useSession";
 import { useCookie } from "next-cookie";
 
+const HrefToTab = (href: string) => {
+  return href.slice(1, href.length);
+};
+
 const Navbar = () => {
   const cookie = useCookie();
   const { isLogged, setTokens } = useSession();
-  const [activeTab, setActiveTab] = useState(CONTENT_MODELS);
+  const { activeTab, setActiveTab } = useActiveTab();
   const router = useRouter();
-
-  const HrefToTab = (href: string) => {
-    return href.slice(1, href.length);
-  };
-
-  useEffect(() => {
-    setTokens();
-    if (window.location.pathname === CONTENT_MODELS)
-      setActiveTab(HrefToTab(CONTENT_MODELS));
-    else if (window.location.pathname === CONTENT)
-      setActiveTab(HrefToTab(CONTENT));
-    else if (window.location.pathname === PROFILE)
-      setActiveTab(HrefToTab(PROFILE));
-  }, []);
 
   const NavLinks = [
     { Icon: FaBoxes, href: CONTENT_MODELS },
@@ -80,3 +70,19 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const useActiveTab = () => {
+  const [activeTab, setActiveTab] = useState("");
+  const { setTokens } = useSession();
+  useEffect(() => {
+    setTokens();
+    if (window.location.pathname === CONTENT_MODELS)
+      setActiveTab(HrefToTab(CONTENT_MODELS));
+    else if (window.location.pathname === CONTENT)
+      setActiveTab(HrefToTab(CONTENT));
+    else if (window.location.pathname === PROFILE)
+      setActiveTab(HrefToTab(PROFILE));
+  }, []);
+
+  return { activeTab, setActiveTab };
+};

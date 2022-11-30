@@ -38,11 +38,11 @@ const Table: React.FC<ITable> = (props) => {
   const { className, ...restProps } = extraProps || {};
   const { pagination } = dataSource;
   const { page, total } = pagination;
-  const [data, setData] = useState([]);
+  const { data, setData } = useData(dataSource, dataSourceIndex);
 
   const renderHeading = () => {
     return (
-      <tr className={`flex py-2`}>
+      <tr className={`flex py-2 text-gray-400`}>
         {columns.map(({ title }) => (
           <th key={title} className="flex-1 text-center font-semibold">
             {title}
@@ -52,10 +52,6 @@ const Table: React.FC<ITable> = (props) => {
     );
   };
 
-  useEffect(() => {
-    setData(dataSource[dataSourceIndex]);
-  }, [dataSource]);
-
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {
       setData(dataSource[dataSourceIndex]);
@@ -63,25 +59,20 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   const renderContent = () => {
-    console.log(data);
-
     return (
       <div className="relative">
         <Spinner isLoading={!!isLoading} />
         {data.map((item, index) => {
           return (
-            <div
-              key={index}
-              className="rounded-md hover:bg-table-headerBackground"
-            >
+            <div key={index} className="rounded-md ">
               <tr
-                className={`flex py-2 duration-150 ease-in-out hover:border-transparent ${s.borderBottom} ${s.borderTop}`}
+                className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${s.borderBottom} ${s.borderTop}`}
               >
                 {columns.map(({ dataIndex, render }) => {
                   return (
                     <td
                       key={dataIndex}
-                      className="flex flex-1 justify-center font-semibold text-gray-700"
+                      className="flex flex-1 justify-center font-semibold text-gray-400"
                     >
                       {render
                         ? render
@@ -101,7 +92,7 @@ const Table: React.FC<ITable> = (props) => {
 
   return (
     <table className={`${className} w-full`} {...restProps}>
-      <div className="w-full rounded-t-md bg-table-headerBackground">
+      <div className="w-full rounded-t-md bg-offBlack">
         {customHeader}
         {renderHeading()}
       </div>
@@ -112,3 +103,12 @@ const Table: React.FC<ITable> = (props) => {
 };
 
 export default Table;
+
+const useData = (dataSource: any, dataSourceIndex: string) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(dataSource[dataSourceIndex]);
+  }, [dataSource]);
+  return { data, setData };
+};

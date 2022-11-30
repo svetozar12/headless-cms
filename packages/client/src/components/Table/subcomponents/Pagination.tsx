@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 interface IPagination {
   total: number;

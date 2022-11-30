@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useRef, useState } from "react";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
 import Form from "../../../Form";
@@ -14,18 +14,21 @@ interface IModelModal {
 const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, setIsModal } = props;
   const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = async () => {
-    console.log("submit");
+  const [modelTitle, setModelTitle] = useState("");
+  const handleSubmit = async (e: React.ChangeEvent) => {
+    e.preventDefault();
+    await console.log("submit", modelTitle);
   };
 
   const getFIelds = (): IFields[] => {
     return [
       {
-        handler: () => console.log("handle"),
-        label: "sos",
-        name: "sos",
+        value: modelTitle,
+        handler: (e: React.ChangeEvent<HTMLInputElement>) =>
+          setModelTitle(e.target.value),
+        label: "model title",
+        name: "modelTitle",
         type: "input",
-        value: "",
       },
     ];
   };
@@ -39,7 +42,7 @@ const ModelModal: FC<IModelModal> = (props) => {
           handleSubmit={handleSubmit}
           fields={getFIelds()}
           formHeader={
-            <Heading type="h1" text="Add model" className="text-black" />
+            <Heading type="h1" text="Add model" className="text-white" />
           }
           customFormButtons={
             <ActionButtons
