@@ -1,16 +1,16 @@
 import React, { FC } from "react";
 import { ZodSchema } from "zod";
 import Button from "../Button";
-import { IInputProps } from "../Input";
+import { IInputProps } from "../Input/Input";
 import Spinner from "../Spinner";
 import Fields from "./subcomponents/Fields";
 
 export interface IFields {
   type: string;
-  label: string;
   name: string;
-  handler: (e?: any) => void;
-  value: any;
+  label?: string;
+  handler?: (e?: any) => void;
+  value?: any;
   rules?: ZodSchema;
   extraProps?: Partial<IInputProps>;
 }

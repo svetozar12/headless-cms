@@ -63,7 +63,7 @@ const ModelTable: FC<IModelTable> = (props) => {
 
   const renderActionButtons = () => {
     return (
-      <div className="mt-5 flex justify-end rounded-t-xl border-2 border-black border-opacity-5 bg-offBlack">
+      <div className="mt-2 flex justify-end border-2 border-black border-opacity-5 bg-offBlack">
         <Button onClick={() => setIsModal(true)} type="button" Icon={FaPlus} />
       </div>
     );
@@ -84,6 +84,7 @@ const ModelTable: FC<IModelTable> = (props) => {
         columns={columns}
         dataSourceIndex="contentModel"
         dataSource={data}
+        extraProps={{ className: "mt-10 rounded-t-xl" }}
       />
     );
   };

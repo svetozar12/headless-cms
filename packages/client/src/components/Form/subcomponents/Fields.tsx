@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import Input from "../../Input";
+import Input from "../../Input/Input";
 import { IFields } from "../Form";
 
 const Fields: FC<{ fields: IFields[] }> = (props) => {
@@ -9,9 +9,6 @@ const Fields: FC<{ fields: IFields[] }> = (props) => {
     <>
       {fields.map(
         ({ label, name, type, value, handler, rules, extraProps }) => {
-          const isParse = rules?.safeParse(value);
-          console.log(value, "darwin");
-
           return (
             <Input
               key={name}
@@ -19,8 +16,12 @@ const Fields: FC<{ fields: IFields[] }> = (props) => {
               label={label}
               type={type}
               name={name}
-              onChange={handler}
-              extraProps={{ id: name, ...extraProps }}
+              onChange={(e: React.ChangeEvent) => handler?.(e)}
+              extraProps={{
+                id: name,
+                ...extraProps,
+                ...extraProps?.extraProps,
+              }}
             />
           );
         }

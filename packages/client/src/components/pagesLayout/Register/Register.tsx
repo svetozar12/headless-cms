@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
 import { useCookie } from "next-cookie";
-import React, { useRef, useState } from "react";
+import Router from "next/router";
+import { useRef, useState } from "react";
 import z from "zod";
-import { CONTENT_MODELS } from "../../../constants/routes";
 import api from "../../../utils/api";
+import Button from "../../Button";
 import Form from "../../Form";
 import Header from "./subcomponents/Header";
 import { getFields } from "./utils";
@@ -13,19 +13,19 @@ const schema = z.object({
   password: z.string().min(3).max(20),
 });
 
-const Login: React.FunctionComponent = () => {
+const Register: React.FunctionComponent = () => {
   const { username, password } = useValues();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const cookie = useCookie();
-  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setIsLoading(true);
     const { value: usernameValue } = username.current || {};
     const { value: passwordValue } = password.current || {};
+    console.log(usernameValue, passwordValue);
 
+    e.preventDefault();
+    setIsLoading(true);
     try {
       const isParse = schema.safeParse({
         username: usernameValue,
@@ -33,25 +33,16 @@ const Login: React.FunctionComponent = () => {
       });
       if (!isParse.success) {
         const formatError = isParse.error.issues;
-        console.log(formatError);
-
         formatError.forEach((err) => {
           throw new Error(err.message);
         });
       } else {
         const { data } = isParse;
-        const res = await api.auth.auth("password", data);
-        const expiresIn = new Date();
-        expiresIn.setHours(expiresIn.getHours() + 1);
-        cookie.set("accessToken", res.accessToken, {
-          expires: expiresIn,
-          maxAge: 7200,
-        });
-        cookie.set("refreshToken", res.refreshToken, {
-          expires: expiresIn,
-          maxAge: 7200,
-        });
-        await router.push(CONTENT_MODELS);
+        const res = await api.user.create(data);
+
+        cookie.set("accessToken", res.accessToken);
+        cookie.set("refreshToken", res.refreshToken);
+        await Router.push("/");
       }
     } catch (e: any) {
       setError(e.message);
@@ -73,13 +64,16 @@ const Login: React.FunctionComponent = () => {
           error={error}
           handleSubmit={handleSubmit}
           isLoading={isLoading}
+          customFormButtons={
+            <Button type="submit" text="Sign up" onClick={handleSubmit} />
+          }
         />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
 
 const useValues = () => {
   const username = useRef<HTMLInputElement>(null);

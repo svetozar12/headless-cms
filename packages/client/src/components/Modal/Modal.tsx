@@ -40,7 +40,7 @@ const Modal: React.FC<IModal> = (props) => {
 
   const renderContent = () => {
     return (
-      <div className="min-h-1/6 absolute z-50 flex w-1/4 flex-col justify-between rounded-md bg-offBlack p-2 ">
+      <div className="min-h-1/6 absolute z-50 flex w-3/5 flex-col justify-between rounded-md bg-offBlack p-2 ">
         <div>{children}</div>
         <div>{renderFooter()}</div>
       </div>

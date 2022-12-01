@@ -14,21 +14,48 @@ interface IModelModal {
 const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, setIsModal } = props;
   const [isLoading, setIsLoading] = useState(false);
-  const [modelTitle, setModelTitle] = useState("");
+  const { modelTitle, json, number, text } = useValues();
   const handleSubmit = async (e: React.ChangeEvent) => {
     e.preventDefault();
-    await console.log("submit", modelTitle);
+
+    console.log(
+      "submit",
+      modelTitle.current?.value,
+      json.current?.checked,
+      number.current?.checked,
+      text.current?.checked
+    );
   };
 
   const getFIelds = (): IFields[] => {
     return [
       {
-        value: modelTitle,
-        handler: (e: React.ChangeEvent<HTMLInputElement>) =>
-          setModelTitle(e.target.value),
-        label: "model title",
+        extraProps: {
+          extraProps: { ref: modelTitle, placeholder: "model title" },
+        },
         name: "modelTitle",
         type: "input",
+      },
+      {
+        extraProps: {
+          extraProps: { ref: json },
+        },
+        name: "json",
+        type: "checkbox",
+      },
+      {
+        extraProps: {
+          extraProps: { ref: text },
+        },
+        name: "text",
+        type: "checkbox",
+      },
+      {
+        extraProps: {
+          extraProps: { ref: number },
+        },
+        name: "number",
+        type: "checkbox",
       },
     ];
   };
@@ -51,7 +78,7 @@ const ModelModal: FC<IModelModal> = (props) => {
                   Render: (
                     <Button
                       text="Create"
-                      onClick={() => console.log("create")}
+                      onClick={handleSubmit}
                       type="button"
                     />
                   ),
@@ -82,3 +109,12 @@ const ModelModal: FC<IModelModal> = (props) => {
 };
 
 export default ModelModal;
+
+const useValues = () => {
+  const modelTitle = useRef<HTMLInputElement>(null);
+  const json = useRef<HTMLInputElement>(null);
+  const text = useRef<HTMLInputElement>(null);
+  const number = useRef<HTMLInputElement>(null);
+
+  return { modelTitle, json, text, number };
+};

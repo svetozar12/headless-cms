@@ -1,8 +1,10 @@
+import Switch from "./subcomponents/Switch";
+
 export interface IInputProps {
   name: string;
   type: string;
   onChange: (e: any) => void;
-  value?: string;
+  value?: any;
   label?: string;
   placeholder?: string;
   extraProps?: React.DetailedHTMLProps<
@@ -12,7 +14,8 @@ export interface IInputProps {
 }
 
 const Input = (props: IInputProps) => {
-  const { name, label, type, placeholder, value, onChange } = props;
+  const { name, label, type, placeholder, value, onChange, extraProps } = props;
+  if (type === "checkbox") return <Switch ref={extraProps?.ref} />;
   return (
     <>
       {label && (
@@ -31,6 +34,7 @@ const Input = (props: IInputProps) => {
           className={
             "w-full bg-transparent p-2 text-white autofill:bg-transparent active:border-0"
           }
+          {...extraProps}
         />
       </div>
     </>

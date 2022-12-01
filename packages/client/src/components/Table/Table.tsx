@@ -91,7 +91,10 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   return (
-    <table className={`${className} w-full`} {...restProps}>
+    <table
+      className={`${className} w-full shadow-md shadow-gray-700`}
+      {...restProps}
+    >
       <div className="w-full rounded-t-md bg-offBlack">
         {customHeader}
         {renderHeading()}
