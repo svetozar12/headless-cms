@@ -1,4 +1,9 @@
+import { useMutation } from "@tanstack/react-query";
+import { useCookie } from "next-cookie";
 import React, { Dispatch, FC, SetStateAction, useRef, useState } from "react";
+import useCookies from "../../../../hooks/useCookies";
+import api from "../../../../utils/api";
+import { IContentModel } from "../../../../utils/api/resources/contentModel";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
 import Form from "../../../Form";
@@ -13,19 +18,13 @@ interface IModelModal {
 
 const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, setIsModal } = props;
-  const [isLoading, setIsLoading] = useState(false);
+  const { mutateAsync, isLoading } = useCreateModel();
   const { modelTitle, json, number, text } = useValues();
-  const handleSubmit = async (e: React.ChangeEvent) => {
-    e.preventDefault();
 
-    console.log(
-      "submit",
-      modelTitle.current?.value,
-      json.current?.checked,
-      number.current?.checked,
-      text.current?.checked
-    );
-  };
+  const titleValue = modelTitle.current?.value;
+  const jsonValue = json.current?.checked;
+  const numberValue = number.current?.checked;
+  const textValue = text.current?.checked;
 
   const getFIelds = (): IFields[] => {
     return [
@@ -40,6 +39,7 @@ const ModelModal: FC<IModelModal> = (props) => {
         extraProps: {
           extraProps: { ref: json },
         },
+        label: "json",
         name: "json",
         type: "checkbox",
       },
@@ -47,6 +47,7 @@ const ModelModal: FC<IModelModal> = (props) => {
         extraProps: {
           extraProps: { ref: text },
         },
+        label: "text",
         name: "text",
         type: "checkbox",
       },
@@ -54,6 +55,7 @@ const ModelModal: FC<IModelModal> = (props) => {
         extraProps: {
           extraProps: { ref: number },
         },
+        label: "number",
         name: "number",
         type: "checkbox",
       },
@@ -66,7 +68,14 @@ const ModelModal: FC<IModelModal> = (props) => {
         <Form
           isLoading={isLoading}
           error=""
-          handleSubmit={handleSubmit}
+          handleSubmit={() =>
+            mutateAsync({
+              title: titleValue,
+              json: jsonValue,
+              number: numberValue,
+              text: textValue,
+            })
+          }
           fields={getFIelds()}
           formHeader={
             <Heading type="h1" text="Add model" className="text-white" />
@@ -78,7 +87,14 @@ const ModelModal: FC<IModelModal> = (props) => {
                   Render: (
                     <Button
                       text="Create"
-                      onClick={handleSubmit}
+                      onClick={() =>
+                        mutateAsync({
+                          title: titleValue,
+                          json: jsonValue,
+                          number: numberValue,
+                          text: textValue,
+                        })
+                      }
                       type="button"
                     />
                   ),
@@ -117,4 +133,13 @@ const useValues = () => {
   const number = useRef<HTMLInputElement>(null);
 
   return { modelTitle, json, text, number };
+};
+
+const useCreateModel = () => {
+  const { accessToken } = useCookies();
+  const mutation = useMutation({
+    mutationFn: (newModel: IContentModel) =>
+      api.ContentModel.createModel(accessToken, newModel),
+  });
+  return { ...mutation };
 };

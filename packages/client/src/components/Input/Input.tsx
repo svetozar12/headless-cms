@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Switch from "./subcomponents/Switch";
 
 export interface IInputProps {
@@ -15,14 +16,10 @@ export interface IInputProps {
 
 const Input = (props: IInputProps) => {
   const { name, label, type, placeholder, value, onChange, extraProps } = props;
-  if (type === "checkbox") return <Switch ref={extraProps?.ref} />;
-  return (
-    <>
-      {label && (
-        <label htmlFor={name} className="px-2 text-white">
-          {label}
-        </label>
-      )}
+  let content: ReactNode;
+  if (type === "checkbox") content = <Switch innerref={extraProps?.ref} />;
+  else
+    content = (
       <div className="m-2  rounded-md bg-inputBlack p-1">
         <input
           value={value}
@@ -37,6 +34,15 @@ const Input = (props: IInputProps) => {
           {...extraProps}
         />
       </div>
+    );
+  return (
+    <>
+      {label && (
+        <label htmlFor={name} className="px-2 text-white">
+          {label}
+        </label>
+      )}
+      {content}
     </>
   );
 };

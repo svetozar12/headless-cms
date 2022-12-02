@@ -21,7 +21,7 @@ const ModelTable: FC<IModelTable> = (props) => {
   const { data, isLoading: loading } = useQuery(
     ["contentModel", router.query.page],
     () =>
-      api.ContentModel.get.all(
+      api.ContentModel.getAll(
         cookie.get("accessToken") as string,
         router.query.page as any
       )
