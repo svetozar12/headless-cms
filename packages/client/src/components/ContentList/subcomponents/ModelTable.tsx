@@ -1,7 +1,5 @@
-import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
-import React, { Dispatch, FC, SetStateAction } from "react";
-import { FaPlus } from "react-icons/fa";
+import React, { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { MdDelete, MdEdit, MdUpdate } from "react-icons/md";
 import { CONTENT_MODEL, CONTENT_MODELS } from "../../../constants/routes";
 import useDeleteContentModel from "../../../hooks/useDeleteContentModel";
@@ -9,32 +7,32 @@ import useGetContentModels from "../../../hooks/useGetContentModels";
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
 import Table from "../../Table";
+import { IColumns } from "../../Table/Table";
 
-interface IModelTable {
-  setIsModal: Dispatch<SetStateAction<boolean>>;
-}
-
-const ModelTable: FC<IModelTable> = (props) => {
-  const { setIsModal } = props;
+const ModelTable: FC = () => {
   const router = useRouter();
   const { mutate } = useDeleteContentModel();
-  const { data, isLoading } = useGetContentModels();
-  const columns = [
+  const { data, isLoading, isFetching } = useGetContentModels();
+  const columns: IColumns[] = [
     { title: "Title", dataIndex: "title" },
     { title: "Number", dataIndex: "number" },
     { title: "Text", dataIndex: "text" },
     { title: "Json", dataIndex: "json" },
     {
       title: "Action",
-      render: (
+      render: (fieldProps: any) => (
         <ActionButtons
           buttons={[
             {
               Render: (
                 <Button
                   Icon={MdDelete}
-                  onClick={() => console.log("delete")}
+                  onClick={(e: ChangeEvent) => {
+                    e.stopPropagation();
+                    mutate(fieldProps.id);
+                  }}
                   type="button"
+                  extraProps={{ className: "relative z-20" }}
                 />
               ),
             },
@@ -42,8 +40,12 @@ const ModelTable: FC<IModelTable> = (props) => {
               Render: (
                 <Button
                   Icon={MdEdit}
-                  onClick={() => console.log("update")}
+                  onClick={(e: ChangeEvent) => {
+                    e.stopPropagation();
+                    console.log("update");
+                  }}
                   type="button"
+                  extraProps={{ className: "relative z-20" }}
                 />
               ),
             },
@@ -53,14 +55,6 @@ const ModelTable: FC<IModelTable> = (props) => {
     },
   ];
 
-  const renderActionButtons = () => {
-    return (
-      <div className="mt-2 flex justify-end border-2 border-black border-opacity-5 bg-offBlack">
-        <Button onClick={() => setIsModal(true)} type="button" Icon={FaPlus} />
-      </div>
-    );
-  };
-
   const onTableChange = async (page: number) => {
     router.push(`${CONTENT_MODELS}/?page=${page}`, undefined, {
       shallow: true,
@@ -68,12 +62,11 @@ const ModelTable: FC<IModelTable> = (props) => {
   };
 
   return (
-    <div className="relative w-2/4">
+    <div className={`relative w-2/4 ${(isLoading || isFetching) && "h-60"}`}>
       <Table
         onRowClick={(field: any) => router.push(CONTENT_MODEL(field.id))}
-        isLoading={isLoading}
+        isLoading={isLoading || isFetching}
         onTableChange={onTableChange}
-        customHeader={renderActionButtons()}
         columns={columns}
         dataSourceIndex="contentModel"
         dataSource={data}

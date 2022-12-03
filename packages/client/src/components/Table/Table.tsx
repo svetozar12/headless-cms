@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import Pagination from "./subcomponents/Pagination";
 import s from "./Table.module.css";
@@ -8,10 +8,10 @@ interface IExtraProps {
   className?: string;
 }
 
-interface IColumns {
+export interface IColumns {
   title: string;
   dataIndex?: string;
-  render?: ReactNode;
+  render?: (fieldProps: any) => ReactNode;
 }
 
 interface ITable {
@@ -36,6 +36,8 @@ const Table: React.FC<ITable> = (props) => {
     onRowClick: onRowclick,
     customHeader,
   } = props;
+  console.log(isLoading);
+
   if (isLoading) return <Spinner isLoading={isLoading} />;
   const { className, ...restProps } = extraProps || {};
   const { pagination } = dataSource;
@@ -44,7 +46,7 @@ const Table: React.FC<ITable> = (props) => {
 
   const renderHeading = () => {
     return (
-      <tr className={`flex py-2 text-gray-400`}>
+      <tr className={`bg-off flex py-2 text-gray-400`}>
         {columns.map(({ title }) => (
           <th key={title} className="flex-1 text-center font-semibold">
             {title}
@@ -60,9 +62,8 @@ const Table: React.FC<ITable> = (props) => {
     });
   };
 
-  const onRowClick = (rowProp: any) => {
+  const onRowClick = (rowProp: any, e: React.ChangeEvent) => {
     onRowclick?.(rowProp);
-    console.log("row click", rowProp);
   };
 
   const renderContent = () => {
@@ -73,8 +74,10 @@ const Table: React.FC<ITable> = (props) => {
           return (
             <div key={index} className="rounded-md ">
               <tr
-                onClick={() => onRowClick(item)}
-                className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${s.borderBottom} ${s.borderTop}`}
+                onClick={(e: any) => onRowClick(item, e)}
+                className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${
+                  props.onRowClick && "cursor-pointer"
+                } ${s.borderBottom} ${s.borderTop}`}
               >
                 {columns.map(({ dataIndex, render }) => {
                   return (
@@ -84,7 +87,7 @@ const Table: React.FC<ITable> = (props) => {
                     >
                       {render ? (
                         <div onClick={() => console.log("button")}>
-                          {render}
+                          {render(item)}
                         </div>
                       ) : dataIndex ? (
                         String(item[dataIndex])
@@ -104,7 +107,7 @@ const Table: React.FC<ITable> = (props) => {
 
   return (
     <table
-      className={`${className} w-full shadow-md shadow-gray-700`}
+      className={`${className} relative w-full shadow-gray-700`}
       {...restProps}
     >
       <div className="w-full rounded-t-md bg-offBlack">

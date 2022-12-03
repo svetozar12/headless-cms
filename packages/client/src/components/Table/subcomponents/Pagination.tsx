@@ -22,10 +22,10 @@ const Pagination: React.FC<IPagination> = (props) => {
     const pagesArray: number[] = [];
     for (let i = 0; i < pagesNumber; i++) pagesArray.push(i);
     return (
-      <div className="flex">
+      <div className="flex justify-end">
         <button
           onClick={() => onPageChange(page - 1)}
-          className="mx-2 my-1 flex h-8 w-8 items-center justify-center rounded-md duration-100 ease-in hover:bg-table-headerBackground"
+          className="m-2 flex h-8 w-8 items-center justify-center rounded-md  bg-offBlack text-white duration-100 ease-in hover:bg-opacity-50"
         >
           <BsChevronLeft />
         </button>
@@ -36,10 +36,10 @@ const Pagination: React.FC<IPagination> = (props) => {
             <button
               key={readablePage}
               onClick={() => !isActive && onPageChange(readablePage)}
-              className={`mx-2 my-1 flex h-8 w-8 items-center justify-center rounded-md duration-100 ease-in ${
+              className={`m-2 flex h-8 w-8 items-center justify-center rounded-md duration-100 ease-in ${
                 isActive
-                  ? "border-2 border-blue-400 text-blue-400"
-                  : "hover:bg-table-headerBackground"
+                  ? "bg-mainPurple text-white"
+                  : "bg-offBlack text-white hover:bg-opacity-50"
               }`}
             >
               {readablePage}
@@ -48,7 +48,7 @@ const Pagination: React.FC<IPagination> = (props) => {
         })}
         <button
           onClick={() => onPageChange(page + 1)}
-          className="mx-2 my-1 flex h-8 w-8 items-center justify-center rounded-md duration-100 ease-in hover:bg-table-headerBackground"
+          className="m-2 flex h-8 w-8 items-center justify-center rounded-md  bg-offBlack text-white duration-100 ease-in hover:bg-opacity-50"
         >
           <BsChevronRight />
         </button>

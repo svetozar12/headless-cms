@@ -139,7 +139,7 @@ const useCreateModel = () => {
     mutationFn: (newModel: IContentModel) =>
       api.ContentModel.createModel(accessToken, newModel),
     onSuccess: () => {
-      queryClient.invalidateQueries(["contentModel", router.query.page]);
+      queryClient.invalidateQueries(["contentModels", router.query.page]);
     },
   });
   return { ...mutation };

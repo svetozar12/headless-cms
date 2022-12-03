@@ -32,7 +32,7 @@ const Navbar = () => {
 
   const render = () => {
     return (
-      <nav className="flex h-14 w-full items-center  bg-mainPurple">
+      <nav className="flex h-20 w-full items-center bg-mainPurple">
         <div className="flex h-full w-full items-center justify-center gap-5">
           {NavLinks.map(({ Icon, href }) => {
             const tabName = HrefToTab(href);

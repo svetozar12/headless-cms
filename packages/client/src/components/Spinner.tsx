@@ -8,10 +8,7 @@ const Spinner: React.FC<ISpinner> = ({ isLoading }): JSX.Element | null => {
   if (!isLoading) return null;
 
   return (
-    <div
-      style={{ background: "rgba(223, 223, 223, 0.6)" }}
-      className="absolute top-0 left-0 z-40 flex h-full w-full items-center justify-center"
-    >
+    <div className="absolute top-0 left-0 z-40 flex h-full w-full items-center justify-center">
       <svg
         aria-hidden="true"
         className="mr-2 h-1/4 w-1/4 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"

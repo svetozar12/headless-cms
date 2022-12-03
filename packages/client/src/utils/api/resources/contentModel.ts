@@ -23,9 +23,12 @@ const ContentModel = {
     contentModel: ContentModel[];
   }> => {
     try {
-      const res = await instance.get(`/contentModel?page=${page || 1}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await instance.get(
+        `/contentModel?page=${page || 1}&pageSize=8`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return res.data;
     } catch (error) {
       return error as any;

@@ -5,12 +5,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import api from "../../utils/api";
 import Heading from "../Heading";
-import Field from "./subcomponents/Field";
-import s from "./ContentModel.module.css";
-import Button from "../Button";
+import Field from "./subcomponents/Field/Field";
 import useDeleteContentModel from "../../hooks/useDeleteContentModel";
-import { FaTrash } from "react-icons/fa";
-import { CONTENT_MODELS } from "../../constants/routes";
+import ModelHeading from "./subcomponents/Headin";
 
 const ContentModel = () => {
   const { data, isLoading, error } = useGetContentModel();
@@ -20,23 +17,12 @@ const ContentModel = () => {
   const { id, userId, title, ...fields } = data || {};
   return (
     <div className="h-screen bg-offBlack">
-      <div
-        className={`mb-20 flex w-full justify-between bg-black py-6 ${s.borderBottom}`}
-      >
-        <Heading text={title || ""} className="ml-2 w-full" type="h1" />
-        <Button
-          type="button"
-          onClick={() => {
-            mutateAsync(id as number).then(() => router.push(CONTENT_MODELS));
-          }}
-          Icon={FaTrash}
-        />
-      </div>
+      <ModelHeading title={title || ""} />
       <div className="flex w-full flex-col items-center justify-center">
         <Heading type="h1" text="Fields" className="mb-5" />
         <div className="w-2/5">
           {Object.keys(fields).map((fieldType) => {
-            return <Field title={title as string} type={fieldType} />;
+            return <Field value={fields[fieldType] as any} type={fieldType} />;
           })}
         </div>
       </div>
