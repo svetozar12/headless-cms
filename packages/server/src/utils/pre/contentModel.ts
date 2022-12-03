@@ -1,16 +1,17 @@
 import { prisma } from "../prisma";
 import { Request } from "express";
 import { zParse } from "../zParse";
-import { commonUserSchema } from "../../common/schema";
+import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import { CustomError } from "../../common/errorModel";
 
 const contentModel = async (req: Request): Promise<void> => {
   const {
     user: { id },
-  } = await zParse(commonUserSchema, req);
+    params: { id: modelId },
+  } = await zParse(commonUserSchema.merge(commonIdParamSchema), req);
 
   const model = await prisma.contentModel.findFirst({
-    where: { userId: id },
+    where: { userId: id, id: modelId },
   });
 
   //@ts-ignore

@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import { useCookie } from "next-cookie";
 import React, { useRef, useState } from "react";
 import z from "zod";
-import { CONTENT_MODELS } from "../../../constants/routes";
-import api from "../../../utils/api";
-import Form from "../../Form";
+import { CONTENT_MODELS } from "../../constants/routes";
+import api from "../../utils/api";
+import Form from "../Form";
 import Header from "./subcomponents/Header";
 import { getFields } from "./utils";
 

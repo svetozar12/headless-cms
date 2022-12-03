@@ -1,14 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
 import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
 import React, { Dispatch, FC, SetStateAction } from "react";
 import { FaPlus } from "react-icons/fa";
-import { MdDelete, MdUpdate } from "react-icons/md";
-import { CONTENT_MODELS } from "../../../../constants/routes";
-import api from "../../../../utils/api";
-import ActionButtons from "../../../ActionButtons";
-import Button from "../../../Button";
-import Table from "../../../Table";
+import { MdDelete, MdEdit, MdUpdate } from "react-icons/md";
+import { CONTENT_MODEL, CONTENT_MODELS } from "../../../constants/routes";
+import useDeleteContentModel from "../../../hooks/useDeleteContentModel";
+import useGetContentModels from "../../../hooks/useGetContentModels";
+import ActionButtons from "../../ActionButtons";
+import Button from "../../Button";
+import Table from "../../Table";
 
 interface IModelTable {
   setIsModal: Dispatch<SetStateAction<boolean>>;
@@ -17,21 +17,13 @@ interface IModelTable {
 const ModelTable: FC<IModelTable> = (props) => {
   const { setIsModal } = props;
   const router = useRouter();
-  const cookie = useCookie();
-  const { data, isLoading: loading } = useQuery(
-    ["contentModel", router.query.page],
-    () =>
-      api.ContentModel.getAll(
-        cookie.get("accessToken") as string,
-        router.query.page as any
-      )
-  );
+  const { mutate } = useDeleteContentModel();
+  const { data, isLoading } = useGetContentModels();
   const columns = [
     { title: "Title", dataIndex: "title" },
     { title: "Number", dataIndex: "number" },
     { title: "Text", dataIndex: "text" },
     { title: "Json", dataIndex: "json" },
-
     {
       title: "Action",
       render: (
@@ -41,7 +33,7 @@ const ModelTable: FC<IModelTable> = (props) => {
               Render: (
                 <Button
                   Icon={MdDelete}
-                  onClick={() => console.log("create")}
+                  onClick={() => console.log("delete")}
                   type="button"
                 />
               ),
@@ -49,7 +41,7 @@ const ModelTable: FC<IModelTable> = (props) => {
             {
               Render: (
                 <Button
-                  Icon={MdUpdate}
+                  Icon={MdEdit}
                   onClick={() => console.log("update")}
                   type="button"
                 />
@@ -75,10 +67,11 @@ const ModelTable: FC<IModelTable> = (props) => {
     });
   };
 
-  const render = () => {
-    return (
+  return (
+    <div className="relative w-2/4">
       <Table
-        isLoading={loading}
+        onRowClick={(field: any) => router.push(CONTENT_MODEL(field.id))}
+        isLoading={isLoading}
         onTableChange={onTableChange}
         customHeader={renderActionButtons()}
         columns={columns}
@@ -86,10 +79,8 @@ const ModelTable: FC<IModelTable> = (props) => {
         dataSource={data}
         extraProps={{ className: "mt-10 rounded-t-xl" }}
       />
-    );
-  };
-
-  return <div className="relative w-2/4">{render()}</div>;
+    </div>
+  );
 };
 
 export default ModelTable;

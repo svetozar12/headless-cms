@@ -5,9 +5,9 @@ const contentModelSchema = z
   .object({
     body: z.object({
       title: z.string(),
-      text: parseBoolean,
-      number: parseBoolean,
-      json: parseBoolean,
+      text: z.boolean().optional(),
+      number: z.boolean().optional(),
+      json: z.boolean().optional(),
     }),
   })
   .merge(commonUserSchema);

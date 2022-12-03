@@ -21,6 +21,7 @@ interface ITable {
   isLoading?: boolean;
   customHeader?: ReactNode;
   onTableChange?: (page: number) => Promise<void>;
+  onRowClick?: (fieldProps: any) => void;
   extraProps?: IExtraProps;
 }
 
@@ -32,6 +33,7 @@ const Table: React.FC<ITable> = (props) => {
     dataSource,
     dataSourceIndex,
     onTableChange,
+    onRowClick: onRowclick,
     customHeader,
   } = props;
   if (isLoading) return <Spinner isLoading={isLoading} />;
@@ -58,6 +60,11 @@ const Table: React.FC<ITable> = (props) => {
     });
   };
 
+  const onRowClick = (rowProp: any) => {
+    onRowclick?.(rowProp);
+    console.log("row click", rowProp);
+  };
+
   const renderContent = () => {
     return (
       <div className="relative">
@@ -66,6 +73,7 @@ const Table: React.FC<ITable> = (props) => {
           return (
             <div key={index} className="rounded-md ">
               <tr
+                onClick={() => onRowClick(item)}
                 className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${s.borderBottom} ${s.borderTop}`}
               >
                 {columns.map(({ dataIndex, render }) => {
@@ -74,11 +82,15 @@ const Table: React.FC<ITable> = (props) => {
                       key={dataIndex}
                       className="flex flex-1 justify-center font-semibold text-gray-400"
                     >
-                      {render
-                        ? render
-                        : dataIndex
-                        ? String(item[dataIndex])
-                        : ""}
+                      {render ? (
+                        <div onClick={() => console.log("button")}>
+                          {render}
+                        </div>
+                      ) : dataIndex ? (
+                        String(item[dataIndex])
+                      ) : (
+                        ""
+                      )}
                     </td>
                   );
                 })}

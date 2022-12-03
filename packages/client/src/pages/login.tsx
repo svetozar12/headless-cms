@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Login from "../components/pagesLayout/Login/Login";
+import Login from "../components/Login/Login";
 import { isAlreadyAuth } from "../utils/auth";
 
 const LoginPage: NextPage = () => <Login />;

@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { LOGIN } from "../../constants/routes";
-import { logout } from "../../utils/auth";
-import Spinner from "../Spinner";
+import { LOGIN } from "../constants/routes";
+import { logout } from "../utils/auth";
+import Spinner from "./Spinner";
 import { useCookie } from "next-cookie";
 
 const Logout = () => {

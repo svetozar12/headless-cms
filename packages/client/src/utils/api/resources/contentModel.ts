@@ -4,6 +4,17 @@ import { instance } from "../index";
 export type IContentModel = Omit<ContentModel, "id" | "userId">;
 
 const ContentModel = {
+  getById: async (token: string, modelId: string) => {
+    try {
+      const res = await instance.get(`/contentModel/${modelId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return res.data.contentModel;
+    } catch (error) {
+      return error as any;
+    }
+  },
   getAll: async (
     token: string,
     page?: number
@@ -21,13 +32,21 @@ const ContentModel = {
     }
   },
   createModel: async (token: string, model: IContentModel) => {
-    console.log(token);
-
     try {
-      const res = await instance.get(`/contentModel`, {
-        data: model,
+      const res = await instance.post(`/contentModel`, model, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      return res;
+    } catch (error) {
+      return error as any;
+    }
+  },
+  delete: async (token: string, modelId: number) => {
+    try {
+      const res = await instance.delete(`/contentModel/${modelId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       return res;
     } catch (error) {
       return error as any;

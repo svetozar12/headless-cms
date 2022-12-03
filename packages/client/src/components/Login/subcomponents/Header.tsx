@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { REGISTER } from "../../../../constants/routes";
-import Heading from "../../../Heading";
+import { REGISTER } from "../../../constants/routes";
+import Heading from "../../Heading";
 
 const Header = () => {
   return (
