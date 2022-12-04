@@ -1,22 +1,25 @@
-import { ContentModel } from "@headless-cms/server";
-import { useQuery } from "@tanstack/react-query";
-import { useCookie } from "next-cookie";
-import { useRouter } from "next/router";
-import React from "react";
-import api from "../../utils/api";
+import React, { useState } from "react";
+import { useGetContentModel } from "../../hooks/useGetContentModel";
 import Heading from "../Heading";
-import Field from "./subcomponents/Field/Field";
-import useDeleteContentModel from "../../hooks/useDeleteContentModel";
-import ModelHeading from "./subcomponents/Headin";
+import Spinner from "../Spinner";
+import Field from "./subcomponents/Field";
+import ModelHeading from "./subcomponents/Heading";
+import ActionButtons from "./subcomponents/Heading/subcomponents/ActionButtons";
 
 const ContentModel = () => {
   const { data, isLoading } = useGetContentModel();
-  const router = useRouter();
-  if (isLoading) return <div>...loading</div>;
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
+  const [updatedFields, setUpdatedFields] = useState<Record<string, any>>({});
+  if (isLoading) return <Spinner isLoading={isLoading} />;
   const { id, userId, title, ...fields } = data || {};
   return (
     <div className="h-screen bg-offBlack">
-      <ModelHeading title={title || ""} />
+      <ModelHeading
+        title={title || ""}
+        ActionButtons={
+          <ActionButtons isUpdated={isUpdated} updatedFields={updatedFields} />
+        }
+      />
       <div className="flex w-full flex-col items-center justify-center">
         <Heading type="h1" text="Fields" className="mb-5" />
         <div className="w-2/5">
@@ -26,6 +29,10 @@ const ContentModel = () => {
                 key={fieldType}
                 value={fields[fieldType] as any}
                 type={fieldType}
+                isUpdated={isUpdated}
+                setIsUpdated={setIsUpdated}
+                updatedFields={updatedFields}
+                setUpdatedFields={setUpdatedFields}
               />
             );
           })}
@@ -36,14 +43,3 @@ const ContentModel = () => {
 };
 
 export default ContentModel;
-
-const useGetContentModel = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const cookie = useCookie();
-  const accessToken: string = cookie.get("accessToken");
-  const query = useQuery<ContentModel>(["contentModel", id], () =>
-    api.ContentModel.getById(accessToken, id as string)
-  );
-  return query;
-};

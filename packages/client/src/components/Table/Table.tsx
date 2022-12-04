@@ -1,14 +1,15 @@
 import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 import Spinner from "../Spinner";
+import Content from "./subcomponents/Content";
+import Heading from "./subcomponents/Heading";
 import Pagination from "./subcomponents/Pagination";
-import s from "./Table.module.css";
 
 interface IExtraProps {
   style?: CSSProperties;
   className?: string;
 }
 
-export interface IColumns {
+export interface IColumn {
   title: string;
   dataIndex?: string;
   render?: (fieldProps: any) => ReactNode;
@@ -17,11 +18,11 @@ export interface IColumns {
 interface ITable {
   dataSource: any;
   dataSourceIndex: string;
-  columns: IColumns[];
+  columns: IColumn[];
   isLoading?: boolean;
   customHeader?: ReactNode;
   onTableChange?: (page: number) => Promise<void>;
-  onRowClick?: (fieldProps: any) => void;
+  onRowClickHandle?: (fieldProps: any) => void;
   extraProps?: IExtraProps;
 }
 
@@ -33,7 +34,7 @@ const Table: React.FC<ITable> = (props) => {
     dataSource,
     dataSourceIndex,
     onTableChange,
-    onRowClick: onRowclick,
+    onRowClickHandle,
     customHeader,
   } = props;
 
@@ -43,18 +44,6 @@ const Table: React.FC<ITable> = (props) => {
   const { pagination } = dataSource;
   const { page, total } = pagination;
 
-  const renderHeading = () => {
-    return (
-      <tr className={`bg-off flex py-2 text-gray-400`}>
-        {columns.map(({ title }) => (
-          <th key={title} className="flex-1 text-center font-semibold">
-            {title}
-          </th>
-        ))}
-      </tr>
-    );
-  };
-
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {
       setData(dataSource[dataSourceIndex]);
@@ -62,57 +51,28 @@ const Table: React.FC<ITable> = (props) => {
   };
 
   const onRowClick = (rowProp: any, _: React.ChangeEvent) => {
-    onRowclick?.(rowProp);
+    onRowClickHandle?.(rowProp);
   };
 
-  const renderContent = () => {
+  const renderTable = () => {
     return (
-      <tbody>
-        {data.map((item, index) => {
-          return (
-            <tr
-              key={index}
-              onClick={(e: any) => onRowClick(item, e)}
-              className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${
-                props.onRowClick && "cursor-pointer"
-              } ${s.borderBottom} ${s.borderTop}`}
-            >
-              {columns.map(({ dataIndex, render }) => {
-                return (
-                  <td
-                    key={dataIndex}
-                    className="flex flex-1 justify-center font-semibold text-gray-400"
-                  >
-                    {render ? (
-                      <div>{render(item)}</div>
-                    ) : dataIndex ? (
-                      String(item[dataIndex])
-                    ) : (
-                      ""
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    );
-  };
-
-  return (
-    <div className="relative">
-      <Spinner isLoading={!!isLoading} />
       <table
         className={`${className} relative w-full shadow-gray-700`}
         {...restProps}
       >
         <tbody className="w-full rounded-t-md bg-offBlack">
           {customHeader}
-          {renderHeading()}
+          <Heading columns={columns} />
         </tbody>
-        {renderContent()}
+        <Content columns={columns} data={data} onRowClick={onRowClick} />
       </table>
+    );
+  };
+
+  return (
+    <div className="relative">
+      <Spinner isLoading={!!isLoading} />
+      {renderTable()}
       <Pagination total={total} current={page} onChange={onChange} />
     </div>
   );
@@ -124,7 +84,7 @@ const useData = (
   dataSourceIndex: string,
   loading: boolean
 ) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     if (!loading) setData(dataSource[dataSourceIndex]);
   }, [dataSource]);

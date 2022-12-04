@@ -7,13 +7,13 @@ import useGetContentModels from "../../../hooks/useGetContentModels";
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
 import Table from "../../Table";
-import { IColumns } from "../../Table/Table";
+import { IColumn } from "../../Table/Table";
 
 const ModelTable: FC = () => {
   const router = useRouter();
   const { mutate } = useDeleteContentModel();
   const { data, isLoading, isFetching } = useGetContentModels();
-  const columns: IColumns[] = [
+  const columns: IColumn[] = [
     { title: "Title", dataIndex: "title" },
     { title: "Number", dataIndex: "number" },
     { title: "Text", dataIndex: "text" },
@@ -64,7 +64,7 @@ const ModelTable: FC = () => {
   return (
     <div className={`relative w-2/4 ${(isLoading || isFetching) && "h-60"}`}>
       <Table
-        onRowClick={(field: any) => router.push(CONTENT_MODEL(field.id))}
+        onRowClickHandle={(field: any) => router.push(CONTENT_MODEL(field.id))}
         isLoading={isLoading || isFetching}
         onTableChange={onTableChange}
         columns={columns}

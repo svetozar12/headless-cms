@@ -1,4 +1,5 @@
 import { ContentModel } from "@headless-cms/server";
+import { GenericObject } from "../../common";
 import { instance } from "../index";
 
 export type IContentModel = Omit<ContentModel, "id" | "userId">;
@@ -39,6 +40,17 @@ const ContentModel = {
       const res = await instance.post(`/contentModel`, model, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      return res;
+    } catch (error) {
+      return error as any;
+    }
+  },
+  update: async (token: string, modelId: number, model: GenericObject) => {
+    try {
+      const res = await instance.put(`/contentModel/${modelId}`, model, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       return res;
     } catch (error) {
       return error as any;

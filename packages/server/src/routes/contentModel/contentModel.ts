@@ -53,6 +53,35 @@ contentModel.get(
   }
 );
 
+contentModel.put(
+  "/:id",
+  isAuth(jwtType.ACCESS),
+  zMiddleware(
+    commonIdParamSchema.merge(commonUserSchema).merge(contentModelSchema)
+  ),
+  preResource([Resource.User, Resource.ContentModel]),
+  async (req, res, next) => {
+    const {
+      user: { id: userId },
+      model,
+      content: { json, number, text },
+    } = req.pre;
+    const { id } = model;
+    await prisma.contentModel.update({
+      where: { id },
+      data: {
+        // @ts-ignore
+        number: number || undefined,
+        // @ts-ignore
+        text: text || undefined,
+        // @ts-ignore
+        json: json || undefined,
+      },
+    });
+    return res.json({ contentModel: model });
+  }
+);
+
 contentModel.post(
   "/",
   isAuth(jwtType.ACCESS),
@@ -63,6 +92,7 @@ contentModel.post(
     const { id } = req.pre.user;
 
     const contentModel = await prisma.contentModel.create({
+      // @ts-ignore
       data: { ...body, userId: id },
     });
 
