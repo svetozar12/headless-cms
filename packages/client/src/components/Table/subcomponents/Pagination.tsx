@@ -3,7 +3,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 interface IPagination {
   total: number;
   current: number;
-  onChange?: (pageNumber: number) => void;
+  onChange?: (_: number) => void;
 }
 
 const Pagination: React.FC<IPagination> = (props) => {

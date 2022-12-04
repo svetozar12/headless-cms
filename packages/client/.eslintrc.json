@@ -4,5 +4,10 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "no-console": "error",
+    "no-unused-vars": ["error", { "varsIgnorePattern": "[_]" }]
+  },
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"]
 }

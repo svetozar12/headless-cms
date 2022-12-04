@@ -10,9 +10,8 @@ import useDeleteContentModel from "../../hooks/useDeleteContentModel";
 import ModelHeading from "./subcomponents/Headin";
 
 const ContentModel = () => {
-  const { data, isLoading, error } = useGetContentModel();
+  const { data, isLoading } = useGetContentModel();
   const router = useRouter();
-  const { mutateAsync } = useDeleteContentModel();
   if (isLoading) return <div>...loading</div>;
   const { id, userId, title, ...fields } = data || {};
   return (
@@ -22,7 +21,13 @@ const ContentModel = () => {
         <Heading type="h1" text="Fields" className="mb-5" />
         <div className="w-2/5">
           {Object.keys(fields).map((fieldType) => {
-            return <Field value={fields[fieldType] as any} type={fieldType} />;
+            return (
+              <Field
+                key={fieldType}
+                value={fields[fieldType] as any}
+                type={fieldType}
+              />
+            );
           })}
         </div>
       </div>

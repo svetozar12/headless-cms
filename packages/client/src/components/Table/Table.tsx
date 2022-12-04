@@ -29,20 +29,19 @@ const Table: React.FC<ITable> = (props) => {
   const {
     extraProps,
     columns,
-    isLoading,
+    isLoading = true,
     dataSource,
     dataSourceIndex,
     onTableChange,
     onRowClick: onRowclick,
     customHeader,
   } = props;
-  console.log(isLoading);
 
-  if (isLoading) return <Spinner isLoading={isLoading} />;
   const { className, ...restProps } = extraProps || {};
+  const { data, setData } = useData(dataSource, dataSourceIndex, isLoading);
+  if (isLoading) return <Spinner isLoading={isLoading} />;
   const { pagination } = dataSource;
   const { page, total } = pagination;
-  const { data, setData } = useData(dataSource, dataSourceIndex);
 
   const renderHeading = () => {
     return (
@@ -62,71 +61,72 @@ const Table: React.FC<ITable> = (props) => {
     });
   };
 
-  const onRowClick = (rowProp: any, e: React.ChangeEvent) => {
+  const onRowClick = (rowProp: any, _: React.ChangeEvent) => {
     onRowclick?.(rowProp);
   };
 
   const renderContent = () => {
     return (
-      <div className="relative">
-        <Spinner isLoading={!!isLoading} />
+      <tbody>
         {data.map((item, index) => {
           return (
-            <div key={index} className="rounded-md ">
-              <tr
-                onClick={(e: any) => onRowClick(item, e)}
-                className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${
-                  props.onRowClick && "cursor-pointer"
-                } ${s.borderBottom} ${s.borderTop}`}
-              >
-                {columns.map(({ dataIndex, render }) => {
-                  return (
-                    <td
-                      key={dataIndex}
-                      className="flex flex-1 justify-center font-semibold text-gray-400"
-                    >
-                      {render ? (
-                        <div onClick={() => console.log("button")}>
-                          {render(item)}
-                        </div>
-                      ) : dataIndex ? (
-                        String(item[dataIndex])
-                      ) : (
-                        ""
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            </div>
+            <tr
+              key={index}
+              onClick={(e: any) => onRowClick(item, e)}
+              className={`flex bg-offBlack py-2 duration-150 ease-in-out hover:border-transparent hover:bg-opacity-20 ${
+                props.onRowClick && "cursor-pointer"
+              } ${s.borderBottom} ${s.borderTop}`}
+            >
+              {columns.map(({ dataIndex, render }) => {
+                return (
+                  <td
+                    key={dataIndex}
+                    className="flex flex-1 justify-center font-semibold text-gray-400"
+                  >
+                    {render ? (
+                      <div>{render(item)}</div>
+                    ) : dataIndex ? (
+                      String(item[dataIndex])
+                    ) : (
+                      ""
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
           );
         })}
-      </div>
+      </tbody>
     );
   };
 
   return (
-    <table
-      className={`${className} relative w-full shadow-gray-700`}
-      {...restProps}
-    >
-      <div className="w-full rounded-t-md bg-offBlack">
-        {customHeader}
-        {renderHeading()}
-      </div>
-      {renderContent()}
+    <div className="relative">
+      <Spinner isLoading={!!isLoading} />
+      <table
+        className={`${className} relative w-full shadow-gray-700`}
+        {...restProps}
+      >
+        <tbody className="w-full rounded-t-md bg-offBlack">
+          {customHeader}
+          {renderHeading()}
+        </tbody>
+        {renderContent()}
+      </table>
       <Pagination total={total} current={page} onChange={onChange} />
-    </table>
+    </div>
   );
 };
 
 export default Table;
-
-const useData = (dataSource: any, dataSourceIndex: string) => {
+const useData = (
+  dataSource: any,
+  dataSourceIndex: string,
+  loading: boolean
+) => {
   const [data, setData] = useState([]);
-
   useEffect(() => {
-    setData(dataSource[dataSourceIndex]);
+    if (!loading) setData(dataSource[dataSourceIndex]);
   }, [dataSource]);
   return { data, setData };
 };

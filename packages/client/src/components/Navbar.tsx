@@ -14,8 +14,7 @@ const HrefToTab = (href: string) => {
 
 const Navbar = () => {
   const cookie = useCookie();
-  const { isLogged, setTokens } = useSession();
-  const { activeTab, setActiveTab } = useActiveTab();
+  const { activeTab = CONTENT_MODELS } = useActiveTab();
   const router = useRouter();
 
   const NavLinks = [
@@ -50,7 +49,6 @@ const Navbar = () => {
                     size="1.75rem"
                     className="cursor-pointer"
                     onClick={() => {
-                      activeTab !== tabName && setActiveTab(tabName);
                       router.push(href);
                     }}
                   />
@@ -76,13 +74,21 @@ const useActiveTab = () => {
   const { setTokens } = useSession();
   useEffect(() => {
     setTokens();
-    if (window.location.pathname === CONTENT_MODELS)
-      setActiveTab(HrefToTab(CONTENT_MODELS));
-    else if (window.location.pathname === CONTENT)
-      setActiveTab(HrefToTab(CONTENT));
-    else if (window.location.pathname === PROFILE)
-      setActiveTab(HrefToTab(PROFILE));
-  }, []);
+    console.log(
+      window.location.pathname === CONTENT_MODELS,
+      window.location.pathname === PROFILE,
+      window.location.pathname === CONTENT,
+      window.location.pathname,
+      CONTENT
+    );
 
-  return { activeTab, setActiveTab };
+    if (window.location.pathname === CONTENT_MODELS)
+      setActiveTab(() => HrefToTab(CONTENT_MODELS));
+    else if (window.location.pathname === CONTENT)
+      setActiveTab(() => HrefToTab(CONTENT));
+    else if (window.location.pathname === PROFILE)
+      setActiveTab(() => HrefToTab(PROFILE));
+  }, [activeTab, window.location.pathname]);
+
+  return { activeTab };
 };

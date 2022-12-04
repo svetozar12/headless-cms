@@ -15,8 +15,6 @@ const auth = {
         })
         .then((res) => Promise.resolve(res.data))
         .catch((err) => Promise.reject(err.response.data));
-      console.log(resPassword, "blag angus");
-
       return resPassword;
     }
 

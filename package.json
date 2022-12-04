@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna bootstrap && lerna link",
+    "postinstall": "lerna bootstrap --no-sort && lerna link --no-sort",
     "build": "lerna run build --stream --no-sort",
     "dev": "lerna run dev --stream --no-sort"
   },

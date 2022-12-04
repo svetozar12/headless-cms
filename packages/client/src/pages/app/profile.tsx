@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { isAlreadyAuth, withAuthSync } from "../../utils/auth";
+import { withAuthSync } from "../../utils/auth";
 
 const ProfilePage: NextPage = () => <div>profile</div>;
 

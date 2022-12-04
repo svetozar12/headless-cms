@@ -1,5 +1,4 @@
 import React, { FC, useRef } from "react";
-import { FaFantasyFlightGames } from "react-icons/fa";
 import Switch from "../../../Input/subcomponents/Switch";
 import s from "./Field.module.css";
 import { getFieldIcon } from "./utils";
@@ -21,7 +20,7 @@ const Field: FC<IFields> = (props) => {
         <Icon className="text-green-400" />
         <p className="">{type}</p>
       </div>
-      <Switch checked={value} innerref={field} />
+      <Switch checked={value} ref={field} />
     </div>
   );
 };

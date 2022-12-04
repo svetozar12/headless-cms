@@ -1,12 +1,12 @@
 import { NextPageContext } from "next";
 import { useCookie, Cookie } from "next-cookie";
-import { CONTENT_MODELS, LOGIN, LOGOUT } from "../constants/routes";
+import { CONTENT_MODELS, LOGOUT } from "../constants/routes";
 import api from "./api";
 
 const redirectTo = (
-  redirectURL: string,
-  ctx: NextPageContext,
-  prevPath?: string
+  redirectURL: string
+  // ctx: NextPageContext,
+  // prevPath?: string
 ) => ({
   redirect: {
     destination: `${
@@ -21,8 +21,7 @@ export interface ICtx extends NextPageContext {
   resolvedUrl: string;
 }
 
-export const checkAuth = async (ctx?: ICtx) => {
-  const cookie = useCookie(ctx);
+export const checkAuth = async (cookie: Cookie) => {
   const accessToken: string = cookie.get("accessToken");
   const refreshToken: string = cookie.get("refreshToken");
 
@@ -53,13 +52,13 @@ export const logout = async (cookie: Cookie) => {
 };
 
 export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
-  const isUserAuth = await checkAuth(ctx);
   const cookie = useCookie(ctx);
+  const isUserAuth = await checkAuth(cookie);
 
-  const currPath = ctx.resolvedUrl;
+  // const currPath = ctx.resolvedUrl;
   if (!isUserAuth) {
     logout(cookie);
-    return redirectTo(LOGOUT, ctx, currPath);
+    return redirectTo(LOGOUT);
   }
   if (getServerSideProps) {
     const gssp = await getServerSideProps(ctx);
@@ -76,7 +75,8 @@ export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
 
 export const isAlreadyAuth =
   (getServerSideProps?: any) => async (ctx: ICtx) => {
-    const isUserAuth = await checkAuth(ctx);
+    const cookie = useCookie(ctx);
+    const isUserAuth = await checkAuth(cookie, ctx);
     const currPath = ctx.resolvedUrl;
     if (isUserAuth && ctx.resolvedUrl === currPath)
       return redirectTo(CONTENT_MODELS, ctx, currPath);
