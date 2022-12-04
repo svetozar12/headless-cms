@@ -8,7 +8,7 @@ import { useCookie } from "next-cookie";
 const Logout = () => {
   const { isLoading } = useLogout();
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-screen w-screen">
       <Spinner isLoading={isLoading} />
       Logging out
     </div>

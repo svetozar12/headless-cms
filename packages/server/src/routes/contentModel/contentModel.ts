@@ -11,7 +11,10 @@ import { prisma } from "../../utils/prisma";
 import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
 import { jwtType } from "../auth/utils";
-import { contentModelSchema } from "./contentModel.schema";
+import {
+  contentModelSchema,
+  updateContentModelSchema,
+} from "./contentModel.schema";
 
 const contentModel = Router();
 
@@ -57,28 +60,35 @@ contentModel.put(
   "/:id",
   isAuth(jwtType.ACCESS),
   zMiddleware(
-    commonIdParamSchema.merge(commonUserSchema).merge(contentModelSchema)
+    commonIdParamSchema.merge(commonUserSchema).merge(updateContentModelSchema)
   ),
   preResource([Resource.User, Resource.ContentModel]),
   async (req, res, next) => {
     const {
-      user: { id: userId },
-      model,
-      content: { json, number, text },
+      body: { title, text, json, number },
+    } = await zParse(updateContentModelSchema, req);
+    const {
+      model: {
+        id,
+        title: preTitle,
+        text: preText,
+        json: preJson,
+        number: preNumber,
+      },
     } = req.pre;
-    const { id } = model;
-    await prisma.contentModel.update({
-      where: { id },
+
+    const updateContent = await prisma.contentModel.update({
+      where: {
+        id,
+      },
       data: {
-        // @ts-ignore
-        number: number || undefined,
-        // @ts-ignore
-        text: text || undefined,
-        // @ts-ignore
-        json: json || undefined,
+        title: title || preTitle,
+        text: text || preText,
+        number: number || preNumber,
+        json: json || preJson,
       },
     });
-    return res.json({ contentModel: model });
+    return res.status(201).json({ content: updateContent });
   }
 );
 

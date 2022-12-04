@@ -34,7 +34,7 @@ export const checkAuth = async (cookie: Cookie) => {
           refreshToken
         );
 
-        if (checkAuth) return !!checkAuth;
+        if (checkAuth) return checkAuth;
 
         return false;
       } catch (e: any) {
@@ -76,10 +76,10 @@ export const withAuthSync = (getServerSideProps?: any) => async (ctx: ICtx) => {
 export const isAlreadyAuth =
   (getServerSideProps?: any) => async (ctx: ICtx) => {
     const cookie = useCookie(ctx);
-    const isUserAuth = await checkAuth(cookie, ctx);
+    const isUserAuth = await checkAuth(cookie);
     const currPath = ctx.resolvedUrl;
     if (isUserAuth && ctx.resolvedUrl === currPath)
-      return redirectTo(CONTENT_MODELS, ctx, currPath);
+      return redirectTo(CONTENT_MODELS);
     if (getServerSideProps) {
       const gssp = await getServerSideProps(ctx);
       return {

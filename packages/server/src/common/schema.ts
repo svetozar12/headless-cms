@@ -18,7 +18,10 @@ const commonIdParamSchema = z.object({
   }),
 });
 
-const parseStringToInt = z.string().transform((val) => parseInt(val));
+const parseStringToInt = z.preprocess((val) => {
+  if (typeof val === "string") return parseInt(val, 10);
+  return val;
+}, z.number().min(1));
 
 const parseJson = z.string().transform((val) => {
   logger([val, typeof JSON.parse(val), "dormak"]);
@@ -27,8 +30,8 @@ const parseJson = z.string().transform((val) => {
 
 const paginationSchema = z.object({
   query: z.object({
-    page: parseStringToInt.default("1"),
-    pageSize: parseStringToInt.default("10"),
+    page: parseStringToInt.default(1),
+    pageSize: parseStringToInt.default(10),
   }),
 });
 

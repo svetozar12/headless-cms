@@ -15,16 +15,18 @@ const useSession = () => {
   const setTokens = async () => {
     try {
       const auth = await checkAuth(cookie.get("refreshToken"));
-      if (typeof auth === "boolean") throw new Error("unauthorized");
-      const { accessToken, refreshToken } = auth;
-      if (accessToken && refreshToken) {
-        setIsLogged(true);
-        cookie.set("accessToken", accessToken);
-        cookie.set("refreshToken", refreshToken);
+      if (typeof auth !== "boolean") {
+        const { accessToken, refreshToken } = auth;
+        if (accessToken && refreshToken) {
+          setIsLogged(true);
+          cookie.set("accessToken", accessToken);
+          cookie.set("refreshToken", refreshToken);
+        }
       }
     } catch {
       setIsLogged(false);
-      // catch error
+      // cookie.remove("accessToken");
+      // cookie.remove("refreshToken");
     }
   };
 

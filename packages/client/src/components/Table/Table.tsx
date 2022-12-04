@@ -1,5 +1,6 @@
 import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 import Spinner from "../Spinner";
+import BlankState from "./subcomponents/BlankState";
 import Content from "./subcomponents/Content";
 import Heading from "./subcomponents/Heading";
 import Pagination from "./subcomponents/Pagination";
@@ -41,8 +42,15 @@ const Table: React.FC<ITable> = (props) => {
   const { className, ...restProps } = extraProps || {};
   const { data, setData } = useData(dataSource, dataSourceIndex, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;
-  const { pagination } = dataSource;
-  const { page, total } = pagination;
+  const { pagination } = dataSource || {};
+  const { page = 1, total = 8 } = pagination || {};
+
+  if (!data || data.length < 1)
+    return (
+      <div className="flex h-40 w-full items-center justify-center">
+        <BlankState />
+      </div>
+    );
 
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {

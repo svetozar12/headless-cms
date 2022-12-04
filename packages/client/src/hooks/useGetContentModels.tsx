@@ -9,7 +9,7 @@ const useGetContentModels = () => {
   const query = useQuery(["contentModels", router.query.page], () =>
     api.ContentModel.getAll(
       cookie.get("accessToken") as string,
-      router.query.page as any
+      (router.query.page as any) || 1
     )
   );
 

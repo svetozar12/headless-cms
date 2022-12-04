@@ -16,7 +16,8 @@ const ActionButtons: FC<IActionButtons> = (props) => {
   const router = useRouter();
   const { mutateAsync: deleteContentModel } = useDeleteContentModel();
   const { mutateAsync: updateContentModel } = useUpdateContentModel();
-  const { id } = router.query;
+  const { query } = router;
+  const { id } = query;
 
   return (
     <div className="flex">
@@ -26,7 +27,7 @@ const ActionButtons: FC<IActionButtons> = (props) => {
           updateContentModel({
             modelId: id as unknown as number,
             newModel: updatedFields,
-          }).then(() => router.push(CONTENT_MODELS))
+          }).then(() => router.push({ pathname: CONTENT_MODELS, query }))
         }
         extraProps={{ className: "bg-green-400" }}
         type="button"
@@ -35,7 +36,7 @@ const ActionButtons: FC<IActionButtons> = (props) => {
       <Button
         onClick={() =>
           deleteContentModel(id as unknown as number).then(() =>
-            router.push(CONTENT_MODELS)
+            router.push({ pathname: CONTENT_MODELS, query })
           )
         }
         type="button"
