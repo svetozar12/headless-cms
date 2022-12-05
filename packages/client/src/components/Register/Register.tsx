@@ -22,7 +22,6 @@ const Register: React.FunctionComponent = () => {
   const handleSubmit = async (e: any) => {
     const { value: usernameValue } = username.current || {};
     const { value: passwordValue } = password.current || {};
-    console.log(usernameValue, passwordValue);
 
     e.preventDefault();
     setIsLoading(true);

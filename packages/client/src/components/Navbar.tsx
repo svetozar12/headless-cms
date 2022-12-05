@@ -74,13 +74,6 @@ const useActiveTab = () => {
   const { setTokens } = useSession();
   useEffect(() => {
     setTokens();
-    console.log(
-      window.location.pathname === CONTENT_MODELS,
-      window.location.pathname === PROFILE,
-      window.location.pathname === CONTENT,
-      window.location.pathname,
-      CONTENT
-    );
 
     if (window.location.pathname === CONTENT_MODELS)
       setActiveTab(() => HrefToTab(CONTENT_MODELS));

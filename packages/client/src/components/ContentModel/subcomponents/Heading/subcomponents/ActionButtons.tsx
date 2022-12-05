@@ -12,7 +12,7 @@ interface IActionButtons {
 }
 
 const ActionButtons: FC<IActionButtons> = (props) => {
-  const { isUpdated, updatedFields } = props;
+  const { isUpdated = false, updatedFields = {} } = props;
   const router = useRouter();
   const { mutateAsync: deleteContentModel } = useDeleteContentModel();
   const { mutateAsync: updateContentModel } = useUpdateContentModel();

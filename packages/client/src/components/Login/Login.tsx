@@ -33,7 +33,6 @@ const Login: React.FunctionComponent = () => {
       });
       if (!isParse.success) {
         const formatError = isParse.error.issues;
-        console.log(formatError);
 
         formatError.forEach((err) => {
           throw new Error(err.message);

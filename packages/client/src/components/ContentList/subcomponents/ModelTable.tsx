@@ -42,7 +42,6 @@ const ModelTable: FC = () => {
                   Icon={MdEdit}
                   onClick={(e: ChangeEvent) => {
                     e.stopPropagation();
-                    console.log("update");
                   }}
                   type="button"
                   extraProps={{ className: "relative z-20" }}

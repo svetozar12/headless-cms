@@ -7,28 +7,16 @@ import { getFieldIcon } from "./utils";
 interface IFields {
   type: string;
   value: boolean;
-  isUpdated: boolean;
-  updatedFields: GenericObject;
-  setIsUpdated: SetState<boolean>;
   setUpdatedFields: SetState<GenericObject>;
 }
 
 const Field: FC<IFields> = (props) => {
-  const {
-    value = false,
-    type = "",
-    isUpdated = false,
-    setIsUpdated = undefined,
-    setUpdatedFields,
-    updatedFields,
-  } = props;
+  const { value = false, type = "", setUpdatedFields } = props;
   const [field, setField] = useState<boolean>(value);
   const Icon = getFieldIcon(type);
 
   useEffect(() => {
-    const hasChanged = value !== field;
     setUpdatedFields((prev) => ({ ...prev, [type]: field }));
-    setIsUpdated?.(() => hasChanged);
   }, [field]);
 
   return (
