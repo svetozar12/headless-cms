@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import s from "./Modal.module.css";
 
 interface IModal {
   children: React.ReactNode;
@@ -40,7 +41,9 @@ const Modal: React.FC<IModal> = (props) => {
 
   const renderContent = () => {
     return (
-      <div className="min-h-1/6 absolute z-50 flex w-3/5 flex-col justify-between rounded-md bg-offBlack p-2 ">
+      <div
+        className={`min-h-3/6 absolute z-50 flex w-3/5 flex-col justify-between rounded-md bg-offBlack p-2 ${s.modal}`}
+      >
         <div>{children}</div>
         <div>{renderFooter()}</div>
       </div>

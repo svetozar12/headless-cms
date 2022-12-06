@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModelHeader from "./subcomponents/ModelHeader";
 import ModelModal from "./subcomponents/ModelModal";
-import ModelTable from "./subcomponents/ModelTable";
+import ModelTable from "./subcomponents/ModelTable/ModelTable";
 
 const ContentList: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
