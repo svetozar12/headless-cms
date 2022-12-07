@@ -7,7 +7,7 @@ import { commonUserSchema } from "../../common/schema";
 import { prisma } from "../../utils/prisma";
 import { env } from "../../env/server";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
-import { undefined } from "zod";
+import { getAvatar } from "../../utils/getAvatar";
 
 const user = Router();
 
@@ -32,7 +32,9 @@ user.post("/", zMiddleware(userSchema), async (req, res, next) => {
   if (isUserExist)
     return res.status(409).json({ message: "User already exist" });
 
-  const user = await prisma.user.create({ data: { username, password } });
+  const user = await prisma.user.create({
+    data: { username, password, avatar: getAvatar("identicon") },
+  });
   const accessToken = await signToken(
     jwtType.ACCESS,
     { id: user.id, username },

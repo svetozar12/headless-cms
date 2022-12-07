@@ -25,4 +25,7 @@ export default defineNextConfig({
       },
     ];
   },
+  images: {
+    domains: ["avatars.dicebear.com"],
+  },
 });

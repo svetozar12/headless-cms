@@ -4,9 +4,17 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { FaBoxes, FaUserCircle } from "react-icons/fa";
 import { MdContentPaste } from "react-icons/md";
-import { CONTENT, CONTENT_MODELS, LOGOUT, PROFILE } from "../constants/routes";
-import useSession from "../hooks/useSession";
+import {
+  CONTENT,
+  CONTENT_MODELS,
+  LOGOUT,
+  PROFILE,
+} from "../../constants/routes";
+import useSession from "../../hooks/useSession";
 import { useCookie } from "next-cookie";
+import Image from "next/image";
+import Dropdown from "./subcomponents/Dropdown";
+import Spinner from "../Spinner";
 
 const HrefToTab = (href: string) => {
   return href.slice(1, href.length);
@@ -14,8 +22,10 @@ const HrefToTab = (href: string) => {
 
 const Navbar = () => {
   const cookie = useCookie();
+  const { user } = useSession();
   const { activeTab = CONTENT_MODELS } = useActiveTab();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const NavLinks = [
     { Icon: FaBoxes, href: CONTENT_MODELS },
@@ -23,15 +33,12 @@ const Navbar = () => {
       Icon: MdContentPaste,
       href: CONTENT,
     },
-    {
-      Icon: FaUserCircle,
-      href: PROFILE,
-    },
   ];
 
   const render = () => {
     return (
-      <nav className="flex h-20 w-full items-center bg-mainPurple">
+      <nav className="relative flex h-20 w-full items-center bg-mainPurple">
+        {!user && <Spinner isLoading={!user} />}
         <div className="flex h-full w-full items-center justify-center gap-5">
           {NavLinks.map(({ Icon, href }) => {
             const tabName = HrefToTab(href);
@@ -40,13 +47,13 @@ const Navbar = () => {
             return (
               <div
                 key={href}
-                className={`flex h-10 w-10 items-center justify-center rounded-md duration-500 ease-out bg-transparent${
+                className={`flex h-12 w-12 items-center justify-center rounded-md duration-500 ease-out bg-transparent${
                   isActiveTab && "rounded-md bg-textPurple"
                 }`}
               >
                 <Link key={href} href={href}>
                   <Icon
-                    size="1.75rem"
+                    size="2.3rem"
                     className="cursor-pointer"
                     onClick={() => {
                       router.push(href);
@@ -56,9 +63,30 @@ const Navbar = () => {
               </div>
             );
           })}
-          <button type="button" onClick={() => router.push(LOGOUT)}>
-            <AiOutlineLogout size="1.75rem" className="cursor-pointer" />
-          </button>
+
+          <div className="relative h-9 w-9">
+            <Image
+              src={user?.avatar}
+              width="37px"
+              height="37px"
+              className="flex cursor-pointer items-center justify-center rounded-full"
+              onClick={() => setIsOpen((prev) => !prev)}
+            />
+            <div className="relative flex h-full w-full">
+              <Dropdown
+                isOpen={isOpen}
+                items={[
+                  {
+                    title: "Logout",
+                    onClick: () => {
+                      router.push(LOGOUT);
+                      setIsOpen(false);
+                    },
+                  },
+                ]}
+              />
+            </div>
+          </div>
         </div>
       </nav>
     );
