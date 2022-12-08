@@ -1,7 +1,7 @@
 // src/types/express/index.d.ts
 
 // to make the file a module and avoid the TypeScript error
-import { Content, ContentModel, User } from "../../utils/prisma";
+import { Content, ContentModel, FIeld, User } from "../../utils/prisma";
 
 export {};
 
@@ -17,6 +17,7 @@ declare global {
         user: UserMe;
         content: Content;
         model: ContentModel;
+        field: FIeld;
       };
     }
   }

@@ -4,7 +4,7 @@ import {
   commonUserSchema,
   paginationSchema,
 } from "../../common/schema";
-import { checkContentTypes } from "../../middlewares/checkContentTypes";
+import { checkContentTypes } from "../../utils/checkContentTypes";
 import isAuth from "../../middlewares/isAuth";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
 import { prisma, Content } from "../../utils/prisma";
@@ -40,7 +40,7 @@ content.get(
     return res
       .status(200)
       .json({ content, pagination: { page, pageSize, total: totalContent } });
-  }
+  },
 );
 
 content.get(
@@ -58,7 +58,7 @@ content.get(
     });
 
     return res.status(200).json({ content });
-  }
+  },
 );
 
 content.post(
@@ -66,7 +66,6 @@ content.post(
   isAuth(jwtType.ACCESS),
   zMiddleware(createContentSchema),
   preResource([Resource.ContentModel]),
-  checkContentTypes(),
   async (req, res, next) => {
     const { body } = await zParse(createContentSchema, req);
     const { model } = req.pre;
@@ -79,7 +78,7 @@ content.post(
     });
 
     return res.status(201).json({ content });
-  }
+  },
 );
 
 content.put(
@@ -87,19 +86,12 @@ content.put(
   isAuth(jwtType.ACCESS),
   zMiddleware(updateContentSchema),
   preResource([Resource.Content]),
-  checkContentTypes(),
   async (req, res, next) => {
     const {
-      body: { title, text, json, number },
+      body: { title },
     } = await zParse(updateContentSchema, req);
     const {
-      content: {
-        id,
-        title: preTitle,
-        text: preText,
-        json: preJson,
-        number: preNumber,
-      },
+      content: { id, title: preTitle },
     } = req.pre;
 
     const updateContent = await prisma.content.update({
@@ -108,13 +100,10 @@ content.put(
       },
       data: {
         title: title || preTitle,
-        text: text || preText,
-        number: number || preNumber,
-        json: json || preJson,
       },
     });
     return res.status(201).json({ content: updateContent });
-  }
+  },
 );
 
 content.delete(
@@ -122,17 +111,16 @@ content.delete(
   isAuth(jwtType.ACCESS),
   zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
   preResource([Resource.Content]),
-  async (req, res, next: NextFunction) => {
-    const { body } = await zParse(deleteContentSchema, req);
+  async (req, res) => {
     const { content } = req.pre;
     const { id } = content;
 
     await prisma.content.delete({
-      where: { id } as any,
+      where: { id },
     });
 
     return res.status(204).send();
-  }
+  },
 );
 
 export default content;

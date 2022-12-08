@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { MdContentPaste } from "react-icons/md";
+import { FaBoxes, FaPlus } from "react-icons/fa";
 import Button from "../../Button";
 import Heading from "../../Heading";
 import PageHeader from "../../PageHeader/PageHeader";
@@ -13,13 +13,13 @@ const ModelHeader: FC<IModelHeader> = (props) => {
   return (
     <PageHeader extraProps={{ className: "justify-between" }}>
       <div className="flex">
-        <MdContentPaste className="mr-4 h-8 w-8" />
-        <Heading type="h1" text="Content" />
+        <FaBoxes className="mr-4 h-8 w-8" />
+        <Heading type="h1" text="Content Model" />
       </div>
       <Button
         onClick={() => setIsModal(true)}
         type="button"
-        text="Add Content"
+        text="Add Content Type"
       />
     </PageHeader>
   );

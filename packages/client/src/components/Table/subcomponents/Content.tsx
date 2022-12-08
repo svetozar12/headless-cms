@@ -25,7 +25,7 @@ const Content: FC<IContent> = (props) => {
               return (
                 <td
                   key={dataIndex}
-                  className="flex flex-1 justify-center font-semibold text-gray-400"
+                  className="flex flex-1 items-center justify-center font-semibold text-gray-400"
                 >
                   {render ? (
                     <div>{render(item)}</div>

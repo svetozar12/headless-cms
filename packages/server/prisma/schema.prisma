@@ -17,22 +17,42 @@ model User {
 }
 
 model ContentModel {
-  id      Int       @id @default(autoincrement())
+  id      Int         @id @default(autoincrement())
   title   String
   userId  Int
-  text    Boolean?
-  json    Boolean?
-  number  Boolean?
-  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   Content Content[]
+  FIeld   FieldType[]
 }
 
 model Content {
   id             Int          @id @default(autoincrement())
   title          String
   contentModelId Int
-  text           String?
-  json           Json?
-  number         Int?
   contentModel   ContentModel @relation(fields: [contentModelId], references: [id], onDelete: Cascade)
+  FIeld          FIeld[]
+}
+
+model FIeld {
+  id          Int        @id @default(autoincrement())
+  contentId   Int?
+  fieldTypeId Int
+  value       String?
+  content     Content?   @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  fieldType   FieldType? @relation(fields: [fieldTypeId], references: [id], onDelete: Cascade)
+}
+
+model FieldType {
+  id             Int           @id @default(autoincrement())
+  contentModelId Int
+  title          String
+  type           FieldTypeEnum
+  contentModel   ContentModel  @relation(fields: [contentModelId], references: [id], onDelete: Cascade)
+  FIeld          FIeld[]
+}
+
+enum FieldTypeEnum {
+  text
+  json
+  number
 }

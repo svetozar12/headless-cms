@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { AiOutlineLogout } from "react-icons/ai";
-import { FaBoxes, FaUserCircle } from "react-icons/fa";
+import { FaBoxes } from "react-icons/fa";
 import { MdContentPaste } from "react-icons/md";
 import {
   CONTENT,

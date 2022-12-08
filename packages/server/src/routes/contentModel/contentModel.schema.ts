@@ -1,4 +1,5 @@
-import { z } from "zod";
+import { FieldType } from "@prisma/client";
+import { z, ZodType } from "zod";
 import { commonUserSchema, parseBoolean } from "../../common/schema";
 
 const contentModelSchema = z
@@ -23,4 +24,11 @@ const updateContentModelSchema = z
   })
   .merge(commonUserSchema);
 
-export { contentModelSchema, updateContentModelSchema };
+const fieldType: ZodType<FieldType> = z.enum(["json", "text", "number"]);
+
+const addField = z.object({
+  type: fieldType,
+  value: z.any(),
+});
+
+export { contentModelSchema, updateContentModelSchema, addField };

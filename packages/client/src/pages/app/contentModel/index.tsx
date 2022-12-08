@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import ContentList from "../../../components/ContentList/ContentList";
+import ContentList from "../../../components/ContentModelList";
 import { withAuthSync } from "../../../utils/auth";
 
 const ContentModelsPage: NextPage = () => <ContentList />;

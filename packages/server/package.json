@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/trpc-server.js",
   "scripts": {
-    "prebuild": "rimraf dist && yarn lint && yarn prisma generate",
+    "prebuild": "rimraf dist &&  yarn prisma generate",
     "build": "tsc",
     "lint": "eslint . --cache --ext .ts",
     "prestart": "yarn build",
@@ -16,7 +16,8 @@
     "tsc-w": "tsc -w",
     "pretest": "yarn build",
     "test": "jest",
-    "dev": "nodemon dist/index.js"
+    "dev": "nodemon dist/index.js",
+    "migrate:dev": "prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",
