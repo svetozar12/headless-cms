@@ -1,4 +1,5 @@
-import { z } from "zod";
+import { FieldTypeEnum } from "@prisma/client";
+import { z, ZodType } from "zod";
 import logger from "../utils/logger";
 
 const parseBoolean = z
@@ -35,7 +36,10 @@ const paginationSchema = z.object({
   }),
 });
 
+const fieldType: ZodType<FieldTypeEnum> = z.enum(["json", "text", "number"]);
+
 export {
+  fieldType,
   parseBoolean,
   parseJson,
   parseStringToInt,
