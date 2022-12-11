@@ -1,7 +1,28 @@
-import { FieldType } from "@prisma/client";
 import { z } from "zod";
-import { commonUserSchema, parseStringToInt } from "../../common/schema";
+import {
+  commonIdParamSchema,
+  commonUserSchema,
+  paginationSchema,
+  parseStringToInt,
+} from "../../common/schema";
 
+export const getContentSchema = z
+  .object({
+    body: z.object({
+      contentModelId: parseStringToInt,
+    }),
+  })
+  .merge(commonUserSchema)
+  .merge(commonIdParamSchema);
+
+export const getContentListSchema = z
+  .object({
+    body: z.object({
+      contentModelId: parseStringToInt,
+    }),
+  })
+  .merge(commonUserSchema)
+  .merge(paginationSchema);
 export const createContentSchema = z
   .object({
     body: z.object({
@@ -11,15 +32,14 @@ export const createContentSchema = z
   })
   .merge(commonUserSchema);
 
-export const updateContentSchema = z.object({
-  body: z.object({
-    title: z.string().optional(),
-    contentModelId: parseStringToInt,
-  }),
-});
+export const updateContentSchema = z
+  .object({
+    body: z.object({
+      title: z.string().optional(),
+      contentModelId: parseStringToInt,
+    }),
+  })
+  .merge(commonIdParamSchema)
+  .merge(commonUserSchema);
 
-export const deleteContentSchema = z.object({
-  body: z.object({
-    contentModelId: parseStringToInt,
-  }),
-});
+export const deleteContentSchema = getContentSchema;

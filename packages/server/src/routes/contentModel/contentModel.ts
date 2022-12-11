@@ -18,7 +18,7 @@ import fieldType from "./fieldType";
 
 const contentModel = Router();
 // nested routes
-contentModel.use("fieldType", fieldType);
+contentModel.use("/fieldType", fieldType);
 // current level routes
 contentModel.get(
   "/",
@@ -44,7 +44,7 @@ contentModel.get(
       contentModel: contentModel,
       pagination: { page, pageSize, total: totalContentModels },
     });
-  },
+  }
 );
 
 contentModel.get(
@@ -55,7 +55,7 @@ contentModel.get(
   async (req, res) => {
     const { model } = req.pre;
     return res.json({ contentModel: model });
-  },
+  }
 );
 
 contentModel.put(
@@ -79,7 +79,7 @@ contentModel.put(
       },
     });
     return res.status(201).json({ content: updateContent });
-  },
+  }
 );
 
 contentModel.post(
@@ -96,7 +96,7 @@ contentModel.post(
     });
 
     return res.status(201).json({ contentModel });
-  },
+  }
 );
 
 contentModel.delete(
@@ -109,7 +109,7 @@ contentModel.delete(
     await prisma.contentModel.delete({ where: { id: model.id } });
 
     return res.status(204).send();
-  },
+  }
 );
 
 export default contentModel;

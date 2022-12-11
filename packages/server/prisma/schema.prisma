@@ -5,7 +5,7 @@ datasource db {
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions", "extendedWhereUnique"]
+  previewFeatures = ["extendedWhereUnique"]
 }
 
 model User {
@@ -14,6 +14,7 @@ model User {
   avatar       String
   password     String
   ContentModel ContentModel[]
+  Content      Content[]
 }
 
 model ContentModel {
@@ -27,8 +28,10 @@ model ContentModel {
 
 model Content {
   id             Int          @id @default(autoincrement())
+  userId         Int
   title          String
   contentModelId Int
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   contentModel   ContentModel @relation(fields: [contentModelId], references: [id], onDelete: Cascade)
   FIeld          FIeld[]
 }
@@ -37,6 +40,7 @@ model FIeld {
   id          Int        @id @default(autoincrement())
   contentId   Int?
   fieldTypeId Int
+  title       String
   value       String?
   content     Content?   @relation(fields: [contentId], references: [id], onDelete: Cascade)
   fieldType   FieldType? @relation(fields: [fieldTypeId], references: [id], onDelete: Cascade)

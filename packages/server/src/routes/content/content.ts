@@ -1,39 +1,38 @@
-import { NextFunction, Router } from "express";
-import {
-  commonIdParamSchema,
-  commonUserSchema,
-  paginationSchema,
-} from "../../common/schema";
-import { checkContentTypes } from "../../utils/checkContentTypes";
+import { Router } from "express";
+
 import isAuth from "../../middlewares/isAuth";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
-import { prisma, Content } from "../../utils/prisma";
+import { prisma } from "../../utils/prisma";
 import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
 import { jwtType } from "../auth/utils";
 import {
   createContentSchema,
   deleteContentSchema,
+  getContentListSchema,
+  getContentSchema,
   updateContentSchema,
 } from "./content.schema";
+import field from "./field";
 
 const content = Router();
-
+// nested routes
+content.use("/field", field);
+// current level routes
 content.get(
   "/",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonUserSchema),
-  preResource([Resource.User, Resource.ContentModel]),
-  async (req, res, next: NextFunction) => {
+  zMiddleware(getContentListSchema),
+  async (req, res) => {
     const {
       query: { page, pageSize },
-    } = await zParse(paginationSchema, req);
+      body: { contentModelId },
+      user: { id: userId },
+    } = await zParse(getContentListSchema, req);
 
-    const { model } = req.pre;
-    const { id } = model;
     const totalContent = await prisma.content.count();
     const content = await prisma.content.findMany({
-      where: { contentModelId: id },
+      where: { contentModelId, userId },
       ...withPagination(page, pageSize),
     });
 
@@ -46,15 +45,15 @@ content.get(
 content.get(
   "/:id",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
-  preResource([Resource.ContentModel]),
-  async (req, res, next: NextFunction) => {
+  zMiddleware(getContentSchema),
+  async (req, res) => {
     const {
       params: { id },
-    } = await zParse(commonIdParamSchema, req);
-    const { model } = req.pre;
+      body: { contentModelId },
+      user: { id: userId },
+    } = await zParse(getContentSchema, req);
     const content = await prisma.content.findMany({
-      where: { id, contentModelId: model!.id },
+      where: { id, contentModelId, userId },
     });
 
     return res.status(200).json({ content });
@@ -65,41 +64,53 @@ content.post(
   "/",
   isAuth(jwtType.ACCESS),
   zMiddleware(createContentSchema),
-  preResource([Resource.ContentModel]),
-  async (req, res, next) => {
-    const { body } = await zParse(createContentSchema, req);
-    const { model } = req.pre;
+  async (req, res) => {
+    const {
+      body: { title, contentModelId },
+      user: { id: userId },
+    } = await zParse(createContentSchema, req);
 
     const content = await prisma.content.create({
       data: {
-        ...body,
-        contentModelId: model.id,
+        title,
+        contentModelId,
+        userId,
       },
     });
+
+    const fieldTypes = await prisma.fieldType.findMany({
+      where: { id: contentModelId },
+    });
+    const { id: contentId } = content;
+    for (const { id: fieldTypeId, title } of fieldTypes) {
+      await prisma.fIeld.create({
+        data: { fieldTypeId, contentId, title },
+      });
+    }
 
     return res.status(201).json({ content });
   }
 );
 
 content.put(
-  "/",
+  "/:id",
   isAuth(jwtType.ACCESS),
   zMiddleware(updateContentSchema),
-  preResource([Resource.Content]),
-  async (req, res, next) => {
+  async (req, res) => {
     const {
-      body: { title },
+      body: { title, contentModelId },
+      params: { id },
+      user,
     } = await zParse(updateContentSchema, req);
-    const {
-      content: { id, title: preTitle },
-    } = req.pre;
 
     const updateContent = await prisma.content.update({
       where: {
         id,
+        userId: user.id,
+        contentModelId,
       },
       data: {
-        title: title || preTitle,
+        title: title,
       },
     });
     return res.status(201).json({ content: updateContent });
@@ -109,14 +120,16 @@ content.put(
 content.delete(
   "/:id",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonUserSchema.merge(commonIdParamSchema)),
-  preResource([Resource.Content]),
+  zMiddleware(deleteContentSchema),
   async (req, res) => {
-    const { content } = req.pre;
-    const { id } = content;
+    const {
+      body: { contentModelId },
+      params: { id },
+      user: { id: userId },
+    } = await zParse(deleteContentSchema, req);
 
     await prisma.content.delete({
-      where: { id },
+      where: { id, contentModelId, userId },
     });
 
     return res.status(204).send();
