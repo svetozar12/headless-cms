@@ -5,7 +5,6 @@ import auth from "./auth";
 import user from "./user";
 import contentModel from "./contentModel";
 import content from "./content";
-import { field } from "./field/field";
 // middlewares
 import isAuth from "../middlewares/isAuth";
 import { jwtType } from "./auth/utils";
@@ -26,7 +25,6 @@ const routes: IRoute[] = [
     middlewares: [isAuth(jwtType.ACCESS)],
   },
   { path: "/content", router: content },
-  { path: "/field", router: field, middlewares: [isAuth(jwtType.ACCESS)] },
 ];
 
 const initRoutes = (app: Application) => {

@@ -1,7 +1,6 @@
 import { Router } from "express";
 
 import isAuth from "../../middlewares/isAuth";
-import { preResource, Resource } from "../../utils/pre/preMiddleware";
 import { prisma } from "../../utils/prisma";
 import { withPagination } from "../../utils/withPagination";
 import { zMiddleware, zParse } from "../../utils/zParse";
@@ -33,6 +32,7 @@ content.get(
     const totalContent = await prisma.content.count();
     const content = await prisma.content.findMany({
       where: { contentModelId, userId },
+      include: { FIeld: true },
       ...withPagination(page, pageSize),
     });
 

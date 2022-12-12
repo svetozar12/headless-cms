@@ -1,9 +1,5 @@
 import { Router } from "express";
-import {
-  commonIdParamSchema,
-  commonUserSchema,
-  paginationSchema,
-} from "../../common/schema";
+import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
 import isAuth from "../../middlewares/isAuth";
 import { preResource, Resource } from "../../utils/pre/preMiddleware";
 import { prisma } from "../../utils/prisma";
@@ -12,6 +8,8 @@ import { zMiddleware, zParse } from "../../utils/zParse";
 import { jwtType } from "../auth/utils";
 import {
   createModelSchema,
+  getAllModelSchema,
+  getModelSchema,
   updateContentModelSchema,
 } from "./contentModel.schema";
 import fieldType from "./fieldType";
@@ -23,15 +21,16 @@ contentModel.use("/fieldType", fieldType);
 contentModel.get(
   "/",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonUserSchema),
+  zMiddleware(getAllModelSchema),
   async (req, res) => {
     const {
       user: { id },
       query: { page, pageSize },
-    } = await zParse(commonUserSchema.merge(paginationSchema), req);
+    } = await zParse(getAllModelSchema, req);
     const totalContentModels = await prisma.contentModel.count();
     const contentModel = await prisma.contentModel.findMany({
       where: { userId: id },
+      include: { FIeld: true, Content: true },
       ...withPagination(page, pageSize),
     });
 
@@ -50,10 +49,17 @@ contentModel.get(
 contentModel.get(
   "/:id",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonIdParamSchema.merge(commonUserSchema)),
+  zMiddleware(getModelSchema),
   preResource([Resource.User, Resource.ContentModel]),
   async (req, res) => {
-    const { model } = req.pre;
+    const {
+      params: { id },
+      user: { id: userId },
+    } = await zParse(getModelSchema, req);
+    const model = await prisma.contentModel.findFirst({
+      where: { id, userId },
+      include: { FIeld: true, Content: true },
+    });
     return res.json({ contentModel: model });
   }
 );

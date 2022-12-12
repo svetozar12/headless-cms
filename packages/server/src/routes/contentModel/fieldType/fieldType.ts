@@ -38,6 +38,7 @@ fieldType.post(
     const fieldType = await prisma.fieldType.create({
       data: { title, type, contentModelId },
     });
+    // await prisma.contentModel.update({where:{id}})
     return res.status(201).json({ fieldType });
   }
 );

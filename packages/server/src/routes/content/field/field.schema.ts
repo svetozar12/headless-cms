@@ -6,7 +6,7 @@ export const updateFieldList = z.object({
   body: z.object({
     contentId: parseStringToInt,
     fields: z.array(
-      z.object({ id: parseStringToInt, value: z.any().optional() }),
+      z.object({ id: parseStringToInt, value: z.any().optional() })
     ),
   }),
 });

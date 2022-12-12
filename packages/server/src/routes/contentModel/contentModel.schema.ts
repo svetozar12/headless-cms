@@ -1,7 +1,15 @@
 import { z } from "zod";
-import { commonIdParamSchema, commonUserSchema } from "../../common/schema";
+import {
+  commonIdParamSchema,
+  commonUserSchema,
+  paginationSchema,
+} from "../../common/schema";
 
-const createModelSchema = z
+export const getModelSchema = commonUserSchema.merge(commonIdParamSchema);
+
+export const getAllModelSchema = commonUserSchema.merge(paginationSchema);
+
+export const createModelSchema = z
   .object({
     body: z.object({
       title: z.string(),
@@ -9,7 +17,7 @@ const createModelSchema = z
   })
   .merge(commonUserSchema);
 
-const updateContentModelSchema = z
+export const updateContentModelSchema = z
   .object({
     body: z.object({
       title: z.string().optional(),
@@ -17,5 +25,3 @@ const updateContentModelSchema = z
   })
   .merge(commonUserSchema)
   .merge(commonIdParamSchema);
-
-export { createModelSchema, updateContentModelSchema };
