@@ -8,6 +8,9 @@ import content from "./content";
 // middlewares
 import isAuth from "../middlewares/isAuth";
 import { jwtType } from "./auth/utils";
+import nested from "./health/nested";
+import field from "./content/field";
+import fieldType from "./contentModel/fieldType";
 
 interface IRoute {
   path: string;
@@ -17,6 +20,7 @@ interface IRoute {
 
 const routes: IRoute[] = [
   { path: "/health", router: health },
+  { path: "/health/:healthId/nested", router: nested },
   { path: "/auth", router: auth },
   { path: "/user", router: user },
   {
@@ -24,7 +28,12 @@ const routes: IRoute[] = [
     router: contentModel,
     middlewares: [isAuth(jwtType.ACCESS)],
   },
+  {
+    path: "/contentModel/:contentModelId/fieldType",
+    router: fieldType,
+  },
   { path: "/content", router: content },
+  { path: "/content/:contentId/field", router: field },
 ];
 
 const initRoutes = (app: Application) => {

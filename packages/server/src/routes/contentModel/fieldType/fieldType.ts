@@ -7,24 +7,25 @@ import { jwtType } from "../../auth/utils";
 import {
   createFieldType,
   deleteFieldType,
+  getFieldType,
   updateFieldType,
 } from "./fieldType.schema";
 
 const fieldType = Router();
 
 fieldType.get(
-  "/:id",
+  "/",
   isAuth(jwtType.ACCESS),
-  zMiddleware(commonIdParamSchema),
+  zMiddleware(getFieldType),
   async (req, res) => {
     const {
-      params: { id: contentModelId },
-    } = await zParse(commonIdParamSchema, req);
+      params: { contentModelId },
+    } = await zParse(getFieldType, req);
     const fieldTypes = await prisma.fieldType.findMany({
       where: { contentModelId },
     });
     return res.status(201).json({ fieldTypes });
-  }
+  },
 );
 
 fieldType.post(
@@ -33,14 +34,15 @@ fieldType.post(
   zMiddleware(createFieldType),
   async (req, res) => {
     const {
-      body: { title, type, modelId: contentModelId },
+      body: { title, type },
+      params: { contentModelId },
     } = await zParse(createFieldType, req);
     const fieldType = await prisma.fieldType.create({
       data: { title, type, contentModelId },
     });
     // await prisma.contentModel.update({where:{id}})
     return res.status(201).json({ fieldType });
-  }
+  },
 );
 
 fieldType.put(
@@ -49,15 +51,15 @@ fieldType.put(
   zMiddleware(updateFieldType),
   async (req, res) => {
     const {
-      body: { title, modelId: contentModelId },
-      params: { id },
+      body: { title },
+      params: { contentModelId, id },
     } = await zParse(updateFieldType, req);
     const fieldType = await prisma.fieldType.update({
       where: { id, contentModelId },
       data: { title },
     });
     return res.status(201).json({ fieldType });
-  }
+  },
 );
 
 fieldType.delete(
@@ -66,14 +68,13 @@ fieldType.delete(
   zMiddleware(deleteFieldType),
   async (req, res) => {
     const {
-      params: { id },
-      body: { modelId: contentModelId },
+      params: { id, contentModelId },
     } = await zParse(deleteFieldType, req);
     await prisma.fieldType.delete({
       where: { id, contentModelId },
     });
     return res.status(204).json({ message: "Field was deleted" });
-  }
+  },
 );
 
 export default fieldType;

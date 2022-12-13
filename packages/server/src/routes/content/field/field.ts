@@ -13,7 +13,8 @@ field.put(
   zMiddleware(updateFieldList),
   async (req, res) => {
     const {
-      body: { contentId, fields },
+      body: { fields },
+      params: { contentId },
     } = await zParse(updateFieldList, req);
     const updatedFields: FIeld[] = [];
     for (const { id, value } of fields) {
@@ -24,7 +25,7 @@ field.put(
       updatedFields.push(newField);
     }
     return res.status(201).json({ updatedFields });
-  }
+  },
 );
 
 export default field;

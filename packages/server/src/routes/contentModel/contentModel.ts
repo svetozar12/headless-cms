@@ -12,11 +12,8 @@ import {
   getModelSchema,
   updateContentModelSchema,
 } from "./contentModel.schema";
-import fieldType from "./fieldType";
 
 const contentModel = Router();
-// nested routes
-contentModel.use("/fieldType", fieldType);
 // current level routes
 contentModel.get(
   "/",
@@ -40,10 +37,10 @@ contentModel.get(
         .json({ message: "You don't have content models !" });
 
     return res.json({
-      contentModel: contentModel,
+      contentModel,
       pagination: { page, pageSize, total: totalContentModels },
     });
-  }
+  },
 );
 
 contentModel.get(
@@ -61,7 +58,7 @@ contentModel.get(
       include: { FIeld: true, Content: true },
     });
     return res.json({ contentModel: model });
-  }
+  },
 );
 
 contentModel.put(
@@ -84,8 +81,8 @@ contentModel.put(
         title,
       },
     });
-    return res.status(201).json({ content: updateContent });
-  }
+    return res.status(201).json({ contentModel: updateContent });
+  },
 );
 
 contentModel.post(
@@ -102,7 +99,7 @@ contentModel.post(
     });
 
     return res.status(201).json({ contentModel });
-  }
+  },
 );
 
 contentModel.delete(
@@ -114,8 +111,8 @@ contentModel.delete(
     const { model } = req.pre;
     await prisma.contentModel.delete({ where: { id: model.id } });
 
-    return res.status(204).send();
-  }
+    return res.status(204).json({ message: "Model was deleted" });
+  },
 );
 
 export default contentModel;
