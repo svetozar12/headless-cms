@@ -94,8 +94,8 @@ const useData = (
 ) => {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
-    if (!data[dataSource]) return setData([]);
     if (!loading) setData(dataSource[dataSourceIndex]);
+    if (!data[dataSource] && !loading) return setData([]);
   }, [dataSource, loading]);
   return { data, setData };
 };

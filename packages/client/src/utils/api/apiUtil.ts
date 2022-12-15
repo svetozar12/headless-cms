@@ -1,11 +1,14 @@
-import { AxiosRequestConfig } from "axios";
-import { instance } from ".";
+import axios, { AxiosRequestConfig } from "axios";
+import { env } from "../../env/env";
 export enum Method {
   GET = "get",
   POST = "post",
   PUT = "put",
   DELETE = "delete",
 }
+
+const apiHost = `${env.NEXT_PUBLIC_API_PROTOCOL}${env.NEXT_PUBLIC_API_HOST}:${env.NEXT_PUBLIC_API_PORT}`;
+
 export const makeRequest = async <T>(
   method: Method,
   path: string,
@@ -14,20 +17,12 @@ export const makeRequest = async <T>(
   token?: string,
   options?: AxiosRequestConfig<any> | undefined
 ): Promise<T> => {
-  let authHeader = { Authorization: "" };
-  const { headers } = options || {};
-  console.log(token, "AUTH TOKEN");
-
-  if (token) {
-    authHeader.Authorization = `Bearer ${token}`;
-  }
-  console.log({ ...authHeader, ...headers });
-
   try {
-    instance.request({ headers: { Authorization: `Bearer ${token}` } });
-    const res = await instance[method](path, data);
+    const res = await axios[method](`${apiHost}${path}`, data);
     return reqObject ? res.data[reqObject] : res.data;
   } catch (error) {
     return error as any;
   }
 };
+export const setToken = (token: string) =>
+  (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`);
