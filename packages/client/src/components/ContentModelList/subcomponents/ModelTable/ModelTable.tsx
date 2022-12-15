@@ -15,7 +15,7 @@ const ModelTable: FC = () => {
   const { mutate } = useDeleteContentModel();
   const { data, isLoading, isFetching } = useGetContentModels();
   const [isDeleteModal, setIsDeleteModal] = useState(false);
-  const [model, setModel] = useState<{ id: number; title: string }>({
+  const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
     title: "",
   });
@@ -73,7 +73,7 @@ const ModelTable: FC = () => {
       <ConfirmDeleteModal
         isDeleteModal={isDeleteModal}
         setIsDeleteModal={setIsDeleteModal}
-        modelId={model.id}
+        modelId={model.id as number}
         modelTitle={model.title}
       />
       <div className={`relative w-2/4 ${(isLoading || isFetching) && "h-60"}`}>

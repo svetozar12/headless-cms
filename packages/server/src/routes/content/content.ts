@@ -36,7 +36,7 @@ content.get(
     return res
       .status(200)
       .json({ content, pagination: { page, pageSize, total: totalContent } });
-  },
+  }
 );
 
 content.get(
@@ -54,7 +54,7 @@ content.get(
     });
 
     return res.status(200).json({ content });
-  },
+  }
 );
 
 content.post(
@@ -86,7 +86,7 @@ content.post(
     }
 
     return res.status(201).json({ content });
-  },
+  }
 );
 
 content.put(
@@ -111,7 +111,7 @@ content.put(
       },
     });
     return res.status(201).json({ content: updateContent });
-  },
+  }
 );
 
 content.delete(
@@ -130,7 +130,7 @@ content.delete(
     });
 
     return res.status(204).json({ message: "Content was deleted" });
-  },
+  }
 );
 
 export default content;

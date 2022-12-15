@@ -1,7 +1,7 @@
 import { User } from "@headless-cms/server";
 import { instance } from "../index";
 
-const auth = {
+export const auth = {
   auth: async (
     grant_type: "password" | "refresh_token",
     password?: { username: string; password: string },
@@ -28,5 +28,3 @@ const auth = {
     return resRefreshToken;
   },
 };
-
-export default auth;

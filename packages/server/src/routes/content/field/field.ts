@@ -25,7 +25,7 @@ field.put(
       updatedFields.push(newField);
     }
     return res.status(201).json({ updatedFields });
-  },
+  }
 );
 
 export default field;

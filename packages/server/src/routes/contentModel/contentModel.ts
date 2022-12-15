@@ -40,7 +40,7 @@ contentModel.get(
       contentModel,
       pagination: { page, pageSize, total: totalContentModels },
     });
-  },
+  }
 );
 
 contentModel.get(
@@ -58,7 +58,7 @@ contentModel.get(
       include: { FIeld: true, Content: true },
     });
     return res.json({ contentModel: model });
-  },
+  }
 );
 
 contentModel.put(
@@ -82,7 +82,7 @@ contentModel.put(
       },
     });
     return res.status(201).json({ contentModel: updateContent });
-  },
+  }
 );
 
 contentModel.post(
@@ -99,7 +99,7 @@ contentModel.post(
     });
 
     return res.status(201).json({ contentModel });
-  },
+  }
 );
 
 contentModel.delete(
@@ -112,7 +112,7 @@ contentModel.delete(
     await prisma.contentModel.delete({ where: { id: model.id } });
 
     return res.status(204).json({ message: "Model was deleted" });
-  },
+  }
 );
 
 export default contentModel;

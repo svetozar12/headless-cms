@@ -1,7 +1,7 @@
 import { User } from "@headless-cms/server";
 import { instance } from "../index";
 
-const user = {
+export const user = {
   getMe: (token: string): Promise<User> =>
     instance
       .get(`/user/me`, {
@@ -22,5 +22,3 @@ const user = {
       })
       .catch((err) => Promise.reject(err.response.data)),
 };
-
-export default user;

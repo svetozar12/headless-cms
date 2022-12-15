@@ -2,10 +2,10 @@
 import axios from "axios";
 import { env } from "../../env/env";
 //resources
-import auth from "./resources/auth";
-import ContentModel from "./resources/contentModel";
-import user from "./resources/user";
-
+import { user } from "./resources/user";
+import { auth } from "./resources/auth";
+import { content } from "./resources/content/content";
+import { contentModel } from "./resources/contentModel/contentModel";
 const apiHost = `${env.NEXT_PUBLIC_API_PROTOCOL}${env.NEXT_PUBLIC_API_HOST}:${env.NEXT_PUBLIC_API_PORT}`;
 
 export const instance = axios.create({
@@ -15,7 +15,8 @@ export const instance = axios.create({
 const api = {
   user,
   auth,
-  ContentModel,
+  content,
+  contentModel,
 };
 
 export default api;

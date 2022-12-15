@@ -42,7 +42,6 @@ const Table: React.FC<ITable> = (props) => {
   const { className, ...restProps } = extraProps || {};
   const { data, setData } = useData(dataSource, dataSourceIndex, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;
-
   const { pagination } = dataSource || {};
   const { page = 1, total = 8 } = pagination || {};
 
@@ -95,6 +94,7 @@ const useData = (
 ) => {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
+    if (!data[dataSource]) return setData([]);
     if (!loading) setData(dataSource[dataSourceIndex]);
   }, [dataSource, loading]);
   return { data, setData };

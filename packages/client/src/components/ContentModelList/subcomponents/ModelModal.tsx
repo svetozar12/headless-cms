@@ -20,7 +20,7 @@ interface IModelModal {
 const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, setIsModal } = props;
   const { mutateAsync, isLoading } = useCreateModel();
-  const { modelTitle, json, number, text } = useValues();
+  const { modelTitle } = useValues();
 
   const getFIelds = (): IFields[] => {
     return [
@@ -31,45 +31,15 @@ const ModelModal: FC<IModelModal> = (props) => {
         name: "modelTitle",
         type: "input",
       },
-      {
-        extraProps: {
-          extraProps: { ref: json },
-        },
-        label: "json",
-        name: "json",
-        type: "checkbox",
-      },
-      {
-        extraProps: {
-          extraProps: { ref: text },
-        },
-        label: "text",
-        name: "text",
-        type: "checkbox",
-      },
-      {
-        extraProps: {
-          extraProps: { ref: number },
-        },
-        label: "number",
-        name: "number",
-        type: "checkbox",
-      },
     ];
   };
 
   const handleSubmit = async () => {
     const titleValue = modelTitle.current?.value;
-    const jsonValue = json.current?.checked;
-    const numberValue = number.current?.checked;
-    const textValue = text.current?.checked;
 
     setIsModal(false);
     await mutateAsync({
       title: titleValue as string,
-      json: !!jsonValue,
-      number: !!numberValue,
-      text: !!textValue,
     });
   };
 
@@ -125,11 +95,8 @@ export default ModelModal;
 
 const useValues = () => {
   const modelTitle = useRef<HTMLInputElement>(null);
-  const json = useRef<HTMLInputElement>(null);
-  const text = useRef<HTMLInputElement>(null);
-  const number = useRef<HTMLInputElement>(null);
 
-  return { modelTitle, json, text, number };
+  return { modelTitle };
 };
 
 const useCreateModel = () => {
@@ -137,7 +104,7 @@ const useCreateModel = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: (newModel: IContentModel) =>
-      api.ContentModel.createModel(accessToken, newModel),
+      api.contentModel.createModel(accessToken, newModel),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

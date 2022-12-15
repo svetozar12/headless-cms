@@ -25,7 +25,7 @@ fieldType.get(
       where: { contentModelId },
     });
     return res.status(201).json({ fieldTypes });
-  },
+  }
 );
 
 fieldType.post(
@@ -42,7 +42,7 @@ fieldType.post(
     });
     // await prisma.contentModel.update({where:{id}})
     return res.status(201).json({ fieldType });
-  },
+  }
 );
 
 fieldType.put(
@@ -59,7 +59,7 @@ fieldType.put(
       data: { title },
     });
     return res.status(201).json({ fieldType });
-  },
+  }
 );
 
 fieldType.delete(
@@ -74,7 +74,7 @@ fieldType.delete(
       where: { id, contentModelId },
     });
     return res.status(204).json({ message: "Field was deleted" });
-  },
+  }
 );
 
 export default fieldType;

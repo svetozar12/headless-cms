@@ -3,7 +3,7 @@ import { makeRequest, Method } from "../../apiUtil";
 
 export type IContentModel = Omit<ContentModel, "id" | "userId">;
 
-const ContentModel = {
+export const contentModel = {
   getById: (token: string, modelId: string) =>
     makeRequest<ContentModel>(
       Method.GET,
@@ -45,5 +45,3 @@ const ContentModel = {
       token
     ),
 };
-
-export default ContentModel;
