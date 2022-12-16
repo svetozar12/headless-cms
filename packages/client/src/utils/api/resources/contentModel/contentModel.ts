@@ -4,16 +4,14 @@ import { makeRequest, Method } from "../../apiUtil";
 export type IContentModel = Omit<ContentModel, "id" | "userId">;
 
 export const contentModel = {
-  getById: (token: string, modelId: string) =>
+  getById: (modelId: string) =>
     makeRequest<ContentModel>(
       Method.GET,
       `/contentModel/${modelId}`,
       "contentModel",
-      undefined,
-      token
+      undefined
     ),
   getAll: (
-    token: string,
     page?: number
   ): Promise<{
     pagination: { page: number; pageSize: number; total: number };
@@ -23,25 +21,22 @@ export const contentModel = {
       Method.GET,
       `/contentModel?page=${page}&pageSize=8`,
       undefined,
-      undefined,
-      token
+      undefined
     ),
-  createModel: async (token: string, model: IContentModel) =>
-    makeRequest(Method.POST, "/contentModel", undefined, model, token),
-  update: async (token: string, modelId: number, model: IContentModel) =>
+  createModel: async (model: IContentModel) =>
+    makeRequest(Method.POST, "/contentModel", undefined, model),
+  update: async (modelId: number, model: IContentModel) =>
     makeRequest<ContentModel>(
       Method.PUT,
       `/contentModel/${modelId}`,
       "contentModel",
-      model,
-      token
+      model
     ),
-  delete: async (token: string, modelId: number) =>
+  delete: async (modelId: number) =>
     makeRequest<string>(
       Method.DELETE,
       `/contentModel/${modelId}`,
       "message",
-      undefined,
-      token
+      undefined
     ),
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import api from "../utils/api";
 import { useCookie } from "next-cookie";
 import { checkAuth } from "../utils/auth";
+import { setToken } from "../utils/api/apiUtil";
 //gets user data from api and refresh token if possible
 const useSession = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -25,8 +26,8 @@ const useSession = () => {
       }
     } catch {
       setIsLogged(false);
-      // cookie.remove("accessToken");
-      // cookie.remove("refreshToken");
+    } finally {
+      setToken(cookie.get("accessToken"));
     }
   };
 

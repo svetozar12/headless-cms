@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
 import api from "../utils/api";
 import { ContentModel } from "@headless-cms/server";
+import useSession from "./useSession";
 
 export const useGetContentModel = () => {
   const router = useRouter();
   const { id } = router.query;
-  const cookie = useCookie();
-  const accessToken: string = cookie.get("accessToken");
+  const { setTokens } = useSession();
+  setTokens();
   const query = useQuery<ContentModel>(["contentModel", id], () =>
-    api.ContentModel.getById(accessToken, id as string)
+    api.contentModel.getById(id as string)
   );
   return query;
 };

@@ -2,40 +2,31 @@ import { FieldTypeEnum, FieldType } from "@headless-cms/server";
 import { makeRequest, Method } from "../../../apiUtil";
 
 const fieldType = {
-  getList: (modelId: string, token: string) =>
+  getList: (modelId: string) =>
     makeRequest<FieldType>(
       Method.POST,
       `/contentModel/${modelId}/fieldType`,
-      "fieldTypes",
-      token
+      "fieldTypes"
     ),
-  create: (
-    title: string,
-    type: FieldTypeEnum,
-    modelId: string,
-    token: string
-  ) =>
+  create: (title: string, type: FieldTypeEnum, modelId: string) =>
     makeRequest<FieldType>(
       Method.POST,
       `/contentModel/${modelId}/fieldType`,
       "fieldType",
-      { title, type },
-      token
+      { title, type }
     ),
-  update: (id: string, title: string, modelId: string, token: string) =>
+  update: (id: string, title: string, modelId: string) =>
     makeRequest<FieldType>(
       Method.POST,
       `/contentModel/${modelId}/fieldType/${id}`,
       "fieldType",
-      { title },
-      token
+      { title }
     ),
-  delete: (id: string, modelId: string, token: string) =>
+  delete: (id: string, modelId: string) =>
     makeRequest<string>(
       Method.POST,
       `/contentModel/${modelId}/fieldType/${id}`,
-      "message",
-      token
+      "message"
     ),
 };
 

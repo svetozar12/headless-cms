@@ -1,30 +1,29 @@
 import { User } from "@headless-cms/server";
-import { instance } from "../index";
+import { makeRequest, Method } from "../apiUtil";
+
+interface IAuth {
+  user: User;
+  accessToken: string;
+  refreshToken: string;
+}
 
 export const auth = {
   auth: async (
     grant_type: "password" | "refresh_token",
     password?: { username: string; password: string },
     refreshToken?: string
-  ): Promise<{ user: User; accessToken: string; refreshToken: string }> => {
+  ) => {
+    let res: Promise<IAuth>;
     if (grant_type === "password") {
-      const resPassword = instance
-        .post(`/auth`, {
-          grant_type,
-          ...password,
-        })
-        .then((res) => Promise.resolve(res.data))
-        .catch((err) => Promise.reject(err.response.data));
-      return resPassword;
-    }
-
-    const resRefreshToken = instance
-      .post(`/auth`, {
+      res = makeRequest<IAuth>(Method.POST, "/auth", undefined, {
+        grant_type,
+        ...password,
+      });
+    } else
+      res = makeRequest<IAuth>(Method.POST, "/auth", undefined, {
         grant_type,
         refreshToken,
-      })
-      .then((res) => Promise.resolve(res.data))
-      .catch((err) => Promise.reject(err.response.data));
-    return resRefreshToken;
+      });
+    return res;
   },
 };

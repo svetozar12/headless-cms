@@ -14,11 +14,10 @@ export const makeRequest = async <T>(
   path: string,
   reqObject?: string,
   data?: any,
-  token?: string,
   options?: AxiosRequestConfig<any> | undefined
 ): Promise<T> => {
   try {
-    const res = await axios[method](`${apiHost}${path}`, data);
+    const res = await axios[method](`${apiHost}${path}`, data, options);
     return reqObject ? res.data[reqObject] : res.data;
   } catch (error) {
     return error as any;

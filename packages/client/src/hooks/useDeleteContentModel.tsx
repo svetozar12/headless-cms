@@ -1,16 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
 import { queryClient } from "../pages/_app";
 import api from "../utils/api";
+import useSession from "./useSession";
 
 const useDeleteContentModel = () => {
-  const cookie = useCookie();
   const router = useRouter();
-  const accessToken: string = cookie.get("accessToken");
+  const { setTokens } = useSession();
+  setTokens();
   const mutation = useMutation({
-    mutationFn: (modelId: number) =>
-      api.ContentModel.delete(accessToken, modelId),
+    mutationFn: (modelId: number) => api.contentModel.delete(modelId),
     onSuccess: () =>
       queryClient.invalidateQueries(["contentModels", router.query.page]),
   });

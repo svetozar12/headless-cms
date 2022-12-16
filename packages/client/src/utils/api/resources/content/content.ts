@@ -2,13 +2,12 @@ import { Content as ContentType } from "@headless-cms/server";
 import { makeRequest, Method } from "../../apiUtil";
 export type IContent = Omit<ContentType, "id" | "userId" | "contentModelId">;
 export const content = {
-  getById: (token: string, modelId: string) =>
+  getById: (modelId: string) =>
     makeRequest<ContentType>(
       Method.GET,
       `/content/${modelId}`,
       "content",
-      undefined,
-      token
+      undefined
     ),
   getAll: (
     token: string,
@@ -21,26 +20,23 @@ export const content = {
       Method.GET,
       `/content?page=${page}&pageSize=8`,
       undefined,
-      undefined,
-      token
+      undefined
     ),
-  createModel: async (token: string, model: IContent) =>
-    makeRequest(Method.POST, "/content", undefined, model, token),
-  update: async (token: string, modelId: number, model: IContent) =>
+  createModel: async (model: IContent) =>
+    makeRequest(Method.POST, "/content", undefined, model),
+  update: async (modelId: number, model: IContent) =>
     makeRequest<ContentType>(
       Method.PUT,
       `/content/${modelId}`,
       "content",
-      model,
-      token
+      model
     ),
-  delete: async (token: string, modelId: number) =>
+  delete: async (modelId: number) =>
     makeRequest<string>(
       Method.DELETE,
       `/content/${modelId}`,
       "message",
-      undefined,
-      token
+      undefined
     ),
 };
 

@@ -1,18 +1,17 @@
 import { useMutation } from "@tanstack/react-query";
-import { useCookie } from "next-cookie";
 import { useRouter } from "next/router";
 import { queryClient } from "../pages/_app";
 import api from "../utils/api";
 import { IContentModel } from "../utils/api/resources/contentModel";
-import { GenericObject } from "../utils/common";
+import useSession from "./useSession";
 
 const useUpdateContentModel = () => {
-  const cookie = useCookie();
   const router = useRouter();
-  const accessToken: string = cookie.get("accessToken");
+  const { setTokens } = useSession();
+  setTokens();
   const mutation = useMutation({
-    mutationFn: (model: { modelId: number; newModel: GenericObject }) =>
-      api.ContentModel.update(accessToken, model.modelId, model.newModel),
+    mutationFn: (model: { modelId: number; newModel: IContentModel }) =>
+      api.contentModel.update(model.modelId, model.newModel),
     onSuccess: () =>
       queryClient.invalidateQueries(["contentModels", router.query.page]),
   });
