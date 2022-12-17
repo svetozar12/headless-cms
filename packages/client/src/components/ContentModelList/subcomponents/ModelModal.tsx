@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import React, { Dispatch, FC, SetStateAction, useRef, useState } from "react";
 import useCookies from "../../../hooks/useCookies";
+import useSession from "../../../hooks/useSession";
 import { queryClient } from "../../../pages/_app";
 import api from "../../../utils/api";
 import { IContentModel } from "../../../utils/api/resources/contentModel";
@@ -100,11 +101,12 @@ const useValues = () => {
 };
 
 const useCreateModel = () => {
-  const { accessToken } = useCookies();
   const router = useRouter();
+  const { setTokens } = useSession();
+  setTokens();
   const mutation = useMutation({
     mutationFn: (newModel: IContentModel) =>
-      api.contentModel.createModel(accessToken, newModel),
+      api.contentModel.createModel(newModel),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

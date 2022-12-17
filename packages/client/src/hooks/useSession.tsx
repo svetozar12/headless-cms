@@ -9,9 +9,7 @@ const useSession = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
 
   const cookie = useCookie();
-  const query = useQuery(["session"], () =>
-    api.user.getMe(cookie.get("accessToken"))
-  );
+  const query = useQuery(["session"], () => api.user.getMe());
 
   const setTokens = async () => {
     try {

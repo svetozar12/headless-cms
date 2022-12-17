@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IFields } from "../../Form/Form";
+import { IFields } from "../../components/Form/Form";
 
 export const getFields = (refs: {
   username: React.RefObject<HTMLInputElement>;

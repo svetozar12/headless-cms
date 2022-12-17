@@ -7,7 +7,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "no-console": "error",
-    "no-unused-vars": ["error", { "varsIgnorePattern": "[_]" }]
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "[_]" }]
   },
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"]
 }

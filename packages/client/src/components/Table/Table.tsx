@@ -96,8 +96,6 @@ const useData = (
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     if (!loading) setData(dataSource[dataSourceIndex]);
-    console.log(dataSource);
-
     if (!dataSource && !loading) return setData([]);
   }, [dataSource, loading]);
   return { data, dataSource, setData };

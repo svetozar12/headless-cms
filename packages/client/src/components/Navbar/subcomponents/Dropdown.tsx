@@ -21,7 +21,7 @@ const Dropdown: FC<IDropdown> = (props) => {
       {items.map((item) => {
         const { onClick, title } = item;
         return (
-          <div className="py-1" role="none">
+          <div key={title} className="py-1" role="none">
             <p
               onClick={(e) => onClick(e)}
               className="block cursor-pointer px-4 py-2 text-sm text-gray-700 duration-200 ease-in-out hover:bg-gray-600 hover:bg-opacity-10"

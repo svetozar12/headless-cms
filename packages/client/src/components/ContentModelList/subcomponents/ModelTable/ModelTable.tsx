@@ -25,7 +25,6 @@ const ModelTable: FC = () => {
       title: "Fields",
       dataIndex: "FIeld",
       formatValue: (value) => {
-        console.log(value);
         return value.length;
       },
     },

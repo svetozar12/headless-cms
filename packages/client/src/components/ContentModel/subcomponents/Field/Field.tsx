@@ -7,19 +7,17 @@ import { getFieldIcon } from "./utils";
 interface IFields {
   type: string;
   title: string;
-  setUpdatedFields: SetState<GenericObject>;
+  // setUpdatedFields: SetState<GenericObject>;
 }
 
 const Field: FC<IFields> = (props) => {
-  console.log(props);
-
-  const { title = "", type = "", setUpdatedFields } = props;
+  const { title = "", type = "" } = props;
   const [field, setField] = useState<string>(title);
   const Icon = getFieldIcon(type);
 
-  useEffect(() => {
-    setUpdatedFields((prev) => ({ ...prev, [type]: field }));
-  }, [field]);
+  // useEffect(() => {
+  //   setUpdatedFields((prev) => ({ ...prev, [type]: field }));
+  // }, [field]);
 
   return (
     <div

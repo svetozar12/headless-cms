@@ -10,7 +10,6 @@ const useGetContentModels = () => {
   const query = useQuery(["contentModels", router.query.page], () =>
     api.contentModel.getAll((router.query.page as any) || 1)
   );
-  console.log(query.data);
 
   return { ...query };
 };

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useGetContentModel } from "../../hooks/useGetContentModel";
-import { GenericObject } from "../../utils/common";
+// import { GenericObject } from "../../utils/common";
 import Heading from "../Heading";
 import Spinner from "../Spinner";
 import Field from "./subcomponents/Field";
-import ModelHeading from "./subcomponents/Heading";
-import ActionButtons from "./subcomponents/Heading/subcomponents/ActionButtons";
+// import ModelHeading from "./subcomponents/Heading";
+// import ActionButtons from "./subcomponents/Heading/subcomponents/ActionButtons";
 
 const ContentModel = () => {
   const { data, isLoading } = useGetContentModel();
@@ -31,7 +31,7 @@ const ContentModel = () => {
                 key={title}
                 type={type}
                 title={title}
-                setUpdatedFields={setUpdatedFields}
+                // setUpdatedFields={setUpdatedFields}
               />
             );
           })}
@@ -43,12 +43,12 @@ const ContentModel = () => {
 
 export default ContentModel;
 
-const useIsFieldsUpdated = (fields: GenericObject) => {
-  const [updatedFields, setUpdatedFields] = useState<Record<string, any>>({});
-  const [isUpdated, setIsUpdated] = useState<boolean>(false);
+// const useIsFieldsUpdated = (fields: GenericObject) => {
+//   const [updatedFields, setUpdatedFields] = useState<Record<string, any>>({});
+//   const [isUpdated, setIsUpdated] = useState<boolean>(false);
 
-  useEffect(() => {
-    setIsUpdated(JSON.stringify(fields) !== JSON.stringify(updatedFields));
-  }, [updatedFields]);
-  return { updatedFields, isUpdated, setUpdatedFields, setIsUpdated };
-};
+//   useEffect(() => {
+//     setIsUpdated(JSON.stringify(fields) !== JSON.stringify(updatedFields));
+//   }, [updatedFields]);
+//   return { updatedFields, isUpdated, setUpdatedFields, setIsUpdated };
+// };

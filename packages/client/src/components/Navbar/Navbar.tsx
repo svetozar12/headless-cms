@@ -65,7 +65,7 @@ const Navbar = () => {
 
           <div className="relative h-9 w-9">
             <Image
-              src={user?.avatar}
+              src={user?.avatar as any}
               width="37px"
               height="37px"
               className="flex cursor-pointer items-center justify-center rounded-full"

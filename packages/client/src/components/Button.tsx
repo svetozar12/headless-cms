@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import { IconType } from "react-icons/lib";
 interface IButtonProps {
-  onClick: (e: any) => void;
+  onClick: (_: any) => void;
   type: "button" | "submit" | "reset";
   text?: string;
   isDisabled?: boolean;

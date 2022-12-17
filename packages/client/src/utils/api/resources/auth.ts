@@ -15,12 +15,12 @@ export const auth = {
   ) => {
     let res: Promise<IAuth>;
     if (grant_type === "password") {
-      res = makeRequest<IAuth>(Method.POST, "/auth", undefined, {
+      res = makeRequest<IAuth>("post", "/auth", undefined, {
         grant_type,
         ...password,
       });
     } else
-      res = makeRequest<IAuth>(Method.POST, "/auth", undefined, {
+      res = makeRequest<IAuth>("post", "/auth", undefined, {
         grant_type,
         refreshToken,
       });

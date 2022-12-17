@@ -1,6 +1,3 @@
-// src/utils/api.ts
-import axios from "axios";
-import { env } from "../../env/env";
 //resources
 import { user } from "./resources/user";
 import { auth } from "./resources/auth";

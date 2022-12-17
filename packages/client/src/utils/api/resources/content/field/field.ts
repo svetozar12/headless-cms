@@ -1,9 +1,9 @@
-import { makeRequest, Method } from "../../../apiUtil";
+import { makeRequest } from "../../../apiUtil";
 
 const field = {
   update: (fields: { id: string; value: any }, contentId: string) =>
     makeRequest<string>(
-      Method.PUT,
+      "put",
       `/content/${contentId}/field`,
       "message",
 
