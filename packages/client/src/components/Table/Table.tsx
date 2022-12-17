@@ -13,6 +13,7 @@ interface IExtraProps {
 export interface IColumn {
   title: string;
   dataIndex?: string;
+  formatValue?: (value: any) => any;
   render?: (fieldProps: any) => ReactNode;
 }
 
@@ -95,7 +96,9 @@ const useData = (
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     if (!loading) setData(dataSource[dataSourceIndex]);
-    if (!data[dataSource] && !loading) return setData([]);
+    console.log(dataSource);
+
+    if (!dataSource && !loading) return setData([]);
   }, [dataSource, loading]);
-  return { data, setData };
+  return { data, dataSource, setData };
 };

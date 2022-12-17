@@ -13,6 +13,7 @@ const Content: FC<IContent> = (props) => {
   return (
     <tbody>
       {data.map((item, index) => {
+        let value: any;
         return (
           <tr
             key={index}
@@ -21,7 +22,9 @@ const Content: FC<IContent> = (props) => {
               !!onRowClick && "cursor-pointer"
             } ${s.borderBottom} ${s.borderTop}`}
           >
-            {columns.map(({ dataIndex, render }) => {
+            {columns.map(({ dataIndex = 0, render, formatValue }) => {
+              if (formatValue) value = formatValue(item[dataIndex]);
+              else value = String(item[dataIndex]);
               return (
                 <td
                   key={dataIndex}
@@ -30,7 +33,7 @@ const Content: FC<IContent> = (props) => {
                   {render ? (
                     <div>{render(item)}</div>
                   ) : dataIndex ? (
-                    String(item[dataIndex])
+                    value
                   ) : null}
                 </td>
               );

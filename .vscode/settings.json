@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["unauthathenti"]
+  "cSpell.words": ["unauthathenti"],
+  "eslint.workingDirectories": ["src"]
 }

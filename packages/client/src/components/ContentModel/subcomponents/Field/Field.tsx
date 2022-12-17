@@ -6,13 +6,15 @@ import { getFieldIcon } from "./utils";
 
 interface IFields {
   type: string;
-  value: boolean;
+  title: string;
   setUpdatedFields: SetState<GenericObject>;
 }
 
 const Field: FC<IFields> = (props) => {
-  const { value = false, type = "", setUpdatedFields } = props;
-  const [field, setField] = useState<boolean>(value);
+  console.log(props);
+
+  const { title = "", type = "", setUpdatedFields } = props;
+  const [field, setField] = useState<string>(title);
   const Icon = getFieldIcon(type);
 
   useEffect(() => {
@@ -25,15 +27,11 @@ const Field: FC<IFields> = (props) => {
     >
       <div className="flex items-center justify-center gap-4 text-lg">
         <Icon className="text-green-400" />
+
+        <p className="">{title}</p>
         <p className="">{type}</p>
       </div>
-      <Switch
-        checked={value}
-        extraProps={{
-          onChange: (e: ChangeEvent<HTMLInputElement>) =>
-            setField(e.target.checked),
-        }}
-      />
+      {/* delete button */}
     </div>
   );
 };

@@ -1,11 +1,11 @@
-import { ContentModel } from "@headless-cms/server";
+import { ContentModel, ContentModelWithRelations } from "@headless-cms/server";
 import { makeRequest, Method } from "../../apiUtil";
 
-export type IContentModel = Omit<ContentModel, "id" | "userId">;
+export type IContentModel = Omit<ContentModelWithRelations, "id" | "userId">;
 
 export const contentModel = {
   getById: (modelId: string) =>
-    makeRequest<ContentModel>(
+    makeRequest<ContentModelWithRelations>(
       Method.GET,
       `/contentModel/${modelId}`,
       "contentModel",
@@ -15,7 +15,7 @@ export const contentModel = {
     page?: number
   ): Promise<{
     pagination: { page: number; pageSize: number; total: number };
-    contentModel: ContentModel[];
+    contentModel: ContentModelWithRelations[];
   }> =>
     makeRequest(
       Method.GET,
@@ -26,7 +26,7 @@ export const contentModel = {
   createModel: async (model: IContentModel) =>
     makeRequest(Method.POST, "/contentModel", undefined, model),
   update: async (modelId: number, model: IContentModel) =>
-    makeRequest<ContentModel>(
+    makeRequest<ContentModelWithRelations>(
       Method.PUT,
       `/contentModel/${modelId}`,
       "contentModel",

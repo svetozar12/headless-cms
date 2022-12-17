@@ -21,9 +21,14 @@ const ModelTable: FC = () => {
   });
   const columns: IColumn[] = [
     { title: "Title", dataIndex: "title" },
-    { title: "Number", dataIndex: "number" },
-    { title: "Text", dataIndex: "text" },
-    { title: "Json", dataIndex: "json" },
+    {
+      title: "Fields",
+      dataIndex: "FIeld",
+      formatValue: (value) => {
+        console.log(value);
+        return value.length;
+      },
+    },
     {
       title: "Action",
       render: (fieldProps: any) => (

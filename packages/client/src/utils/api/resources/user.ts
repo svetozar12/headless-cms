@@ -1,24 +1,13 @@
 import { User } from "@headless-cms/server";
-import { instance } from "../index";
+import { makeRequest, Method } from "../apiUtil";
 
 export const user = {
-  getMe: (token: string): Promise<User> =>
-    instance
-      .get(`/user/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        return res.data;
-      })
-      .catch((err) => Promise.reject(err.response.data)),
-  create: (user: {
-    username: string;
-    password: string;
-  }): Promise<{ user: User; accessToken: string; refreshToken: string }> =>
-    instance
-      .post(`/user`, user)
-      .then((res) => {
-        return res.data;
-      })
-      .catch((err) => Promise.reject(err.response.data)),
+  getMe: () => makeRequest<User>(Method.GET, "/user/me"),
+  create: (user: { username: string; password: string }) =>
+    makeRequest<{ user: User; accessToken: string; refreshToken: string }>(
+      Method.POST,
+      "/user",
+      undefined,
+      user
+    ),
 };

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import * as bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
@@ -14,5 +14,11 @@ prisma.$use(async (params, next) => {
   return next(params);
 });
 
+export type ContentModelWithRelations = Prisma.ContentModelGetPayload<{
+  include: { Content: true; FIeld: true };
+}>;
+export type ContentWithRelations = Prisma.ContentGetPayload<{
+  include: { FIeld: true };
+}>;
 export * from "@prisma/client";
 export { prisma };
