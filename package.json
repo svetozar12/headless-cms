@@ -8,9 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna bootstrap --no-sort && lerna link --no-sort",
-    "build": "lerna run build --stream --no-sort",
-    "dev": "lerna run dev --stream --no-sort"
+    "build": "nx run-many --target=build",
+    "dev": "nx run-many --target=dev"
   },
   "devDependencies": {
     "lerna": "^5.2.0",
