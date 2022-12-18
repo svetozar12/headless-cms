@@ -1,0 +1,8 @@
+{
+  "name": "@headless-cms/sdk",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "devDependencies": {
+    "@headless-cms/sdk": "*"
+  }
+}

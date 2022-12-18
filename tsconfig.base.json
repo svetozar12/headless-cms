@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "es2015",
+    "module": "esnext",
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipDefaultLibCheck": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@headless-cms/client": [
+        "packages/client"
+      ],
+      "@headless-cms/server": [
+        "packages/server/src/index.ts"
+      ],
+      "headless-cms-sdk": [
+        "packages/headless-cms-sdk/src/index.ts"
+      ],
+      "headless-cms/sdk": [
+        "packages/sdk/src/index.ts"
+      ],
+      "headless-cms/ui": [
+        "libs/headless-cms-ui/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
