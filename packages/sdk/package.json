@@ -2,7 +2,10 @@
   "name": "@headless-cms/sdk",
   "version": "0.0.1",
   "type": "commonjs",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
-    "@headless-cms/sdk": "*"
+    "@headless-cms/server": "*"
   }
 }
