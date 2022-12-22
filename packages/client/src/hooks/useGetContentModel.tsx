@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import api from "../utils/api";
-import { ContentModel, ContentModelWithRelations } from "@headless-cms/server";
 import useSession from "./useSession";
 
 export const useGetContentModel = () => {

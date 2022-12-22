@@ -12,31 +12,10 @@
     "module": "esnext",
     "skipLibCheck": true,
     "strict": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "skipDefaultLibCheck": true,
     "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@headless-cms-sdk": [
-        "packages/sdk/src/index.ts"
-      ],
-      "@headless-cms/client": [
-        "packages/client"
-      ],
-      "@headless-cms/server": [
-        "packages/server/src/index.ts"
-      ],
-      "ui": [
-        "packages/ui/src/index.ts"
-      ]
-    }
+    "baseUrl": "."
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

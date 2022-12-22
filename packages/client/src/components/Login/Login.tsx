@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import z from "zod";
 import { CONTENT_MODELS } from "../../constants/routes";
 import api from "../../utils/api";
-import Form from "../Form";
+import { Form } from "@headless-cms/ui";
 import Header from "./subcomponents/Header";
 import { getFields } from "./utils";
 

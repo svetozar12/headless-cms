@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, MouseEvent } from "react";
+import React, { FC, MouseEvent } from "react";
 
 interface Items {
   title: string;

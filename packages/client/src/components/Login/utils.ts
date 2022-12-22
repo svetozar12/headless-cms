@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IFields } from "../../components/Form/Form";
+import { IFields } from "@headless-cms/ui";
 
 export const getFields = (refs: {
   username: React.RefObject<HTMLInputElement>;

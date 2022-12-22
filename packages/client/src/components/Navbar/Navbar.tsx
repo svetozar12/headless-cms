@@ -13,7 +13,7 @@ import useSession from "../../hooks/useSession";
 import { useCookie } from "next-cookie";
 import Image from "next/image";
 import Dropdown from "./subcomponents/Dropdown";
-import Spinner from "../Spinner";
+import { Spinner } from "@headless-cms/ui";
 
 const HrefToTab = (href: string) => {
   return href.slice(1, href.length);

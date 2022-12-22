@@ -1,16 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import React, { Dispatch, FC, SetStateAction, useRef, useState } from "react";
-import useCookies from "../../../hooks/useCookies";
+import React, { Dispatch, FC, SetStateAction, useRef } from "react";
 import useSession from "../../../hooks/useSession";
 import { queryClient } from "../../../pages/_app";
 import api from "../../../utils/api";
-import ActionButtons from "../../ActionButtons";
-import Button from "../../Button";
-import Form from "../../Form";
-import { IFields } from "../../Form/Form";
-import Heading from "../../Heading";
-import Modal from "../../Modal";
+import { ActionButtons, Button, Heading, Modal } from "@headless-cms/ui";
+import { Form, IFields } from "@headless-cms/ui";
 
 interface IModelModal {
   isModal: boolean;

@@ -7,11 +7,11 @@ export const content = {
       "get",
       `/content/${modelId}`,
       "content",
-      undefined
+      undefined,
     ),
   getAll: (
     token: string,
-    page?: number
+    page?: number,
   ): Promise<{
     pagination: { page: number; pageSize: number; total: number };
     content: ContentType[];
@@ -20,7 +20,7 @@ export const content = {
       "get",
       `/content?page=${page}&pageSize=8`,
       undefined,
-      undefined
+      undefined,
     ),
   createModel: async (model: IContent) =>
     makeRequest("post", "/content", undefined, model),

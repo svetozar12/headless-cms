@@ -1,8 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { FaBoxes } from "react-icons/fa";
-import Heading from "../../../Heading";
-import PageHeader from "../../../PageHeader/PageHeader";
-import ActionButtons from "./subcomponents/ActionButtons";
+import { Heading, PageHeader } from "@headless-cms/ui";
 
 interface IModelHeading {
   title: string;

@@ -1,6 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
-import { GenericObject, SetState } from "../../../../utils/common";
-import Switch from "../../../Input/subcomponents/Switch";
+import React, { FC, useState } from "react";
 import s from "./Field.module.css";
 import { getFieldIcon } from "./utils";
 

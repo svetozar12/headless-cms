@@ -7,7 +7,9 @@ import ActionButtons from "./ActionButtons";
 import Button from "./Button";
 import Heading from "./Heading";
 import Spinner from "./Spinner";
-
+// types
+import { IFields } from "./Form/Form";
+import { IColumn } from "./Table/Table";
 export {
   Form,
   Input,
@@ -19,3 +21,5 @@ export {
   Spinner,
   Table,
 };
+
+export type { IFields, IColumn };

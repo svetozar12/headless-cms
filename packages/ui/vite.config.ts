@@ -9,7 +9,6 @@ export default defineConfig({
   plugins: [
     dts({
       tsConfigFilePath: join(__dirname, "tsconfig.json"),
-      // Faster builds by skipping tests. Set this to false to enable type checking.
       skipDiagnostics: true,
     }),
     react(),

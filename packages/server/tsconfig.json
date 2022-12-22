@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "declaration": true,
     "outDir": "dist",

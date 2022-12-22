@@ -1,8 +1,6 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { FaBoxes, FaPlus } from "react-icons/fa";
-import Button from "../../Button";
-import Heading from "../../Heading";
-import PageHeader from "../../PageHeader/PageHeader";
+import { FaBoxes } from "react-icons/fa";
+import { Button, Heading, PageHeader } from "@headless-cms/ui";
 
 interface IModelHeader {
   setIsModal: Dispatch<SetStateAction<boolean>>;

@@ -1,14 +1,11 @@
 import { useRouter } from "next/router";
 import React, { ChangeEvent, FC, useState } from "react";
-import { MdDelete, MdEdit, MdUpdate } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import { CONTENT_MODEL, CONTENT_MODELS } from "../../../../constants/routes";
 import useDeleteContentModel from "../../../../hooks/useDeleteContentModel";
 import useGetContentModels from "../../../../hooks/useGetContentModels";
-import ActionButtons from "../../../ActionButtons";
-import Button from "../../../Button";
+import { ActionButtons, Button, Table, IColumn } from "@headless-cms/ui";
 import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
-import Table from "../../../Table";
-import { IColumn } from "../../../Table/Table";
 
 const ModelTable: FC = () => {
   const router = useRouter();

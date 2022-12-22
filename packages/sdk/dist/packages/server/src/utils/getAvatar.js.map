@@ -1,1 +1,0 @@
-{"version":3,"file":"getAvatar.js","sourceRoot":"","sources":["../../../../../../server/src/utils/getAvatar.ts"],"names":[],"mappings":";;;AAAA,0CAAoC;AACpC,+BAAoC;AAEpC,MAAM,EAAE,eAAe,EAAE,mBAAmB,EAAE,GAAG,YAAG,CAAC;AAIrD;;;GAGG;AACI,MAAM,SAAS,GAAG,CAAC,IAAgB,EAAU,EAAE,CACpD,GAAG,mBAAmB,MAAM,eAAe,IAAI,IAAI,IAAI,IAAA,SAAM,GAAE,MAAM,CAAC;AAD3D,QAAA,SAAS,aACkD"}

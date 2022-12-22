@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { queryClient } from "../pages/_app";
 import api from "../utils/api";
 import useSession from "./useSession";
-import { ContentModel } from "@headless-cms/sdk";
+import type { ContentModel } from "@headless-cms/server";
 
 const useUpdateContentModel = () => {
   const router = useRouter();

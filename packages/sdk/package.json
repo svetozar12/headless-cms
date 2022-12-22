@@ -3,10 +3,14 @@
   "version": "0.0.1",
   "type": "commonjs",
   "main": "dist/packages/sdk/src/index.js",
+  "types": "dist/packages/sdk/src/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf dist && tsc"
   },
   "devDependencies": {
     "@headless-cms/server": "*"
+  },
+  "browser": {
+    "fs": false
   }
 }

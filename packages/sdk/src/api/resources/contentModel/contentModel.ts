@@ -9,10 +9,10 @@ export const contentModel = {
       "get",
       `/contentModel/${modelId}`,
       "contentModel",
-      undefined
+      undefined,
     ),
   getAll: (
-    page?: number
+    page?: number,
   ): Promise<{
     pagination: { page: number; pageSize: number; total: number };
     contentModel: ContentModelWithRelations[];
@@ -21,7 +21,7 @@ export const contentModel = {
       "get",
       `/contentModel?page=${page}&pageSize=8`,
       undefined,
-      undefined
+      undefined,
     ),
   createModel: async (model: IContentModel) =>
     makeRequest("post", "/contentModel", undefined, model),
@@ -30,13 +30,13 @@ export const contentModel = {
       "put",
       `/contentModel/${modelId}`,
       "contentModel",
-      model
+      model,
     ),
   delete: async (modelId: number) =>
     makeRequest<string>(
       "delete",
       `/contentModel/${modelId}`,
       "message",
-      undefined
+      undefined,
     ),
 };
