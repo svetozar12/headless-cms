@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const logger_1 = require("../utils/logger");
+const tslib_1 = require("tslib");
+const logger_1 = tslib_1.__importDefault(require("../utils/logger"));
 const errorModel_1 = require("../common/errorModel");
 const zod_1 = require("zod");
 /**

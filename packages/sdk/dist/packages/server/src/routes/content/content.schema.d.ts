@@ -27,21 +27,21 @@ export declare const getContentSchema: z.ZodObject<z.extendShape<z.extendShape<{
     params: {
         id: number;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId: number;
+    };
+    user: {
+        id: number;
     };
 }, {
     params: {
         id: string;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId?: unknown;
+    };
+    user: {
+        id: number;
     };
 }>;
 export declare const getContentListSchema: z.ZodObject<z.extendShape<z.extendShape<{
@@ -76,22 +76,22 @@ export declare const getContentListSchema: z.ZodObject<z.extendShape<z.extendSha
         page: number;
         pageSize: number;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId: number;
+    };
+    user: {
+        id: number;
     };
 }, {
     query: {
         page?: unknown;
         pageSize?: unknown;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId?: unknown;
+    };
+    user: {
+        id: number;
     };
 }>;
 export declare const createContentSchema: z.ZodObject<z.extendShape<{
@@ -114,20 +114,20 @@ export declare const createContentSchema: z.ZodObject<z.extendShape<{
         id: number;
     }>;
 }>, "strip", z.ZodTypeAny, {
-    user: {
-        id: number;
-    };
     body: {
         contentModelId: number;
         title: string;
     };
-}, {
     user: {
         id: number;
     };
+}, {
     body: {
         contentModelId?: unknown;
         title: string;
+    };
+    user: {
+        id: number;
     };
 }>;
 export declare const updateContentSchema: z.ZodObject<z.extendShape<z.extendShape<{
@@ -161,23 +161,23 @@ export declare const updateContentSchema: z.ZodObject<z.extendShape<z.extendShap
     params: {
         id: number;
     };
-    user: {
-        id: number;
-    };
     body: {
         title?: string | undefined;
         contentModelId: number;
+    };
+    user: {
+        id: number;
     };
 }, {
     params: {
         id: string;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId?: unknown;
         title?: string | undefined;
+    };
+    user: {
+        id: number;
     };
 }>;
 export declare const deleteContentSchema: z.ZodObject<z.extendShape<z.extendShape<{
@@ -208,20 +208,20 @@ export declare const deleteContentSchema: z.ZodObject<z.extendShape<z.extendShap
     params: {
         id: number;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId: number;
+    };
+    user: {
+        id: number;
     };
 }, {
     params: {
         id: string;
     };
-    user: {
-        id: number;
-    };
     body: {
         contentModelId?: unknown;
+    };
+    user: {
+        id: number;
     };
 }>;

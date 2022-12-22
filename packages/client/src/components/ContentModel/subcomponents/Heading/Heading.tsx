@@ -1,4 +1,3 @@
-import { ContentModel } from "@headless-cms/server";
 import React, { FC, useState } from "react";
 import { FaBoxes } from "react-icons/fa";
 import Heading from "../../../Heading";

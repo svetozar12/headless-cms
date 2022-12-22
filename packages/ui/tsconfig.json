@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["vite/client"],
+    "declaration": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "commonjs"
+  },
+  "files": [],
+  "include": ["src"],
+  "extends": "../../tsconfig.base.json"
+}

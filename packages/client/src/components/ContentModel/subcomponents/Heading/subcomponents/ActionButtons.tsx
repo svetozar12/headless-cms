@@ -3,7 +3,6 @@ import React, { FC, useState } from "react";
 import { CONTENT_MODELS } from "../../../../../constants/routes";
 import useDeleteContentModel from "../../../../../hooks/useDeleteContentModel";
 import useUpdateContentModel from "../../../../../hooks/useUpdateContentModel";
-import { IContentModel } from "../../../../../utils/api/resources/contentModel";
 import { GenericObject } from "../../../../../utils/common";
 import Button from "../../../../Button";
 
@@ -27,7 +26,7 @@ const ActionButtons: FC<IActionButtons> = (props) => {
         onClick={() =>
           updateContentModel({
             modelId: id as unknown as number,
-            newModel: updatedFields as IContentModel,
+            newModel: updatedFields,
           }).then(() => router.push({ pathname: CONTENT_MODELS, query }))
         }
         extraProps={{ className: "bg-green-400" }}

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.preResource = exports.Resource = void 0;
-const user_1 = require("./user");
-const contentModel_1 = require("./contentModel");
+const tslib_1 = require("tslib");
+const user_1 = tslib_1.__importDefault(require("./user"));
+const contentModel_1 = tslib_1.__importDefault(require("./contentModel"));
 const errorModel_1 = require("../../common/errorModel");
 const content_1 = require("./content");
 var Resource;

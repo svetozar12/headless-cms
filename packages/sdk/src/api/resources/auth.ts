@@ -1,7 +1,7 @@
 import { User } from "@headless-cms/server";
 import { makeRequest } from "../apiUtil";
 
-interface IAuth {
+export interface IAuthResource {
   user: User;
   accessToken: string;
   refreshToken: string;
@@ -13,14 +13,14 @@ export const auth = {
     password?: { username: string; password: string },
     refreshToken?: string,
   ) => {
-    let res: Promise<IAuth>;
+    let res: Promise<IAuthResource>;
     if (grant_type === "password") {
-      res = makeRequest<IAuth>("post", "/auth", undefined, {
+      res = makeRequest<IAuthResource>("post", "/auth", undefined, {
         grant_type,
         ...password,
       });
     } else
-      res = makeRequest<IAuth>("post", "/auth", undefined, {
+      res = makeRequest<IAuthResource>("post", "/auth", undefined, {
         grant_type,
         refreshToken,
       });

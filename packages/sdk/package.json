@@ -2,6 +2,7 @@
   "name": "@headless-cms/sdk",
   "version": "0.0.1",
   "type": "commonjs",
+  "main": "dist/packages/sdk/src/index.js",
   "scripts": {
     "build": "tsc"
   },

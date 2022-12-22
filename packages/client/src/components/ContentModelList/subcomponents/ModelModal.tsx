@@ -5,7 +5,6 @@ import useCookies from "../../../hooks/useCookies";
 import useSession from "../../../hooks/useSession";
 import { queryClient } from "../../../pages/_app";
 import api from "../../../utils/api";
-import { IContentModel } from "../../../utils/api/resources/contentModel";
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
 import Form from "../../Form";
@@ -105,8 +104,7 @@ const useCreateModel = () => {
   const { setTokens } = useSession();
   setTokens();
   const mutation = useMutation({
-    mutationFn: (newModel: IContentModel) =>
-      api.contentModel.createModel(newModel),
+    mutationFn: (newModel: any) => api.contentModel.createModel(newModel),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

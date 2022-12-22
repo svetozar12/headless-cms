@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
 const utils_1 = require("./utils");
 const express_1 = require("express");
 const schema_1 = require("./schema");
 const zParse_1 = require("../../utils/zParse");
 const prisma_1 = require("../../utils/prisma");
-const bcrypt_1 = require("bcrypt");
+const bcrypt_1 = tslib_1.__importDefault(require("bcrypt"));
 const server_1 = require("../../env/server");
 const auth = (0, express_1.Router)();
 auth.post("/", (0, zParse_1.zMiddleware)(schema_1.authSchema), async (req, res) => {

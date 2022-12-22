@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyToken = exports.signToken = exports.jwtType = void 0;
-const jsonwebtoken_1 = require("jsonwebtoken");
+const tslib_1 = require("tslib");
+const jsonwebtoken_1 = tslib_1.__importDefault(require("jsonwebtoken"));
 const server_1 = require("../../env/server");
-const logger_1 = require("../../utils/logger");
+const logger_1 = tslib_1.__importDefault(require("../../utils/logger"));
 var jwtType;
 (function (jwtType) {
     jwtType["ACCESS"] = "access";

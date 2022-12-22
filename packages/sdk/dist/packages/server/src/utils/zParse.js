@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.zMiddleware = exports.zParse = void 0;
+const tslib_1 = require("tslib");
 const errorModel_1 = require("../common/errorModel");
-const logger_1 = require("./logger");
+const logger_1 = tslib_1.__importDefault(require("./logger"));
 const zParse = async (schema, req) => {
     const zSchema = await schema.safeParseAsync(req);
     if (!zSchema.success)

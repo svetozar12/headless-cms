@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setToken = exports.makeRequest = exports.initApi = void 0;
-const axios_1 = require("axios");
+const tslib_1 = require("tslib");
+const axios_1 = tslib_1.__importDefault(require("axios"));
 const METHOD = {
     GET: "get",
     POST: "post",

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
 const express_1 = require("express");
 const schema_1 = require("../../common/schema");
-const isAuth_1 = require("../../middlewares/isAuth");
+const isAuth_1 = tslib_1.__importDefault(require("../../middlewares/isAuth"));
 const preMiddleware_1 = require("../../utils/pre/preMiddleware");
 const prisma_1 = require("../../utils/prisma");
 const withPagination_1 = require("../../utils/withPagination");

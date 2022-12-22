@@ -21,20 +21,17 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@headless-cms-sdk": [
+        "packages/sdk/src/index.ts"
+      ],
       "@headless-cms/client": [
         "packages/client"
       ],
       "@headless-cms/server": [
         "packages/server/src/index.ts"
       ],
-      "headless-cms-sdk": [
-        "packages/headless-cms-sdk/src/index.ts"
-      ],
-      "headless-cms/sdk": [
-        "packages/sdk/src/index.ts"
-      ],
-      "headless-cms/ui": [
-        "libs/headless-cms-ui/src/index.ts"
+      "ui": [
+        "packages/ui/src/index.ts"
       ]
     }
   },

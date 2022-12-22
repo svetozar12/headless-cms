@@ -1,0 +1,21 @@
+{
+  "name": "@headless-cms/ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ui/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "packages/ui/dist/packages/ui"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    }
+  }
+}

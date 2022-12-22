@@ -83,18 +83,18 @@ export declare const createModelSchema: z.ZodObject<z.extendShape<{
         id: number;
     }>;
 }>, "strip", z.ZodTypeAny, {
-    user: {
-        id: number;
-    };
     body: {
         title: string;
+    };
+    user: {
+        id: number;
     };
 }, {
-    user: {
-        id: number;
-    };
     body: {
         title: string;
+    };
+    user: {
+        id: number;
     };
 }>;
 export declare const updateContentModelSchema: z.ZodObject<z.extendShape<z.extendShape<{
@@ -125,20 +125,20 @@ export declare const updateContentModelSchema: z.ZodObject<z.extendShape<z.exten
     params: {
         id: number;
     };
-    user: {
-        id: number;
-    };
     body: {
         title?: string | undefined;
+    };
+    user: {
+        id: number;
     };
 }, {
     params: {
         id: string;
     };
-    user: {
-        id: number;
-    };
     body: {
         title?: string | undefined;
+    };
+    user: {
+        id: number;
     };
 }>;

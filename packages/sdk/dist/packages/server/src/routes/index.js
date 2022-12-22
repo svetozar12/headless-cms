@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const health_1 = require("./health");
+const tslib_1 = require("tslib");
+const health_1 = tslib_1.__importDefault(require("./health"));
 // routes
-const auth_1 = require("./auth");
-const user_1 = require("./user");
-const contentModel_1 = require("./contentModel");
-const content_1 = require("./content");
+const auth_1 = tslib_1.__importDefault(require("./auth"));
+const user_1 = tslib_1.__importDefault(require("./user"));
+const contentModel_1 = tslib_1.__importDefault(require("./contentModel"));
+const content_1 = tslib_1.__importDefault(require("./content"));
 // middlewares
-const isAuth_1 = require("../middlewares/isAuth");
+const isAuth_1 = tslib_1.__importDefault(require("../middlewares/isAuth"));
 const utils_1 = require("./auth/utils");
-const nested_1 = require("./health/nested");
-const field_1 = require("./content/field");
-const fieldType_1 = require("./contentModel/fieldType");
+const nested_1 = tslib_1.__importDefault(require("./health/nested"));
+const field_1 = tslib_1.__importDefault(require("./content/field"));
+const fieldType_1 = tslib_1.__importDefault(require("./contentModel/fieldType"));
 const routes = [
     { path: "/health", router: health_1.default },
     { path: "/health/:healthId/nested", router: nested_1.default },

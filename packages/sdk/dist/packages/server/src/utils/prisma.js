@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.prisma = void 0;
 const tslib_1 = require("tslib");
 const client_1 = require("@prisma/client");
-const bcrypt = require("bcrypt");
+const bcrypt = tslib_1.__importStar(require("bcrypt"));
 const prisma = new client_1.PrismaClient();
 exports.prisma = prisma;
 prisma.$use(async (params, next) => {
