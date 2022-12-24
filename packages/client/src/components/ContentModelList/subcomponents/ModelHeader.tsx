@@ -1,15 +1,20 @@
 import Button from "packages/client/src/components/Button";
 import Heading from "packages/client/src/components/Heading";
 import PageHeader from "packages/client/src/components/PageHeader";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { FaBoxes } from "react-icons/fa";
 
 interface IModelHeader {
-  setIsModal: Dispatch<SetStateAction<boolean>>;
+  toggleModal: (value: boolean) => void;
 }
 
-const ModelHeader: FC<IModelHeader> = (props) => {
-  const { setIsModal } = props;
+const ModelHeader: FC<IModelHeader> = ({ toggleModal }) => {
   return (
     <PageHeader extraProps={{ className: "justify-between" }}>
       <div className="flex">
@@ -17,7 +22,7 @@ const ModelHeader: FC<IModelHeader> = (props) => {
         <Heading type="h1" text="Content Model" />
       </div>
       <Button
-        onClick={() => setIsModal(true)}
+        onClick={() => toggleModal(true)}
         type="button"
         text="Add Content Type"
       />

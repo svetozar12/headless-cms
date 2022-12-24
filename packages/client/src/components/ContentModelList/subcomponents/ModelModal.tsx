@@ -12,12 +12,12 @@ import api from "../../../utils/api";
 
 interface IModelModal {
   isModal: boolean;
-  setIsModal: Dispatch<SetStateAction<boolean>>;
+  toggleModal: (value: boolean) => void;
 }
 
 const ModelModal: FC<IModelModal> = (props) => {
-  const { isModal, setIsModal } = props;
-  const { mutateAsync, isLoading } = useCreateModel();
+  const { isModal, toggleModal } = props;
+  // const { mutateAsync, isLoading } = useCreateModel();
   const { modelTitle } = useValues();
 
   const getFIelds = (): IFields[] => {
@@ -35,17 +35,17 @@ const ModelModal: FC<IModelModal> = (props) => {
   const handleSubmit = async () => {
     const titleValue = modelTitle.current?.value;
 
-    setIsModal(false);
-    await mutateAsync({
-      title: titleValue as string,
-    });
+    toggleModal(false);
+    // await mutateAsync({
+    //   title: titleValue as string,
+    // });
   };
 
   const render = () => {
     return (
-      <Modal onOverlayClick={() => setIsModal(false)} isOpen={isModal}>
+      <Modal onOverlayClick={() => toggleModal(false)} isOpen={isModal}>
         <Form
-          isLoading={isLoading}
+          isLoading={false}
           error=""
           handleSubmit={async () => await handleSubmit()}
           fields={getFIelds()}
@@ -68,7 +68,7 @@ const ModelModal: FC<IModelModal> = (props) => {
                   Render: (
                     <Button
                       text="Cancel"
-                      onClick={() => setIsModal(false)}
+                      onClick={() => toggleModal(false)}
                       type="button"
                       extraProps={{
                         style: { border: "1px solid rgba(0,0,0,0.1)" },

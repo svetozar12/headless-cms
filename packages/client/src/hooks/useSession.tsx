@@ -3,7 +3,8 @@ import { useState } from "react";
 import api from "../utils/api";
 import { useCookie } from "next-cookie";
 import { checkAuth } from "../utils/auth";
-import { setToken } from "@headless-cms/sdk";
+import axios from "axios";
+import { IAuthResource } from "packages/client/src/utils/api/resources/auth";
 //gets user data from api and refresh token if possible
 const useSession = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -13,7 +14,9 @@ const useSession = () => {
 
   const setTokens = async () => {
     try {
-      const auth = await checkAuth(cookie.get("refreshToken"));
+      const auth = (await checkAuth(
+        cookie.get("refreshToken")
+      )) as IAuthResource;
       if (typeof auth !== "boolean") {
         const { accessToken, refreshToken } = auth;
         if (accessToken && refreshToken) {
@@ -25,7 +28,9 @@ const useSession = () => {
     } catch {
       setIsLogged(false);
     } finally {
-      setToken(cookie.get("accessToken"));
+      axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.get(
+        "accessToken"
+      )}`;
     }
   };
 
