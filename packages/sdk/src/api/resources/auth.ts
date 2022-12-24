@@ -13,17 +13,31 @@ export const auth = {
     password?: { username: string; password: string },
     refreshToken?: string,
   ) => {
-    let res: Promise<IAuthResource>;
+    let res: IAuthResource | string;
     if (grant_type === "password") {
-      res = makeRequest<IAuthResource>("post", "/auth", undefined, {
-        grant_type,
-        ...password,
-      });
-    } else
-      res = makeRequest<IAuthResource>("post", "/auth", undefined, {
-        grant_type,
-        refreshToken,
-      });
+      const passwordType = await makeRequest<IAuthResource | string>(
+        "post",
+        "/auth",
+        undefined,
+        {
+          grant_type,
+          ...password,
+        },
+      );
+      res = passwordType;
+    } else {
+      const otherType = await makeRequest<IAuthResource>(
+        "post",
+        "/auth",
+        undefined,
+        {
+          grant_type,
+          refreshToken,
+        },
+      );
+      res = otherType;
+    }
+
     return res;
   },
 };

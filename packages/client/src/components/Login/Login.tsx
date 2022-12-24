@@ -40,7 +40,6 @@ const Login: React.FunctionComponent = () => {
       } else {
         const { data } = isParse;
         const res = await api.auth.auth("password", data);
-        if (!res.accessToken) throw new Error(res.message);
         const expiresIn = new Date();
         expiresIn.setHours(expiresIn.getHours() + 1);
         cookie.set("accessToken", res.accessToken, {

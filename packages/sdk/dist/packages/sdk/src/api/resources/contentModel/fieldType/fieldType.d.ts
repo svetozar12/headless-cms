@@ -1,3 +1,4 @@
+import { FieldTypeEnum, FieldType } from "@headless-cms/server";
 declare const fieldType: {
     getList: (modelId: string) => Promise<FieldType>;
     create: (title: string, type: FieldTypeEnum, modelId: string) => Promise<FieldType>;

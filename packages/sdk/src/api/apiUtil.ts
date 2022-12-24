@@ -23,17 +23,17 @@ export const makeRequest = async <T>(
   options?: AxiosRequestConfig<any> | undefined,
 ): Promise<T> => {
   if (!apiHost) throw new Error("Please initialize sdk");
-  console.log(`${apiHost}${path}`);
-
   try {
     const res = await axios[method](`${apiHost}${path}`, data, options);
     return reqObject ? res.data[reqObject] : res.data;
   } catch (error) {
-    return error as any;
+    let errorMessage = "Internal Sdk error";
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data.message;
+    }
+    throw new Error(errorMessage);
   }
 };
 export const setToken = (token: string) => {
-  console.log(token);
-
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };

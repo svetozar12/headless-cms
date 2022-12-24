@@ -18,18 +18,20 @@ exports.initApi = initApi;
 const makeRequest = async (method, path, reqObject, data, options) => {
     if (!apiHost)
         throw new Error("Please initialize sdk");
-    console.log(`${apiHost}${path}`);
     try {
         const res = await axios_1.default[method](`${apiHost}${path}`, data, options);
         return reqObject ? res.data[reqObject] : res.data;
     }
     catch (error) {
-        return error;
+        let errorMessage = "Internal Sdk error";
+        if (axios_1.default.isAxiosError(error)) {
+            errorMessage = error.response?.data.message;
+        }
+        throw new Error(errorMessage);
     }
 };
 exports.makeRequest = makeRequest;
 const setToken = (token) => {
-    console.log(token);
     axios_1.default.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 exports.setToken = setToken;
