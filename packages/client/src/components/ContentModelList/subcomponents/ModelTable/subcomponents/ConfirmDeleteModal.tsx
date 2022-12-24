@@ -1,7 +1,10 @@
+import ActionButtons from "packages/client/src/components/ActionButtons";
+import Button from "packages/client/src/components/Button";
+import Heading from "packages/client/src/components/Heading";
+import Modal from "packages/client/src/components/Modal";
 import React, { FC } from "react";
 import useDeleteContentModel from "../../../../../hooks/useDeleteContentModel";
 import { SetState } from "../../../../../utils/common";
-import { ActionButtons, Button, Heading, Modal } from "@headless-cms/ui";
 
 interface IConfirmDeleteModal {
   isDeleteModal: boolean;

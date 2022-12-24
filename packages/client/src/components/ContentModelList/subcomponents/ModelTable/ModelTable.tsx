@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
+import ActionButtons from "packages/client/src/components/ActionButtons";
+import Button from "packages/client/src/components/Button";
+import Table, { IColumn } from "packages/client/src/components/Table/Table";
 import React, { ChangeEvent, FC, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { CONTENT_MODEL, CONTENT_MODELS } from "../../../../constants/routes";
 import useDeleteContentModel from "../../../../hooks/useDeleteContentModel";
 import useGetContentModels from "../../../../hooks/useGetContentModels";
-import { ActionButtons, Button, Table, IColumn } from "@headless-cms/ui";
 import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
 
 const ModelTable: FC = () => {

@@ -1,7 +1,8 @@
+import Heading from "packages/client/src/components/Heading";
+import Spinner from "packages/client/src/components/Spinner";
 import React, { useEffect, useState } from "react";
 import { useGetContentModel } from "../../hooks/useGetContentModel";
 // import { GenericObject } from "../../utils/common";
-import { Heading, Spinner } from "@headless-cms/ui";
 import Field from "./subcomponents/Field";
 // import ModelHeading from "./subcomponents/Heading";
 // import ActionButtons from "./subcomponents/Heading/subcomponents/ActionButtons";

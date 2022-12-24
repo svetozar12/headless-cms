@@ -1,9 +1,10 @@
 import { useCookie } from "next-cookie";
 import Router from "next/router";
+import Button from "packages/client/src/components/Button";
+import Form from "packages/client/src/components/Form";
 import { useRef, useState } from "react";
 import z from "zod";
 import api from "../../utils/api";
-import { Button, Form } from "@headless-cms/ui";
 import Header from "./subcomponents/Header";
 import { getFields } from "./utils";
 

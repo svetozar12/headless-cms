@@ -4,9 +4,9 @@ import React, { useRef, useState } from "react";
 import z from "zod";
 import { CONTENT_MODELS } from "../../constants/routes";
 import api from "../../utils/api";
-import { Form } from "@headless-cms/ui";
 import Header from "./subcomponents/Header";
 import { getFields } from "./utils";
+import Form from "packages/client/src/components/Form";
 
 const schema = z.object({
   username: z.string().min(3).max(20),
@@ -40,6 +40,7 @@ const Login: React.FunctionComponent = () => {
       } else {
         const { data } = isParse;
         const res = await api.auth.auth("password", data);
+        if (!res.accessToken) throw new Error(res.message);
         const expiresIn = new Date();
         expiresIn.setHours(expiresIn.getHours() + 1);
         cookie.set("accessToken", res.accessToken, {

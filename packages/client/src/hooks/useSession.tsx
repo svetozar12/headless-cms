@@ -3,7 +3,7 @@ import { useState } from "react";
 import api from "../utils/api";
 import { useCookie } from "next-cookie";
 import { checkAuth } from "../utils/auth";
-import { setToken } from "../utils/api/apiUtil";
+import { setToken } from "@headless-cms/sdk";
 //gets user data from api and refresh token if possible
 const useSession = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);

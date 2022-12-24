@@ -11,7 +11,8 @@ export type Method = ObjectValues<typeof METHOD>;
 let apiHost: string;
 
 export const initApi = (protocol = "http", host = "localhost", port = 5000) => {
-  apiHost = `${protocol}${host}:${port}`;
+  apiHost = `${protocol}://${host}:${port}`;
+  console.log(apiHost);
 };
 
 export const makeRequest = async <T>(
@@ -22,6 +23,8 @@ export const makeRequest = async <T>(
   options?: AxiosRequestConfig<any> | undefined,
 ): Promise<T> => {
   if (!apiHost) throw new Error("Please initialize sdk");
+  console.log(`${apiHost}${path}`);
+
   try {
     const res = await axios[method](`${apiHost}${path}`, data, options);
     return reqObject ? res.data[reqObject] : res.data;
@@ -29,5 +32,8 @@ export const makeRequest = async <T>(
     return error as any;
   }
 };
-export const setToken = (token: string) =>
-  (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`);
+export const setToken = (token: string) => {
+  console.log(token);
+
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};

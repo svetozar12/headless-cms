@@ -11,12 +11,14 @@ const METHOD = {
 };
 let apiHost;
 const initApi = (protocol = "http", host = "localhost", port = 5000) => {
-    apiHost = `${protocol}${host}:${port}`;
+    apiHost = `${protocol}://${host}:${port}`;
+    console.log(apiHost);
 };
 exports.initApi = initApi;
 const makeRequest = async (method, path, reqObject, data, options) => {
     if (!apiHost)
         throw new Error("Please initialize sdk");
+    console.log(`${apiHost}${path}`);
     try {
         const res = await axios_1.default[method](`${apiHost}${path}`, data, options);
         return reqObject ? res.data[reqObject] : res.data;
@@ -26,6 +28,9 @@ const makeRequest = async (method, path, reqObject, data, options) => {
     }
 };
 exports.makeRequest = makeRequest;
-const setToken = (token) => (axios_1.default.defaults.headers.common["Authorization"] = `Bearer ${token}`);
+const setToken = (token) => {
+    console.log(token);
+    axios_1.default.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
 exports.setToken = setToken;
 //# sourceMappingURL=apiUtil.js.map

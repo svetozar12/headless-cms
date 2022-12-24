@@ -1,6 +1,7 @@
+import Heading from "packages/client/src/components/Heading";
+import PageHeader from "packages/client/src/components/PageHeader";
 import React, { FC } from "react";
 import { FaBoxes } from "react-icons/fa";
-import { Heading, PageHeader } from "@headless-cms/ui";
 
 interface IModelHeading {
   title: string;

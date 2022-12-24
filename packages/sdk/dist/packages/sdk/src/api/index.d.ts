@@ -1,11 +1,11 @@
 export declare const api: {
     user: {
-        getMe: () => Promise<import(".prisma/client").User>;
+        getMe: () => Promise<User>;
         create: (user: {
             username: string;
             password: string;
         }) => Promise<{
-            user: import(".prisma/client").User;
+            user: User;
             accessToken: string;
             refreshToken: string;
         }>;
@@ -17,40 +17,31 @@ export declare const api: {
         } | undefined, refreshToken?: string | undefined) => Promise<import("./resources/auth").IAuthResource>;
     };
     content: {
-        getById: (modelId: string) => Promise<import(".prisma/client").Content>;
+        getById: (modelId: string) => Promise<ContentType>;
         getAll: (token: string, page?: number | undefined) => Promise<{
             pagination: {
                 page: number;
                 pageSize: number;
                 total: number;
             };
-            content: import(".prisma/client").Content[];
+            content: ContentType[];
         }>;
         createModel: (model: import("./resources/content/content").IContent) => Promise<unknown>;
-        update: (modelId: number, model: import("./resources/content/content").IContent) => Promise<import(".prisma/client").Content>;
+        update: (modelId: number, model: import("./resources/content/content").IContent) => Promise<ContentType>;
         delete: (modelId: number) => Promise<string>;
     };
     contentModel: {
-        getById: (modelId: string) => Promise<import(".prisma/client").ContentModel & {
-            Content: import(".prisma/client").Content[];
-            FIeld: import(".prisma/client").FieldType[];
-        }>;
+        getById: (modelId: string) => Promise<ContentModelWithRelations>;
         getAll: (page?: number | undefined) => Promise<{
             pagination: {
                 page: number;
                 pageSize: number;
                 total: number;
             };
-            contentModel: (import(".prisma/client").ContentModel & {
-                Content: import(".prisma/client").Content[];
-                FIeld: import(".prisma/client").FieldType[];
-            })[];
+            contentModel: ContentModelWithRelations[];
         }>;
         createModel: (model: import("./resources/contentModel/contentModel").IContentModel) => Promise<unknown>;
-        update: (modelId: number, model: import("./resources/contentModel/contentModel").IContentModel) => Promise<import(".prisma/client").ContentModel & {
-            Content: import(".prisma/client").Content[];
-            FIeld: import(".prisma/client").FieldType[];
-        }>;
+        update: (modelId: number, model: import("./resources/contentModel/contentModel").IContentModel) => Promise<ContentModelWithRelations>;
         delete: (modelId: number) => Promise<string>;
     };
 };

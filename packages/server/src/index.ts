@@ -7,6 +7,7 @@ import cors from "cors";
 import { env } from "./env/server";
 import initRoutes from "./routes";
 import handleError from "./middlewares/errorHandler";
+import { Content, ContentModel, FIeld, User } from "@prisma/client";
 
 const app = express();
 
@@ -25,3 +26,23 @@ if (env.NODE_ENV !== "test")
   app.listen(env.PORT, () => logger([`Server running on port ${env.PORT}`]));
 
 export default app;
+
+export {};
+
+type UserMe = Omit<User, "password">;
+
+declare global {
+  namespace Express {
+    export interface Request {
+      user: {
+        id: number;
+      };
+      pre: {
+        user: UserMe;
+        content: Content;
+        model: ContentModel;
+        field: FIeld;
+      };
+    }
+  }
+}

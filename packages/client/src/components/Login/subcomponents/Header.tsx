@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Heading from "packages/client/src/components/Heading";
 import React from "react";
 import { REGISTER } from "../../../constants/routes";
-import { Heading } from "@headless-cms/ui";
 
 const Header = () => {
   return (

@@ -1,4 +1,3 @@
-import { User } from "@headless-cms/server";
 export declare const user: {
     getMe: () => Promise<User>;
     create: (user: {

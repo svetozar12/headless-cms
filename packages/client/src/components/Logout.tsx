@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { LOGIN } from "../constants/routes";
 import { logout } from "../utils/auth";
-import { Spinner } from "@headless-cms/ui";
 import { useCookie } from "next-cookie";
+import Spinner from "packages/client/src/components/Spinner";
 
 const Logout = () => {
   const { isLoading } = useLogout();

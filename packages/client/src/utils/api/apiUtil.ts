@@ -25,5 +25,3 @@ export const makeRequest = async <T>(
     return error as any;
   }
 };
-export const setToken = (token: string) =>
-  (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`);
