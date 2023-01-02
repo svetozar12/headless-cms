@@ -1,11 +1,11 @@
-# `server`
+# `trpc-server`
 
 > TODO: description
 
 ## Usage
 
 ```
-const server = require('server');
+const trpcServer = require('trpc-server');
 
 // TODO: DEMONSTRATE API
 ```

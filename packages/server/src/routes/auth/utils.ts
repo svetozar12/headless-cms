@@ -1,6 +1,7 @@
-import { TRPCError } from "@trpc/server";
-import jwt from "jsonwebtoken";
+import jwt, { decode, JwtPayload } from "jsonwebtoken";
 import { env } from "../../env/server";
+import { Request, Response, NextFunction } from "express";
+import logger from "../../utils/logger";
 
 export enum jwtType {
   ACCESS = "access",
@@ -10,8 +11,8 @@ export enum jwtType {
 const signToken = (
   type: jwtType,
   payload: Record<string, any>,
-  expiresIn: number,
-) => {
+  expiresIn: number
+): Promise<string> => {
   const secret =
     type === jwtType.ACCESS
       ? env.JWT_ACCESS_TOKEN_SECRET
@@ -19,28 +20,33 @@ const signToken = (
   return new Promise((resolve, reject) => {
     jwt.sign(payload, secret, { expiresIn }, (err, token) => {
       if (err) {
-        console.log(err, "error");
-
+        logger(["error", err]);
         return reject(
-          new TRPCError({
-            code: "FORBIDDEN",
-            message: "Token has expired or invalid secret",
-          }),
+          new Error("Error while signing token. Please try again later.")
         );
       }
-      console.log(token, "TOKEN");
 
-      return resolve(token);
+      return resolve(token as string);
     });
   });
 };
 
-const verifyToken = (token: string, type: jwtType) => {
+const verifyToken = (type: jwtType, token: string) => {
   const secret =
     type === jwtType.ACCESS
       ? env.JWT_ACCESS_TOKEN_SECRET
       : env.JWT_REFRESH_TOKEN_SECRET;
-  return jwt.verify(token, secret);
+  let user: JwtPayload | boolean | string | undefined;
+
+  // @ts-ignore
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) {
+      logger(["error", err]);
+      user = false;
+    }
+    user = decoded;
+  });
+  return user;
 };
 
 export { signToken, verifyToken };

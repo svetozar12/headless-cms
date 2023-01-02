@@ -1,5 +1,4 @@
 // @ts-check
-import { env } from "./src/env/server.mjs";
 
 /**
  * Don't be scared of the generics here.
@@ -17,8 +16,16 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   // Next.js i18n docs: https://nextjs.org/docs/advanced-features/i18n-routing
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/login",
+        permanent: true,
+      },
+    ];
+  },
+  images: {
+    domains: ["avatars.dicebear.com"],
   },
 });

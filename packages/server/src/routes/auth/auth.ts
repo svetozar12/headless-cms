@@ -1,24 +1,60 @@
-import { t } from "../../";
-import { z } from "zod";
-import { jwtType, signToken } from "./utils";
-import User from "../../libs/sql/models/user.model";
-import { TRPCError } from "@trpc/server";
+import { jwtType, signToken, verifyToken } from "./utils";
+import { Router } from "express";
+import { authSchema } from "./schema";
+import { zMiddleware, zParse } from "../../utils/zParse";
+import { prisma } from "../../utils/prisma";
+import bcrypt from "bcrypt";
+import { env } from "../../env/server";
 
-const authRouter = t.router({
-  getAuth: t.procedure
-    .input(z.object({ username: z.string(), password: z.string() }))
-    .mutation(async (req) => {
-      const { username } = req.input;
+const auth = Router();
 
-      const user = await User.findOne({ where: { username } });
-      if (!user)
-        throw new TRPCError({ message: "user not found", code: "NOT_FOUND" });
+auth.post("/", zMiddleware(authSchema), async (req, res) => {
+  const {
+    body: { grant_type },
+    body,
+  } = await zParse(authSchema, req);
+  if (grant_type === "password") {
+    const { password, username } = body;
 
-      const accessToken = await signToken(jwtType.ACCESS, user.get(), 360);
-      const refreshToken = await signToken(jwtType.REFRESH, user.get(), 720);
+    const user = await prisma.user.findFirst({ where: { username } });
+    if (!user) return res.status(404).json({ message: "User doesn't exist" });
+    const comparePassword = bcrypt.compareSync(
+      password as string,
+      user.password
+    );
+    if (!comparePassword)
+      return res.status(400).json({ message: "Invalid password" });
 
-      return { accessToken, refreshToken };
-    }),
+    const accessToken = await signToken(
+      jwtType.ACCESS,
+      { id: user.id },
+      parseInt(env.JWT_ACCESS_TOKEN_EXPIRES_IN)
+    );
+    const refreshToken = await signToken(
+      jwtType.REFRESH,
+      { id: user.id },
+      parseInt(env.JWT_REFRESH_TOKEN_EXPIRES_IN)
+    );
+    return res.status(201).json({ accessToken, refreshToken });
+  }
+  if (grant_type === "refresh_token") {
+    const decodedToken = verifyToken(
+      jwtType.REFRESH,
+      body.refreshToken as string
+    ) as typeof req.user;
+    if (!decodedToken)
+      return res.status(401).json({ message: "Invalid refresh token" });
+    const user = await prisma.user.findFirst({
+      where: { id: decodedToken.id },
+    });
+    if (!user) return res.status(404).json({ message: "User doesn't exist" });
+
+    const accessToken = await signToken(jwtType.ACCESS, { id: user.id }, 60);
+    const refreshToken = await signToken(jwtType.REFRESH, { id: user.id }, 120);
+
+    return res.status(201).json({ accessToken, refreshToken });
+  }
+  return res.status(400).json({ message: "Invalid grant type" });
 });
 
-export default authRouter;
+export default auth;

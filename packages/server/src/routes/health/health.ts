@@ -1,9 +1,15 @@
-import { z } from "zod";
-import { t } from "../..";
-export const healthRouter = t.router({
-  getHealth: t.procedure.input(z.string()).query((req) => {
-    return req.input;
-  }),
+import { Router } from "express";
+import isAuth from "../../middlewares/isAuth";
+import { jwtType } from "../auth/utils";
+import nested from "./nested";
+
+const health = Router();
+health.get("/", (req, res) => {
+  return res.json({ message: "oek" });
 });
 
-export default healthRouter;
+health.get("/:id", (req, res) => {
+  return res.json({ message: req.params.id });
+});
+
+export default health;
