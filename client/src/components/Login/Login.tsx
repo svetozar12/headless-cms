@@ -68,12 +68,7 @@ const Login: React.FunctionComponent = () => {
     <div className="bg-mainBlack flex h-screen w-full items-center justify-center">
       <div className="bg-offBlack w-5/6 md:w-2/4 xl:w-2/5">
         <Heading text="Sign in" type="h2" />
-        <button
-          type="button"
-          onClick={() =>
-            sessionData ? () => void signOut() : () => void signIn()
-          }
-        >
+        <button type="button" onClick={() => void signIn()}>
           {sessionData ? "Sign out" : "Sign in"}
         </button>
       </div>

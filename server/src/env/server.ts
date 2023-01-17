@@ -8,8 +8,10 @@ import logger from "../utils/logger";
 const _serverEnv = serverSchema.safeParse(process.env);
 
 if (!_serverEnv.success) {
+  // @ts-ignore
   logger(["❌ Invalid environment variables:\n", _serverEnv.error]);
   const {
+    // @ts-ignore
     error: { issues },
   } = _serverEnv;
   issues.forEach((issue) => {

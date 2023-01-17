@@ -5,10 +5,11 @@ import logger from "./logger";
 
 const zParse = async <T extends AnyZodObject>(
   schema: T,
-  req: Request
+  req: Request,
 ): Promise<z.infer<T>> => {
   const zSchema = await schema.safeParseAsync(req);
   if (!zSchema.success)
+    // @ts-ignore
     return CustomError.badRequest(zSchema.error.message) as any;
   return zSchema.data;
 };
@@ -19,13 +20,14 @@ const zMiddleware = <T extends AnyZodObject>(schema: T) => {
     const zSchema = await schema.safeParseAsync(req);
     if (!zSchema.success) {
       const {
+        // @ts-ignore
         error: { issues },
       } = zSchema;
       logger(["zMiddleware", "error", issues]);
       issues.forEach((issue) => {
         logger(["zMiddleware", issue.message]);
         next(
-          CustomError.badRequest(`${issue.message} ${issue.path.join(".")}`)
+          CustomError.badRequest(`${issue.message} ${issue.path.join(".")}`),
         );
       });
     }
