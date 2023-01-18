@@ -3,26 +3,21 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { FaBoxes } from "react-icons/fa";
 import { MdContentPaste } from "react-icons/md";
-import {
-  CONTENT,
-  CONTENT_MODELS,
-  LOGOUT,
-  PROFILE,
-} from "../../constants/routes";
+import { CONTENT, CONTENT_MODELS, PROFILE } from "../../constants/routes";
 import Image from "next/image";
 import Dropdown from "./subcomponents/Dropdown";
 import Spinner from "../Spinner";
-import { useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const HrefToTab = (href: string) => {
   return href.slice(1, href.length);
 };
 
 const Navbar = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const { user } = session || {};
   const { activeTab = CONTENT_MODELS } = useActiveTab();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const NavLinks = [
@@ -32,6 +27,7 @@ const Navbar = () => {
       href: CONTENT,
     },
   ];
+
   const render = () => {
     return (
       <nav className="bg-mainPurple relative flex h-20 w-full items-center">
@@ -76,8 +72,9 @@ const Navbar = () => {
                 items={[
                   {
                     title: "Logout",
-                    onClick: () => {
-                      router.push(LOGOUT);
+                    onClick: async () => {
+                      await signOut();
+                      signIn();
                       setIsOpen(false);
                     },
                   },
