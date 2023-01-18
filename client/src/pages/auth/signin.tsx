@@ -1,6 +1,8 @@
 import { NextPage, GetServerSideProps } from "next";
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, getSession, signIn } from "next-auth/react";
+import { useCookie } from "next-cookie";
 import SignIn from "../../components/SignIn";
+import { redirectTo } from "../../utils/redirect";
 
 type ProviderOptions = {
   callbackUrl: string;
@@ -20,8 +22,13 @@ const SignInPage: NextPage<Props> = ({ providers }) => (
   <SignIn providers={providers} />
 );
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const providers = await getProviders();
+  const session = await getSession();
+  const cookies = useCookie(ctx);
+  if (session) {
+    return redirectTo(cookies.get("next-auth.callback-url") || "/app/content");
+  }
   return {
     props: { providers },
   };

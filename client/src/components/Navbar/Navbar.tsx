@@ -1,107 +1,151 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { FaBoxes } from "react-icons/fa";
-import { MdContentPaste } from "react-icons/md";
-import { CONTENT, CONTENT_MODELS, PROFILE } from "../../constants/routes";
-import Image from "next/image";
-import Dropdown from "./subcomponents/Dropdown";
-import Spinner from "../Spinner";
-import { signIn, signOut, useSession } from "next-auth/react";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import { signOut, useSession } from "next-auth/react";
+import Router, { useRouter } from "next/router";
 
-const HrefToTab = (href: string) => {
-  return href.slice(1, href.length);
-};
+const pages = ["ContentModel", "Content"];
+const settings = [
+  {
+    label: "Logout",
+    onClick: async () => {
+      await signOut({ callbackUrl: "/" });
+    },
+  },
+];
 
 const Navbar = () => {
-  const router = useRouter();
   const { data: session } = useSession();
   const { user } = session || {};
-  const { activeTab = CONTENT_MODELS } = useActiveTab();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null,
+  );
 
-  const NavLinks = [
-    { Icon: FaBoxes, href: CONTENT_MODELS },
-    {
-      Icon: MdContentPaste,
-      href: CONTENT,
-    },
-  ];
-
-  const render = () => {
-    return (
-      <nav className="bg-mainPurple relative flex h-20 w-full items-center">
-        {!user && <Spinner isLoading={!user} />}
-        <div className="flex h-full w-full items-center justify-center gap-5">
-          {NavLinks.map(({ Icon, href }) => {
-            const tabName = HrefToTab(href);
-            const isActiveTab = tabName === activeTab;
-
-            return (
-              <div
-                key={href}
-                className={`flex h-12 w-12 items-center justify-center rounded-md duration-500 ease-out bg-transparent${
-                  isActiveTab && "bg-textPurple rounded-md"
-                }`}
-              >
-                <Link key={href} href={href}>
-                  <Icon
-                    size="2.3rem"
-                    className="cursor-pointer"
-                    onClick={() => {
-                      router.push(href);
-                    }}
-                  />
-                </Link>
-              </div>
-            );
-          })}
-
-          <div className="relative h-9 w-9">
-            <Image
-              src={user?.image as any}
-              width={37}
-              height={37}
-              alt=""
-              className="flex cursor-pointer items-center justify-center rounded-full"
-              onClick={() => setIsOpen((prev) => !prev)}
-            />
-            <div className="relative flex h-full w-full">
-              <Dropdown
-                isOpen={isOpen}
-                items={[
-                  {
-                    title: "Logout",
-                    onClick: async () => {
-                      await signOut();
-                      signIn();
-                      setIsOpen(false);
-                    },
-                  },
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
   };
 
-  return <>{session?.user && render()}</>;
-};
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  if (!session) return <></>;
+
+  return (
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt={user?.name as string}
+                  src={user?.image as string}
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map(({ label, onClick }) => (
+                <MenuItem
+                  key={label}
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    onClick();
+                  }}
+                >
+                  <Typography textAlign="center">{label}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
 export default Navbar;
-
-const useActiveTab = () => {
-  const [activeTab, setActiveTab] = useState("");
-  useEffect(() => {
-    if (window.location.pathname === CONTENT_MODELS)
-      setActiveTab(() => HrefToTab(CONTENT_MODELS));
-    else if (window.location.pathname === CONTENT)
-      setActiveTab(() => HrefToTab(CONTENT));
-    else if (window.location.pathname === PROFILE)
-      setActiveTab(() => HrefToTab(PROFILE));
-  }, [activeTab, window.location.pathname]);
-
-  return { activeTab };
-};

@@ -9,12 +9,17 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   images: {
     domains: ["avatars.githubusercontent.com"],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/auth/signin",
+        permanent: true,
+      },
+    ];
   },
 };
 export default config;

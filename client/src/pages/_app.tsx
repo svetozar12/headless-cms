@@ -7,6 +7,7 @@ import "../styles/globals.css";
 import { api } from "../utils/api";
 import { SessionProvider } from "next-auth/react";
 import { type Session } from "next-auth";
+import AuthGuard from "../components/AuthGuard";
 
 export const queryClient = new QueryClient();
 

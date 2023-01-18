@@ -1,8 +1,11 @@
-import { signIn } from "next-auth/react";
-import React, { FC } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { FC, useEffect } from "react";
 import { AiFillGithub, AiFillGoogleCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa";
 import { VscWorkspaceUnknown } from "react-icons/vsc";
+import { CONTENT } from "../constants/routes";
+import Spinner from "./Spinner";
 
 type ProviderOptions = {
   callbackUrl: string;
@@ -19,7 +22,12 @@ type Props = {
 };
 
 const SignIn: FC<Props> = ({ providers }) => {
-  console.log(providers);
+  const { status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") router.push(CONTENT);
+  }, [status]);
 
   const getIcon = (providerName: string) => {
     console.log(providerName);
@@ -38,6 +46,7 @@ const SignIn: FC<Props> = ({ providers }) => {
 
   return (
     <div className="h-screen bg-black flex justify-center items-center">
+      <Spinner isLoading={status === "loading"} />
       <div className="bg-white w-1/4 h-2/4 flex justify-center items-center">
         {Object.values(providers).map((provider) => (
           <div
