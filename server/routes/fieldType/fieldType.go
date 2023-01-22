@@ -2,10 +2,17 @@ package fieldtype
 
 import (
 	"svetozar12/headless-cms-be/db"
-	fieldtype "svetozar12/headless-cms-be/db/models/fieldType"
 
 	"github.com/gofiber/fiber/v2"
+	"gorm.io/gorm"
 )
+
+type FieldTypes struct {
+	gorm.Model
+	Name           string `json:"name"`
+	FieldType      string `json:"fieldType"`
+	ContentModelId int    `json:"contentModelId"`
+}
 
 func FieldType(app fiber.Router) {
 	fieldType := app.Group("/fieldType")
@@ -16,13 +23,13 @@ func FieldType(app fiber.Router) {
 }
 
 func getFieldType(c *fiber.Ctx) error {
-	var fieldTypes []fieldtype.FieldTypes
+	var fieldTypes []FieldTypes
 	db.DB.Find(&fieldTypes)
 	return c.Status(fiber.StatusOK).JSON(fieldTypes)
 }
 
 func createFieldType(c *fiber.Ctx) error {
-	fieldType := new(fieldtype.FieldTypes)
+	fieldType := new(FieldTypes)
 	err := c.BodyParser(fieldType)
 	if err != nil {
 		return c.Status(fiber.ErrUnprocessableEntity.Code).JSON(err)
@@ -32,7 +39,7 @@ func createFieldType(c *fiber.Ctx) error {
 }
 
 func updateFieldType(c *fiber.Ctx) error {
-	fieldType := new(fieldtype.FieldTypes)
+	fieldType := new(FieldTypes)
 	id := c.Params("id")
 	err := c.BodyParser(fieldType)
 	if err != nil {
@@ -44,7 +51,7 @@ func updateFieldType(c *fiber.Ctx) error {
 }
 
 func deleteFieldType(c *fiber.Ctx) error {
-	var fieldType fieldtype.FieldTypes
+	var fieldType FieldTypes
 	id := c.Params("id")
 	db.DB.Delete(&fieldType, id)
 	return c.SendStatus(fiber.StatusOK)

@@ -2,10 +2,16 @@ package contentmodel
 
 import (
 	"svetozar12/headless-cms-be/db"
-	contentmodel "svetozar12/headless-cms-be/db/models/contentModel"
 
 	"github.com/gofiber/fiber/v2"
+	"gorm.io/gorm"
 )
+
+type ContentModel struct {
+	gorm.Model
+	Name   string `json:"name"`
+	UserId int    `json:"userId"`
+}
 
 func ContentModelRoutes(app fiber.Router) {
 	contentModel := app.Group("/contentModel")
@@ -16,25 +22,25 @@ func ContentModelRoutes(app fiber.Router) {
 }
 
 func getContentModel(c *fiber.Ctx) error {
-	var contentModels []contentmodel.ContentModel
+	var contentModels []ContentModel
 	db.DB.Find(&contentModels)
 	return c.Status(fiber.StatusOK).JSON(contentModels)
 }
 
 func createContentModel(c *fiber.Ctx) error {
-	body := new(contentmodel.ContentModel)
-	err := c.BodyParser(body)
+	contentModel := new(ContentModel)
+	err := c.BodyParser(contentModel)
 	if err != nil {
 		return c.Status(fiber.ErrUnprocessableEntity.Code).JSON(err)
 	}
-	db.DB.Create(&body)
+	db.DB.Create(&contentModel)
 
-	return c.Status(fiber.StatusCreated).JSON(body)
+	return c.Status(fiber.StatusCreated).JSON(contentModel)
 }
 
 func updateContentModel(c *fiber.Ctx) error {
 	id := c.Params("id")
-	contentModel := new(contentmodel.ContentModel)
+	contentModel := new(ContentModel)
 	err := c.BodyParser(contentModel)
 	if err != nil {
 		return c.Status(fiber.ErrUnprocessableEntity.Code).JSON(err)
@@ -45,7 +51,7 @@ func updateContentModel(c *fiber.Ctx) error {
 
 func deleteContentModel(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var contentModel contentmodel.ContentModel
+	var contentModel ContentModel
 	result := db.DB.Delete(&contentModel, id)
 	if result.RowsAffected == 0 {
 		return c.SendStatus(fiber.StatusNotFound)
