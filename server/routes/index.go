@@ -2,6 +2,7 @@ package routes
 
 import (
 	"svetozar12/headless-cms-be/config"
+	contentmodel "svetozar12/headless-cms-be/routes/contentModel"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
@@ -14,4 +15,5 @@ func InitRoutes(app *fiber.App) {
 		return c.SendString("Hello from the api")
 	})
 	fieldtype.FieldType(v1)
+	contentmodel.ContentModelRoutes(v1)
 }

@@ -2,9 +2,10 @@ package config
 
 import (
 	"svetozar12/headless-cms-be/db"
-	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
+	contentmodel "svetozar12/headless-cms-be/db/models/contentModel"
+	fieldtype "svetozar12/headless-cms-be/db/models/fieldType"
 )
 
 func Init() {
-	db.DB.AutoMigrate(&fieldtype.FieldTypes{})
+	db.DB.AutoMigrate(&fieldtype.FieldTypes{}, &contentmodel.ContentModel{})
 }
