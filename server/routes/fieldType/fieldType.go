@@ -14,15 +14,15 @@ type FieldTypes struct {
 	ContentModelId int    `json:"contentModelId"`
 }
 
-func FieldType(app fiber.Router) {
+func FieldTypeRoutes(app fiber.Router) {
 	fieldType := app.Group("/fieldType")
-	fieldType.Get("/", getFieldType)
+	fieldType.Get("/", getFieldTypes)
 	fieldType.Post("/", createFieldType)
 	fieldType.Put("/:id", updateFieldType)
 	fieldType.Delete("/:id", deleteFieldType)
 }
 
-func getFieldType(c *fiber.Ctx) error {
+func getFieldTypes(c *fiber.Ctx) error {
 	var fieldTypes []FieldTypes
 	db.DB.Find(&fieldTypes)
 	return c.Status(fiber.StatusOK).JSON(fieldTypes)

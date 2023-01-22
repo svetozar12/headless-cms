@@ -49,6 +49,15 @@ func createContent(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(content)
 }
 
+// ListAccounts godoc
+// @Summary      List accounts
+// @Description  get accounts
+// @Tags         accounts
+// @Accept       json
+// @Produce      json
+// @Param        q    query     string  false  "name search by q"  Format(email)
+// @Success      200  {object}   content.Content
+// @Router       /accounts [get]
 func updateContent(c *fiber.Ctx) error {
 	content := new(Content)
 	id := c.Params("id")
