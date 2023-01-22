@@ -17,9 +17,9 @@
     "host": "localhost:4000",
     "basePath": "/",
     "paths": {
-        "/accounts": {
-            "get": {
-                "description": "get accounts",
+        "/content": {
+            "put": {
+                "description": "update content",
                 "consumes": [
                     "application/json"
                 ],
@@ -27,9 +27,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "accounts"
+                    "content"
                 ],
-                "summary": "List accounts",
+                "summary": "Update content",
                 "parameters": [
                     {
                         "type": "string",
@@ -37,6 +37,15 @@
                         "description": "name search by q",
                         "name": "q",
                         "in": "query"
+                    },
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/content.Content"
+                        }
                     }
                 ],
                 "responses": {

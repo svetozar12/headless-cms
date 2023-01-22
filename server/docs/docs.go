@@ -24,9 +24,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/accounts": {
-            "get": {
-                "description": "get accounts",
+        "/content": {
+            "put": {
+                "description": "update content",
                 "consumes": [
                     "application/json"
                 ],
@@ -34,9 +34,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "accounts"
+                    "content"
                 ],
-                "summary": "List accounts",
+                "summary": "Update content",
                 "parameters": [
                     {
                         "type": "string",
@@ -44,6 +44,15 @@ const docTemplate = `{
                         "description": "name search by q",
                         "name": "q",
                         "in": "query"
+                    },
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/content.Content"
+                        }
                     }
                 ],
                 "responses": {

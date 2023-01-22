@@ -38,17 +38,23 @@ info:
   title: Fiber Example API
   version: "1.0"
 paths:
-  /accounts:
-    get:
+  /content:
+    put:
       consumes:
       - application/json
-      description: get accounts
+      description: update content
       parameters:
       - description: name search by q
         format: email
         in: query
         name: q
         type: string
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/content.Content'
       produces:
       - application/json
       responses:
@@ -56,7 +62,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/content.Content'
-      summary: List accounts
+      summary: Update content
       tags:
-      - accounts
+      - content
 swagger: "2.0"
