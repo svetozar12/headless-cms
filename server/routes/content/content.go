@@ -25,12 +25,25 @@ func ContentRoutes(app fiber.Router) {
 	content.Delete("/:id", deleteContent)
 }
 
+// Content godoc
+// @Summary      Get all content
+// @Tags         content
+// @Accept       json
+// @Success      200  {array} content.Content
+// @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
 	var content []Content
 	db.DB.Find(&content)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
+// Content godoc
+// @Summary      Create content
+// @Tags         content
+// @Accept       json
+// @Param request body content.Content true "query params""
+// @Success      201  {string} content.Content
+// @Router       /v1/content [post]
 func createContent(c *fiber.Ctx) error {
 	content := new(Content)
 	var fieldTypes []fieldtype.FieldTypes
@@ -51,13 +64,12 @@ func createContent(c *fiber.Ctx) error {
 
 // Content godoc
 // @Summary      Update content
-// @Description  update content
 // @Tags         content
 // @Accept       json
 // @Produce      json
 // @Param request body content.Content true "query params"
 // @Success      200  {object}   content.Content
-// @Router       /content [put]
+// @Router       /v1/content [put]
 func updateContent(c *fiber.Ctx) error {
 	content := new(Content)
 	id := c.Params("id")
@@ -69,6 +81,13 @@ func updateContent(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
+// Content godoc
+// @Summary      Delete content
+// @Tags         content
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {string} ok
+// @Router       /v1/content [delete]
 func deleteContent(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var content Content
