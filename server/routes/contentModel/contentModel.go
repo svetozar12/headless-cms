@@ -7,26 +7,58 @@ import (
 	"gorm.io/gorm"
 )
 
-type ContentModel struct {
-	gorm.Model
+type Body struct {
 	Name   string `json:"name"`
 	UserId int    `json:"userId"`
 }
 
+type ContentModel struct {
+	gorm.Model
+	Body
+}
+
 func ContentModelRoutes(app fiber.Router) {
 	contentModel := app.Group("/contentModel")
+	contentModel.Get("/:id", getContentModelById)
 	contentModel.Get("/", getContentModel)
 	contentModel.Post("/", createContentModel)
 	contentModel.Put("/:id", updateContentModel)
 	contentModel.Delete("/:id", deleteContentModel)
 }
 
+// Content godoc
+// @Summary      Get content model by id
+// @Tags         contentModel
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {object} contentmodel.ContentModel
+// @Router       /v1/contentModel/{id} [get]
+func getContentModelById(c *fiber.Ctx) error {
+	var contentModel ContentModel
+	id := c.Params("id")
+	db.DB.Where("id = ?", id).First(&contentModel)
+	return c.Status(fiber.StatusOK).JSON(contentModel)
+}
+
+// Content godoc
+// @Summary      Get all content models
+// @Tags         contentModel
+// @Accept       json
+// @Success      200  {array} contentmodel.ContentModel
+// @Router       /v1/contentModel [get]
 func getContentModel(c *fiber.Ctx) error {
 	var contentModels []ContentModel
 	db.DB.Find(&contentModels)
 	return c.Status(fiber.StatusOK).JSON(contentModels)
 }
 
+// Content godoc
+// @Summary      Create content model
+// @Tags         contentModel
+// @Accept       json
+// @Param request body contentmodel.Body true "query params""
+// @Success      201  {string} contentmodel.ContentModel
+// @Router       /v1/contentModel [post]
 func createContentModel(c *fiber.Ctx) error {
 	contentModel := new(ContentModel)
 	err := c.BodyParser(contentModel)
@@ -38,6 +70,15 @@ func createContentModel(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(contentModel)
 }
 
+// Content godoc
+// @Summary      Update content model
+// @Tags         contentModel
+// @Accept       json
+// @Produce      json
+// @Param request body contentmodel.Body true "query params"
+// @Param id     path int true "ID"
+// @Success      200  {object}   contentmodel.ContentModel
+// @Router       /v1/contentModel/{id} [put]
 func updateContentModel(c *fiber.Ctx) error {
 	id := c.Params("id")
 	contentModel := new(ContentModel)
@@ -49,6 +90,13 @@ func updateContentModel(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(contentModel)
 }
 
+// Content godoc
+// @Summary      Delete content model
+// @Tags         contentModel
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {string} ok
+// @Router       /v1/contentModel/{id} [delete]
 func deleteContentModel(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var contentModel ContentModel

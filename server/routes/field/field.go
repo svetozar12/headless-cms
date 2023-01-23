@@ -7,12 +7,16 @@ import (
 	"gorm.io/gorm"
 )
 
-type Field struct {
-	gorm.Model
+type Body struct {
 	Name      string `json:"name"`
 	Value     string `json:"value"`
 	TypeId    int    `json:"typeId"`
 	ContentId int    `json:"contentId"`
+}
+
+type Field struct {
+	gorm.Model
+	Body
 }
 
 func FieldRoutes(app fiber.Router) {
@@ -23,12 +27,25 @@ func FieldRoutes(app fiber.Router) {
 	field.Delete("/:id", deleteField)
 }
 
+// Content godoc
+// @Summary      Get all fields
+// @Tags         field
+// @Accept       json
+// @Success      200  {array} field.Field
+// @Router       /v1/field [get]
 func getFields(c *fiber.Ctx) error {
 	var fields []Field
 	db.DB.Find(&fields)
 	return c.Status(fiber.StatusOK).JSON(fields)
 }
 
+// Content godoc
+// @Summary      Create field
+// @Tags         field
+// @Accept       json
+// @Param request body field.Body true "query params""
+// @Success      201  {string} field.Field
+// @Router       /v1/field [post]
 func createField(c *fiber.Ctx) error {
 	field := new(Field)
 	err := c.BodyParser(field)
@@ -39,6 +56,15 @@ func createField(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(&field)
 }
 
+// Content godoc
+// @Summary      Update field
+// @Tags         field
+// @Accept       json
+// @Produce      json
+// @Param request body field.Body true "query params"
+// @Param id     path int true "ID"
+// @Success      200  {object}   field.Field
+// @Router       /v1/field/{id} [put]
 func updateField(c *fiber.Ctx) error {
 	id := c.Params("id")
 	field := new(Field)
@@ -50,6 +76,13 @@ func updateField(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(field)
 }
 
+// Content godoc
+// @Summary      Delete field
+// @Tags         field
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {string} ok
+// @Router       /v1/field/{id} [delete]
 func deleteField(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var field Field

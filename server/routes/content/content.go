@@ -10,11 +10,15 @@ import (
 	"gorm.io/gorm"
 )
 
-type Content struct {
-	gorm.Model
+type Body struct {
 	Name    string `json:"name"`
 	ModelId int    `json:"modelId"`
 	UserId  int    `json:"userId"`
+}
+
+type Content struct {
+	gorm.Model
+	Body
 }
 
 func ContentRoutes(app fiber.Router) {
@@ -41,12 +45,12 @@ func getContent(c *fiber.Ctx) error {
 // @Summary      Create content
 // @Tags         content
 // @Accept       json
-// @Param request body content.Content true "query params""
+// @Param request body content.Body true "query params""
 // @Success      201  {string} content.Content
 // @Router       /v1/content [post]
 func createContent(c *fiber.Ctx) error {
 	content := new(Content)
-	var fieldTypes []fieldtype.FieldTypes
+	var fieldTypes []fieldtype.FieldType
 	err := c.BodyParser(content)
 	if err != nil {
 		return c.SendStatus(fiber.ErrUnprocessableEntity.Code)
@@ -56,7 +60,8 @@ func createContent(c *fiber.Ctx) error {
 	for i := 0; i < len(fieldTypes); i++ {
 		fmt.Println(fieldTypes[i])
 		fieldType := fieldTypes[i]
-		field := field.Field{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}
+		field := field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}
+
 		db.DB.Create(&field)
 	}
 	return c.Status(fiber.StatusCreated).JSON(content)
@@ -67,9 +72,10 @@ func createContent(c *fiber.Ctx) error {
 // @Tags         content
 // @Accept       json
 // @Produce      json
-// @Param request body content.Content true "query params"
+// @Param request body content.Body true "query params"
+// @Param id     path int true "ID"
 // @Success      200  {object}   content.Content
-// @Router       /v1/content [put]
+// @Router       /v1/content/{id} [put]
 func updateContent(c *fiber.Ctx) error {
 	content := new(Content)
 	id := c.Params("id")
@@ -87,7 +93,7 @@ func updateContent(c *fiber.Ctx) error {
 // @Accept       json
 // @Param id     path int true "ID"
 // @Success      200  {string} ok
-// @Router       /v1/content [delete]
+// @Router       /v1/content{id} [delete]
 func deleteContent(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var content Content

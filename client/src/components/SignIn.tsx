@@ -6,7 +6,6 @@ import { FaDiscord } from "react-icons/fa";
 import { VscWorkspaceUnknown } from "react-icons/vsc";
 import { CONTENT } from "../constants/routes";
 import Spinner from "./Spinner";
-
 type ProviderOptions = {
   callbackUrl: string;
   id: string;
@@ -24,8 +23,7 @@ type Props = {
 const SignIn: FC<Props> = ({ providers }) => {
   const { status } = useSession();
   const router = useRouter();
-
-  useEffect(() => {
+  sdk.useEffect(() => {
     if (status === "authenticated") router.push(CONTENT);
   }, [status]);
 

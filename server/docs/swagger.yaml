@@ -1,5 +1,14 @@
 basePath: /
 definitions:
+  content.Body:
+    properties:
+      modelId:
+        type: integer
+      name:
+        type: string
+      userId:
+        type: integer
+    type: object
   content.Content:
     properties:
       createdAt:
@@ -16,6 +25,84 @@ definitions:
         type: string
       userId:
         type: integer
+    type: object
+  contentmodel.Body:
+    properties:
+      name:
+        type: string
+      userId:
+        type: integer
+    type: object
+  contentmodel.ContentModel:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: integer
+    type: object
+  field.Body:
+    properties:
+      contentId:
+        type: integer
+      name:
+        type: string
+      typeId:
+        type: integer
+      value:
+        type: string
+    type: object
+  field.Field:
+    properties:
+      contentId:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      typeId:
+        type: integer
+      updatedAt:
+        type: string
+      value:
+        type: string
+    type: object
+  fieldtype.Body:
+    properties:
+      contentModelId:
+        type: integer
+      fieldType:
+        type: string
+      name:
+        type: string
+    type: object
+  fieldtype.FieldType:
+    properties:
+      contentModelId:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      fieldType:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
     type: object
   gorm.DeletedAt:
     properties:
@@ -39,23 +126,6 @@ info:
   version: "1.0"
 paths:
   /v1/content:
-    delete:
-      consumes:
-      - application/json
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: integer
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Delete content
-      tags:
-      - content
     get:
       consumes:
       - application/json
@@ -78,7 +148,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/content.Content'
+          $ref: '#/definitions/content.Body'
       responses:
         "201":
           description: Created
@@ -87,6 +157,7 @@ paths:
       summary: Create content
       tags:
       - content
+  /v1/content/{id}:
     put:
       consumes:
       - application/json
@@ -96,7 +167,12 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/content.Content'
+          $ref: '#/definitions/content.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -107,4 +183,262 @@ paths:
       summary: Update content
       tags:
       - content
+  /v1/content{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete content
+      tags:
+      - content
+  /v1/contentModel:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/contentmodel.ContentModel'
+            type: array
+      summary: Get all content models
+      tags:
+      - contentModel
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/contentmodel.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: Create content model
+      tags:
+      - contentModel
+  /v1/contentModel/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete content model
+      tags:
+      - contentModel
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/contentmodel.ContentModel'
+      summary: Get content model by id
+      tags:
+      - contentModel
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/contentmodel.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/contentmodel.ContentModel'
+      summary: Update content model
+      tags:
+      - contentModel
+  /v1/field:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/field.Field'
+            type: array
+      summary: Get all fields
+      tags:
+      - field
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/field.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: Create field
+      tags:
+      - field
+  /v1/field/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete field
+      tags:
+      - field
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/field.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/field.Field'
+      summary: Update field
+      tags:
+      - field
+  /v1/fieldType:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/fieldtype.FieldType'
+            type: array
+      summary: Get all field types
+      tags:
+      - fieldType
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/fieldtype.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: Create field type
+      tags:
+      - fieldType
+  /v1/fieldType/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete field type
+      tags:
+      - fieldType
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/fieldtype.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/fieldtype.FieldType'
+      summary: Update field type
+      tags:
+      - fieldType
 swagger: "2.0"

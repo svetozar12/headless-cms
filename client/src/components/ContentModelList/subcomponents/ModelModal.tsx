@@ -2,7 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import React, { Dispatch, FC, SetStateAction, useRef } from "react";
 import { queryClient } from "../../../pages/_app";
-import api from "../../../utils/sdk";
+import { sdk } from "../../../utils/rest-api-sdk";
+import { ContentmodelBody } from "../../../utils/sdk";
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
 import Form, { IFields } from "../../Form/Form";
@@ -99,7 +100,8 @@ const useValues = () => {
 const useCreateModel = () => {
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: (newModel: any) => api.contentModel.createModel(newModel),
+    mutationFn: (newModel: ContentmodelBody) =>
+      sdk.contentModel.v1ContentModelPost(newModel),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

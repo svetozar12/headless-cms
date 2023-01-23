@@ -12,7 +12,9 @@ const ContentModel = () => {
   // const { isUpdated, updatedFields, setUpdatedFields } =
   //   useIsFieldsUpdated(fields);
   if (isLoading || !data) return <Spinner isLoading={isLoading} />;
-  const { id, userId, title, Content: _, FIeld } = data;
+  const {
+    data: { id, name, userId },
+  } = data;
 
   return (
     <div className="h-screen bg-offBlack">
