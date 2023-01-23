@@ -18,7 +18,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={pageProps.session}>
       <QueryClientProvider client={queryClient}>
-        <ClientOnly children={<Navbar />} />
+        <ClientOnly>
+          <Navbar />
+        </ClientOnly>
         <Component {...pageProps} />
       </QueryClientProvider>
     </SessionProvider>

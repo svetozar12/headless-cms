@@ -1,14 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import api from "../utils/api";
-import useSession from "./useSession";
+import { sdk } from "../utils/rest-api-sdk";
 
 const useGetContentModels = () => {
   const router = useRouter();
-  const { setTokens } = useSession();
-  setTokens();
   const query = useQuery(["contentModels", router.query.page], () =>
-    api.contentModel.getAll((router.query.page as any) || 1)
+    sdk.contentModel.v1ContentModelGet(),
   );
 
   return { ...query };

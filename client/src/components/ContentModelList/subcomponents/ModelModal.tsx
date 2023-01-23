@@ -4,6 +4,7 @@ import React, { Dispatch, FC, SetStateAction, useRef } from "react";
 import { queryClient } from "../../../pages/_app";
 import { sdk } from "../../../utils/rest-api-sdk";
 import { ContentmodelBody } from "../../../utils/sdk";
+
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
 import Form, { IFields } from "../../Form/Form";
@@ -101,7 +102,7 @@ const useCreateModel = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: (newModel: ContentmodelBody) =>
-      sdk.contentModel.v1ContentModelPost(newModel),
+      sdk.contentModel.v1ContentModelPost({ request: newModel }),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

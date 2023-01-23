@@ -4,7 +4,9 @@ import { useEffect } from "react";
 
 const LoginPage: NextPage = () => {
   useEffect(() => {
-    signIn();
+    signIn().catch(() => {
+      // error
+    });
   }, []);
 
   return <></>;

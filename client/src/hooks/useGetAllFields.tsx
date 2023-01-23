@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { sdk } from "../utils/rest-api-sdk";
-export const useGetContentModel = () => {
+// TODO: FIX
+export const useGetAllFieldTypes = () => {
   const router = useRouter();
   const { id } = router.query;
   const query = useQuery(["contentModel", id], () =>
-    sdk.contentModel.v1ContentModelIdGet({ id: parseInt(id as string) }),
+    sdk.fieldType.v1FieldTypeGet(),
   );
 
   return query;

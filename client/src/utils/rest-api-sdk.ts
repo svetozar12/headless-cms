@@ -5,7 +5,7 @@ import {
   FieldApi,
   FieldTypeApi,
 } from "./sdk";
-
+import "./sdk";
 const configuration = new Configuration({
   // basePath: from env file
   basePath: "https://api-development.netfield.io",

@@ -23,7 +23,7 @@ type Props = {
 const SignIn: FC<Props> = ({ providers }) => {
   const { status } = useSession();
   const router = useRouter();
-  sdk.useEffect(() => {
+  useEffect(() => {
     if (status === "authenticated") router.push(CONTENT);
   }, [status]);
 

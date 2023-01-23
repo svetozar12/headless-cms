@@ -7,7 +7,7 @@ const useDeleteContentModel = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: (modelId: number) =>
-      sdk.contentModel.v1ContentModelIdDelete(modelId),
+      sdk.contentModel.v1ContentModelIdDelete({ id: modelId }),
     onSuccess: () =>
       queryClient.invalidateQueries(["contentModels", router.query.page]),
   });
