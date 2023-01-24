@@ -2,8 +2,6 @@ import { useRouter } from "next/router";
 import React, { ChangeEvent, FC, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { CONTENT_MODEL, CONTENT_MODELS } from "../../../../constants/routes";
-import useDeleteContentModel from "../../../../hooks/useDeleteContentModel";
-import useGetContentModels from "../../../../hooks/useGetContentModels";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
 import { IColumn } from "../../../Table/Table";

@@ -2,8 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import React, { Dispatch, FC, SetStateAction, useRef } from "react";
 import { queryClient } from "../../../pages/_app";
-import { sdk } from "../../../utils/rest-api-sdk";
-import { ContentmodelBody } from "../../../utils/sdk";
+import { sdk } from "../../../server/rest-api-sdk";
+import { ContentmodelBody } from "../../../server/sdk";
 
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";

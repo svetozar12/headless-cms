@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { sdk } from "../../../utils/rest-api-sdk";
+import { sdk } from "../../rest-api-sdk";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 const contentSchema = z.object({
@@ -9,7 +9,7 @@ const contentSchema = z.object({
   }),
 });
 
-export const fieldRouter = createTRPCRouter({
+export const fieldTypeRouter = createTRPCRouter({
   getAll: protectedProcedure.query(() => {
     return sdk.fieldType.v1FieldTypeGet();
   }),

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import useDeleteContentModel from "../../../../../hooks/useDeleteContentModel";
+import { api } from "../../../../../utils/api";
 import { SetState } from "../../../../../utils/common";
 import ActionButtons from "../../../../ActionButtons";
 import Button from "../../../../Button";
@@ -15,7 +15,7 @@ interface IConfirmDeleteModal {
 
 const ConfirmDeleteModal: FC<IConfirmDeleteModal> = (props) => {
   const { modelId, modelTitle, isDeleteModal, setIsDeleteModal } = props;
-  const { mutate } = useDeleteContentModel();
+  const { mutate } = api.contentModel.deleteById.useMutation();
   return (
     <Modal
       isOpen={isDeleteModal}

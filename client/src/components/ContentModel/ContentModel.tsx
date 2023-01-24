@@ -1,10 +1,10 @@
-import { useGetAllFieldTypes } from "../../hooks/useGetAllFields";
+import { api } from "../../utils/api";
 import Heading from "../Heading";
 import Spinner from "../Spinner";
 import Field from "./subcomponents/Field";
 
 const ContentModel = () => {
-  const { data, isLoading } = useGetAllFieldTypes();
+  const { data, isLoading } = api.fieldType.getAll.useQuery();
   if (isLoading || !data) return <Spinner isLoading={isLoading} />;
   return (
     <div className="h-screen bg-offBlack">

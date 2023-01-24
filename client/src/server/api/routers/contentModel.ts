@@ -1,6 +1,5 @@
 import { z } from "zod";
-import { sdk } from "../../../utils/rest-api-sdk";
-import { V1ContentModelPostRequest } from "../../../utils/sdk";
+import { sdk } from "../../rest-api-sdk";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 const contentSchema = z.object({

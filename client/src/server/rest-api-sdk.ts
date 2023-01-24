@@ -5,7 +5,6 @@ import {
   FieldApi,
   FieldTypeApi,
 } from "./sdk";
-import "./sdk";
 const configuration = new Configuration({
   // basePath: from env file
   basePath: "http://localhost:4000",

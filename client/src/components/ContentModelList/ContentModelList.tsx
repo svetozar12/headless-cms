@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModelHeader from "./subcomponents/ModelHeader";
 import ModelModal from "./subcomponents/ModelModal";
 import ModelTable from "./subcomponents/ModelTable/ModelTable";
