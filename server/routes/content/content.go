@@ -11,9 +11,9 @@ import (
 )
 
 type Body struct {
-	Name    string `json:"name"`
-	ModelId int    `json:"modelId"`
-	UserId  int    `json:"userId"`
+	Name    string `json:"name" binding:"required"`
+	ModelId int    `json:"modelId" binding:"required"`
+	UserId  int    `json:"userId" binding:"required"`
 }
 
 type Content struct {

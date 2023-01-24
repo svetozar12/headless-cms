@@ -517,6 +517,11 @@ const docTemplate = `{
     "definitions": {
         "content.Body": {
             "type": "object",
+            "required": [
+                "modelId",
+                "name",
+                "userId"
+            ],
             "properties": {
                 "modelId": {
                     "type": "integer"
@@ -531,6 +536,11 @@ const docTemplate = `{
         },
         "content.Content": {
             "type": "object",
+            "required": [
+                "modelId",
+                "name",
+                "userId"
+            ],
             "properties": {
                 "createdAt": {
                     "type": "string"
@@ -557,6 +567,10 @@ const docTemplate = `{
         },
         "contentmodel.Body": {
             "type": "object",
+            "required": [
+                "name",
+                "userId"
+            ],
             "properties": {
                 "name": {
                     "type": "string"
@@ -568,6 +582,10 @@ const docTemplate = `{
         },
         "contentmodel.ContentModel": {
             "type": "object",
+            "required": [
+                "name",
+                "userId"
+            ],
             "properties": {
                 "createdAt": {
                     "type": "string"
@@ -591,6 +609,11 @@ const docTemplate = `{
         },
         "field.Body": {
             "type": "object",
+            "required": [
+                "contentId",
+                "name",
+                "typeId"
+            ],
             "properties": {
                 "contentId": {
                     "type": "integer"
@@ -608,6 +631,11 @@ const docTemplate = `{
         },
         "field.Field": {
             "type": "object",
+            "required": [
+                "contentId",
+                "name",
+                "typeId"
+            ],
             "properties": {
                 "contentId": {
                     "type": "integer"
@@ -637,6 +665,10 @@ const docTemplate = `{
         },
         "fieldtype.Body": {
             "type": "object",
+            "required": [
+                "contentModelId",
+                "name"
+            ],
             "properties": {
                 "contentModelId": {
                     "type": "integer"
@@ -651,6 +683,10 @@ const docTemplate = `{
         },
         "fieldtype.FieldType": {
             "type": "object",
+            "required": [
+                "contentModelId",
+                "name"
+            ],
             "properties": {
                 "contentModelId": {
                     "type": "integer"

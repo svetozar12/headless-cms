@@ -8,6 +8,10 @@ definitions:
         type: string
       userId:
         type: integer
+    required:
+    - modelId
+    - name
+    - userId
     type: object
   content.Content:
     properties:
@@ -25,6 +29,10 @@ definitions:
         type: string
       userId:
         type: integer
+    required:
+    - modelId
+    - name
+    - userId
     type: object
   contentmodel.Body:
     properties:
@@ -32,6 +40,9 @@ definitions:
         type: string
       userId:
         type: integer
+    required:
+    - name
+    - userId
     type: object
   contentmodel.ContentModel:
     properties:
@@ -47,6 +58,9 @@ definitions:
         type: string
       userId:
         type: integer
+    required:
+    - name
+    - userId
     type: object
   field.Body:
     properties:
@@ -58,6 +72,10 @@ definitions:
         type: integer
       value:
         type: string
+    required:
+    - contentId
+    - name
+    - typeId
     type: object
   field.Field:
     properties:
@@ -77,6 +95,10 @@ definitions:
         type: string
       value:
         type: string
+    required:
+    - contentId
+    - name
+    - typeId
     type: object
   fieldtype.Body:
     properties:
@@ -86,6 +108,9 @@ definitions:
         type: string
       name:
         type: string
+    required:
+    - contentModelId
+    - name
     type: object
   fieldtype.FieldType:
     properties:
@@ -103,6 +128,9 @@ definitions:
         type: string
       updatedAt:
         type: string
+    required:
+    - contentModelId
+    - name
     type: object
   gorm.DeletedAt:
     properties:

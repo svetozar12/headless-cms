@@ -8,9 +8,9 @@ import (
 )
 
 type Body struct {
-	Name           string `json:"name"`
+	Name           string `json:"name" binding:"required"`
 	FieldType      string `json:"fieldType"`
-	ContentModelId int    `json:"contentModelId"`
+	ContentModelId int    `json:"contentModelId" binding:"required"`
 }
 
 type FieldType struct {

@@ -8,8 +8,8 @@ import (
 )
 
 type Body struct {
-	Name   string `json:"name"`
-	UserId int    `json:"userId"`
+	Name   string `json:"name" binding:"required"`
+	UserId int    `json:"userId" binding:"required"`
 }
 
 type ContentModel struct {

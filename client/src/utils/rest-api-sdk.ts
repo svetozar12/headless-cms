@@ -8,7 +8,7 @@ import {
 import "./sdk";
 const configuration = new Configuration({
   // basePath: from env file
-  basePath: "https://api-development.netfield.io",
+  basePath: "http://localhost:4000",
 });
 
 export const sdk = {
