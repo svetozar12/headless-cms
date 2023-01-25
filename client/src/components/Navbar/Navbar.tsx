@@ -14,8 +14,12 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { signOut, useSession } from "next-auth/react";
 import Router, { useRouter } from "next/router";
+import { CONTENT, CONTENT_MODEL, CONTENT_MODELS } from "../../constants/routes";
 
-const pages = ["ContentModel", "Content"];
+const pages = [
+  { title: "ContentModel", onClick: () => Router.push(CONTENT_MODELS) },
+  { title: "Content", onClick: () => Router.push(CONTENT) },
+];
 const settings = [
   {
     label: "Logout",
@@ -85,22 +89,25 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map(({ title }) => (
+                <MenuItem key={title} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map(({ title, onClick }) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={title}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  onClick();
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {title}
               </Button>
             ))}
           </Box>

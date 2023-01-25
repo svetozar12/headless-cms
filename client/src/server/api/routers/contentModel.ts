@@ -10,22 +10,38 @@ const contentSchema = z.object({
 });
 
 export const contentModelRouter = createTRPCRouter({
-  getAll: protectedProcedure.query(() => {
-    return sdk.contentModel.v1ContentModelGet();
+  getAll: protectedProcedure.query(async () => {
+    const { data } = await sdk.contentModel.v1ContentModelGet();
+    return data;
   }),
   create: protectedProcedure
     .input(contentSchema)
-    .mutation(({ input: { request } }) =>
-      sdk.contentModel.v1ContentModelPost({ request }),
-    ),
+    .mutation(async ({ input: { request } }) => {
+      const { data } = await sdk.contentModel.v1ContentModelPost({
+        ...request,
+      });
+      return data;
+    }),
   updateById: protectedProcedure
     .input(z.object({ id: z.number(), request: contentSchema }))
-    .mutation(({ input: { id, request: { request } } }) =>
-      sdk.contentModel.v1ContentModelIdPut({ id, request }),
+    .mutation(
+      async ({
+        input: {
+          id,
+          request: { request },
+        },
+      }) => {
+        const { data } = await sdk.contentModel.v1ContentModelIdPut(
+          id,
+          request,
+        );
+        return data;
+      },
     ),
   deleteById: protectedProcedure
     .input(z.number())
-    .mutation(({ input }) =>
-      sdk.contentModel.v1ContentModelIdDelete({ id: input }),
-    ),
+    .mutation(async ({ input }) => {
+      const { data } = await sdk.contentModel.v1ContentModelIdDelete(input);
+      return data;
+    }),
 });

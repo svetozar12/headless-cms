@@ -444,7 +444,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/fieldtype.FieldType"
                         }
                     }
                 }
@@ -592,6 +592,12 @@ const docTemplate = `{
                 },
                 "deletedAt": {
                     "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "fieldTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fieldtype.FieldType"
+                    }
                 },
                 "id": {
                     "type": "integer"

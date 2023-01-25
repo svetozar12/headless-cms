@@ -2,6 +2,7 @@ package contentmodel
 
 import (
 	"svetozar12/headless-cms-be/db"
+	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
@@ -15,6 +16,7 @@ type Body struct {
 type ContentModel struct {
 	gorm.Model
 	Body
+	FieldTypes []fieldtype.FieldType
 }
 
 func ContentModelRoutes(app fiber.Router) {
@@ -48,7 +50,7 @@ func getContentModelById(c *fiber.Ctx) error {
 // @Router       /v1/contentModel [get]
 func getContentModel(c *fiber.Ctx) error {
 	var contentModels []ContentModel
-	db.DB.Find(&contentModels)
+	db.DB.Preload("FieldTypes").Find(&contentModels)
 	return c.Status(fiber.StatusOK).JSON(contentModels)
 }
 

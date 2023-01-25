@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { FieldtypeFieldType } from './FieldtypeFieldType';
+import {
+    FieldtypeFieldTypeFromJSON,
+    FieldtypeFieldTypeFromJSONTyped,
+    FieldtypeFieldTypeToJSON,
+} from './FieldtypeFieldType';
 import type { GormDeletedAt } from './GormDeletedAt';
 import {
     GormDeletedAtFromJSON,
@@ -38,6 +44,12 @@ export interface ContentmodelContentModel {
      * @memberof ContentmodelContentModel
      */
     deletedAt?: GormDeletedAt;
+    /**
+     * 
+     * @type {Array<FieldtypeFieldType>}
+     * @memberof ContentmodelContentModel
+     */
+    fieldTypes?: Array<FieldtypeFieldType>;
     /**
      * 
      * @type {number}
@@ -87,6 +99,7 @@ export function ContentmodelContentModelFromJSONTyped(json: any, ignoreDiscrimin
         
         'createdAt': !exists(json, 'createdAt') ? undefined : json['createdAt'],
         'deletedAt': !exists(json, 'deletedAt') ? undefined : GormDeletedAtFromJSON(json['deletedAt']),
+        'fieldTypes': !exists(json, 'fieldTypes') ? undefined : ((json['fieldTypes'] as Array<any>).map(FieldtypeFieldTypeFromJSON)),
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': json['name'],
         'updatedAt': !exists(json, 'updatedAt') ? undefined : json['updatedAt'],
@@ -105,6 +118,7 @@ export function ContentmodelContentModelToJSON(value?: ContentmodelContentModel 
         
         'createdAt': value.createdAt,
         'deletedAt': GormDeletedAtToJSON(value.deletedAt),
+        'fieldTypes': value.fieldTypes === undefined ? undefined : ((value.fieldTypes as Array<any>).map(FieldtypeFieldTypeToJSON)),
         'id': value.id,
         'name': value.name,
         'updatedAt': value.updatedAt,

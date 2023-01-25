@@ -50,6 +50,10 @@ definitions:
         type: string
       deletedAt:
         $ref: '#/definitions/gorm.DeletedAt'
+      fieldTypes:
+        items:
+          $ref: '#/definitions/fieldtype.FieldType'
+        type: array
       id:
         type: integer
       name:
@@ -424,7 +428,7 @@ paths:
         "201":
           description: Created
           schema:
-            type: string
+            $ref: '#/definitions/fieldtype.FieldType'
       summary: Create field type
       tags:
       - fieldType

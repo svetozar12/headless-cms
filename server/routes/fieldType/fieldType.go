@@ -43,7 +43,7 @@ func getFieldTypes(c *fiber.Ctx) error {
 // @Tags         fieldType
 // @Accept       json
 // @Param request body fieldtype.Body true "query params""
-// @Success      201  {string} fieldtype.FieldType
+// @Success      201  {object} fieldtype.FieldType
 // @Router       /v1/fieldType [post]
 func createFieldType(c *fiber.Ctx) error {
 	fieldType := new(FieldType)

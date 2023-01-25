@@ -102,7 +102,7 @@ const useCreateModel = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: (newModel: ContentmodelBody) =>
-      sdk.contentModel.v1ContentModelPost({ request: newModel }),
+      sdk.contentModel.v1ContentModelPost(newModel),
     onSuccess: () => {
       queryClient.invalidateQueries(["contentModels", router.query.page]);
     },

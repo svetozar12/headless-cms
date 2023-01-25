@@ -19,7 +19,6 @@ export interface IColumn {
 
 interface ITable {
   dataSource: any;
-  dataSourceIndex: string;
   columns: IColumn[];
   isLoading?: boolean;
   customHeader?: ReactNode;
@@ -34,14 +33,13 @@ const Table: React.FC<ITable> = (props) => {
     columns,
     isLoading = true,
     dataSource,
-    dataSourceIndex,
     onTableChange,
     onRowClickHandle,
     customHeader,
   } = props;
 
   const { className, ...restProps } = extraProps || {};
-  const { data, setData } = useData(dataSource, dataSourceIndex, isLoading);
+  const { data, setData } = useData(dataSource, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;
   const { pagination } = dataSource || {};
   const { page = 1, total = 8 } = pagination || {};
@@ -55,7 +53,7 @@ const Table: React.FC<ITable> = (props) => {
 
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {
-      setData(dataSource[dataSourceIndex]);
+      setData(dataSource);
     });
   };
 
@@ -88,14 +86,10 @@ const Table: React.FC<ITable> = (props) => {
 };
 
 export default Table;
-const useData = (
-  dataSource: any,
-  dataSourceIndex: string,
-  loading: boolean
-) => {
+const useData = (dataSource: any, loading: boolean) => {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
-    if (!loading) setData(dataSource[dataSourceIndex]);
+    if (!loading) setData(dataSource);
     if (!dataSource && !loading) return setData([]);
   }, [dataSource, loading]);
   return { data, dataSource, setData };

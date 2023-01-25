@@ -139,7 +139,7 @@ export class FieldTypeApi extends runtime.BaseAPI {
     /**
      * Create field type
      */
-    async v1FieldTypePostRaw(requestParameters: V1FieldTypePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async v1FieldTypePostRaw(requestParameters: V1FieldTypePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FieldtypeFieldType>> {
         if (requestParameters.request === null || requestParameters.request === undefined) {
             throw new runtime.RequiredError('request','Required parameter requestParameters.request was null or undefined when calling v1FieldTypePost.');
         }
@@ -158,13 +158,13 @@ export class FieldTypeApi extends runtime.BaseAPI {
             body: FieldtypeBodyToJSON(requestParameters.request),
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => FieldtypeFieldTypeFromJSON(jsonValue));
     }
 
     /**
      * Create field type
      */
-    async v1FieldTypePost(requestParameters: V1FieldTypePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async v1FieldTypePost(requestParameters: V1FieldTypePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FieldtypeFieldType> {
         const response = await this.v1FieldTypePostRaw(requestParameters, initOverrides);
         return await response.value();
     }

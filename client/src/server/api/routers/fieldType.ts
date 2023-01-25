@@ -10,20 +10,33 @@ const contentSchema = z.object({
 });
 
 export const fieldTypeRouter = createTRPCRouter({
-  getAll: protectedProcedure.query(() => {
-    return sdk.fieldType.v1FieldTypeGet();
+  getAll: protectedProcedure.query(async () => {
+    const { data } = await sdk.fieldType.v1FieldTypeGet();
+    return data;
   }),
   create: protectedProcedure
     .input(contentSchema)
-    .mutation(({ input: { request } }) =>
-      sdk.fieldType.v1FieldTypePost({ request }),
-    ),
+    .mutation(async ({ input: { request } }) => {
+      const { data } = await sdk.fieldType.v1FieldTypePost({ ...request });
+      return data;
+    }),
   updateById: protectedProcedure
     .input(z.object({ id: z.number(), request: contentSchema }))
-    .mutation(({ input: { id, request: { request } } }) =>
-      sdk.fieldType.v1FieldTypeIdPut({ id, request }),
+    .mutation(
+      async ({
+        input: {
+          id,
+          request: { request },
+        },
+      }) => {
+        const { data } = await sdk.fieldType.v1FieldTypeIdPut(id, request);
+        return data;
+      },
     ),
   deleteById: protectedProcedure
     .input(z.number())
-    .mutation(({ input }) => sdk.fieldType.v1FieldTypeIdDelete({ id: input })),
+    .mutation(async ({ input }) => {
+      const { data } = await sdk.fieldType.v1FieldTypeIdDelete(input);
+      return data;
+    }),
 });
