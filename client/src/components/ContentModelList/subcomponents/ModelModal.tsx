@@ -30,7 +30,7 @@ const ModelModal: FC<IModelModal> = (props) => {
       queryClient.invalidateQueries(queryKey);
     },
   });
-  const { modelTitle } = useValues();
+  const { modelTitle, description } = useValues();
 
   const getFIelds = (): IFields[] => {
     return [
@@ -41,17 +41,25 @@ const ModelModal: FC<IModelModal> = (props) => {
         name: "modelTitle",
         type: "input",
       },
+      {
+        extraProps: {
+          extraProps: { ref: description, placeholder: "model description" },
+        },
+        name: "modelDescription",
+        type: "input",
+      },
     ];
   };
 
   const handleSubmit = () => {
     const titleValue = modelTitle.current?.value;
-
+    const descriptionValue = description.current?.value;
     toggleModal(false);
     mutate({
       request: {
         userId: user?.id || "",
-        name: titleValue as string,
+        name: titleValue || "",
+        description: descriptionValue || "",
       },
     });
   };
@@ -108,6 +116,7 @@ export default ModelModal;
 
 const useValues = () => {
   const modelTitle = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLInputElement>(null);
 
-  return { modelTitle };
+  return { modelTitle, description };
 };

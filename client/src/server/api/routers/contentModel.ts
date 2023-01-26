@@ -15,7 +15,15 @@ export const contentModelRouter = createTRPCRouter({
     return data;
   }),
   create: protectedProcedure
-    .input(contentSchema)
+    .input(
+      z.object({
+        request: z.object({
+          name: z.string(),
+          userId: z.string(),
+          description: z.string(),
+        }),
+      }),
+    )
     .mutation(async ({ input: { request } }) => {
       const { data } = await sdk.contentModel.v1ContentModelPost({
         ...request,

@@ -1,5 +1,6 @@
+import dayjs from "dayjs";
 import { useRouter } from "next/router";
-import React, { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { CONTENT_MODEL, CONTENT_MODELS } from "../../../../constants/routes";
 import { api } from "../../../../utils/api";
@@ -7,6 +8,8 @@ import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
 import Table, { IColumn } from "../../../Table/Table";
 import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
+import * as relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime.default);
 
 const ModelTable: FC = () => {
   const router = useRouter();
@@ -20,7 +23,13 @@ const ModelTable: FC = () => {
   const columns: IColumn[] = [
     { title: "Title", dataIndex: "name" },
     { title: "Description", dataIndex: "description" },
-    { title: "Updated", dataIndex: "UpdatedAt" },
+    {
+      title: "Updated",
+      dataIndex: "UpdatedAt",
+      formatValue: (value: string) => {
+        return dayjs(value).fromNow();
+      },
+    },
     {
       title: "Fields",
       dataIndex: "FieldTypes",
