@@ -158,7 +158,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/contentmodel.ContentModel"
                         }
                     }
                 }
@@ -537,6 +537,7 @@ const docTemplate = `{
         "content.Content": {
             "type": "object",
             "required": [
+                "id",
                 "modelId",
                 "name",
                 "userId"
@@ -586,6 +587,7 @@ const docTemplate = `{
         "contentmodel.ContentModel": {
             "type": "object",
             "required": [
+                "id",
                 "name",
                 "userId"
             ],
@@ -645,6 +647,7 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "contentId",
+                "id",
                 "name",
                 "typeId"
             ],
@@ -697,6 +700,7 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "contentModelId",
+                "id",
                 "name"
             ],
             "properties": {

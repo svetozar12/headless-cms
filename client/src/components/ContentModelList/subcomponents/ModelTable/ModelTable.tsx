@@ -9,6 +9,7 @@ import Button from "../../../Button";
 import Table, { IColumn } from "../../../Table/Table";
 import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
 import * as relativeTime from "dayjs/plugin/relativeTime";
+import { ContentmodelContentModel } from "../../../../server/sdk";
 dayjs.extend(relativeTime.default);
 
 const ModelTable: FC = () => {
@@ -39,7 +40,7 @@ const ModelTable: FC = () => {
     },
     {
       title: "Action",
-      render: (fieldProps: any) => (
+      render: (fieldProps: ContentmodelContentModel) => (
         <ActionButtons
           buttons={[
             {
@@ -48,9 +49,9 @@ const ModelTable: FC = () => {
                   Icon={MdDelete}
                   onClick={(e: ChangeEvent) => {
                     e.stopPropagation();
-                    const { ID, name } = fieldProps;
+                    const { id, name } = fieldProps;
                     setIsDeleteModal(true);
-                    setModel({ id: ID as number, title: name });
+                    setModel({ id, title: name });
                   }}
                   type="button"
                   extraProps={{ className: "relative z-20" }}
@@ -92,7 +93,7 @@ const ModelTable: FC = () => {
       />
       <div className={`relative w-2/4 ${isFetching && "h-60"}`}>
         <Table
-          onRowClickHandle={(field: any) =>
+          onRowClickHandle={(field: ContentmodelContentModel) =>
             router.push(CONTENT_MODEL(field.id))
           }
           isLoading={isFetching}

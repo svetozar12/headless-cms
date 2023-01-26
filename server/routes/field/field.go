@@ -2,9 +2,9 @@ package field
 
 import (
 	"svetozar12/headless-cms-be/db"
+	"svetozar12/headless-cms-be/models"
 
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/gorm"
 )
 
 type Body struct {
@@ -15,7 +15,7 @@ type Body struct {
 }
 
 type Field struct {
-	gorm.Model
+	models.Model
 	Body
 }
 

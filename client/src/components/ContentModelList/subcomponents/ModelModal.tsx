@@ -1,5 +1,7 @@
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { FC, useRef } from "react";
+import { CONTENT_MODEL } from "../../../constants/routes";
 import { queryClient } from "../../../pages/_app";
 
 import { api } from "../../../utils/api";
@@ -19,15 +21,16 @@ const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, toggleModal } = props;
   const { data } = useSession();
   const { user } = data || {};
+  const router = useRouter();
   const { mutate } = api.contentModel.create.useMutation({
     async onMutate() {
       const queryKey = api.contentModel.getQueryKey();
       queryClient.invalidateQueries(queryKey);
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       const queryKey = api.contentModel.getQueryKey();
-
       queryClient.invalidateQueries(queryKey);
+      router.push(CONTENT_MODEL(data.id));
     },
   });
   const { modelTitle, description } = useValues();

@@ -151,7 +151,7 @@
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/contentmodel.ContentModel"
                         }
                     }
                 }
@@ -530,6 +530,7 @@
         "content.Content": {
             "type": "object",
             "required": [
+                "id",
                 "modelId",
                 "name",
                 "userId"
@@ -579,6 +580,7 @@
         "contentmodel.ContentModel": {
             "type": "object",
             "required": [
+                "id",
                 "name",
                 "userId"
             ],
@@ -638,6 +640,7 @@
             "type": "object",
             "required": [
                 "contentId",
+                "id",
                 "name",
                 "typeId"
             ],
@@ -690,6 +693,7 @@
             "type": "object",
             "required": [
                 "contentModelId",
+                "id",
                 "name"
             ],
             "properties": {

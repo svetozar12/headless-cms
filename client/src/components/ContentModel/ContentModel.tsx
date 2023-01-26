@@ -6,6 +6,8 @@ import Field from "./subcomponents/Field";
 const ContentModel = () => {
   const { data, isLoading } = api.fieldType.getAll.useQuery();
   if (isLoading || !data) return <Spinner isLoading={isLoading} />;
+  console.log(data, "ivan");
+
   return (
     <div className="h-screen bg-offBlack">
       <div className="flex w-full flex-col items-center justify-center">

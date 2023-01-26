@@ -3,11 +3,11 @@ package content
 import (
 	"fmt"
 	"svetozar12/headless-cms-be/db"
+	"svetozar12/headless-cms-be/models"
 	field "svetozar12/headless-cms-be/routes/field"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/gorm"
 )
 
 type Body struct {
@@ -17,7 +17,7 @@ type Body struct {
 }
 
 type Content struct {
-	gorm.Model
+	models.Model
 	Body
 }
 

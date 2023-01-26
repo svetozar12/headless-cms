@@ -69,7 +69,7 @@ export interface ContentContent {
      * @type {number}
      * @memberof ContentContent
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {number}
@@ -155,7 +155,7 @@ export interface ContentmodelContentModel {
      * @type {number}
      * @memberof ContentmodelContentModel
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
@@ -235,7 +235,7 @@ export interface FieldField {
      * @type {number}
      * @memberof FieldField
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
@@ -321,7 +321,7 @@ export interface FieldtypeFieldType {
      * @type {number}
      * @memberof FieldtypeFieldType
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
@@ -906,7 +906,7 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelPost(request: ContentmodelBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async v1ContentModelPost(request: ContentmodelBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentmodelContentModel>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelPost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -967,7 +967,7 @@ export const ContentModelApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelPost(request: ContentmodelBody, options?: any): AxiosPromise<string> {
+        v1ContentModelPost(request: ContentmodelBody, options?: any): AxiosPromise<ContentmodelContentModel> {
             return localVarFp.v1ContentModelPost(request, options).then((request) => request(axios, basePath));
         },
     };

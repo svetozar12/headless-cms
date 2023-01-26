@@ -2,10 +2,10 @@ package contentmodel
 
 import (
 	"svetozar12/headless-cms-be/db"
+	"svetozar12/headless-cms-be/models"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/gorm"
 )
 
 type Body struct {
@@ -15,7 +15,7 @@ type Body struct {
 }
 
 type ContentModel struct {
-	gorm.Model
+	models.Model
 	Body
 	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId"`
 }
@@ -60,7 +60,7 @@ func getContentModel(c *fiber.Ctx) error {
 // @Tags         contentModel
 // @Accept       json
 // @Param request body contentmodel.Body true "query params""
-// @Success      201  {string} contentmodel.ContentModel
+// @Success      201  {object} contentmodel.ContentModel
 // @Router       /v1/contentModel [post]
 func createContentModel(c *fiber.Ctx) error {
 	contentModel := new(ContentModel)
