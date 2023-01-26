@@ -17,8 +17,12 @@ import Router, { useRouter } from "next/router";
 import { CONTENT, CONTENT_MODEL, CONTENT_MODELS } from "../../constants/routes";
 
 const pages = [
-  { title: "ContentModel", onClick: () => Router.push(CONTENT_MODELS) },
-  { title: "Content", onClick: () => Router.push(CONTENT) },
+  {
+    title: "ContentModel",
+    path: CONTENT_MODELS,
+    onClick: () => Router.push(CONTENT_MODELS),
+  },
+  { title: "Content", path: CONTENT, onClick: () => Router.push(CONTENT) },
 ];
 const settings = [
   {
@@ -98,8 +102,11 @@ const Navbar = () => {
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map(({ title, onClick }) => (
+            {pages.map(({ title, path, onClick }) => (
               <Button
+                className={`${
+                  window.location.pathname === path && "!bg-offBlack"
+                }`}
                 key={title}
                 onClick={() => {
                   handleCloseNavMenu();

@@ -523,7 +523,7 @@
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -554,7 +554,7 @@
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -565,11 +565,14 @@
                 "userId"
             ],
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -585,6 +588,9 @@
                 },
                 "deletedAt": {
                     "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string"
                 },
                 "fieldTypes": {
                     "type": "array",
@@ -602,7 +608,7 @@
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },

@@ -9,14 +9,15 @@ import (
 )
 
 type Body struct {
-	Name   string `json:"name" binding:"required"`
-	UserId int    `json:"userId" binding:"required"`
+	Name        string `json:"name" binding:"required"`
+	UserId      string `json:"userId" binding:"required"`
+	Description string `json:"description"`
 }
 
 type ContentModel struct {
 	gorm.Model
 	Body
-	FieldTypes []fieldtype.FieldType
+	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId"`
 }
 
 func ContentModelRoutes(app fiber.Router) {

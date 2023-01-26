@@ -7,7 +7,7 @@ definitions:
       name:
         type: string
       userId:
-        type: integer
+        type: string
     required:
     - modelId
     - name
@@ -28,7 +28,7 @@ definitions:
       updatedAt:
         type: string
       userId:
-        type: integer
+        type: string
     required:
     - modelId
     - name
@@ -36,10 +36,12 @@ definitions:
     type: object
   contentmodel.Body:
     properties:
+      description:
+        type: string
       name:
         type: string
       userId:
-        type: integer
+        type: string
     required:
     - name
     - userId
@@ -50,6 +52,8 @@ definitions:
         type: string
       deletedAt:
         $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
       fieldTypes:
         items:
           $ref: '#/definitions/fieldtype.FieldType'
@@ -61,7 +65,7 @@ definitions:
       updatedAt:
         type: string
       userId:
-        type: integer
+        type: string
     required:
     - name
     - userId

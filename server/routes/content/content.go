@@ -13,7 +13,7 @@ import (
 type Body struct {
 	Name    string `json:"name" binding:"required"`
 	ModelId int    `json:"modelId" binding:"required"`
-	UserId  int    `json:"userId" binding:"required"`
+	UserId  string `json:"userId" binding:"required"`
 }
 
 type Content struct {

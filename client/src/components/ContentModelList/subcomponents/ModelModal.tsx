@@ -1,9 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import React, { Dispatch, FC, SetStateAction, useRef } from "react";
+import { useSession } from "next-auth/react";
+import { FC, useRef } from "react";
 import { queryClient } from "../../../pages/_app";
-import { sdk } from "../../../server/rest-api-sdk";
-import { ContentmodelBody } from "../../../server/sdk";
+
+import { api } from "../../../utils/api";
 
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
@@ -18,7 +17,19 @@ interface IModelModal {
 
 const ModelModal: FC<IModelModal> = (props) => {
   const { isModal, toggleModal } = props;
-  // const { mutateAsync, isLoading } = useCreateModel();
+  const { data } = useSession();
+  const { user } = data || {};
+  const { mutate } = api.contentModel.create.useMutation({
+    async onMutate() {
+      const queryKey = api.contentModel.getQueryKey();
+      queryClient.invalidateQueries(queryKey);
+    },
+    onSuccess: () => {
+      const queryKey = api.contentModel.getQueryKey();
+
+      queryClient.invalidateQueries(queryKey);
+    },
+  });
   const { modelTitle } = useValues();
 
   const getFIelds = (): IFields[] => {
@@ -33,13 +44,16 @@ const ModelModal: FC<IModelModal> = (props) => {
     ];
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const titleValue = modelTitle.current?.value;
 
     toggleModal(false);
-    // await mutateAsync({
-    //   title: titleValue as string,
-    // });
+    mutate({
+      request: {
+        userId: user?.id || "",
+        name: titleValue as string,
+      },
+    });
   };
 
   const render = () => {
@@ -96,16 +110,4 @@ const useValues = () => {
   const modelTitle = useRef<HTMLInputElement>(null);
 
   return { modelTitle };
-};
-
-const useCreateModel = () => {
-  const router = useRouter();
-  const mutation = useMutation({
-    mutationFn: (newModel: ContentmodelBody) =>
-      sdk.contentModel.v1ContentModelPost(newModel),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["contentModels", router.query.page]);
-    },
-  });
-  return { ...mutation };
 };

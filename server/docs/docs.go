@@ -530,7 +530,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -561,7 +561,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -572,11 +572,14 @@ const docTemplate = `{
                 "userId"
             ],
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
@@ -592,6 +595,9 @@ const docTemplate = `{
                 },
                 "deletedAt": {
                     "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string"
                 },
                 "fieldTypes": {
                     "type": "array",
@@ -609,7 +615,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "userId": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },

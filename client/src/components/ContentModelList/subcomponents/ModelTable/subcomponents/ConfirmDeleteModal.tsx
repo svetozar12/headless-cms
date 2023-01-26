@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { queryClient } from "../../../../../pages/_app";
 import { api } from "../../../../../utils/api";
 import { SetState } from "../../../../../utils/common";
 import ActionButtons from "../../../../ActionButtons";
@@ -15,9 +16,20 @@ interface IConfirmDeleteModal {
 
 const ConfirmDeleteModal: FC<IConfirmDeleteModal> = (props) => {
   const { modelId, modelTitle, isDeleteModal, setIsDeleteModal } = props;
-  const { mutate } = api.contentModel.deleteById.useMutation();
+  const { mutateAsync, isLoading } = api.contentModel.deleteById.useMutation({
+    async onMutate() {
+      const queryKey = api.contentModel.getQueryKey();
+      queryClient.invalidateQueries(queryKey);
+    },
+    onSuccess: () => {
+      const queryKey = api.contentModel.getQueryKey();
+
+      queryClient.invalidateQueries(queryKey);
+    },
+  });
   return (
     <Modal
+      isLoading={isLoading}
       isOpen={isDeleteModal}
       onOverlayClick={() => setIsDeleteModal(false)}
       footer={
@@ -36,8 +48,8 @@ const ConfirmDeleteModal: FC<IConfirmDeleteModal> = (props) => {
               Render: (
                 <Button
                   text="Delete"
-                  onClick={() => {
-                    mutate(modelId);
+                  onClick={async () => {
+                    await mutateAsync(modelId);
                     setIsDeleteModal(false);
                   }}
                   type="button"

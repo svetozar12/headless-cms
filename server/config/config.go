@@ -9,5 +9,6 @@ import (
 )
 
 func Init() {
-	db.DB.AutoMigrate(&fieldtype.FieldType{}, &contentmodel.ContentModel{}, &field.Field{}, &content.Content{})
+	db.DB.AutoMigrate(&contentmodel.ContentModel{})
+	db.DB.AutoMigrate(&fieldtype.FieldType{}, &field.Field{}, &content.Content{})
 }

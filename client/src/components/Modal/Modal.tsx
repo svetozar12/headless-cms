@@ -1,16 +1,22 @@
 import React from "react";
+import Spinner from "../Spinner";
 import s from "./Modal.module.css";
 
 interface IModal {
   children: React.ReactNode;
   isOpen: boolean;
+  isLoading?: boolean;
   footer?: React.ReactNode;
   onOverlayClick?: () => void;
 }
 
-const Modal: React.FC<IModal> = (props) => {
-  const { children, footer, isOpen, onOverlayClick } = props;
-
+const Modal: React.FC<IModal> = ({
+  children,
+  footer,
+  isLoading = false,
+  isOpen,
+  onOverlayClick,
+}) => {
   const renderFooter = () => {
     if (!footer) return null;
     return (
@@ -44,6 +50,8 @@ const Modal: React.FC<IModal> = (props) => {
       <div
         className={`min-h-3/6 absolute z-50 flex w-3/5 flex-col justify-between rounded-md bg-offBlack p-2 ${s.modal}`}
       >
+        <Spinner isLoading={isLoading} />
+
         <div>{children}</div>
         <div>{renderFooter()}</div>
       </div>

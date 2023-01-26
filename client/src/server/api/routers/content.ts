@@ -6,7 +6,7 @@ const contentSchema = z.object({
   request: z.object({
     modelId: z.number(),
     name: z.string(),
-    userId: z.number(),
+    userId: z.string(),
   }),
 });
 

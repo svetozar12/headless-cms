@@ -41,10 +41,10 @@ export interface ContentBody {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ContentBody
      */
-    'userId': number;
+    'userId': string;
 }
 /**
  * 
@@ -90,10 +90,10 @@ export interface ContentContent {
     'updatedAt'?: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ContentContent
      */
-    'userId': number;
+    'userId': string;
 }
 /**
  * 
@@ -106,13 +106,19 @@ export interface ContentmodelBody {
      * @type {string}
      * @memberof ContentmodelBody
      */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContentmodelBody
+     */
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ContentmodelBody
      */
-    'userId': number;
+    'userId': string;
 }
 /**
  * 
@@ -132,6 +138,12 @@ export interface ContentmodelContentModel {
      * @memberof ContentmodelContentModel
      */
     'deletedAt'?: GormDeletedAt;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContentmodelContentModel
+     */
+    'description'?: string;
     /**
      * 
      * @type {Array<FieldtypeFieldType>}
@@ -158,10 +170,10 @@ export interface ContentmodelContentModel {
     'updatedAt'?: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ContentmodelContentModel
      */
-    'userId': number;
+    'userId': string;
 }
 /**
  * 

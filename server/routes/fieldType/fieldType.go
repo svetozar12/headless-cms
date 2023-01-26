@@ -10,7 +10,7 @@ import (
 type Body struct {
 	Name           string `json:"name" binding:"required"`
 	FieldType      string `json:"fieldType"`
-	ContentModelId int    `json:"contentModelId" binding:"required"`
+	ContentModelId uint   `json:"contentModelId" binding:"required" gorm:"column:content_model_id"`
 }
 
 type FieldType struct {

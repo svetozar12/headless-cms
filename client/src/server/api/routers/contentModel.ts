@@ -5,7 +5,7 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 const contentSchema = z.object({
   request: z.object({
     name: z.string(),
-    userId: z.number(),
+    userId: z.string(),
   }),
 });
 
