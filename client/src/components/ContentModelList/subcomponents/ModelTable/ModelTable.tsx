@@ -81,7 +81,6 @@ const ModelTable: FC = () => {
       shallow: true,
     });
   };
-  console.log(isFetching);
 
   return (
     <>

@@ -27,6 +27,7 @@ const Field: FC<IFields> = (props) => {
         <p className="">{title}</p>
         <p className="">{type}</p>
       </div>
+      ivan
       {/* delete button */}
     </div>
   );

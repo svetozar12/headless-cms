@@ -1,6 +1,13 @@
+import {
+  FormControl,
+  FormGroup,
+  FormHelperText,
+  Input,
+  InputLabel,
+} from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { CONTENT_MODEL } from "../../../constants/routes";
 import { queryClient } from "../../../pages/_app";
 
@@ -22,34 +29,24 @@ const ModelModal: FC<IModelModal> = (props) => {
   const { data } = useSession();
   const { user } = data || {};
   const router = useRouter();
-  const { mutate } = api.contentModel.create.useMutation({
-    async onMutate() {
-      const queryKey = api.contentModel.getQueryKey();
-      queryClient.invalidateQueries(queryKey);
-    },
+  const { mutate, isLoading } = api.contentModel.create.useMutation({
     onSuccess: (data) => {
+      router.push(CONTENT_MODEL(data.id));
       const queryKey = api.contentModel.getQueryKey();
       queryClient.invalidateQueries(queryKey);
-      router.push(CONTENT_MODEL(data.id));
     },
   });
   const { modelTitle, description } = useValues();
 
-  const getFIelds = (): IFields[] => {
+  const getFIelds = () => {
     return [
       {
-        extraProps: {
-          extraProps: { ref: modelTitle, placeholder: "model title" },
-        },
         name: "modelTitle",
-        type: "input",
+        ref: modelTitle,
       },
       {
-        extraProps: {
-          extraProps: { ref: description, placeholder: "model description" },
-        },
         name: "modelDescription",
-        type: "input",
+        ref: description,
       },
     ];
   };
@@ -57,7 +54,8 @@ const ModelModal: FC<IModelModal> = (props) => {
   const handleSubmit = () => {
     const titleValue = modelTitle.current?.value;
     const descriptionValue = description.current?.value;
-    toggleModal(false);
+    console.log(titleValue, modelTitle.current);
+
     mutate({
       request: {
         userId: user?.id || "",
@@ -69,44 +67,48 @@ const ModelModal: FC<IModelModal> = (props) => {
 
   const render = () => {
     return (
-      <Modal onOverlayClick={() => toggleModal(false)} isOpen={isModal}>
-        <Form
-          isLoading={false}
-          error=""
-          handleSubmit={async () => await handleSubmit()}
-          fields={getFIelds()}
-          formHeader={
-            <Heading type="h1" text="Add model" className="text-white" />
-          }
-          customFormButtons={
-            <ActionButtons
-              buttons={[
-                {
-                  Render: (
-                    <Button
-                      text="Create"
-                      onClick={async () => await handleSubmit()}
-                      type="button"
-                    />
-                  ),
-                },
-                {
-                  Render: (
-                    <Button
-                      text="Cancel"
-                      onClick={() => toggleModal(false)}
-                      type="button"
-                      extraProps={{
-                        style: { border: "1px solid rgba(0,0,0,0.1)" },
-                        className:
-                          "bg-white !text-black hover:!border-mainPurple",
-                      }}
-                    />
-                  ),
-                },
-              ]}
-            />
-          }
+      <Modal
+        onOverlayClick={() => toggleModal(false)}
+        isOpen={isModal}
+        isLoading={isLoading}
+      >
+        <Heading type="h1" text="Add model" className="text-white" />
+        {getFIelds().map(({ name, ref }) => {
+          return (
+            <FormControl className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md">
+              <InputLabel className="!text-white">{name}</InputLabel>
+              <Input
+                inputRef={ref}
+                className="!px-2 bg-transparent !text-white autofill:bg-transparent active:border-0"
+              />
+            </FormControl>
+          );
+        })}
+        <ActionButtons
+          buttons={[
+            {
+              Render: (
+                <Button
+                  text="Create"
+                  onClick={async () => await handleSubmit()}
+                  type="button"
+                />
+              ),
+            },
+            {
+              Render: (
+                <Button
+                  text="Cancel"
+                  onClick={() => toggleModal(false)}
+                  type="button"
+                  extraProps={{
+                    style: { border: "1px solid rgba(0,0,0,0.1)" },
+                    className: "bg-white !text-black hover:!border-mainPurple",
+                  }}
+                />
+              ),
+            },
+          ]}
         />
       </Modal>
     );
@@ -118,8 +120,8 @@ const ModelModal: FC<IModelModal> = (props) => {
 export default ModelModal;
 
 const useValues = () => {
-  const modelTitle = useRef<HTMLInputElement>(null);
-  const description = useRef<HTMLInputElement>(null);
+  const modelTitle = useRef<Input>(null);
+  const description = useRef<Input>(null);
 
   return { modelTitle, description };
 };

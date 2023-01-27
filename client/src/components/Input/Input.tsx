@@ -1,3 +1,4 @@
+import { MenuItem, Select } from "@mui/material";
 import { ForwardedRef, forwardRef, ReactNode } from "react";
 import Switch from "./subcomponents/Switch";
 
@@ -16,9 +17,24 @@ export interface IInputProps {
 
 const Input = forwardRef(
   (props: IInputProps, ref: ForwardedRef<HTMLInputElement>) => {
-    const { name, label, type, placeholder, value, onChange, extraProps } =
-      props;
+    const {
+      name,
+      label,
+      type,
+      placeholder,
+      value,
+      onChange,
+      extraProps,
+    } = props;
     let content: ReactNode;
+    if (type === "dropdown")
+      content = (
+        <Select value={value} label="Age" onChange={onChange}>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      );
     if (type === "checkbox") content = <Switch ref={ref} />;
     else
       content = (
@@ -47,7 +63,7 @@ const Input = forwardRef(
         {content}
       </>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

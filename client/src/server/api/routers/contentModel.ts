@@ -14,6 +14,10 @@ export const contentModelRouter = createTRPCRouter({
     const { data } = await sdk.contentModel.v1ContentModelGet();
     return data;
   }),
+  getById: protectedProcedure.input(z.number()).query(async ({ input }) => {
+    const { data } = await sdk.contentModel.v1ContentModelIdGet(input);
+    return data;
+  }),
   create: protectedProcedure
     .input(
       z.object({

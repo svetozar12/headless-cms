@@ -15,9 +15,15 @@ export const fieldTypeRouter = createTRPCRouter({
     return data;
   }),
   create: protectedProcedure
-    .input(contentSchema)
-    .mutation(async ({ input: { request } }) => {
-      const { data } = await sdk.fieldType.v1FieldTypePost({ ...request });
+    .input(
+      z.object({
+        contentModelId: z.number(),
+        name: z.string(),
+        fieldType: z.string(),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      const { data } = await sdk.fieldType.v1FieldTypePost({ ...input });
       return data;
     }),
   updateById: protectedProcedure

@@ -17,10 +17,6 @@ interface IConfirmDeleteModal {
 const ConfirmDeleteModal: FC<IConfirmDeleteModal> = (props) => {
   const { modelId, modelTitle, isDeleteModal, setIsDeleteModal } = props;
   const { mutateAsync, isLoading } = api.contentModel.deleteById.useMutation({
-    async onMutate() {
-      const queryKey = api.contentModel.getQueryKey();
-      queryClient.invalidateQueries(queryKey);
-    },
     onSuccess: () => {
       const queryKey = api.contentModel.getQueryKey();
 
