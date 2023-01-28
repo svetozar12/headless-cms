@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormGroup,
-  FormHelperText,
-  Input,
-  InputLabel,
-} from "@mui/material";
+import { FormControl, Input, InputLabel } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FC, useEffect, useRef } from "react";
@@ -15,7 +9,6 @@ import { api } from "../../../utils/api";
 
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
-import Form, { IFields } from "../../Form/Form";
 import Heading from "../../Heading";
 import Modal from "../../Modal";
 
@@ -120,8 +113,8 @@ const ModelModal: FC<IModelModal> = (props) => {
 export default ModelModal;
 
 const useValues = () => {
-  const modelTitle = useRef<Input>(null);
-  const description = useRef<Input>(null);
+  const modelTitle = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLInputElement>(null);
 
   return { modelTitle, description };
 };

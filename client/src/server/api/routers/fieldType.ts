@@ -27,18 +27,20 @@ export const fieldTypeRouter = createTRPCRouter({
       return data;
     }),
   updateById: protectedProcedure
-    .input(z.object({ id: z.number(), request: contentSchema }))
-    .mutation(
-      async ({
-        input: {
-          id,
-          request: { request },
-        },
-      }) => {
-        const { data } = await sdk.fieldType.v1FieldTypeIdPut(id, request);
-        return data;
-      },
-    ),
+    .input(
+      z.object({
+        id: z.number(),
+        request: z.object({
+          contentModelId: z.number(),
+          name: z.string(),
+          fieldType: z.string().optional(),
+        }),
+      }),
+    )
+    .mutation(async ({ input: { id, request } }) => {
+      const { data } = await sdk.fieldType.v1FieldTypeIdPut(id, request);
+      return data;
+    }),
   deleteById: protectedProcedure
     .input(z.number())
     .mutation(async ({ input }) => {

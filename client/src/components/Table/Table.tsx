@@ -27,17 +27,15 @@ interface ITable {
   extraProps?: IExtraProps;
 }
 
-const Table: React.FC<ITable> = (props) => {
-  const {
-    extraProps,
-    columns,
-    isLoading = true,
-    dataSource,
-    onTableChange,
-    onRowClickHandle,
-    customHeader,
-  } = props;
-
+const Table: React.FC<ITable> = ({
+  extraProps,
+  columns,
+  isLoading = false,
+  dataSource,
+  onTableChange,
+  onRowClickHandle,
+  customHeader,
+}) => {
   const { className, ...restProps } = extraProps || {};
   const { data, setData } = useData(dataSource, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;

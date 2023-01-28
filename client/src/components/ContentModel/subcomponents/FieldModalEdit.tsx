@@ -8,24 +8,29 @@ import {
 import { useRouter } from "next/router";
 import { FC, useRef } from "react";
 import { queryClient } from "../../../pages/_app";
+import { FieldtypeFieldType } from "../../../server/sdk";
 
 import { api } from "../../../utils/api";
 
 import ActionButtons from "../../ActionButtons";
 import Button from "../../Button";
-import Heading from "../../Heading";
 import Modal from "../../Modal";
 
-interface IFieldModal {
+interface IFieldModalEdit {
   isModal: boolean;
   toggleModal: (value: boolean) => void;
+  oldFieldType: FieldtypeFieldType | undefined;
 }
 
-const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
+const FieldModalEdit: FC<IFieldModalEdit> = ({
+  isModal,
+  toggleModal,
+  oldFieldType,
+}) => {
   const router = useRouter();
   const { query } = router;
   const { data } = api.fieldTypeEnums.getAll.useQuery();
-  const { mutate, isLoading } = api.fieldType.create.useMutation({
+  const { mutate, isLoading } = api.fieldType.updateById.useMutation({
     onSuccess: () => {
       const queryKeyFieldType = api.fieldType.getQueryKey();
       const queryKeyModel = api.contentModel.getQueryKey();
@@ -41,6 +46,7 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
       {
         name: "fieldTitle",
         ref: fieldName,
+        defaultValue: oldFieldType?.name,
       },
     ];
   };
@@ -50,9 +56,13 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
     const fieldTypeName = fieldType.current?.value;
 
     mutate({
-      name: fieldTitle || "",
-      fieldType: fieldTypeName || "",
-      contentModelId: parseInt(query.id as string) || 0,
+      id: oldFieldType?.id,
+      request: {
+        name: fieldTitle || oldFieldType?.name,
+        fieldType: fieldTypeName || oldFieldType,
+        contentModelId:
+          parseInt(query.id as string) || oldFieldType?.contentModelId,
+      },
     });
   };
 
@@ -63,11 +73,12 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
         isOpen={isModal}
         isLoading={isLoading}
       >
-        {getFIelds().map(({ name, ref }) => {
+        {getFIelds().map(({ name, ref, defaultValue }) => {
           return (
             <FormControl className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md">
               <InputLabel className="!text-white">{name}</InputLabel>
               <Input
+                defaultValue={defaultValue}
                 inputRef={ref}
                 className="!px-2 bg-transparent !text-white autofill:bg-transparent active:border-0"
               />
@@ -77,6 +88,7 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
         <FormControl className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md">
           <InputLabel className="!text-white">Field Type</InputLabel>
           <Select
+            defaultValue={oldFieldType?.fieldType}
             className="!px-2 bg-transparent !text-white autofill:bg-transparent active:border-0"
             label="field type"
             inputRef={fieldType}
@@ -119,7 +131,7 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
   return <>{render()}</>;
 };
 
-export default FieldModal;
+export default FieldModalEdit;
 
 const useValues = () => {
   const fieldName = useRef<HTMLInputElement>(null);
