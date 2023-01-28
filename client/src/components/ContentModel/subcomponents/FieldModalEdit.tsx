@@ -54,14 +54,14 @@ const FieldModalEdit: FC<IFieldModalEdit> = ({
   const handleSubmit = () => {
     const fieldTitle = fieldName.current?.value;
     const fieldTypeName = fieldType.current?.value;
+    if (!oldFieldType) return;
 
     mutate({
       id: oldFieldType?.id,
       request: {
-        name: fieldTitle || oldFieldType?.name,
-        fieldType: fieldTypeName || oldFieldType,
-        contentModelId:
-          parseInt(query.id as string) || oldFieldType?.contentModelId,
+        name: fieldTitle || oldFieldType.name,
+        fieldType: fieldTypeName || oldFieldType.fieldType,
+        contentModelId: oldFieldType.contentModelId,
       },
     });
   };
@@ -103,7 +103,7 @@ const FieldModalEdit: FC<IFieldModalEdit> = ({
             {
               Render: (
                 <Button
-                  text="Create"
+                  text="Update"
                   onClick={async () => await handleSubmit()}
                   type="button"
                 />

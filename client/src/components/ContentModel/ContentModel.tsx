@@ -44,7 +44,7 @@ const ContentModel = () => {
             />
           }
         />
-        <div className="w-2/4">
+        <div className="w-2/4 relative">
           <ContentModelTable />
         </div>
       </div>

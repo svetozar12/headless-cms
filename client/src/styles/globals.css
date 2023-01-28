@@ -10,6 +10,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+#nprogress .bar {
+  background: black !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

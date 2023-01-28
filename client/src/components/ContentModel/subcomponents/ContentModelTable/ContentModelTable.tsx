@@ -15,7 +15,7 @@ const ContentModelTable = () => {
     id: null,
     title: "",
   });
-  const { data, isLoading } = api.fieldType.getAll.useQuery();
+  const { data, isFetching } = api.fieldType.getAll.useQuery();
   const columns: IColumn[] = [
     { title: "Title", dataIndex: "name" },
     { title: "Field Type", dataIndex: "fieldType" },
@@ -48,7 +48,6 @@ const ContentModelTable = () => {
                     const { id, name } = fieldProps;
                     setModel({ id, title: name });
                     setIsEdit(true);
-                    // router.push(CONTENT_MODEL(fieldProps.id));
                   }}
                   type="button"
                   extraProps={{ className: "relative z-20" }}
@@ -61,8 +60,8 @@ const ContentModelTable = () => {
     },
   ];
   return (
-    <>
-      <Table isLoading={isLoading} columns={columns} dataSource={data} />
+    <div className={`relative ${isFetching && "h-60"}`}>
+      <Table isLoading={isFetching} columns={columns} dataSource={data} />
       {isDelete && (
         <ConfirmDeleteModal
           isDeleteModal={isDelete}
@@ -76,7 +75,7 @@ const ContentModelTable = () => {
         toggleModal={setIsEdit}
         oldFieldType={data?.find(({ id }) => id === model.id)}
       />
-    </>
+    </div>
   );
 };
 

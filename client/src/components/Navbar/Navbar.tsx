@@ -105,7 +105,8 @@ const Navbar = () => {
             {pages.map(({ title, path, onClick }) => (
               <Button
                 className={`${
-                  window.location.pathname === path && "!bg-offBlack"
+                  window.location.pathname === path &&
+                  "!bg-offBlack !bg-opacity-50"
                 }`}
                 key={title}
                 onClick={() => {

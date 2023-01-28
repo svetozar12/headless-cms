@@ -103,6 +103,9 @@ func updateContentModel(c *fiber.Ctx) error {
 func deleteContentModel(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var contentModel ContentModel
+	var fieldType fieldtype.FieldType
+
+	db.DB.Where("content_model_id = ?", id).Delete(&fieldType)
 	result := db.DB.Delete(&contentModel, id)
 	if result.RowsAffected == 0 {
 		return c.SendStatus(fiber.StatusNotFound)
