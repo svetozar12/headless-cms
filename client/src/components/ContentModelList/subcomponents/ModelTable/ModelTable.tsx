@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { ChangeEvent, FC, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { CONTENT_MODEL, CONTENT_MODELS } from "../../../../constants/routes";
+import { MODEL, MODEL_LIST } from "../../../../constants/routes";
 import { api } from "../../../../utils/api";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
@@ -62,7 +62,7 @@ const ModelTable: FC = () => {
                 <Button
                   Icon={MdEdit}
                   onClick={() => {
-                    router.push(CONTENT_MODEL(fieldProps.id));
+                    router.push(MODEL(fieldProps.id));
                   }}
                   type="button"
                   extraProps={{ className: "relative z-20" }}
@@ -76,7 +76,7 @@ const ModelTable: FC = () => {
   ];
 
   const onTableChange = async (page: number) => {
-    router.push(`${CONTENT_MODELS}/?page=${page}`, undefined, {
+    router.push(`${MODEL_LIST}/?page=${page}`, undefined, {
       shallow: true,
     });
   };
@@ -92,7 +92,7 @@ const ModelTable: FC = () => {
       <div className={`relative w-2/4 ${isFetching && "h-60"}`}>
         <Table
           onRowClickHandle={(field: ContentmodelContentModel) =>
-            router.push(CONTENT_MODEL(field.id))
+            router.push(MODEL(field.id))
           }
           isLoading={isFetching}
           onTableChange={onTableChange}

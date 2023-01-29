@@ -14,17 +14,13 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { signOut, useSession } from "next-auth/react";
 import Router, { useRouter } from "next/router";
-import {
-  CONTENT_LIST,
-  CONTENT_MODEL,
-  CONTENT_MODELS,
-} from "../../constants/routes";
+import { CONTENT_LIST, MODEL, MODEL_LIST } from "../../constants/routes";
 
 const pages = [
   {
-    title: "ContentModel",
-    path: CONTENT_MODELS,
-    onClick: () => Router.push(CONTENT_MODELS),
+    title: "Model",
+    path: MODEL_LIST,
+    onClick: () => Router.push(MODEL_LIST),
   },
   {
     title: "Content",
@@ -113,7 +109,7 @@ const Navbar = () => {
             {pages.map(({ title, path, onClick }) => (
               <Button
                 className={`${
-                  window.location.pathname === path &&
+                  window.location.pathname.includes(path) &&
                   "!bg-offBlack !bg-opacity-50"
                 }`}
                 key={title}

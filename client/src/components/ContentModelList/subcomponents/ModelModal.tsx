@@ -2,7 +2,7 @@ import { FormControl, Input, InputLabel } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FC, useEffect, useRef } from "react";
-import { CONTENT_MODEL } from "../../../constants/routes";
+import { MODEL } from "../../../constants/routes";
 import { queryClient } from "../../../pages/_app";
 
 import { api } from "../../../utils/api";
@@ -24,7 +24,7 @@ const ModelModal: FC<IModelModal> = (props) => {
   const router = useRouter();
   const { mutate, isLoading } = api.contentModel.create.useMutation({
     onSuccess: (data) => {
-      router.push(CONTENT_MODEL(data.id));
+      router.push(MODEL(data.id));
       const queryKey = api.contentModel.getQueryKey();
       queryClient.invalidateQueries(queryKey);
       toggleModal(false);

@@ -38,7 +38,7 @@ const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
   function handleModelClick(modelId: number, name: string) {
     const { id } = session?.user || {};
     if (!id) return;
-    mutate({ request: { modelId, name, userId: id } });
+    mutate({ request: { modelId, name: "untitled", userId: id } });
   }
 
   return (
