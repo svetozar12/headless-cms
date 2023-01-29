@@ -537,12 +537,16 @@ const docTemplate = `{
         "content.Content": {
             "type": "object",
             "required": [
+                "contentModel",
                 "id",
                 "modelId",
                 "name",
                 "userId"
             ],
             "properties": {
+                "contentModel": {
+                    "$ref": "#/definitions/contentmodel.ContentModel"
+                },
                 "createdAt": {
                     "type": "string"
                 },
@@ -587,6 +591,7 @@ const docTemplate = `{
         "contentmodel.ContentModel": {
             "type": "object",
             "required": [
+                "fieldTypes",
                 "id",
                 "name",
                 "userId"

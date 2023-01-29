@@ -20,20 +20,19 @@ const ModelTable: FC = () => {
     id: null,
     title: "",
   });
-
   const columns: IColumn[] = [
-    { title: "Title", dataIndex: "name" },
-    { title: "Description", dataIndex: "description" },
+    { title: "Title", dataIndexes: ["name"] },
+    { title: "Description", dataIndexes: ["description"] },
     {
       title: "Updated",
-      dataIndex: "UpdatedAt",
+      dataIndexes: ["updatedAt"],
       formatValue: (value: string) => {
         return dayjs(value).fromNow();
       },
     },
     {
       title: "Fields",
-      dataIndex: "FieldTypes",
+      dataIndexes: ["fieldTypes"],
       formatValue: (value) => {
         return value.length;
       },

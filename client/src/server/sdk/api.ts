@@ -54,6 +54,12 @@ export interface ContentBody {
 export interface ContentContent {
     /**
      * 
+     * @type {ContentmodelContentModel}
+     * @memberof ContentContent
+     */
+    'contentModel': ContentmodelContentModel;
+    /**
+     * 
      * @type {string}
      * @memberof ContentContent
      */
@@ -149,7 +155,7 @@ export interface ContentmodelContentModel {
      * @type {Array<FieldtypeFieldType>}
      * @memberof ContentmodelContentModel
      */
-    'fieldTypes'?: Array<FieldtypeFieldType>;
+    'fieldTypes': Array<FieldtypeFieldType>;
     /**
      * 
      * @type {number}

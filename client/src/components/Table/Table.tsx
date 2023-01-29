@@ -12,7 +12,7 @@ interface IExtraProps {
 
 export interface IColumn {
   title: string;
-  dataIndex?: string;
+  dataIndexes?: string[];
   formatValue?: (value: any) => any;
   render?: (fieldProps: any) => ReactNode;
 }

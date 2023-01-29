@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
+	contentmodel "svetozar12/headless-cms-be/routes/contentModel"
 	field "svetozar12/headless-cms-be/routes/field"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
@@ -19,6 +20,7 @@ type Body struct {
 type Content struct {
 	models.Model
 	Body
+	ContentModel contentmodel.ContentModel `gorm:"foreignKey:ModelId" json:"contentModel" binding:"required"`
 }
 
 func ContentRoutes(app fiber.Router) {
@@ -37,7 +39,7 @@ func ContentRoutes(app fiber.Router) {
 // @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
 	var content []Content
-	db.DB.Find(&content)
+	db.DB.Preload("ContentModel").Find(&content)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 

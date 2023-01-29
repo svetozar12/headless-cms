@@ -17,7 +17,7 @@ type Body struct {
 type ContentModel struct {
 	models.Model
 	Body
-	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId"`
+	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId" json:"fieldTypes" binding:"required"`
 }
 
 func ContentModelRoutes(app fiber.Router) {
@@ -39,7 +39,7 @@ func ContentModelRoutes(app fiber.Router) {
 func getContentModelById(c *fiber.Ctx) error {
 	var contentModel ContentModel
 	id := c.Params("id")
-	db.DB.Where("id = ?", id).First(&contentModel)
+	db.DB.Preload("FieldTypes").Where("id = ?", id).First(&contentModel)
 	return c.Status(fiber.StatusOK).JSON(contentModel)
 }
 

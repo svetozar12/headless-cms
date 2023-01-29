@@ -1,7 +1,7 @@
 import React from "react";
 import { FaDropbox } from "react-icons/fa";
 import Heading from "../../Heading";
-import s from "./Content.module.css";
+import s from "./Content/Content.module.css";
 
 const BlankState = () => {
   return (

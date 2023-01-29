@@ -17,8 +17,8 @@ const ContentModelTable = () => {
   });
   const { data, isFetching } = api.fieldType.getAll.useQuery();
   const columns: IColumn[] = [
-    { title: "Title", dataIndex: "name" },
-    { title: "Field Type", dataIndex: "fieldType" },
+    { title: "Title", dataIndexes: ["name"] },
+    { title: "Field Type", dataIndexes: ["fieldType"] },
     {
       title: "Action",
       render: (fieldProps: ContentmodelContentModel) => (

@@ -15,6 +15,8 @@ definitions:
     type: object
   content.Content:
     properties:
+      contentModel:
+        $ref: '#/definitions/contentmodel.ContentModel'
       createdAt:
         type: string
       deletedAt:
@@ -30,6 +32,7 @@ definitions:
       userId:
         type: string
     required:
+    - contentModel
     - id
     - modelId
     - name
@@ -68,6 +71,7 @@ definitions:
       userId:
         type: string
     required:
+    - fieldTypes
     - id
     - name
     - userId
