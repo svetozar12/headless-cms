@@ -27,6 +27,7 @@ const ModelModal: FC<IModelModal> = (props) => {
       router.push(CONTENT_MODEL(data.id));
       const queryKey = api.contentModel.getQueryKey();
       queryClient.invalidateQueries(queryKey);
+      toggleModal(false);
     },
   });
   const { modelTitle, description } = useValues();

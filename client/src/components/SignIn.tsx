@@ -4,7 +4,7 @@ import React, { FC, useEffect } from "react";
 import { AiFillGithub, AiFillGoogleCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa";
 import { VscWorkspaceUnknown } from "react-icons/vsc";
-import { CONTENT } from "../constants/routes";
+import { CONTENT_LIST } from "../constants/routes";
 import Spinner from "./Spinner";
 type ProviderOptions = {
   callbackUrl: string;
@@ -24,7 +24,7 @@ const SignIn: FC<Props> = ({ providers }) => {
   const { status } = useSession();
   const router = useRouter();
   useEffect(() => {
-    if (status === "authenticated") router.push(CONTENT);
+    if (status === "authenticated") router.push(CONTENT_LIST);
   }, [status]);
 
   const getIcon = (providerName: string) => {

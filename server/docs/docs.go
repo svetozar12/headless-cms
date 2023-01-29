@@ -68,7 +68,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/content.Content"
                         }
                     }
                 }

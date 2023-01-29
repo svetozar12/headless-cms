@@ -540,7 +540,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentPost(request: ContentBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async v1ContentPost(request: ContentBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentContent>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentPost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -592,7 +592,7 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentPost(request: ContentBody, options?: any): AxiosPromise<string> {
+        v1ContentPost(request: ContentBody, options?: any): AxiosPromise<ContentContent> {
             return localVarFp.v1ContentPost(request, options).then((request) => request(axios, basePath));
         },
         /**

@@ -14,7 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { signOut, useSession } from "next-auth/react";
 import Router, { useRouter } from "next/router";
-import { CONTENT, CONTENT_MODEL, CONTENT_MODELS } from "../../constants/routes";
+import {
+  CONTENT_LIST,
+  CONTENT_MODEL,
+  CONTENT_MODELS,
+} from "../../constants/routes";
 
 const pages = [
   {
@@ -22,7 +26,11 @@ const pages = [
     path: CONTENT_MODELS,
     onClick: () => Router.push(CONTENT_MODELS),
   },
-  { title: "Content", path: CONTENT, onClick: () => Router.push(CONTENT) },
+  {
+    title: "Content",
+    path: CONTENT_LIST,
+    onClick: () => Router.push(CONTENT_LIST),
+  },
 ];
 const settings = [
   {

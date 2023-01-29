@@ -193,7 +193,7 @@ paths:
         "201":
           description: Created
           schema:
-            type: string
+            $ref: '#/definitions/content.Content'
       summary: Create content
       tags:
       - content

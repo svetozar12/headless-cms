@@ -46,7 +46,7 @@ func getContent(c *fiber.Ctx) error {
 // @Tags         content
 // @Accept       json
 // @Param request body content.Body true "query params""
-// @Success      201  {string} content.Content
+// @Success      201  {object} content.Content
 // @Router       /v1/content [post]
 func createContent(c *fiber.Ctx) error {
 	content := new(Content)
