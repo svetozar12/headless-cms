@@ -399,6 +399,40 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Get content by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1ContentIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('v1ContentIdGet', 'id', id)
+            const localVarPath = `/v1/content/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update content
          * @param {number} id ID
          * @param {ContentBody} request query params
@@ -529,6 +563,17 @@ export const ContentApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get content by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async v1ContentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentContent>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentIdGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Update content
          * @param {number} id ID
          * @param {ContentBody} request query params
@@ -582,6 +627,16 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Get content by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1ContentIdGet(id: number, options?: any): AxiosPromise<ContentContent> {
+            return localVarFp.v1ContentIdGet(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update content
          * @param {number} id ID
          * @param {ContentBody} request query params
@@ -630,6 +685,18 @@ export class ContentApi extends BaseAPI {
      */
     public v1ContentGet(options?: AxiosRequestConfig) {
         return ContentApiFp(this.configuration).v1ContentGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get content by id
+     * @param {number} id ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public v1ContentIdGet(id: number, options?: AxiosRequestConfig) {
+        return ContentApiFp(this.configuration).v1ContentIdGet(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

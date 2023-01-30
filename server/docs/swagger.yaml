@@ -202,6 +202,23 @@ paths:
       tags:
       - content
   /v1/content/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.Content'
+      summary: Get content by id
+      tags:
+      - content
     put:
       consumes:
       - application/json

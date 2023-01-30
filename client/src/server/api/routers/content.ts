@@ -11,6 +11,10 @@ const contentSchema = z.object({
 });
 
 export const contentRouter = createTRPCRouter({
+  get: protectedProcedure.input(z.number()).query(async ({ input }) => {
+    const { data } = await sdk.content.v1ContentIdGet(input);
+    return data;
+  }),
   getAll: protectedProcedure.query(async () => {
     const { data } = await sdk.content.v1ContentGet();
     return data;

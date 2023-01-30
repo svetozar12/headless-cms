@@ -1,3 +1,4 @@
+import { Chip, Divider } from "@mui/material";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { FC, useEffect } from "react";
@@ -5,6 +6,7 @@ import { AiFillGithub, AiFillGoogleCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa";
 import { VscWorkspaceUnknown } from "react-icons/vsc";
 import { CONTENT_LIST } from "../constants/routes";
+import Heading from "./Heading";
 import Spinner from "./Spinner";
 type ProviderOptions = {
   callbackUrl: string;
@@ -45,17 +47,29 @@ const SignIn: FC<Props> = ({ providers }) => {
   return (
     <div className="h-screen bg-black flex justify-center items-center">
       <Spinner isLoading={status === "loading"} />
-      <div className="bg-white w-1/4 h-2/4 flex justify-center items-center">
-        {Object.values(providers).map((provider) => (
-          <div
-            key={provider.name}
-            onClick={() => signIn(provider.id)}
-            className="bg-black text-white p-2 rounded-md hover:bg-opacity-70 cursor-pointer flex justify-center items-center gap-4"
-          >
-            <div>{getIcon(provider.name)}</div>
-            <span>Sign in with {provider.name}</span>
-          </div>
-        ))}
+      <div className="bg-white w-1/4 h-2/4 flex flex-col rounded-md">
+        <Heading
+          text="Headless Cms"
+          type="h1"
+          className="text-textPurple my-10"
+        />
+        <div>
+          <Divider>
+            <Chip label="LOGIN INTO YOUR ACCOUNT" />
+          </Divider>
+        </div>
+        <div className=" flex flex-col h-full justify-center items-center">
+          {Object.values(providers).map((provider) => (
+            <div
+              key={provider.name}
+              onClick={() => signIn(provider.id)}
+              className="border-gray-400 border-2 border-opacity-20 text-black p-2 rounded-md hover:bg-opacity-70 cursor-pointer flex justify-center items-center gap-4 hover:bg-gray-400 hover:bg-opacity-20"
+            >
+              <div>{getIcon(provider.name)}</div>
+              <span>Sign in with {provider.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

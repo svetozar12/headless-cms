@@ -25,10 +25,25 @@ type Content struct {
 
 func ContentRoutes(app fiber.Router) {
 	content := app.Group("/content")
+	content.Get("/:id", getContentById)
 	content.Get("/", getContent)
 	content.Post("/", createContent)
 	content.Put("/:id", updateContent)
 	content.Delete("/:id", deleteContent)
+}
+
+// Content godoc
+// @Summary      Get content by id
+// @Tags         content
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {object} content.Content
+// @Router       /v1/content/{id} [get]
+func getContentById(c *fiber.Ctx) error {
+	var content Content
+	id := c.Params("id")
+	db.DB.Where("id = ?", id).First(&content)
+	return c.Status(fiber.StatusOK).JSON(content)
 }
 
 // Content godoc

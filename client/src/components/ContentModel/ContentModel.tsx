@@ -6,7 +6,6 @@ import Heading from "./subcomponents/Heading";
 import { useState } from "react";
 import FieldModal from "./subcomponents/FieldModal";
 import ContentModelTable from "./subcomponents/ContentModelTable/ContentModelTable";
-import FieldModalEdit from "./subcomponents/FieldModalEdit";
 
 const ContentModel = () => {
   const router = useRouter();

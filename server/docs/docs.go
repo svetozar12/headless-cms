@@ -75,6 +75,32 @@ const docTemplate = `{
             }
         },
         "/v1/content/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "content"
+                ],
+                "summary": "Get content by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/content.Content"
+                        }
+                    }
+                }
+            },
             "put": {
                 "consumes": [
                     "application/json"

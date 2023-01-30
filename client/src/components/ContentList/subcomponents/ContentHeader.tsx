@@ -50,37 +50,39 @@ const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
       <div className="flex">
         <FormControl className="w-full !bg-inputBlack bg-transparent !my-2 !rounded-md">
           {model ? <InputLabel id="custom-select-label">Model</InputLabel> : ""}
-          <Select
-            displayEmpty
-            sx={{
-              "& .MuiSelect-iconOutlined": { display: model ? "none" : "" },
-              "&.Mui-focused .MuiIconButton-root": { color: "primary.main" },
-            }}
-            renderValue={(value) => (value ? value : <em>Select model</em>)}
-            endAdornment={
-              <IconButton
-                sx={{ visibility: model ? "visible" : "hidden" }}
-                onClick={handleClearClick}
-              >
-                <MdOutlineClear className="text-white rounded-full hover:bg-black w-6 h-6" />
-              </IconButton>
-            }
-            className="!px-2 bg-transparent !text-white autofill:bg-transparent active:border-0"
-            label="Content Model"
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
-          >
-            {data?.map(({ name, id }) => {
-              return (
-                <MenuItem
-                  onClick={() => handleModelClick(id, name)}
-                  value={name}
+          {data && (
+            <Select
+              displayEmpty
+              sx={{
+                "& .MuiSelect-iconOutlined": { display: model ? "none" : "" },
+                "&.Mui-focused .MuiIconButton-root": { color: "primary.main" },
+              }}
+              renderValue={(value) => (value ? value : <em>Select model</em>)}
+              endAdornment={
+                <IconButton
+                  sx={{ visibility: model ? "visible" : "hidden" }}
+                  onClick={handleClearClick}
                 >
-                  {name}
-                </MenuItem>
-              );
-            })}
-          </Select>
+                  <MdOutlineClear className="text-white rounded-full hover:bg-black w-6 h-6" />
+                </IconButton>
+              }
+              className="!px-2 bg-transparent !text-white autofill:bg-transparent active:border-0"
+              label="Model"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+            >
+              {data?.map(({ name, id }) => {
+                return (
+                  <MenuItem
+                    onClick={() => handleModelClick(id, name)}
+                    value={name}
+                  >
+                    {name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          )}
         </FormControl>
       </div>
     </PageHeader>

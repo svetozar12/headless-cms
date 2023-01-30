@@ -10,6 +10,9 @@ module.exports = {
         offBlack: "#0c0c0c",
         mainBlack: "#000000",
         inputBlack: "#171719",
+        cms_blue: {
+          100: "#1976D2",
+        },
         table: {
           headerBackground: "#f2f2f2",
         },
