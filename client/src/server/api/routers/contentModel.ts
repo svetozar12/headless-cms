@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { sdk } from "../../rest-api-sdk";
+import { paginationSchema } from "../common/pagination";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 const contentSchema = z.object({
@@ -10,10 +11,12 @@ const contentSchema = z.object({
 });
 
 export const contentModelRouter = createTRPCRouter({
-  getAll: protectedProcedure.query(async () => {
-    const { data } = await sdk.contentModel.v1ContentModelGet();
-    return data;
-  }),
+  getAll: protectedProcedure
+    .input(paginationSchema)
+    .query(async ({ input: { limit, offSet } }) => {
+      const { data } = await sdk.contentModel.v1ContentModelGet(offSet, limit);
+      return data;
+    }),
   getById: protectedProcedure.input(z.number()).query(async ({ input }) => {
     const { data } = await sdk.contentModel.v1ContentModelIdGet(input);
     return data;

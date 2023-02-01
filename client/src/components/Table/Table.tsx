@@ -17,8 +17,17 @@ export interface IColumn {
   render?: (fieldProps: any) => ReactNode;
 }
 
+type Data = {
+  data: any[];
+  pagination: {
+    limit: number;
+    offSet: number;
+    total: number;
+  };
+};
+
 interface ITable {
-  dataSource: any;
+  dataSource: Data;
   columns: IColumn[];
   isLoading?: boolean;
   customHeader?: ReactNode;
@@ -40,7 +49,7 @@ const Table: React.FC<ITable> = ({
   const { data, setData } = useData(dataSource, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;
   const { pagination } = dataSource || {};
-  const { page = 1, total = 8 } = pagination || {};
+  const { offSet = 1, total = 10 } = pagination;
 
   if (!data || data.length < 1)
     return (
@@ -51,7 +60,7 @@ const Table: React.FC<ITable> = ({
 
   const onChange = (pageNumber: number) => {
     onTableChange?.(pageNumber).then(() => {
-      setData(dataSource);
+      setData(dataSource.data);
     });
   };
 
@@ -60,6 +69,8 @@ const Table: React.FC<ITable> = ({
   };
 
   const renderTable = () => {
+    console.log(data);
+
     return (
       <table
         className={`${className} relative w-full shadow-gray-700`}
@@ -78,16 +89,16 @@ const Table: React.FC<ITable> = ({
     <div className="relative">
       <Spinner isLoading={!!isLoading} />
       {renderTable()}
-      <Pagination total={total} current={page} onChange={onChange} />
+      <Pagination total={total} current={offSet} onChange={onChange} />
     </div>
   );
 };
 
 export default Table;
-const useData = (dataSource: any, loading: boolean) => {
+const useData = (dataSource: Data, loading: boolean) => {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
-    if (!loading) setData(dataSource);
+    if (!loading) setData(dataSource.data);
     if (!dataSource && !loading) return setData([]);
   }, [dataSource, loading]);
   return { data, dataSource, setData };

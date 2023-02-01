@@ -826,10 +826,12 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Get all content models
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentModelGet: async (page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/contentModel`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -841,6 +843,14 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
 
 
     
@@ -1010,11 +1020,13 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all content models
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelGet(options);
+        async v1ContentModelGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelGet(page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1075,11 +1087,13 @@ export const ContentModelApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Get all content models
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelGet(options?: any): AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel> {
-            return localVarFp.v1ContentModelGet(options).then((request) => request(axios, basePath));
+        v1ContentModelGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel> {
+            return localVarFp.v1ContentModelGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1135,12 +1149,14 @@ export class ContentModelApi extends BaseAPI {
     /**
      * 
      * @summary Get all content models
+     * @param {number} [page] page
+     * @param {number} [limit] limit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentModelApi
      */
-    public v1ContentModelGet(options?: AxiosRequestConfig) {
-        return ContentModelApiFp(this.configuration).v1ContentModelGet(options).then((request) => request(this.axios, this.basePath));
+    public v1ContentModelGet(page?: number, limit?: number, options?: AxiosRequestConfig) {
+        return ContentModelApiFp(this.configuration).v1ContentModelGet(page, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

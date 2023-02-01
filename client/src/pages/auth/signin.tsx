@@ -1,5 +1,5 @@
 import { NextPage, GetServerSideProps } from "next";
-import { getProviders, getSession, signIn } from "next-auth/react";
+import { getProviders, getSession } from "next-auth/react";
 import { useCookie } from "next-cookie";
 import SignIn from "../../components/SignIn";
 import { redirectTo } from "../../utils/redirect";

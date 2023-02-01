@@ -14,7 +14,7 @@ type Model struct {
 }
 
 type PaginationModel[T any] struct {
-	Pagination Pagination `binding:"required"`
+	Pagination Pagination `json:"pagination" binding:"required"`
 	Data       T          `json:"data" binding:"required"`
 }
 

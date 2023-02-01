@@ -9,13 +9,21 @@ import Button from "../../../Button";
 import Table, { IColumn } from "../../../Table/Table";
 import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
 import * as relativeTime from "dayjs/plugin/relativeTime";
-import { ContentmodelContentModel } from "../../../../server/sdk";
+import {
+  ContentmodelContentModel,
+  ModelsPaginationModelArrayContentmodelContentModel,
+} from "../../../../server/sdk";
 dayjs.extend(relativeTime.default);
 
 const ModelTable: FC = () => {
   const router = useRouter();
-  const { data, isFetching } = api.contentModel.getAll.useQuery();
-  const { data: modelData } = data || {};
+  const { query } = router;
+  console.log(query.page);
+
+  const { data, isFetching } = api.contentModel.getAll.useQuery({
+    offSet: parseInt(query.page as string),
+    limit: 10,
+  });
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
@@ -81,6 +89,7 @@ const ModelTable: FC = () => {
       shallow: true,
     });
   };
+  console.log(data?.data);
 
   return (
     <>
@@ -98,7 +107,9 @@ const ModelTable: FC = () => {
           isLoading={isFetching}
           onTableChange={onTableChange}
           columns={columns}
-          dataSource={modelData}
+          dataSource={
+            data as ModelsPaginationModelArrayContentmodelContentModel
+          }
           extraProps={{ className: "mt-10 rounded-t-xl" }}
         />
       </div>

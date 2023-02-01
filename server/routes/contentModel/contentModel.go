@@ -47,6 +47,8 @@ func getContentModelById(c *fiber.Ctx) error {
 // Content godoc
 // @Summary      Get all content models
 // @Tags         contentModel
+// @Param        page    query     int  false  "page"  default(1)
+// @Param        limit    query     int  false  "limit"  default(10)
 // @Accept       json
 // @Success      200  {object} models.PaginationModel[[]contentmodel.ContentModel]
 // @Router       /v1/contentModel [get]
@@ -56,7 +58,7 @@ func getContentModel(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offSet := (page - 1) * limit
-	db.DB.Preload("FieldTypes").Find(&contentModels).Count(&total)
+	db.DB.Preload("FieldTypes").Offset(offSet).Limit(limit).Find(&contentModels).Count(&total)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]ContentModel]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: contentModels})
 }
 

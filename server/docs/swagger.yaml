@@ -312,6 +312,17 @@ paths:
     get:
       consumes:
       - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
       responses:
         "200":
           description: OK
