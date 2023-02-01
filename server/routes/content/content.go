@@ -2,6 +2,7 @@ package content
 
 import (
 	"fmt"
+	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
 	contentmodel "svetozar12/headless-cms-be/routes/contentModel"
@@ -42,6 +43,7 @@ func ContentRoutes(app fiber.Router) {
 func getContentById(c *fiber.Ctx) error {
 	var content Content
 	id := c.Params("id")
+
 	db.DB.Where("id = ?", id).First(&content)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
@@ -50,11 +52,15 @@ func getContentById(c *fiber.Ctx) error {
 // @Summary      Get all content
 // @Tags         content
 // @Accept       json
+// @Param        page    query     int  false  "page"  default(1)
+// @Param        limit    query     int  false  "limit"  default(10)
 // @Success      200  {array} content.Content
 // @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
 	var content []Content
-	db.DB.Preload("ContentModel").Find(&content)
+	page, _ := strconv.Atoi(c.Query("page"))
+	limit, _ := strconv.Atoi(c.Query("limit"))
+	db.DB.Preload("ContentModel").Find(&content).Offset((page * limit) - 1).Limit(limit)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
