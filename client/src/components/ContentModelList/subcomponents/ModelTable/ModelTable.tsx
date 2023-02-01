@@ -15,6 +15,7 @@ dayjs.extend(relativeTime.default);
 const ModelTable: FC = () => {
   const router = useRouter();
   const { data, isFetching } = api.contentModel.getAll.useQuery();
+  const { data: modelData } = data || {};
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
@@ -97,7 +98,7 @@ const ModelTable: FC = () => {
           isLoading={isFetching}
           onTableChange={onTableChange}
           columns={columns}
-          dataSource={data}
+          dataSource={modelData}
           extraProps={{ className: "mt-10 rounded-t-xl" }}
         />
       </div>

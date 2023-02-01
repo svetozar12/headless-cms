@@ -22,9 +22,10 @@ interface IContentHeader {
 const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
   const router = useRouter();
   const { data } = api.contentModel.getAll.useQuery();
+  const { data: modelData } = data || {};
   const { mutate } = api.content.create.useMutation({
-    onSuccess(data) {
-      const { id } = data;
+    onSuccess(modelData) {
+      const { id } = modelData;
       router.push(CONTENT(id));
     },
   });
@@ -71,7 +72,7 @@ const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
               value={model}
               onChange={(e) => setModel(e.target.value)}
             >
-              {data?.map(({ name, id }) => {
+              {modelData?.map(({ name, id }) => {
                 return (
                   <MenuItem
                     onClick={() => handleModelClick(id, name)}

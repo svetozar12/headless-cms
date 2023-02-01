@@ -53,10 +53,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/content.Content"
-                            }
+                            "$ref": "#/definitions/models.PaginationModel-array_content_Content"
                         }
                     }
                 }
@@ -169,10 +166,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/contentmodel.ContentModel"
-                            }
+                            "$ref": "#/definitions/models.PaginationModel-array_contentmodel_ContentModel"
                         }
                     }
                 }
@@ -783,6 +777,61 @@ const docTemplate = `{
                 "valid": {
                     "description": "Valid is true if Time is not NULL",
                     "type": "boolean"
+                }
+            }
+        },
+        "models.Pagination": {
+            "type": "object",
+            "required": [
+                "limit",
+                "offSet",
+                "total"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offSet": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.PaginationModel-array_content_Content": {
+            "type": "object",
+            "required": [
+                "data",
+                "pagination"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.Content"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/models.Pagination"
+                }
+            }
+        },
+        "models.PaginationModel-array_contentmodel_ContentModel": {
+            "type": "object",
+            "required": [
+                "data",
+                "pagination"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/contentmodel.ContentModel"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/models.Pagination"
                 }
             }
         }

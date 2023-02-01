@@ -360,6 +360,69 @@ export interface GormDeletedAt {
      */
     'valid'?: boolean;
 }
+/**
+ * 
+ * @export
+ * @interface ModelsPagination
+ */
+export interface ModelsPagination {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsPagination
+     */
+    'limit': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsPagination
+     */
+    'offSet': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsPagination
+     */
+    'total': number;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsPaginationModelArrayContentContent
+ */
+export interface ModelsPaginationModelArrayContentContent {
+    /**
+     * 
+     * @type {Array<ContentContent>}
+     * @memberof ModelsPaginationModelArrayContentContent
+     */
+    'data': Array<ContentContent>;
+    /**
+     * 
+     * @type {ModelsPagination}
+     * @memberof ModelsPaginationModelArrayContentContent
+     */
+    'pagination': ModelsPagination;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsPaginationModelArrayContentmodelContentModel
+ */
+export interface ModelsPaginationModelArrayContentmodelContentModel {
+    /**
+     * 
+     * @type {Array<ContentmodelContentModel>}
+     * @memberof ModelsPaginationModelArrayContentmodelContentModel
+     */
+    'data': Array<ContentmodelContentModel>;
+    /**
+     * 
+     * @type {ModelsPagination}
+     * @memberof ModelsPaginationModelArrayContentmodelContentModel
+     */
+    'pagination': ModelsPagination;
+}
 
 /**
  * ContentApi - axios parameter creator
@@ -370,10 +433,12 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get all content
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentGet: async (page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/content`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -385,6 +450,14 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
 
 
     
@@ -554,11 +627,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all content
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContentContent>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentGet(options);
+        async v1ContentGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentContent>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentGet(page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -619,11 +694,13 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get all content
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentGet(options?: any): AxiosPromise<Array<ContentContent>> {
-            return localVarFp.v1ContentGet(options).then((request) => request(axios, basePath));
+        v1ContentGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayContentContent> {
+            return localVarFp.v1ContentGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -679,12 +756,14 @@ export class ContentApi extends BaseAPI {
     /**
      * 
      * @summary Get all content
+     * @param {number} [page] page
+     * @param {number} [limit] limit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public v1ContentGet(options?: AxiosRequestConfig) {
-        return ContentApiFp(this.configuration).v1ContentGet(options).then((request) => request(this.axios, this.basePath));
+    public v1ContentGet(page?: number, limit?: number, options?: AxiosRequestConfig) {
+        return ContentApiFp(this.configuration).v1ContentGet(page, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -934,7 +1013,7 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContentmodelContentModel>>> {
+        async v1ContentModelGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -999,7 +1078,7 @@ export const ContentModelApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelGet(options?: any): AxiosPromise<Array<ContentmodelContentModel>> {
+        v1ContentModelGet(options?: any): AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel> {
             return localVarFp.v1ContentModelGet(options).then((request) => request(axios, basePath));
         },
         /**

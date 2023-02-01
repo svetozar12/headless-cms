@@ -1,6 +1,7 @@
 package contentmodel
 
 import (
+	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
@@ -47,12 +48,16 @@ func getContentModelById(c *fiber.Ctx) error {
 // @Summary      Get all content models
 // @Tags         contentModel
 // @Accept       json
-// @Success      200  {array} contentmodel.ContentModel
+// @Success      200  {object} models.PaginationModel[[]contentmodel.ContentModel]
 // @Router       /v1/contentModel [get]
 func getContentModel(c *fiber.Ctx) error {
 	var contentModels []ContentModel
-	db.DB.Preload("FieldTypes").Find(&contentModels)
-	return c.Status(fiber.StatusOK).JSON(contentModels)
+	var total int64
+	page, _ := strconv.Atoi(c.Query("page"))
+	limit, _ := strconv.Atoi(c.Query("limit"))
+	offSet := (page - 1) * limit
+	db.DB.Preload("FieldTypes").Find(&contentModels).Count(&total)
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]ContentModel]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: contentModels})
 }
 
 // Content godoc
