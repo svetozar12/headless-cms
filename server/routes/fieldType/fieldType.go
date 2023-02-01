@@ -1,6 +1,7 @@
 package fieldtype
 
 import (
+	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
 
@@ -30,12 +31,18 @@ func FieldTypeRoutes(app fiber.Router) {
 // @Summary      Get all field types
 // @Tags         fieldType
 // @Accept       json
-// @Success      200  {array} fieldtype.FieldType
+// @Param        page    query     int  false  "page"  default(1)
+// @Param        limit    query     int  false  "limit"  default(10)
+// @Success      200  {object} models.PaginationModel[[]fieldtype.FieldType]
 // @Router       /v1/fieldType [get]
 func getFieldTypes(c *fiber.Ctx) error {
 	var fieldTypes []FieldType
-	db.DB.Find(&fieldTypes)
-	return c.Status(fiber.StatusOK).JSON(fieldTypes)
+	var total int64
+	page, _ := strconv.Atoi(c.Query("page"))
+	limit, _ := strconv.Atoi(c.Query("limit"))
+	offSet := (page - 1) * limit
+	db.DB.Offset(offSet).Limit(limit).Find(&fieldTypes).Count(&total)
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]FieldType]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: fieldTypes})
 }
 
 // Content godoc

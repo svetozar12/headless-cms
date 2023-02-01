@@ -21,7 +21,7 @@ const ModelTable: FC = () => {
   console.log(query.page);
 
   const { data, isFetching } = api.contentModel.getAll.useQuery({
-    offSet: parseInt(query.page as string),
+    offSet: parseInt(query.page as string) || 1,
     limit: 10,
   });
   const [isDeleteModal, setIsDeleteModal] = useState(false);
@@ -89,7 +89,6 @@ const ModelTable: FC = () => {
       shallow: true,
     });
   };
-  console.log(data?.data);
 
   return (
     <>

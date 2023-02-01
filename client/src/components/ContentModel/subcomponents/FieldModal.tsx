@@ -65,7 +65,10 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
       >
         {getFIelds().map(({ name, ref }) => {
           return (
-            <FormControl className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md">
+            <FormControl
+              key={name}
+              className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md"
+            >
               <InputLabel className="!text-white">{name}</InputLabel>
               <Input
                 inputRef={ref}
@@ -82,7 +85,11 @@ const FieldModal: FC<IFieldModal> = ({ isModal, toggleModal }) => {
             inputRef={fieldType}
           >
             {data?.map(({ title, type }) => {
-              return <MenuItem value={type}>{title}</MenuItem>;
+              return (
+                <MenuItem key={title} value={type}>
+                  {title}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>

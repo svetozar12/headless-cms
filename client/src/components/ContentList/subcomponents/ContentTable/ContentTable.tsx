@@ -17,7 +17,11 @@ dayjs.extend(relativeTime.default);
 
 const ContentTable: FC = () => {
   const router = useRouter();
-  const { data, isFetching } = api.content.getAll.useQuery();
+  const { query } = router;
+  const { data, isFetching } = api.content.getAll.useQuery({
+    limit: 10,
+    offSet: parseInt(query.page as string) || 1,
+  });
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [content, setContent] = useState<{ id: number | null; title: string }>({
     id: null,

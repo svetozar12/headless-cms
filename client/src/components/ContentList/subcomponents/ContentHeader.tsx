@@ -21,7 +21,11 @@ interface IContentHeader {
 
 const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
   const router = useRouter();
-  const { data } = api.contentModel.getAll.useQuery();
+  const { query } = router;
+  const { data } = api.contentModel.getAll.useQuery({
+    limit: 10,
+    offSet: parseInt(query.page as string) || 1,
+  });
   const { data: modelData } = data || {};
   const { mutate } = api.content.create.useMutation({
     onSuccess(modelData) {
@@ -39,7 +43,7 @@ const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
   function handleModelClick(modelId: number, name: string) {
     const { id } = session?.user || {};
     if (!id) return;
-    mutate({ request: { modelId, name: "untitled", userId: id } });
+    mutate({ modelId, name: "untitled", userId: id });
   }
 
   return (
@@ -75,6 +79,7 @@ const ContentHeader: FC<IContentHeader> = ({ toggleModal }) => {
               {modelData?.map(({ name, id }) => {
                 return (
                   <MenuItem
+                    key={name}
                     onClick={() => handleModelClick(id, name)}
                     value={name}
                   >

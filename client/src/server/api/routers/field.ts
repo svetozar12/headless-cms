@@ -1,39 +1,28 @@
 import { z } from "zod";
 import { sdk } from "../../rest-api-sdk";
+import { paginationSchema } from "../common/pagination";
+import { fieldBodySchema } from "../common/zod";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
-const contentSchema = z.object({
-  request: z.object({
-    contentId: z.number(),
-    name: z.string(),
-    typeId: z.number(),
-  }),
-});
-
 export const fieldRouter = createTRPCRouter({
-  getAll: protectedProcedure.query(async () => {
-    const { data } = await sdk.field.v1FieldGet();
-    return data;
-  }),
+  getAll: protectedProcedure
+    .input(paginationSchema)
+    .query(async ({ input: { limit, offSet } }) => {
+      const { data } = await sdk.field.v1FieldGet(offSet, limit);
+      return data;
+    }),
   create: protectedProcedure
-    .input(contentSchema)
-    .mutation(async ({ input: { request } }) => {
-      const { data } = await sdk.field.v1FieldPost({ ...request });
+    .input(fieldBodySchema)
+    .mutation(async ({ input }) => {
+      const { data } = await sdk.field.v1FieldPost({ ...input });
       return data;
     }),
   updateById: protectedProcedure
-    .input(z.object({ id: z.number(), request: contentSchema }))
-    .mutation(
-      async ({
-        input: {
-          id,
-          request: { request },
-        },
-      }) => {
-        const { data } = await sdk.field.v1FieldIdPut(id, request);
-        return data;
-      },
-    ),
+    .input(z.object({ id: z.number(), request: fieldBodySchema }))
+    .mutation(async ({ input: { id, request } }) => {
+      const { data } = await sdk.field.v1FieldIdPut(id, request);
+      return data;
+    }),
   deleteById: protectedProcedure
     .input(z.number())
     .mutation(async ({ input }) => {

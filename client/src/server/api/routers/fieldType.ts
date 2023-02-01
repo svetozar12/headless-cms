@@ -1,27 +1,18 @@
 import { z } from "zod";
 import { sdk } from "../../rest-api-sdk";
+import { paginationSchema } from "../common/pagination";
+import { fieldtypeBodySchema } from "../common/zod";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
-const contentSchema = z.object({
-  request: z.object({
-    contentModelId: z.number(),
-    name: z.string(),
-  }),
-});
-
 export const fieldTypeRouter = createTRPCRouter({
-  getAll: protectedProcedure.query(async () => {
-    const { data } = await sdk.fieldType.v1FieldTypeGet();
-    return data;
-  }),
+  getAll: protectedProcedure
+    .input(paginationSchema)
+    .query(async ({ input: { offSet, limit } }) => {
+      const { data } = await sdk.fieldType.v1FieldTypeGet(offSet, limit);
+      return data;
+    }),
   create: protectedProcedure
-    .input(
-      z.object({
-        contentModelId: z.number(),
-        name: z.string(),
-        fieldType: z.string(),
-      }),
-    )
+    .input(fieldtypeBodySchema)
     .mutation(async ({ input }) => {
       const { data } = await sdk.fieldType.v1FieldTypePost({ ...input });
       return data;
@@ -30,11 +21,7 @@ export const fieldTypeRouter = createTRPCRouter({
     .input(
       z.object({
         id: z.number(),
-        request: z.object({
-          contentModelId: z.number(),
-          name: z.string(),
-          fieldType: z.string().optional(),
-        }),
+        request: fieldtypeBodySchema,
       }),
     )
     .mutation(async ({ input: { id, request } }) => {

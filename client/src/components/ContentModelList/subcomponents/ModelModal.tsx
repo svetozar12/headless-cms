@@ -51,11 +51,9 @@ const ModelModal: FC<IModelModal> = (props) => {
     console.log(titleValue, modelTitle.current);
 
     mutate({
-      request: {
-        userId: user?.id || "",
-        name: titleValue || "",
-        description: descriptionValue || "",
-      },
+      userId: user?.id || "",
+      name: titleValue || "",
+      description: descriptionValue || "",
     });
   };
 
@@ -69,7 +67,10 @@ const ModelModal: FC<IModelModal> = (props) => {
         <Heading type="h1" text="Add model" className="text-white" />
         {getFIelds().map(({ name, ref }) => {
           return (
-            <FormControl className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md">
+            <FormControl
+              key={name}
+              className="!bg-inputBlack w-full bg-transparent !my-2 !rounded-md"
+            >
               <InputLabel className="!text-white">{name}</InputLabel>
               <Input
                 inputRef={ref}

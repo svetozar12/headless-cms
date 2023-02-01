@@ -423,6 +423,44 @@ export interface ModelsPaginationModelArrayContentmodelContentModel {
      */
     'pagination': ModelsPagination;
 }
+/**
+ * 
+ * @export
+ * @interface ModelsPaginationModelArrayFieldField
+ */
+export interface ModelsPaginationModelArrayFieldField {
+    /**
+     * 
+     * @type {Array<FieldField>}
+     * @memberof ModelsPaginationModelArrayFieldField
+     */
+    'data': Array<FieldField>;
+    /**
+     * 
+     * @type {ModelsPagination}
+     * @memberof ModelsPaginationModelArrayFieldField
+     */
+    'pagination': ModelsPagination;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsPaginationModelArrayFieldtypeFieldType
+ */
+export interface ModelsPaginationModelArrayFieldtypeFieldType {
+    /**
+     * 
+     * @type {Array<FieldtypeFieldType>}
+     * @memberof ModelsPaginationModelArrayFieldtypeFieldType
+     */
+    'data': Array<FieldtypeFieldType>;
+    /**
+     * 
+     * @type {ModelsPagination}
+     * @memberof ModelsPaginationModelArrayFieldtypeFieldType
+     */
+    'pagination': ModelsPagination;
+}
 
 /**
  * ContentApi - axios parameter creator
@@ -1219,10 +1257,12 @@ export const FieldApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get all fields
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldGet: async (page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/field`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1234,6 +1274,14 @@ export const FieldApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
 
 
     
@@ -1369,11 +1417,13 @@ export const FieldApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all fields
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FieldField>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldGet(options);
+        async v1FieldGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayFieldField>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldGet(page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1423,11 +1473,13 @@ export const FieldApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get all fields
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldGet(options?: any): AxiosPromise<Array<FieldField>> {
-            return localVarFp.v1FieldGet(options).then((request) => request(axios, basePath));
+        v1FieldGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayFieldField> {
+            return localVarFp.v1FieldGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1473,12 +1525,14 @@ export class FieldApi extends BaseAPI {
     /**
      * 
      * @summary Get all fields
+     * @param {number} [page] page
+     * @param {number} [limit] limit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldApi
      */
-    public v1FieldGet(options?: AxiosRequestConfig) {
-        return FieldApiFp(this.configuration).v1FieldGet(options).then((request) => request(this.axios, this.basePath));
+    public v1FieldGet(page?: number, limit?: number, options?: AxiosRequestConfig) {
+        return FieldApiFp(this.configuration).v1FieldGet(page, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1529,10 +1583,12 @@ export const FieldTypeApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Get all field types
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypeGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldTypeGet: async (page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/fieldType`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1544,6 +1600,14 @@ export const FieldTypeApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
 
 
     
@@ -1679,11 +1743,13 @@ export const FieldTypeApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all field types
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldTypeGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FieldtypeFieldType>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldTypeGet(options);
+        async v1FieldTypeGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayFieldtypeFieldType>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldTypeGet(page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1733,11 +1799,13 @@ export const FieldTypeApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary Get all field types
+         * @param {number} [page] page
+         * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypeGet(options?: any): AxiosPromise<Array<FieldtypeFieldType>> {
-            return localVarFp.v1FieldTypeGet(options).then((request) => request(axios, basePath));
+        v1FieldTypeGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayFieldtypeFieldType> {
+            return localVarFp.v1FieldTypeGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1783,12 +1851,14 @@ export class FieldTypeApi extends BaseAPI {
     /**
      * 
      * @summary Get all field types
+     * @param {number} [page] page
+     * @param {number} [limit] limit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldTypeApi
      */
-    public v1FieldTypeGet(options?: AxiosRequestConfig) {
-        return FieldTypeApiFp(this.configuration).v1FieldTypeGet(options).then((request) => request(this.axios, this.basePath));
+    public v1FieldTypeGet(page?: number, limit?: number, options?: AxiosRequestConfig) {
+        return FieldTypeApiFp(this.configuration).v1FieldTypeGet(page, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

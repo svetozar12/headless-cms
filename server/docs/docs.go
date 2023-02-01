@@ -345,14 +345,27 @@ const docTemplate = `{
                     "field"
                 ],
                 "summary": "Get all fields",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 10,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/field.Field"
-                            }
+                            "$ref": "#/definitions/models.PaginationModel-array_field_Field"
                         }
                     }
                 }
@@ -461,14 +474,27 @@ const docTemplate = `{
                     "fieldType"
                 ],
                 "summary": "Get all field types",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 10,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/fieldtype.FieldType"
-                            }
+                            "$ref": "#/definitions/models.PaginationModel-array_fieldtype_FieldType"
                         }
                     }
                 }
@@ -844,6 +870,42 @@ const docTemplate = `{
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/contentmodel.ContentModel"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/models.Pagination"
+                }
+            }
+        },
+        "models.PaginationModel-array_field_Field": {
+            "type": "object",
+            "required": [
+                "data",
+                "pagination"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/field.Field"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/models.Pagination"
+                }
+            }
+        },
+        "models.PaginationModel-array_fieldtype_FieldType": {
+            "type": "object",
+            "required": [
+                "data",
+                "pagination"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fieldtype.FieldType"
                     }
                 },
                 "pagination": {

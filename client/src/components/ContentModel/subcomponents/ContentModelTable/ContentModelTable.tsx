@@ -1,6 +1,10 @@
+import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { ContentmodelContentModel } from "../../../../server/sdk";
+import {
+  ContentmodelContentModel,
+  ModelsPaginationModelArrayFieldtypeFieldType,
+} from "../../../../server/sdk";
 import { api } from "../../../../utils/api";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
@@ -15,7 +19,12 @@ const ContentModelTable = () => {
     id: null,
     title: "",
   });
-  const { data, isFetching } = api.fieldType.getAll.useQuery();
+  const router = useRouter();
+  const { query } = router;
+  const { data, isFetching } = api.fieldType.getAll.useQuery({
+    limit: 10,
+    offSet: parseInt(query.page as string) || 1,
+  });
   const columns: IColumn[] = [
     { title: "Title", dataIndexes: ["name"] },
     { title: "Field Type", dataIndexes: ["fieldType"] },
@@ -61,7 +70,11 @@ const ContentModelTable = () => {
   ];
   return (
     <div className={`relative ${isFetching && "h-60"}`}>
-      <Table isLoading={isFetching} columns={columns} dataSource={data} />
+      <Table
+        isLoading={isFetching}
+        columns={columns}
+        dataSource={data as ModelsPaginationModelArrayFieldtypeFieldType}
+      />
       {isDelete && (
         <ConfirmDeleteModal
           isDeleteModal={isDelete}
@@ -73,7 +86,7 @@ const ContentModelTable = () => {
       <FieldModalEdit
         isModal={isEdit}
         toggleModal={setIsEdit}
-        oldFieldType={data?.find(({ id }) => id === model.id)}
+        oldFieldType={data?.data?.find(({ id }) => id === model.id)}
       />
     </div>
   );

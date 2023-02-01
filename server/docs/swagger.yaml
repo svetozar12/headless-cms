@@ -193,6 +193,30 @@ definitions:
     - data
     - pagination
     type: object
+  models.PaginationModel-array_field_Field:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/field.Field'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
+  models.PaginationModel-array_fieldtype_FieldType:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/fieldtype.FieldType'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
 host: localhost:4000
 info:
   contact:
@@ -413,13 +437,22 @@ paths:
     get:
       consumes:
       - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
       responses:
         "200":
           description: OK
           schema:
-            items:
-              $ref: '#/definitions/field.Field'
-            type: array
+            $ref: '#/definitions/models.PaginationModel-array_field_Field'
       summary: Get all fields
       tags:
       - field
@@ -488,13 +521,22 @@ paths:
     get:
       consumes:
       - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
       responses:
         "200":
           description: OK
           schema:
-            items:
-              $ref: '#/definitions/fieldtype.FieldType'
-            type: array
+            $ref: '#/definitions/models.PaginationModel-array_fieldtype_FieldType'
       summary: Get all field types
       tags:
       - fieldType

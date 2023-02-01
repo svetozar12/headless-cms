@@ -59,6 +59,16 @@ export const fieldtypeFieldTypeSchema = z.object({
   updatedAt: z.string().optional(),
 });
 
+export const modelsPaginationModelArrayFieldFieldSchema = z.object({
+  data: z.array(fieldFieldSchema),
+  pagination: modelsPaginationSchema,
+});
+
+export const modelsPaginationModelArrayFieldtypeFieldTypeSchema = z.object({
+  data: z.array(fieldtypeFieldTypeSchema),
+  pagination: modelsPaginationSchema,
+});
+
 export const contentmodelContentModelSchema = z.object({
   createdAt: z.string().optional(),
   deletedAt: gormDeletedAtSchema.optional(),

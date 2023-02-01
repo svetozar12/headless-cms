@@ -1,5 +1,3 @@
-import { z } from "zod";
-import { sdk } from "../../rest-api-sdk";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 const fieldTypeEnums = [
