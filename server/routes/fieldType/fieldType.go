@@ -41,8 +41,9 @@ func getFieldTypes(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offSet := (page - 1) * limit
-	db.DB.Offset(offSet).Limit(limit).Find(&fieldTypes).Count(&total)
-	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]FieldType]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: fieldTypes})
+	db.DB.Find(&fieldTypes).Count(&total)
+	db.DB.Offset(offSet).Limit(limit).Find(&fieldTypes)
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]FieldType]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: fieldTypes})
 }
 
 // Content godoc

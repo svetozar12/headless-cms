@@ -42,8 +42,9 @@ func getFields(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offSet := (page - 1) * limit
-	db.DB.Offset(offSet).Limit(limit).Find(&fields).Count(&total)
-	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Field]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: fields})
+	db.DB.Find(&fields).Count(&total)
+	db.DB.Offset(offSet).Limit(limit).Find(&fields)
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Field]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: fields})
 }
 
 // Content godoc

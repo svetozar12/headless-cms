@@ -11,7 +11,7 @@ const ContentModelList: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center bg-mainBlack">
+    <div className="flex h-screen min-h-screen flex-col items-center bg-mainBlack">
       <ModelHeader toggleModal={toggleModal} />
       <ModelModal isModal={isModal} toggleModal={toggleModal} />
       <ModelTable />

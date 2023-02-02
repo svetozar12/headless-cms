@@ -19,7 +19,7 @@ const ContentTable: FC = () => {
   const router = useRouter();
   const { query } = router;
   const { data, isFetching } = api.content.getAll.useQuery({
-    limit: 10,
+    limit: 8,
     offSet: parseInt(query.page as string) || 1,
   });
   const [isDeleteModal, setIsDeleteModal] = useState(false);

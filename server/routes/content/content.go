@@ -62,8 +62,9 @@ func getContent(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offSet := (page - 1) * limit
-	db.DB.Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content).Count(&total)
-	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Content]{Pagination: models.Pagination{Total: total, Offset: offSet, Limit: limit}, Data: content})
+	db.DB.Preload("ContentModel").Find(&content).Count(&total)
+	db.DB.Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Content]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: content})
 }
 
 // Content godoc

@@ -49,7 +49,7 @@ const Table: React.FC<ITable> = ({
   const { data, setData } = useData(dataSource, isLoading);
   if (isLoading) return <Spinner isLoading={isLoading} />;
   const { pagination } = dataSource || {};
-  const { offSet = 1, total = 10 } = pagination;
+  const { offSet = 1, total = 10, limit } = pagination;
 
   if (!data || data.length < 1)
     return (
@@ -69,8 +69,6 @@ const Table: React.FC<ITable> = ({
   };
 
   const renderTable = () => {
-    console.log(data);
-
     return (
       <table
         className={`${className} relative w-full shadow-gray-700`}
@@ -84,6 +82,7 @@ const Table: React.FC<ITable> = ({
       </table>
     );
   };
+  console.log(offSet / limit, "pacat");
 
   return (
     <div className="relative">

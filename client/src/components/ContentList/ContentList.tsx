@@ -9,7 +9,7 @@ const ContentList: React.FC = () => {
     setIsModal(value);
   };
   return (
-    <div className="flex h-screen flex-col items-center bg-mainBlack">
+    <div className="flex min-h-screen h-full flex-col items-center bg-mainBlack">
       <ContentHeader toggleModal={toggleModal} />
       <ContentTable />
     </div>

@@ -18,12 +18,12 @@ dayjs.extend(relativeTime.default);
 const ModelTable: FC = () => {
   const router = useRouter();
   const { query } = router;
-  console.log(query.page);
-
   const { data, isFetching } = api.contentModel.getAll.useQuery({
     offSet: parseInt(query.page as string) || 1,
-    limit: 10,
+    limit: 8,
   });
+  console.log(data);
+
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
