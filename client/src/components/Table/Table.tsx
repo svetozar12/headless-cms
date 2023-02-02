@@ -47,13 +47,13 @@ const Table: React.FC<ITable> = ({
 }) => {
   const { className, ...restProps } = extraProps || {};
   const { data, setData } = useData(dataSource, isLoading);
-  if (isLoading) return <Spinner isLoading={isLoading} />;
-  const { pagination } = dataSource || {};
-  const { offSet = 1, total = 10, limit } = pagination;
+  const { pagination = { limit: 10, offSet: 1, total: 10 } } = dataSource || {};
+  const { offSet, total, limit } = pagination;
 
   if (!data || data.length < 1)
     return (
-      <div className="flex h-40 w-full items-center justify-center">
+      <div className="flex h-40 w-full items-center relative justify-center">
+        <Spinner isLoading={!!isLoading} />
         <BlankState />
       </div>
     );
@@ -74,6 +74,7 @@ const Table: React.FC<ITable> = ({
         className={`${className} relative w-full shadow-gray-700`}
         {...restProps}
       >
+        <Spinner isLoading={!!isLoading} />
         <tbody className="w-full rounded-t-md bg-offBlack">
           {customHeader}
           <Heading columns={columns} />
@@ -82,11 +83,9 @@ const Table: React.FC<ITable> = ({
       </table>
     );
   };
-  console.log(offSet / limit, "pacat");
 
   return (
     <div className="relative">
-      <Spinner isLoading={!!isLoading} />
       {renderTable()}
       <Pagination total={total} current={offSet} onChange={onChange} />
     </div>

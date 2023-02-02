@@ -2,7 +2,12 @@ import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { ChangeEvent, FC, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { CONTENT, MODEL, MODEL_LIST } from "../../../../constants/routes";
+import {
+  CONTENT,
+  CONTENT_LIST,
+  MODEL,
+  MODEL_LIST,
+} from "../../../../constants/routes";
 import { api } from "../../../../utils/api";
 import ActionButtons from "../../../ActionButtons";
 import Button from "../../../Button";
@@ -77,7 +82,7 @@ const ContentTable: FC = () => {
   ];
 
   const onTableChange = async (page: number) => {
-    router.push(`${MODEL_LIST}/?page=${page}`, undefined, {
+    router.push(`${CONTENT_LIST}/?page=${page}`, undefined, {
       shallow: true,
     });
   };
