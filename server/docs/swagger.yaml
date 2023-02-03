@@ -1,0 +1,602 @@
+basePath: /
+definitions:
+  content.Body:
+    properties:
+      modelId:
+        type: integer
+      name:
+        type: string
+      userId:
+        type: string
+    required:
+    - modelId
+    - name
+    - userId
+    type: object
+  content.Content:
+    properties:
+      contentModel:
+        $ref: '#/definitions/contentmodel.ContentModel'
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      modelId:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    required:
+    - contentModel
+    - id
+    - modelId
+    - name
+    - userId
+    type: object
+  contentmodel.Body:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      userId:
+        type: string
+    required:
+    - name
+    - userId
+    type: object
+  contentmodel.ContentModel:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      fieldTypes:
+        items:
+          $ref: '#/definitions/fieldtype.FieldType'
+        type: array
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    required:
+    - fieldTypes
+    - id
+    - name
+    - userId
+    type: object
+  field.Body:
+    properties:
+      contentId:
+        type: integer
+      name:
+        type: string
+      typeId:
+        type: integer
+      value:
+        type: string
+    required:
+    - contentId
+    - name
+    - typeId
+    type: object
+  field.Field:
+    properties:
+      contentId:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      typeId:
+        type: integer
+      updatedAt:
+        type: string
+      value:
+        type: string
+    required:
+    - contentId
+    - id
+    - name
+    - typeId
+    type: object
+  fieldtype.Body:
+    properties:
+      contentModelId:
+        type: integer
+      fieldType:
+        type: string
+      name:
+        type: string
+    required:
+    - contentModelId
+    - name
+    type: object
+  fieldtype.FieldType:
+    properties:
+      contentModelId:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      fieldType:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    required:
+    - contentModelId
+    - id
+    - name
+    type: object
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  models.Pagination:
+    properties:
+      limit:
+        type: integer
+      offSet:
+        type: integer
+      total:
+        type: integer
+    required:
+    - limit
+    - offSet
+    - total
+    type: object
+  models.PaginationModel-array_content_Content:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/content.Content'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
+  models.PaginationModel-array_contentmodel_ContentModel:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/contentmodel.ContentModel'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
+  models.PaginationModel-array_field_Field:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/field.Field'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
+  models.PaginationModel-array_fieldtype_FieldType:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/fieldtype.FieldType'
+        type: array
+      pagination:
+        $ref: '#/definitions/models.Pagination'
+    required:
+    - data
+    - pagination
+    type: object
+host: localhost:4000
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: This is a sample swagger for Fiber
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber Example API
+  version: "1.0"
+paths:
+  /v1/content:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaginationModel-array_content_Content'
+      summary: Get all content
+      tags:
+      - content
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/content.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/content.Content'
+      summary: Create content
+      tags:
+      - content
+  /v1/content/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.Content'
+      summary: Get content by id
+      tags:
+      - content
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/content.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.Content'
+      summary: Update content
+      tags:
+      - content
+  /v1/content{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete content
+      tags:
+      - content
+  /v1/contentModel:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaginationModel-array_contentmodel_ContentModel'
+      summary: Get all content models
+      tags:
+      - contentModel
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/contentmodel.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/contentmodel.ContentModel'
+      summary: Create content model
+      tags:
+      - contentModel
+  /v1/contentModel/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete content model
+      tags:
+      - contentModel
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/contentmodel.ContentModel'
+      summary: Get content model by id
+      tags:
+      - contentModel
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/contentmodel.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/contentmodel.ContentModel'
+      summary: Update content model
+      tags:
+      - contentModel
+  /v1/field:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaginationModel-array_field_Field'
+      summary: Get all fields
+      tags:
+      - field
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/field.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: Create field
+      tags:
+      - field
+  /v1/field/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete field
+      tags:
+      - field
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/field.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/field.Field'
+      summary: Update field
+      tags:
+      - field
+  /v1/fieldType:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: limit
+        in: query
+        name: limit
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaginationModel-array_fieldtype_FieldType'
+      summary: Get all field types
+      tags:
+      - fieldType
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/fieldtype.Body'
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/fieldtype.FieldType'
+      summary: Create field type
+      tags:
+      - fieldType
+  /v1/fieldType/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete field type
+      tags:
+      - fieldType
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/fieldtype.Body'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/fieldtype.FieldType'
+      summary: Update field type
+      tags:
+      - fieldType
+swagger: "2.0"
