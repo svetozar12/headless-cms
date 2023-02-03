@@ -4,18 +4,24 @@ import { useRouter } from "next/router";
 import React, { FC } from "react";
 import { FaBoxes } from "react-icons/fa";
 import { MODEL_LIST } from "../../../../constants/routes";
-import Heading from "../../../Heading";
 import PageHeader from "../../../PageHeader";
+import Spinner from "../../../Spinner";
 
 interface IModelHeading {
   title: string;
   ActionButtons: JSX.Element;
+  isLoading: boolean;
 }
 
-const ModelHeading: FC<IModelHeading> = ({ title, ActionButtons }) => {
+const ModelHeading: FC<IModelHeading> = ({
+  title,
+  ActionButtons,
+  isLoading = false,
+}) => {
   const router = useRouter();
   return (
-    <PageHeader extraProps={{ className: "justify-between" }}>
+    <PageHeader extraProps={{ className: "justify-between relative" }}>
+      <Spinner isLoading={isLoading} />
       <div className="flex">
         <FaBoxes className="mr-4 h-8 w-8" />
         <Breadcrumbs className="text-white" aria-label="breadcrumb">

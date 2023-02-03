@@ -54,7 +54,7 @@ const Table: React.FC<ITable> = ({
     return (
       <div className="flex h-40 w-full items-center relative justify-center">
         <Spinner isLoading={!!isLoading} />
-        <BlankState />
+        <BlankState isLoading={isLoading} />
       </div>
     );
 

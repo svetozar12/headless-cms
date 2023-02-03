@@ -12,7 +12,7 @@ const ContentModel = () => {
   const { query } = router;
   const [isModal, setIsModal] = useState(false);
 
-  const { data: modelData } = api.contentModel.getById.useQuery(
+  const { data: modelData, isFetching } = api.contentModel.getById.useQuery(
     parseInt(query.id as string),
   );
   const toggleModal = (value: boolean) => {
@@ -26,6 +26,7 @@ const ContentModel = () => {
 
       <div className="flex w-full flex-col items-center justify-center">
         <Heading
+          isLoading={isFetching}
           title={name || ""}
           ActionButtons={
             <ActionButtons

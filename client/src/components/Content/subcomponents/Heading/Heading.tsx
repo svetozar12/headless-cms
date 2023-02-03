@@ -5,15 +5,18 @@ import { FaBoxes } from "react-icons/fa";
 import { CONTENT_LIST } from "../../../../constants/routes";
 import Heading from "../../../Heading";
 import PageHeader from "../../../PageHeader";
+import Spinner from "../../../Spinner";
 
 interface IModelHeading {
   title: string;
+  isLoading: boolean;
 }
 
-const ModelHeading: FC<IModelHeading> = ({ title }) => {
+const ModelHeading: FC<IModelHeading> = ({ title = "", isLoading = false }) => {
   const router = useRouter();
   return (
-    <PageHeader extraProps={{ className: "justify-between" }}>
+    <PageHeader extraProps={{ className: "justify-between relative" }}>
+      <Spinner isLoading={isLoading} />
       <div className="flex">
         <FaBoxes className="mr-4 h-8 w-8" />
         <Breadcrumbs className="text-white" aria-label="breadcrumb">
