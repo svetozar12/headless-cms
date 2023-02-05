@@ -48,7 +48,6 @@ const ModelModal: FC<IModelModal> = (props) => {
   const handleSubmit = () => {
     const titleValue = modelTitle.current?.value;
     const descriptionValue = description.current?.value;
-    console.log(titleValue, modelTitle.current);
 
     mutate({
       userId: user?.id || "",

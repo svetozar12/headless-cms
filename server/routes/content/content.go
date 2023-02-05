@@ -81,15 +81,17 @@ func createContent(c *fiber.Ctx) error {
 	if err != nil {
 		return c.SendStatus(fiber.ErrUnprocessableEntity.Code)
 	}
+
 	db.DB.Where("content_model_id = ?", content.ModelId).Find(&fieldTypes)
 	db.DB.Create(&content)
+	var fields []field.Body
 	for i := 0; i < len(fieldTypes); i++ {
-		fmt.Println(fieldTypes[i])
 		fieldType := fieldTypes[i]
 		field := field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}
-
-		db.DB.Create(&field)
+		fields = append(fields, field)
 	}
+	fmt.Printf("len=%d cap=%d %v\n", len(fields), cap(fields), fields)
+	db.DB.Create(&fields)
 	return c.Status(fiber.StatusCreated).JSON(content)
 }
 
@@ -119,7 +121,7 @@ func updateContent(c *fiber.Ctx) error {
 // @Accept       json
 // @Param id     path int true "ID"
 // @Success      200  {string} ok
-// @Router       /v1/content{id} [delete]
+// @Router       /v1/content/{id} [delete]
 func deleteContent(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var content Content

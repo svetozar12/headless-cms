@@ -30,7 +30,7 @@ export const contentRouter = createTRPCRouter({
   deleteById: protectedProcedure
     .input(z.number())
     .mutation(async ({ input }) => {
-      const { data } = await sdk.content.v1ContentidDelete(input);
+      const { data } = await sdk.content.v1ContentIdDelete(input);
       return data;
     }),
 });

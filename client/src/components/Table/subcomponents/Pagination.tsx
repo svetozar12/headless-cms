@@ -32,8 +32,6 @@ const Pagination: React.FC<IPagination> = (props) => {
         {pagesArray.map((item) => {
           const readablePage = item + 1;
           const isActive = readablePage === page;
-          console.log(readablePage, page);
-
           return (
             <button
               key={readablePage}

@@ -99,6 +99,8 @@ definitions:
         type: string
       deletedAt:
         $ref: '#/definitions/gorm.DeletedAt'
+      fieldType:
+        $ref: '#/definitions/fieldtype.FieldType'
       id:
         type: integer
       name:
@@ -111,6 +113,7 @@ definitions:
         type: string
     required:
     - contentId
+    - fieldType
     - id
     - name
     - typeId
@@ -272,6 +275,23 @@ paths:
       tags:
       - content
   /v1/content/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete content
+      tags:
+      - content
     get:
       consumes:
       - application/json
@@ -312,24 +332,6 @@ paths:
           schema:
             $ref: '#/definitions/content.Content'
       summary: Update content
-      tags:
-      - content
-  /v1/content{id}:
-    delete:
-      consumes:
-      - application/json
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: integer
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Delete content
       tags:
       - content
   /v1/contentModel:

@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
+	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,6 +19,7 @@ type Body struct {
 type Field struct {
 	models.Model
 	Body
+	FieldType fieldtype.FieldType `gorm:"foreignKey:TypeId" json:"fieldType" binding:"required"`
 }
 
 func FieldRoutes(app fiber.Router) {
@@ -42,7 +44,7 @@ func getFields(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offSet := (page - 1) * limit
-	db.DB.Find(&fields).Count(&total)
+	db.DB.Preload("FieldType").Find(&fields).Count(&total)
 	db.DB.Offset(offSet).Limit(limit).Find(&fields)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Field]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: fields})
 }

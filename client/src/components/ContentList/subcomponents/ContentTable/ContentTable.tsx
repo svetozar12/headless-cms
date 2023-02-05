@@ -55,6 +55,7 @@ const ContentTable: FC = () => {
                   onClick={(e: ChangeEvent) => {
                     e.stopPropagation();
                     const { id, name } = fieldProps;
+
                     setIsDeleteModal(true);
                     setContent({ id, title: name });
                   }}

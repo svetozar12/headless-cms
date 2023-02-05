@@ -151,6 +151,32 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "content"
+                ],
+                "summary": "Delete content",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
         },
         "/v1/contentModel": {
@@ -289,34 +315,6 @@ const docTemplate = `{
                     "contentModel"
                 ],
                 "summary": "Delete content model",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/content{id}": {
-            "delete": {
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "content"
-                ],
-                "summary": "Delete content",
                 "parameters": [
                     {
                         "type": "integer",
@@ -730,6 +728,7 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "contentId",
+                "fieldType",
                 "id",
                 "name",
                 "typeId"
@@ -743,6 +742,9 @@ const docTemplate = `{
                 },
                 "deletedAt": {
                     "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "fieldType": {
+                    "$ref": "#/definitions/fieldtype.FieldType"
                 },
                 "id": {
                     "type": "integer"
