@@ -1,7 +1,6 @@
 package content
 
 import (
-	"fmt"
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
@@ -21,7 +20,7 @@ type Body struct {
 type Content struct {
 	models.Model
 	Body
-	ContentModel contentmodel.ContentModel `gorm:"foreignKey:ModelId" json:"contentModel" binding:"required"`
+	ContentModel contentmodel.ContentModel `json:"contentModel" binding:"required" gorm:"foreignKey:ModelId"`
 }
 
 func ContentRoutes(app fiber.Router) {
@@ -44,7 +43,7 @@ func getContentById(c *fiber.Ctx) error {
 	var content Content
 	id := c.Params("id")
 
-	db.DB.Where("id = ?", id).First(&content)
+	db.DB.Preload("ContentModel").First(&content, id)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
@@ -84,13 +83,14 @@ func createContent(c *fiber.Ctx) error {
 
 	db.DB.Where("content_model_id = ?", content.ModelId).Find(&fieldTypes)
 	db.DB.Create(&content)
-	var fields []field.Body
+	db.DB.Preload("ContentModel").First(&content, content.ID)
+
+	var fields []field.Field
 	for i := 0; i < len(fieldTypes); i++ {
 		fieldType := fieldTypes[i]
-		field := field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}
+		field := field.Field{FieldType: fieldType, Body: field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}}
 		fields = append(fields, field)
 	}
-	fmt.Printf("len=%d cap=%d %v\n", len(fields), cap(fields), fields)
 	db.DB.Create(&fields)
 	return c.Status(fiber.StatusCreated).JSON(content)
 }

@@ -12,14 +12,15 @@ const Content = () => {
     parseInt(query.id as string),
   );
   const { data: fieldData } = api.field.getAll.useQuery();
+  console.log(fieldData);
 
   const { name } = data || {};
   return (
     <div className="h-screen bg-offBlack">
       <div className="flex w-full flex-col items-center justify-center">
         <Heading title={name || ""} isLoading={isFetching} />
-        {fieldData?.data.map(({}) => (
-          <Field fieldType="" />
+        {fieldData?.data.map(({ fieldType: { fieldType } }) => (
+          <Field fieldType={fieldType} />
         ))}
       </div>
     </div>

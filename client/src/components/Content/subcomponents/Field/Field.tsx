@@ -9,6 +9,7 @@ type Props = {
 
 const Field: FC<Props> = ({ fieldType }) => {
   const [value, setValue] = React.useState("2014-08-18T21:11:54");
+  console.log(fieldType);
 
   const handleChange = (newValue: any) => {
     setValue(newValue);

@@ -238,6 +238,12 @@ export interface FieldField {
     'deletedAt'?: GormDeletedAt;
     /**
      * 
+     * @type {FieldtypeFieldType}
+     * @memberof FieldField
+     */
+    'fieldType': FieldtypeFieldType;
+    /**
+     * 
      * @type {number}
      * @memberof FieldField
      */
