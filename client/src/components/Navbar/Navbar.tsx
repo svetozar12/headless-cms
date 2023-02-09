@@ -13,8 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { signOut, useSession } from "next-auth/react";
-import Router, { useRouter } from "next/router";
-import { CONTENT_LIST, MODEL, MODEL_LIST } from "../../constants/routes";
+import Router from "next/router";
+import { CONTENT_LIST, MODEL_LIST } from "../../constants/routes";
 
 const pages = [
   {
