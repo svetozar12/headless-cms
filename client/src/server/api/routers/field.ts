@@ -6,11 +6,18 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const fieldRouter = createTRPCRouter({
   getAll: protectedProcedure
-    .input(paginationSchema)
-    .query(async ({ input: { limit, offSet } }) => {
-      const { data } = await sdk.field.v1FieldGet(offSet, limit);
-      return data;
-    }),
+    .input(z.object({ pagination: paginationSchema, contentId: z.number() }))
+    .query(
+      async ({
+        input: {
+          pagination: { limit, offSet },
+          contentId,
+        },
+      }) => {
+        const { data } = await sdk.field.v1FieldGet(contentId, offSet, limit);
+        return data;
+      },
+    ),
   create: protectedProcedure
     .input(fieldBodySchema)
     .mutation(async ({ input }) => {

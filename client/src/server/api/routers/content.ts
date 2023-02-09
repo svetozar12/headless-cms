@@ -10,11 +10,18 @@ export const contentRouter = createTRPCRouter({
     return data;
   }),
   getAll: protectedProcedure
-    .input(paginationSchema)
-    .query(async ({ input: { limit, offSet } }) => {
-      const { data } = await sdk.content.v1ContentGet(offSet, limit);
-      return data;
-    }),
+    .input(z.object({ pagination: paginationSchema, userId: z.string() }))
+    .query(
+      async ({
+        input: {
+          pagination: { limit, offSet },
+          userId,
+        },
+      }) => {
+        const { data } = await sdk.content.v1ContentGet(userId, offSet, limit);
+        return data;
+      },
+    ),
   create: protectedProcedure
     .input(contentBodySchema)
     .mutation(async ({ input }) => {

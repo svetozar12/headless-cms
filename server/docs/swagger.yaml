@@ -248,6 +248,11 @@ paths:
         in: query
         name: limit
         type: integer
+      - description: userId
+        in: query
+        name: userId
+        required: true
+        type: string
       responses:
         "200":
           description: OK
@@ -449,6 +454,11 @@ paths:
         description: limit
         in: query
         name: limit
+        type: integer
+      - description: contentId
+        in: query
+        name: contentId
+        required: true
         type: integer
       responses:
         "200":

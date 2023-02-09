@@ -1,6 +1,7 @@
 package content
 
 import (
+	"fmt"
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
@@ -51,8 +52,9 @@ func getContentById(c *fiber.Ctx) error {
 // @Summary      Get all content
 // @Tags         content
 // @Accept       json
-// @Param        page    query     int  false  "page"  default(1)
+// @Param        page     query     int  false  "page"   default(1)
 // @Param        limit    query     int  false  "limit"  default(10)
+// @Param        userId  query     string  true   "userId"
 // @Success      200  {object} models.PaginationModel[[]content.Content]
 // @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
@@ -60,9 +62,11 @@ func getContent(c *fiber.Ctx) error {
 	var total int64
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
+	userId := c.Query("userId")
+	fmt.Println(userId)
 	offSet := (page - 1) * limit
-	db.DB.Preload("ContentModel").Find(&content).Count(&total)
-	db.DB.Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
+	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Find(&content).Count(&total)
+	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Content]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: content})
 }
 

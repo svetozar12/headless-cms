@@ -18,15 +18,19 @@ import {
   ContentmodelContentModel,
   ModelsPaginationModelArrayContentContent,
 } from "../../../../server/sdk";
+import { useSession } from "next-auth/react";
 dayjs.extend(relativeTime.default);
 
 const ContentTable: FC = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const { query } = router;
   const { data, isFetching } = api.content.getAll.useQuery({
-    limit: 8,
-    offSet: parseInt(query.page as string) || 1,
+    pagination: { limit: 8, offSet: parseInt(query.page as string) || 1 },
+    userId: session && session!.user!.id,
   });
+  console.log(data);
+
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [content, setContent] = useState<{ id: number | null; title: string }>({
     id: null,

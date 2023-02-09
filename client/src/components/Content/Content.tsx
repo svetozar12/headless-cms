@@ -11,10 +11,12 @@ const Content = () => {
   const { data, isFetching } = api.content.get.useQuery(
     parseInt(query.id as string),
   );
-  const { data: fieldData } = api.field.getAll.useQuery();
+  const { data: fieldData } = api.field.getAll.useQuery({ contentId: 13 });
   console.log(fieldData);
 
   const { name } = data || {};
+  console.log(fieldData);
+
   return (
     <div className="h-screen bg-offBlack">
       <div className="flex w-full flex-col items-center justify-center">
