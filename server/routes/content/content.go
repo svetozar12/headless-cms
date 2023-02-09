@@ -21,7 +21,7 @@ type Body struct {
 type Content struct {
 	models.Model
 	Body
-	ContentModel contentmodel.ContentModel `gorm:"foreignKey:ModelId" json:"contentModel" binding:"required"`
+	ContentModel contentmodel.ContentModel `json:"contentModel" binding:"required" gorm:"foreignKey:ModelId"`
 }
 
 func ContentRoutes(app fiber.Router) {
@@ -44,7 +44,7 @@ func getContentById(c *fiber.Ctx) error {
 	var content Content
 	id := c.Params("id")
 
-	db.DB.Where("id = ?", id).First(&content)
+	db.DB.Preload("ContentModel").First(&content, id)
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
@@ -52,8 +52,9 @@ func getContentById(c *fiber.Ctx) error {
 // @Summary      Get all content
 // @Tags         content
 // @Accept       json
-// @Param        page    query     int  false  "page"  default(1)
+// @Param        page     query     int  false  "page"   default(1)
 // @Param        limit    query     int  false  "limit"  default(10)
+// @Param        userId  query     string  true   "userId"
 // @Success      200  {object} models.PaginationModel[[]content.Content]
 // @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
@@ -61,9 +62,11 @@ func getContent(c *fiber.Ctx) error {
 	var total int64
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
+	userId := c.Query("userId")
+	fmt.Println(userId)
 	offSet := (page - 1) * limit
-	db.DB.Preload("ContentModel").Find(&content).Count(&total)
-	db.DB.Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
+	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Find(&content).Count(&total)
+	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Content]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: content})
 }
 
@@ -81,15 +84,18 @@ func createContent(c *fiber.Ctx) error {
 	if err != nil {
 		return c.SendStatus(fiber.ErrUnprocessableEntity.Code)
 	}
+
 	db.DB.Where("content_model_id = ?", content.ModelId).Find(&fieldTypes)
 	db.DB.Create(&content)
-	for i := 0; i < len(fieldTypes); i++ {
-		fmt.Println(fieldTypes[i])
-		fieldType := fieldTypes[i]
-		field := field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}
+	db.DB.Preload("ContentModel").First(&content, content.ID)
 
-		db.DB.Create(&field)
+	var fields []field.Field
+	for i := 0; i < len(fieldTypes); i++ {
+		fieldType := fieldTypes[i]
+		field := field.Field{FieldType: fieldType, Body: field.Body{Name: fieldType.Name, Value: "", TypeId: int(fieldType.ID), ContentId: int(content.ID)}}
+		fields = append(fields, field)
 	}
+	db.DB.Create(&fields)
 	return c.Status(fiber.StatusCreated).JSON(content)
 }
 
@@ -119,7 +125,7 @@ func updateContent(c *fiber.Ctx) error {
 // @Accept       json
 // @Param id     path int true "ID"
 // @Success      200  {string} ok
-// @Router       /v1/content{id} [delete]
+// @Router       /v1/content/{id} [delete]
 func deleteContent(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var content Content

@@ -38,17 +38,6 @@ export const modelsPaginationSchema = z.object({
   total: z.number(),
 });
 
-export const fieldFieldSchema = z.object({
-  contentId: z.number(),
-  createdAt: z.string().optional(),
-  deletedAt: gormDeletedAtSchema.optional(),
-  id: z.number(),
-  name: z.string(),
-  typeId: z.number(),
-  updatedAt: z.string().optional(),
-  value: z.string().optional(),
-});
-
 export const fieldtypeFieldTypeSchema = z.object({
   contentModelId: z.number(),
   createdAt: z.string().optional(),
@@ -57,11 +46,6 @@ export const fieldtypeFieldTypeSchema = z.object({
   id: z.number(),
   name: z.string(),
   updatedAt: z.string().optional(),
-});
-
-export const modelsPaginationModelArrayFieldFieldSchema = z.object({
-  data: z.array(fieldFieldSchema),
-  pagination: modelsPaginationSchema,
 });
 
 export const modelsPaginationModelArrayFieldtypeFieldTypeSchema = z.object({
@@ -80,12 +64,28 @@ export const contentmodelContentModelSchema = z.object({
   userId: z.string(),
 });
 
-export const modelsPaginationModelArrayContentmodelContentModelSchema = z.object(
-  {
+export const fieldFieldSchema = z.object({
+  contentId: z.number(),
+  createdAt: z.string().optional(),
+  deletedAt: gormDeletedAtSchema.optional(),
+  fieldType: fieldtypeFieldTypeSchema,
+  id: z.number(),
+  name: z.string(),
+  typeId: z.number(),
+  updatedAt: z.string().optional(),
+  value: z.string().optional(),
+});
+
+export const modelsPaginationModelArrayContentmodelContentModelSchema =
+  z.object({
     data: z.array(contentmodelContentModelSchema),
     pagination: modelsPaginationSchema,
-  },
-);
+  });
+
+export const modelsPaginationModelArrayFieldFieldSchema = z.object({
+  data: z.array(fieldFieldSchema),
+  pagination: modelsPaginationSchema,
+});
 
 export const contentContentSchema = z.object({
   contentModel: contentmodelContentModelSchema,

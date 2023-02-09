@@ -18,7 +18,7 @@ dayjs.extend(relativeTime.default);
 const ModelTable: FC = () => {
   const router = useRouter();
   const { query } = router;
-  const { data, isFetching, isRefetching } = api.contentModel.getAll.useQuery(
+  const { data, isFetching } = api.contentModel.getAll.useQuery(
     {
       offSet: parseInt(query.page as string) || 1,
       limit: 8,

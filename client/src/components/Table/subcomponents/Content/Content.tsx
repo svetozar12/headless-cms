@@ -28,7 +28,6 @@ const Content: FC<IContent> = (props) => {
                 if (formatValue)
                   value = formatValue(getValue(dataIndexes, item));
                 else value = String(getValue(dataIndexes, item));
-                console.log(value);
               }
               return (
                 <td

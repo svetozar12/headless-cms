@@ -13,6 +13,9 @@ module.exports = {
         cms_blue: {
           100: "#1976D2",
         },
+        cms_gray: {
+          100: "#cfd9e0",
+        },
         table: {
           headerBackground: "#f2f2f2",
         },

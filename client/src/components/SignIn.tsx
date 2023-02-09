@@ -30,7 +30,6 @@ const SignIn: FC<Props> = ({ providers }) => {
   }, [status]);
 
   const getIcon = (providerName: string) => {
-    console.log(providerName);
     const iconStyle = "w-7 h-7";
     switch (providerName.toLocaleLowerCase()) {
       case "github":

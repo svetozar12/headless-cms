@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
+	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,6 +19,7 @@ type Body struct {
 type Field struct {
 	models.Model
 	Body
+	FieldType fieldtype.FieldType `gorm:"foreignKey:TypeId" json:"fieldType" binding:"required"`
 }
 
 func FieldRoutes(app fiber.Router) {
@@ -32,8 +34,9 @@ func FieldRoutes(app fiber.Router) {
 // @Summary      Get all fields
 // @Tags         field
 // @Accept       json
-// @Param        page    query     int  false  "page"  default(1)
-// @Param        limit    query     int  false  "limit"  default(10)
+// @Param        page     	query     int  false  "page"   default(1)
+// @Param        limit    	query     int  false  "limit"  default(10)
+// @Param        contentId  query     int  true   "contentId"
 // @Success      200  {object} models.PaginationModel[[]field.Field]
 // @Router       /v1/field [get]
 func getFields(c *fiber.Ctx) error {
@@ -41,9 +44,10 @@ func getFields(c *fiber.Ctx) error {
 	var total int64
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
+	contentId, _ := strconv.Atoi(c.Query("contentId"))
 	offSet := (page - 1) * limit
-	db.DB.Find(&fields).Count(&total)
-	db.DB.Offset(offSet).Limit(limit).Find(&fields)
+	db.DB.Where("content_id = ?", contentId).Preload("FieldType").Find(&fields).Count(&total)
+	db.DB.Where("content_id = ?", contentId).Preload("FieldType").Offset(offSet).Limit(limit).Find(&fields)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Field]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: fields})
 }
 

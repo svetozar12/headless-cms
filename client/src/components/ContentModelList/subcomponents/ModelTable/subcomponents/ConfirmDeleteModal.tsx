@@ -19,7 +19,6 @@ const ConfirmDeleteModal: FC<IConfirmDeleteModal> = (props) => {
   const { mutateAsync, isLoading } = api.contentModel.deleteById.useMutation({
     onSuccess: () => {
       const queryKey = api.contentModel.getQueryKey();
-
       queryClient.invalidateQueries(queryKey);
     },
   });
