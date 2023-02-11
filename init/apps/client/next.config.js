@@ -2,7 +2,8 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withNx } = require('@nrwl/next/plugins/with-nx');
-// import('./src/env/server.mjs');
+
+!process.env.SKIP_ENV_VALIDATION && import('./src/env/server.mjs');
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/

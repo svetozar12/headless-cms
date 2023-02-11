@@ -1,0 +1,1 @@
+npx rimraf src/utils/sdk && npx openapi-generator-cli generate -i http://localhost:4000/v1/swagger/doc.json -o src/server/sdk -g typescript-axios --additional-properties=supportsES6=true --skip-validate-spec
