@@ -1,8 +1,8 @@
-import { Input, Switch } from "@mui/material";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import React, { FC } from "react";
-import TextField from "@mui/material/TextField";
-export type FieldType = "string" | "boolean" | "number" | "date" | "object";
+import { Input, Switch } from '@mui/material';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import React, { FC, useRef } from 'react';
+import TextField from '@mui/material/TextField';
+export type FieldType = 'string' | 'boolean' | 'number' | 'date' | 'object';
 
 type Props = {
   fieldTitle: string;
@@ -10,29 +10,33 @@ type Props = {
 };
 
 const Field: FC<Props> = ({ fieldType, fieldTitle }) => {
-  const [value, setValue] = React.useState("2014-08-18T21:11:54");
+  const { booleanRef, numberRef, textRef } = useValues();
+  const [value, setValue] = React.useState('2014-08-18T21:11:54');
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
   const render = () => {
     let field: React.ReactNode;
-    const commonClassnames =
-      "w-full bg-transparent !text-white autofill:bg-transparent active:border-0";
+    const commonClassnames = 'w-full active:border-0';
     switch (fieldType) {
-      case "string":
-        field = <Input className={`${commonClassnames}`} type="text" />;
+      case 'string':
+        field = (
+          <Input className={`${commonClassnames}`} ref={textRef} type="text" />
+        );
         break;
-      case "number":
-        field = <Input className={commonClassnames} type="number" />;
+      case 'number':
+        field = (
+          <Input className={commonClassnames} ref={numberRef} type="number" />
+        );
         break;
-      case "boolean":
+      case 'boolean':
         field = (
           <div className={commonClassnames}>
-            <Switch />
+            <Switch ref={booleanRef} />
           </div>
         );
         break;
-      case "date":
+      case 'date':
         field = (
           <MobileDatePicker
             className={commonClassnames}
@@ -44,7 +48,7 @@ const Field: FC<Props> = ({ fieldType, fieldTitle }) => {
           />
         );
         break;
-      case "object":
+      case 'object':
         field = <textarea className={commonClassnames}>object</textarea>;
         break;
       default:
@@ -64,6 +68,13 @@ const Field: FC<Props> = ({ fieldType, fieldTitle }) => {
       {render()}
     </div>
   );
+};
+
+const useValues = () => {
+  const textRef = useRef(null);
+  const numberRef = useRef(null);
+  const booleanRef = useRef(null);
+  return { textRef, numberRef, booleanRef };
 };
 
 export default Field;

@@ -2,7 +2,10 @@
   "name": "init",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:all": "yarn nx run-many --targets=build --all",
+    "serve:all": "yarn nx run-many --targets=serve --all"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
