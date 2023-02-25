@@ -1,8 +1,8 @@
-import { z } from "zod";
-import { sdk } from "../../rest-api-sdk";
-import { paginationSchema } from "../common/pagination";
-import { contentmodelBodySchema } from "../common/zod";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { z } from 'zod';
+import { sdk } from '../../rest-api-sdk';
+import { paginationSchema } from '../common/pagination';
+import { contentmodelBodySchema } from '../common/zod';
+import { createTRPCRouter, protectedProcedure } from '../trpc';
 
 export const contentModelRouter = createTRPCRouter({
   getAll: protectedProcedure
@@ -17,18 +17,31 @@ export const contentModelRouter = createTRPCRouter({
   }),
   create: protectedProcedure
     .input(contentmodelBodySchema)
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input: { description, name, userId } }) => {
       const { data } = await sdk.contentModel.v1ContentModelPost({
-        ...input,
+        description,
+        name,
+        userId,
       });
       return data;
     }),
   updateById: protectedProcedure
     .input(z.object({ id: z.number(), request: contentmodelBodySchema }))
-    .mutation(async ({ input: { id, request } }) => {
-      const { data } = await sdk.contentModel.v1ContentModelIdPut(id, request);
-      return data;
-    }),
+    .mutation(
+      async ({
+        input: {
+          id,
+          request: { description, name, userId },
+        },
+      }) => {
+        const { data } = await sdk.contentModel.v1ContentModelIdPut(id, {
+          description,
+          name,
+          userId,
+        });
+        return data;
+      }
+    ),
   deleteById: protectedProcedure
     .input(z.number())
     .mutation(async ({ input }) => {

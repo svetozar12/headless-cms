@@ -24,10 +24,26 @@ type Field struct {
 
 func FieldRoutes(app fiber.Router) {
 	field := app.Group("/field")
+	field.Get("/:id", getFieldById)
 	field.Get("/", getFields)
 	field.Post("/", createField)
 	field.Put("/:id", updateField)
 	field.Delete("/:id", deleteField)
+}
+
+// Content godoc
+// @Summary      Get field by id
+// @Tags         field
+// @Accept       json
+// @Param id     path int true "ID"
+// @Success      200  {object} field.Field
+// @Router       /v1/field/{id} [get]
+func getFieldById(c *fiber.Ctx) error {
+	var field Field
+	id := c.Params("id")
+
+	db.DB.Preload("FieldType").First(&field, id)
+	return c.Status(fiber.StatusOK).JSON(field)
 }
 
 // Content godoc

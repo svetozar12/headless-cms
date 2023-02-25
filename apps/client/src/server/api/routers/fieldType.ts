@@ -1,8 +1,8 @@
-import { z } from "zod";
-import { sdk } from "../../rest-api-sdk";
-import { paginationSchema } from "../common/pagination";
-import { fieldtypeBodySchema } from "../common/zod";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { z } from 'zod';
+import { sdk } from '../../rest-api-sdk';
+import { paginationSchema } from '../common/pagination';
+import { fieldtypeBodySchema } from '../common/zod';
+import { createTRPCRouter, protectedProcedure } from '../trpc';
 
 export const fieldTypeRouter = createTRPCRouter({
   getAll: protectedProcedure
@@ -13,8 +13,12 @@ export const fieldTypeRouter = createTRPCRouter({
     }),
   create: protectedProcedure
     .input(fieldtypeBodySchema)
-    .mutation(async ({ input }) => {
-      const { data } = await sdk.fieldType.v1FieldTypePost({ ...input });
+    .mutation(async ({ input: { contentModelId, fieldType, name } }) => {
+      const { data } = await sdk.fieldType.v1FieldTypePost({
+        contentModelId,
+        fieldType,
+        name,
+      });
       return data;
     }),
   updateById: protectedProcedure
@@ -22,12 +26,23 @@ export const fieldTypeRouter = createTRPCRouter({
       z.object({
         id: z.number(),
         request: fieldtypeBodySchema,
-      }),
+      })
     )
-    .mutation(async ({ input: { id, request } }) => {
-      const { data } = await sdk.fieldType.v1FieldTypeIdPut(id, request);
-      return data;
-    }),
+    .mutation(
+      async ({
+        input: {
+          id,
+          request: { contentModelId, fieldType, name },
+        },
+      }) => {
+        const { data } = await sdk.fieldType.v1FieldTypeIdPut(id, {
+          contentModelId,
+          fieldType,
+          name,
+        });
+        return data;
+      }
+    ),
   deleteById: protectedProcedure
     .input(z.number())
     .mutation(async ({ input }) => {

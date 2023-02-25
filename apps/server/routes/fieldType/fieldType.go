@@ -73,11 +73,11 @@ func createFieldType(c *fiber.Ctx) error {
 // @Router       /v1/fieldType/{id} [put]
 func updateFieldType(c *fiber.Ctx) error {
 	fieldType := new(FieldType)
+
 	id := c.Params("id")
 	err := c.BodyParser(fieldType)
 	if err != nil {
 		return c.Status(fiber.ErrUnprocessableEntity.Code).JSON(err)
-
 	}
 	db.DB.Where("id = ?", id).Updates(&fieldType)
 	return c.Status(fiber.StatusOK).JSON(fieldType)

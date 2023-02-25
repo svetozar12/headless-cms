@@ -4,17 +4,17 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@mui/material";
-import { useRouter } from "next/router";
-import { FC, useRef } from "react";
-import { queryClient } from "../../../pages/_app";
-import { FieldtypeFieldType } from "../../../server/sdk";
+} from '@mui/material';
+import { useRouter } from 'next/router';
+import { FC, useRef } from 'react';
+import { FieldtypeFieldType } from '@init/sdk';
+import { queryClient } from '../../../pages/_app';
 
-import { api } from "../../../utils/api";
+import { api } from '../../../utils/api';
 
-import ActionButtons from "../../ActionButtons";
-import Button from "../../Button";
-import Modal from "../../Modal";
+import ActionButtons from '../../ActionButtons';
+import Button from '../../Button';
+import Modal from '../../Modal';
 
 interface IFieldModalEdit {
   isModal: boolean;
@@ -28,7 +28,6 @@ const FieldModalEdit: FC<IFieldModalEdit> = ({
   oldFieldType,
 }) => {
   const router = useRouter();
-  const { query } = router;
   const { data } = api.fieldTypeEnums.getAll.useQuery();
   const { mutate, isLoading } = api.fieldType.updateById.useMutation({
     onSuccess: () => {
@@ -44,7 +43,7 @@ const FieldModalEdit: FC<IFieldModalEdit> = ({
   const getFIelds = () => {
     return [
       {
-        name: "fieldTitle",
+        name: 'fieldTitle',
         ref: fieldName,
         defaultValue: oldFieldType?.name,
       },
@@ -123,8 +122,8 @@ const FieldModalEdit: FC<IFieldModalEdit> = ({
                   onClick={() => toggleModal(false)}
                   type="button"
                   extraProps={{
-                    style: { border: "1px solid rgba(0,0,0,0.1)" },
-                    className: "bg-white !text-black hover:!border-mainPurple",
+                    style: { border: '1px solid rgba(0,0,0,0.1)' },
+                    className: 'bg-white !text-black hover:!border-mainPurple',
                   }}
                 />
               ),

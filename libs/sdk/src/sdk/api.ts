@@ -56,12 +56,6 @@ export interface ContentBody {
 export interface ContentContent {
     /**
      * 
-     * @type {ContentmodelContentModel}
-     * @memberof ContentContent
-     */
-    'contentModel': ContentmodelContentModel;
-    /**
-     * 
      * @type {string}
      * @memberof ContentContent
      */
@@ -154,10 +148,10 @@ export interface ContentmodelContentModel {
     'description'?: string;
     /**
      * 
-     * @type {Array<FieldtypeFieldType>}
+     * @type {Array<ContentContent>}
      * @memberof ContentmodelContentModel
      */
-    'fieldTypes': Array<FieldtypeFieldType>;
+    'fieldTypes': Array<ContentContent>;
     /**
      * 
      * @type {number}
@@ -1355,6 +1349,40 @@ export const FieldApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get field by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FieldIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('v1FieldIdGet', 'id', id)
+            const localVarPath = `/v1/field/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update field
          * @param {number} id ID
          * @param {FieldBody} request query params
@@ -1465,6 +1493,17 @@ export const FieldApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get field by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async v1FieldIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldField>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldIdGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Update field
          * @param {number} id ID
          * @param {FieldBody} request query params
@@ -1517,6 +1556,16 @@ export const FieldApiFactory = function (configuration?: Configuration, basePath
          */
         v1FieldIdDelete(id: number, options?: any): AxiosPromise<string> {
             return localVarFp.v1FieldIdDelete(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get field by id
+         * @param {number} id ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v1FieldIdGet(id: number, options?: any): AxiosPromise<FieldField> {
+            return localVarFp.v1FieldIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1573,6 +1622,18 @@ export class FieldApi extends BaseAPI {
      */
     public v1FieldIdDelete(id: number, options?: AxiosRequestConfig) {
         return FieldApiFp(this.configuration).v1FieldIdDelete(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get field by id
+     * @param {number} id ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FieldApi
+     */
+    public v1FieldIdGet(id: number, options?: AxiosRequestConfig) {
+        return FieldApiFp(this.configuration).v1FieldIdGet(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

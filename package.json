@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build:all": "yarn nx run-many --targets=build --all",
-    "serve:all": "yarn nx run-many --targets=serve --all"
+    "serve:all": "yarn nx run-many --targets=serve --all",
+    "lint:all": "yarn nx run-many --targets=lint --all"
   },
   "private": true,
   "dependencies": {
@@ -30,8 +31,8 @@
     "next-auth": "^4.18.7",
     "next-cookie": "^2.8.0",
     "nprogress": "^0.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "superjson": "1.9.1",
     "tslib": "^2.3.0",
@@ -52,7 +53,7 @@
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
     "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
+    "@types/react": "^18.0.28",
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",

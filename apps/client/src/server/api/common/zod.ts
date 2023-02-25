@@ -1,6 +1,6 @@
 // https://transform.tools/typescript-to-zod use api.ts file to generate the zod file(only manually supported for now)
 
-import { z } from "zod";
+import { z } from 'zod';
 
 export const contentBodySchema = z.object({
   modelId: z.number(),

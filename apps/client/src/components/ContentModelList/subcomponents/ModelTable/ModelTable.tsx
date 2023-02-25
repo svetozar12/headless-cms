@@ -1,55 +1,53 @@
-import dayjs from "dayjs";
-import { useRouter } from "next/router";
-import { ChangeEvent, FC, useState } from "react";
-import { MdDelete, MdEdit } from "react-icons/md";
-import { MODEL, MODEL_LIST } from "../../../../constants/routes";
-import { api } from "../../../../utils/api";
-import ActionButtons from "../../../ActionButtons";
-import Button from "../../../Button";
-import Table, { IColumn } from "../../../Table/Table";
-import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
-import * as relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
+import { ChangeEvent, FC, useState } from 'react';
+import { MdDelete, MdEdit } from 'react-icons/md';
+import { MODEL, MODEL_LIST } from '../../../../constants/routes';
+import { api } from '../../../../utils/api';
+import ActionButtons from '../../../ActionButtons';
+import Button from '../../../Button';
+import Table, { IColumn } from '../../../Table/Table';
+import ConfirmDeleteModal from './subcomponents/ConfirmDeleteModal';
+import * as relativeTime from 'dayjs/plugin/relativeTime';
 import {
   ContentmodelContentModel,
   ModelsPaginationModelArrayContentmodelContentModel,
-} from "../../../../server/sdk";
+} from '@init/sdk';
+
 dayjs.extend(relativeTime.default);
 
 const ModelTable: FC = () => {
   const router = useRouter();
   const { query } = router;
-  const { data, isFetching } = api.contentModel.getAll.useQuery(
-    {
-      offSet: parseInt(query.page as string) || 1,
-      limit: 8,
-    },
-    { onSuccess(data) {} },
-  );
+  const { data, isFetching } = api.contentModel.getAll.useQuery({
+    offSet: parseInt(query.page as string) || 1,
+    limit: 8,
+  });
 
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
-    title: "",
+    title: '',
   });
   const columns: IColumn[] = [
-    { title: "Title", dataIndexes: ["name"] },
-    { title: "Description", dataIndexes: ["description"] },
+    { title: 'Title', dataIndexes: ['name'] },
+    { title: 'Description', dataIndexes: ['description'] },
     {
-      title: "Updated",
-      dataIndexes: ["updatedAt"],
+      title: 'Updated',
+      dataIndexes: ['updatedAt'],
       formatValue: (value: string) => {
         return dayjs(value).fromNow();
       },
     },
     {
-      title: "Fields",
-      dataIndexes: ["fieldTypes"],
+      title: 'Fields',
+      dataIndexes: ['fieldTypes'],
       formatValue: (value) => {
         return value.length;
       },
     },
     {
-      title: "Action",
+      title: 'Action',
       render: (fieldProps: ContentmodelContentModel) => (
         <ActionButtons
           buttons={[
@@ -64,7 +62,7 @@ const ModelTable: FC = () => {
                     setModel({ id, title: name });
                   }}
                   type="button"
-                  extraProps={{ className: "relative z-20" }}
+                  extraProps={{ className: 'relative z-20' }}
                 />
               ),
             },
@@ -76,7 +74,7 @@ const ModelTable: FC = () => {
                     router.push(MODEL(fieldProps.id));
                   }}
                   type="button"
-                  extraProps={{ className: "relative z-20" }}
+                  extraProps={{ className: 'relative z-20' }}
                 />
               ),
             },
@@ -100,7 +98,7 @@ const ModelTable: FC = () => {
         modelId={model.id as number}
         modelTitle={model.title}
       />
-      <div className={`relative w-2/4 ${isFetching && "h-60"}`}>
+      <div className={`relative w-2/4 ${isFetching && 'h-60'}`}>
         <Table
           onRowClickHandle={(field: ContentmodelContentModel) =>
             router.push(MODEL(field.id))
@@ -111,7 +109,7 @@ const ModelTable: FC = () => {
           dataSource={
             data as ModelsPaginationModelArrayContentmodelContentModel
           }
-          extraProps={{ className: "mt-10 rounded-t-xl" }}
+          extraProps={{ className: 'mt-10 rounded-t-xl' }}
         />
       </div>
     </>

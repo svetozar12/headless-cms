@@ -1,23 +1,23 @@
-import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { useRouter } from 'next/router';
+import { ChangeEvent, useState } from 'react';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import {
   ContentmodelContentModel,
   ModelsPaginationModelArrayFieldtypeFieldType,
-} from "../../../../server/sdk";
-import { api } from "../../../../utils/api";
-import ActionButtons from "../../../ActionButtons";
-import Button from "../../../Button";
-import Table, { IColumn } from "../../../Table/Table";
-import FieldModalEdit from "../FieldModalEdit";
-import ConfirmDeleteModal from "./subcomponents/ConfirmDeleteModal";
+} from '@init/sdk';
+import { api } from '../../../../utils/api';
+import ActionButtons from '../../../ActionButtons';
+import Button from '../../../Button';
+import Table, { IColumn } from '../../../Table/Table';
+import FieldModalEdit from '../FieldModalEdit';
+import ConfirmDeleteModal from './subcomponents/ConfirmDeleteModal';
 
 const ContentModelTable = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [model, setModel] = useState<{ id: number | null; title: string }>({
     id: null,
-    title: "",
+    title: '',
   });
   const router = useRouter();
   const { query } = router;
@@ -26,10 +26,10 @@ const ContentModelTable = () => {
     offSet: parseInt(query.page as string) || 1,
   });
   const columns: IColumn[] = [
-    { title: "Title", dataIndexes: ["name"] },
-    { title: "Field Type", dataIndexes: ["fieldType"] },
+    { title: 'Title', dataIndexes: ['name'] },
+    { title: 'Field Type', dataIndexes: ['fieldType'] },
     {
-      title: "Action",
+      title: 'Action',
       render: (fieldProps: ContentmodelContentModel) => (
         <ActionButtons
           buttons={[
@@ -45,7 +45,7 @@ const ContentModelTable = () => {
                     setModel({ id, title: name });
                   }}
                   type="button"
-                  extraProps={{ className: "relative z-20" }}
+                  extraProps={{ className: 'relative z-20' }}
                 />
               ),
             },
@@ -59,7 +59,7 @@ const ContentModelTable = () => {
                     setIsEdit(true);
                   }}
                   type="button"
-                  extraProps={{ className: "relative z-20" }}
+                  extraProps={{ className: 'relative z-20' }}
                 />
               ),
             },
@@ -69,7 +69,7 @@ const ContentModelTable = () => {
     },
   ];
   return (
-    <div className={`relative ${isFetching && "h-60"}`}>
+    <div className={`relative ${isFetching && 'h-60'}`}>
       <Table
         isLoading={isFetching}
         columns={columns}

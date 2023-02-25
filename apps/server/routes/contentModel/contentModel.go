@@ -5,6 +5,7 @@ import (
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
+	"svetozar12/headless-cms-be/types"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,7 +19,8 @@ type Body struct {
 type ContentModel struct {
 	models.Model
 	Body
-	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId" json:"fieldTypes" binding:"required"`
+	FieldTypes []fieldtype.FieldType `gorm:"foreignKey:ContentModelId;constraint:OnDelete:CASCADE;" json:"fieldTypes" binding:"required"`
+	types.ContentList
 }
 
 func ContentModelRoutes(app fiber.Router) {

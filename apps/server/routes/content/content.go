@@ -5,7 +5,6 @@ import (
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
-	contentmodel "svetozar12/headless-cms-be/routes/contentModel"
 	field "svetozar12/headless-cms-be/routes/field"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
@@ -14,14 +13,13 @@ import (
 
 type Body struct {
 	Name    string `json:"name" binding:"required"`
-	ModelId int    `json:"modelId" binding:"required"`
+	ModelId int    `json:"modelId" binding:"required" gorm:"column:content_model_id"`
 	UserId  string `json:"userId" binding:"required"`
 }
 
 type Content struct {
 	models.Model
 	Body
-	ContentModel contentmodel.ContentModel `json:"contentModel" binding:"required" gorm:"foreignKey:ModelId"`
 }
 
 func ContentRoutes(app fiber.Router) {
