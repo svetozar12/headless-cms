@@ -5,22 +5,12 @@ import (
 	"strconv"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/models"
+	"svetozar12/headless-cms-be/routes/content/contentModel"
 	field "svetozar12/headless-cms-be/routes/field"
 	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
 )
-
-type Body struct {
-	Name    string `json:"name" binding:"required"`
-	ModelId int    `json:"modelId" binding:"required" gorm:"column:content_model_id"`
-	UserId  string `json:"userId" binding:"required"`
-}
-
-type Content struct {
-	models.Model
-	Body
-}
 
 func ContentRoutes(app fiber.Router) {
 	content := app.Group("/content")
@@ -36,10 +26,10 @@ func ContentRoutes(app fiber.Router) {
 // @Tags         content
 // @Accept       json
 // @Param id     path int true "ID"
-// @Success      200  {object} content.Content
+// @Success      200  {object} contentModel.Content
 // @Router       /v1/content/{id} [get]
 func getContentById(c *fiber.Ctx) error {
-	var content Content
+	var content contentModel.Content
 	id := c.Params("id")
 
 	db.DB.Preload("ContentModel").First(&content, id)
@@ -53,10 +43,10 @@ func getContentById(c *fiber.Ctx) error {
 // @Param        page     query     int  false  "page"   default(1)
 // @Param        limit    query     int  false  "limit"  default(10)
 // @Param        userId  query     string  true   "userId"
-// @Success      200  {object} models.PaginationModel[[]content.Content]
+// @Success      200  {object} models.PaginationModel[[]contentModel.Content]
 // @Router       /v1/content [get]
 func getContent(c *fiber.Ctx) error {
-	var content []Content
+	var content []contentModel.Content
 	var total int64
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
@@ -65,18 +55,18 @@ func getContent(c *fiber.Ctx) error {
 	offSet := (page - 1) * limit
 	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Find(&content).Count(&total)
 	db.DB.Where("user_id = ?", userId).Preload("ContentModel").Offset(offSet).Limit(limit).Find(&content)
-	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]Content]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: content})
+	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]contentModel.Content]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: content})
 }
 
 // Content godoc
 // @Summary      Create content
 // @Tags         content
 // @Accept       json
-// @Param request body content.Body true "query params""
-// @Success      201  {object} content.Content
+// @Param request body contentModel.Body true "query params""
+// @Success      201  {object} contentModel.Content
 // @Router       /v1/content [post]
 func createContent(c *fiber.Ctx) error {
-	content := new(Content)
+	content := new(contentModel.Content)
 	var fieldTypes []fieldtype.FieldType
 	err := c.BodyParser(content)
 	if err != nil {
@@ -102,12 +92,12 @@ func createContent(c *fiber.Ctx) error {
 // @Tags         content
 // @Accept       json
 // @Produce      json
-// @Param request body content.Body true "query params"
+// @Param request body contentModel.Body true "query params"
 // @Param id     path int true "ID"
-// @Success      200  {object}   content.Content
+// @Success      200  {object}   contentModel.Content
 // @Router       /v1/content/{id} [put]
 func updateContent(c *fiber.Ctx) error {
-	content := new(Content)
+	content := new(contentModel.Content)
 	id := c.Params("id")
 	err := c.BodyParser(content)
 	if err != nil {
@@ -126,7 +116,7 @@ func updateContent(c *fiber.Ctx) error {
 // @Router       /v1/content/{id} [delete]
 func deleteContent(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var content Content
+	var content contentModel.Content
 	result := db.DB.Delete(&content, id)
 	if result.RowsAffected == 0 {
 		return c.SendStatus(fiber.StatusNotFound)
