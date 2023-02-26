@@ -1,13 +1,11 @@
 package routes
 
 import (
-	"svetozar12/headless-cms-be/config"
-	content "svetozar12/headless-cms-be/routes/content"
-	contentmodel "svetozar12/headless-cms-be/routes/contentModel"
-	"svetozar12/headless-cms-be/routes/field"
-	fieldtype "svetozar12/headless-cms-be/routes/fieldType"
-
 	_ "svetozar12/headless-cms-be/docs"
+	"svetozar12/headless-cms-be/routes/content"
+	"svetozar12/headless-cms-be/routes/contentModel"
+	"svetozar12/headless-cms-be/routes/field"
+	"svetozar12/headless-cms-be/routes/fieldType"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/swagger"
@@ -24,14 +22,13 @@ import (
 // @host localhost:4000
 // @BasePath /
 func InitRoutes(app *fiber.App) {
-	config.Init()
 	v1 := app.Group("/v1")
 	v1.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello from the api")
 	})
 	v1.Get("/swagger/*", swagger.HandlerDefault) // default
-	fieldtype.FieldTypeRoutes(v1)
-	contentmodel.ContentModelRoutes(v1)
+	fieldType.FieldTypeRoutes(v1)
+	contentModel.ContentModelRoutes(v1)
 	content.ContentRoutes(v1)
 	field.FieldRoutes(v1)
 }

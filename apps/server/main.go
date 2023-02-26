@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+	"svetozar12/headless-cms-be/config"
 	"svetozar12/headless-cms-be/db"
 	"svetozar12/headless-cms-be/routes"
 
@@ -11,6 +13,7 @@ import (
 
 func main() {
 	app := fiber.New()
+	config.Load()
 	app.Use(cors.New(cors.Config{
 		AllowHeaders:     "Origin,Content-Type,Accept,Content-Length,Accept-Language,Accept-Encoding,Connection,Access-Control-Allow-Origin",
 		AllowOrigins:     "*",
@@ -20,5 +23,5 @@ func main() {
 	db.Open()
 	routes.InitRoutes(app)
 
-	app.Listen(":4000")
+	app.Listen(os.Getenv("PORT"))
 }
