@@ -26,326 +26,6 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
- * @interface ContentBody
- */
-export interface ContentBody {
-    /**
-     * 
-     * @type {number}
-     * @memberof ContentBody
-     */
-    'modelId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentBody
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentBody
-     */
-    'userId': string;
-}
-/**
- * 
- * @export
- * @interface ContentContent
- */
-export interface ContentContent {
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentContent
-     */
-    'createdAt'?: string;
-    /**
-     * 
-     * @type {GormDeletedAt}
-     * @memberof ContentContent
-     */
-    'deletedAt'?: GormDeletedAt;
-    /**
-     * 
-     * @type {number}
-     * @memberof ContentContent
-     */
-    'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ContentContent
-     */
-    'modelId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentContent
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentContent
-     */
-    'updatedAt'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentContent
-     */
-    'userId': string;
-}
-/**
- * 
- * @export
- * @interface ContentmodelBody
- */
-export interface ContentmodelBody {
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelBody
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelBody
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelBody
-     */
-    'userId': string;
-}
-/**
- * 
- * @export
- * @interface ContentmodelContentModel
- */
-export interface ContentmodelContentModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelContentModel
-     */
-    'createdAt'?: string;
-    /**
-     * 
-     * @type {GormDeletedAt}
-     * @memberof ContentmodelContentModel
-     */
-    'deletedAt'?: GormDeletedAt;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelContentModel
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {Array<ContentContent>}
-     * @memberof ContentmodelContentModel
-     */
-    'fieldTypes': Array<ContentContent>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ContentmodelContentModel
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelContentModel
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelContentModel
-     */
-    'updatedAt'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentmodelContentModel
-     */
-    'userId': string;
-}
-/**
- * 
- * @export
- * @interface FieldBody
- */
-export interface FieldBody {
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldBody
-     */
-    'contentId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldBody
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldBody
-     */
-    'typeId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldBody
-     */
-    'value'?: string;
-}
-/**
- * 
- * @export
- * @interface FieldField
- */
-export interface FieldField {
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldField
-     */
-    'contentId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldField
-     */
-    'createdAt'?: string;
-    /**
-     * 
-     * @type {GormDeletedAt}
-     * @memberof FieldField
-     */
-    'deletedAt'?: GormDeletedAt;
-    /**
-     * 
-     * @type {FieldtypeFieldType}
-     * @memberof FieldField
-     */
-    'fieldType': FieldtypeFieldType;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldField
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldField
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldField
-     */
-    'typeId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldField
-     */
-    'updatedAt'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldField
-     */
-    'value'?: string;
-}
-/**
- * 
- * @export
- * @interface FieldtypeBody
- */
-export interface FieldtypeBody {
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldtypeBody
-     */
-    'contentModelId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeBody
-     */
-    'fieldType'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeBody
-     */
-    'name': string;
-}
-/**
- * 
- * @export
- * @interface FieldtypeFieldType
- */
-export interface FieldtypeFieldType {
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldtypeFieldType
-     */
-    'contentModelId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeFieldType
-     */
-    'createdAt'?: string;
-    /**
-     * 
-     * @type {GormDeletedAt}
-     * @memberof FieldtypeFieldType
-     */
-    'deletedAt'?: GormDeletedAt;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeFieldType
-     */
-    'fieldType'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldtypeFieldType
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeFieldType
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldtypeFieldType
-     */
-    'updatedAt'?: string;
-}
-/**
- * 
- * @export
  * @interface GormDeletedAt
  */
 export interface GormDeletedAt {
@@ -361,6 +41,338 @@ export interface GormDeletedAt {
      * @memberof GormDeletedAt
      */
     'valid'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsContent
+ */
+export interface ModelsContent {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContent
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {GormDeletedAt}
+     * @memberof ModelsContent
+     */
+    'deletedAt'?: GormDeletedAt;
+    /**
+     * 
+     * @type {Array<ModelsField>}
+     * @memberof ModelsContent
+     */
+    'fieldList': Array<ModelsField>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsContent
+     */
+    'id': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsContent
+     */
+    'modelId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContent
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContent
+     */
+    'updatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContent
+     */
+    'userId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsContentBody
+ */
+export interface ModelsContentBody {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsContentBody
+     */
+    'modelId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentBody
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentBody
+     */
+    'userId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsContentType
+ */
+export interface ModelsContentType {
+    /**
+     * 
+     * @type {Array<ModelsContent>}
+     * @memberof ModelsContentType
+     */
+    'contentList': Array<ModelsContent>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentType
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {GormDeletedAt}
+     * @memberof ModelsContentType
+     */
+    'deletedAt'?: GormDeletedAt;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentType
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {Array<ModelsFieldType>}
+     * @memberof ModelsContentType
+     */
+    'fieldTypes': Array<ModelsFieldType>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsContentType
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentType
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentType
+     */
+    'updatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentType
+     */
+    'userId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsContentTypeBody
+ */
+export interface ModelsContentTypeBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentTypeBody
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentTypeBody
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsContentTypeBody
+     */
+    'userId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsField
+ */
+export interface ModelsField {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsField
+     */
+    'contentId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsField
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {GormDeletedAt}
+     * @memberof ModelsField
+     */
+    'deletedAt'?: GormDeletedAt;
+    /**
+     * 
+     * @type {ModelsFieldType}
+     * @memberof ModelsField
+     */
+    'fieldType': ModelsFieldType;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsField
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsField
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsField
+     */
+    'typeId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsField
+     */
+    'updatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsField
+     */
+    'value'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsFieldBody
+ */
+export interface ModelsFieldBody {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsFieldBody
+     */
+    'contentId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldBody
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsFieldBody
+     */
+    'typeId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldBody
+     */
+    'value'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsFieldType
+ */
+export interface ModelsFieldType {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsFieldType
+     */
+    'contentModelId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldType
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {GormDeletedAt}
+     * @memberof ModelsFieldType
+     */
+    'deletedAt'?: GormDeletedAt;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldType
+     */
+    'fieldType'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsFieldType
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldType
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldType
+     */
+    'updatedAt'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ModelsFieldTypeBody
+ */
+export interface ModelsFieldTypeBody {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModelsFieldTypeBody
+     */
+    'contentModelId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldTypeBody
+     */
+    'fieldType'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelsFieldTypeBody
+     */
+    'name': string;
 }
 /**
  * 
@@ -390,76 +402,76 @@ export interface ModelsPagination {
 /**
  * 
  * @export
- * @interface ModelsPaginationModelArrayContentContent
+ * @interface ModelsPaginationModelArrayModelsContent
  */
-export interface ModelsPaginationModelArrayContentContent {
+export interface ModelsPaginationModelArrayModelsContent {
     /**
      * 
-     * @type {Array<ContentContent>}
-     * @memberof ModelsPaginationModelArrayContentContent
+     * @type {Array<ModelsContent>}
+     * @memberof ModelsPaginationModelArrayModelsContent
      */
-    'data': Array<ContentContent>;
+    'data': Array<ModelsContent>;
     /**
      * 
      * @type {ModelsPagination}
-     * @memberof ModelsPaginationModelArrayContentContent
+     * @memberof ModelsPaginationModelArrayModelsContent
      */
     'pagination': ModelsPagination;
 }
 /**
  * 
  * @export
- * @interface ModelsPaginationModelArrayContentmodelContentModel
+ * @interface ModelsPaginationModelArrayModelsContentType
  */
-export interface ModelsPaginationModelArrayContentmodelContentModel {
+export interface ModelsPaginationModelArrayModelsContentType {
     /**
      * 
-     * @type {Array<ContentmodelContentModel>}
-     * @memberof ModelsPaginationModelArrayContentmodelContentModel
+     * @type {Array<ModelsContentType>}
+     * @memberof ModelsPaginationModelArrayModelsContentType
      */
-    'data': Array<ContentmodelContentModel>;
+    'data': Array<ModelsContentType>;
     /**
      * 
      * @type {ModelsPagination}
-     * @memberof ModelsPaginationModelArrayContentmodelContentModel
+     * @memberof ModelsPaginationModelArrayModelsContentType
      */
     'pagination': ModelsPagination;
 }
 /**
  * 
  * @export
- * @interface ModelsPaginationModelArrayFieldField
+ * @interface ModelsPaginationModelArrayModelsField
  */
-export interface ModelsPaginationModelArrayFieldField {
+export interface ModelsPaginationModelArrayModelsField {
     /**
      * 
-     * @type {Array<FieldField>}
-     * @memberof ModelsPaginationModelArrayFieldField
+     * @type {Array<ModelsField>}
+     * @memberof ModelsPaginationModelArrayModelsField
      */
-    'data': Array<FieldField>;
+    'data': Array<ModelsField>;
     /**
      * 
      * @type {ModelsPagination}
-     * @memberof ModelsPaginationModelArrayFieldField
+     * @memberof ModelsPaginationModelArrayModelsField
      */
     'pagination': ModelsPagination;
 }
 /**
  * 
  * @export
- * @interface ModelsPaginationModelArrayFieldtypeFieldType
+ * @interface ModelsPaginationModelArrayModelsFieldType
  */
-export interface ModelsPaginationModelArrayFieldtypeFieldType {
+export interface ModelsPaginationModelArrayModelsFieldType {
     /**
      * 
-     * @type {Array<FieldtypeFieldType>}
-     * @memberof ModelsPaginationModelArrayFieldtypeFieldType
+     * @type {Array<ModelsFieldType>}
+     * @memberof ModelsPaginationModelArrayModelsFieldType
      */
-    'data': Array<FieldtypeFieldType>;
+    'data': Array<ModelsFieldType>;
     /**
      * 
      * @type {ModelsPagination}
-     * @memberof ModelsPaginationModelArrayFieldtypeFieldType
+     * @memberof ModelsPaginationModelArrayModelsFieldType
      */
     'pagination': ModelsPagination;
 }
@@ -589,11 +601,11 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Update content
          * @param {number} id ID
-         * @param {ContentBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentIdPut: async (id: number, request: ContentBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentIdPut: async (id: number, request: ModelsContentTypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('v1ContentIdPut', 'id', id)
             // verify required parameter 'request' is not null or undefined
@@ -628,11 +640,11 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create content
-         * @param {ContentBody} request query params
+         * @param {ModelsContentBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentPost: async (request: ContentBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentPost: async (request: ModelsContentBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'request' is not null or undefined
             assertParamExists('v1ContentPost', 'request', request)
             const localVarPath = `/v1/content`;
@@ -680,7 +692,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentGet(userId: string, page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentContent>> {
+        async v1ContentGet(userId: string, page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayModelsContent>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentGet(userId, page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -702,7 +714,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentContent>> {
+        async v1ContentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContent>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentIdGet(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -710,22 +722,22 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update content
          * @param {number} id ID
-         * @param {ContentBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentIdPut(id: number, request: ContentBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentContent>> {
+        async v1ContentIdPut(id: number, request: ModelsContentTypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContent>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentIdPut(id, request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Create content
-         * @param {ContentBody} request query params
+         * @param {ModelsContentBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentPost(request: ContentBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentContent>> {
+        async v1ContentPost(request: ModelsContentBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContent>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentPost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -748,7 +760,7 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentGet(userId: string, page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayContentContent> {
+        v1ContentGet(userId: string, page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayModelsContent> {
             return localVarFp.v1ContentGet(userId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -768,28 +780,28 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentIdGet(id: number, options?: any): AxiosPromise<ContentContent> {
+        v1ContentIdGet(id: number, options?: any): AxiosPromise<ModelsContent> {
             return localVarFp.v1ContentIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update content
          * @param {number} id ID
-         * @param {ContentBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentIdPut(id: number, request: ContentBody, options?: any): AxiosPromise<ContentContent> {
+        v1ContentIdPut(id: number, request: ModelsContentTypeBody, options?: any): AxiosPromise<ModelsContent> {
             return localVarFp.v1ContentIdPut(id, request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create content
-         * @param {ContentBody} request query params
+         * @param {ModelsContentBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentPost(request: ContentBody, options?: any): AxiosPromise<ContentContent> {
+        v1ContentPost(request: ModelsContentBody, options?: any): AxiosPromise<ModelsContent> {
             return localVarFp.v1ContentPost(request, options).then((request) => request(axios, basePath));
         },
     };
@@ -844,24 +856,24 @@ export class ContentApi extends BaseAPI {
      * 
      * @summary Update content
      * @param {number} id ID
-     * @param {ContentBody} request query params
+     * @param {ModelsContentTypeBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public v1ContentIdPut(id: number, request: ContentBody, options?: AxiosRequestConfig) {
+    public v1ContentIdPut(id: number, request: ModelsContentTypeBody, options?: AxiosRequestConfig) {
         return ContentApiFp(this.configuration).v1ContentIdPut(id, request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create content
-     * @param {ContentBody} request query params
+     * @param {ModelsContentBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public v1ContentPost(request: ContentBody, options?: AxiosRequestConfig) {
+    public v1ContentPost(request: ModelsContentBody, options?: AxiosRequestConfig) {
         return ContentApiFp(this.configuration).v1ContentPost(request, options).then((request) => request(this.axios, this.basePath));
     }
 }
@@ -876,12 +888,15 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Get all content models
+         * @param {string} userId userId
          * @param {number} [page] page
          * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelGet: async (page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentModelGet: async (userId: string, page?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('v1ContentModelGet', 'userId', userId)
             const localVarPath = `/v1/contentModel`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -900,6 +915,10 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
 
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
+            }
+
+            if (userId !== undefined) {
+                localVarQueryParameter['userId'] = userId;
             }
 
 
@@ -985,11 +1004,11 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary Update content model
          * @param {number} id ID
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelIdPut: async (id: number, request: ContentmodelBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentModelIdPut: async (id: number, request: ModelsContentTypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('v1ContentModelIdPut', 'id', id)
             // verify required parameter 'request' is not null or undefined
@@ -1024,11 +1043,11 @@ export const ContentModelApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Create content model
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelPost: async (request: ContentmodelBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1ContentModelPost: async (request: ModelsContentTypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'request' is not null or undefined
             assertParamExists('v1ContentModelPost', 'request', request)
             const localVarPath = `/v1/contentModel`;
@@ -1070,13 +1089,14 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all content models
+         * @param {string} userId userId
          * @param {number} [page] page
          * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelGet(page, limit, options);
+        async v1ContentModelGet(userId: string, page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayModelsContentType>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelGet(userId, page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1097,7 +1117,7 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentmodelContentModel>> {
+        async v1ContentModelIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContentType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelIdGet(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1105,22 +1125,22 @@ export const ContentModelApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update content model
          * @param {number} id ID
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelIdPut(id: number, request: ContentmodelBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentmodelContentModel>> {
+        async v1ContentModelIdPut(id: number, request: ModelsContentTypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContentType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelIdPut(id, request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Create content model
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1ContentModelPost(request: ContentmodelBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentmodelContentModel>> {
+        async v1ContentModelPost(request: ModelsContentTypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsContentType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1ContentModelPost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1137,13 +1157,14 @@ export const ContentModelApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Get all content models
+         * @param {string} userId userId
          * @param {number} [page] page
          * @param {number} [limit] limit
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayContentmodelContentModel> {
-            return localVarFp.v1ContentModelGet(page, limit, options).then((request) => request(axios, basePath));
+        v1ContentModelGet(userId: string, page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayModelsContentType> {
+            return localVarFp.v1ContentModelGet(userId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1162,28 +1183,28 @@ export const ContentModelApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelIdGet(id: number, options?: any): AxiosPromise<ContentmodelContentModel> {
+        v1ContentModelIdGet(id: number, options?: any): AxiosPromise<ModelsContentType> {
             return localVarFp.v1ContentModelIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update content model
          * @param {number} id ID
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelIdPut(id: number, request: ContentmodelBody, options?: any): AxiosPromise<ContentmodelContentModel> {
+        v1ContentModelIdPut(id: number, request: ModelsContentTypeBody, options?: any): AxiosPromise<ModelsContentType> {
             return localVarFp.v1ContentModelIdPut(id, request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create content model
-         * @param {ContentmodelBody} request query params
+         * @param {ModelsContentTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1ContentModelPost(request: ContentmodelBody, options?: any): AxiosPromise<ContentmodelContentModel> {
+        v1ContentModelPost(request: ModelsContentTypeBody, options?: any): AxiosPromise<ModelsContentType> {
             return localVarFp.v1ContentModelPost(request, options).then((request) => request(axios, basePath));
         },
     };
@@ -1199,14 +1220,15 @@ export class ContentModelApi extends BaseAPI {
     /**
      * 
      * @summary Get all content models
+     * @param {string} userId userId
      * @param {number} [page] page
      * @param {number} [limit] limit
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentModelApi
      */
-    public v1ContentModelGet(page?: number, limit?: number, options?: AxiosRequestConfig) {
-        return ContentModelApiFp(this.configuration).v1ContentModelGet(page, limit, options).then((request) => request(this.axios, this.basePath));
+    public v1ContentModelGet(userId: string, page?: number, limit?: number, options?: AxiosRequestConfig) {
+        return ContentModelApiFp(this.configuration).v1ContentModelGet(userId, page, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1237,24 +1259,24 @@ export class ContentModelApi extends BaseAPI {
      * 
      * @summary Update content model
      * @param {number} id ID
-     * @param {ContentmodelBody} request query params
+     * @param {ModelsContentTypeBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentModelApi
      */
-    public v1ContentModelIdPut(id: number, request: ContentmodelBody, options?: AxiosRequestConfig) {
+    public v1ContentModelIdPut(id: number, request: ModelsContentTypeBody, options?: AxiosRequestConfig) {
         return ContentModelApiFp(this.configuration).v1ContentModelIdPut(id, request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create content model
-     * @param {ContentmodelBody} request query params
+     * @param {ModelsContentTypeBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentModelApi
      */
-    public v1ContentModelPost(request: ContentmodelBody, options?: AxiosRequestConfig) {
+    public v1ContentModelPost(request: ModelsContentTypeBody, options?: AxiosRequestConfig) {
         return ContentModelApiFp(this.configuration).v1ContentModelPost(request, options).then((request) => request(this.axios, this.basePath));
     }
 }
@@ -1385,11 +1407,11 @@ export const FieldApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Update field
          * @param {number} id ID
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldIdPut: async (id: number, request: FieldBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldIdPut: async (id: number, request: ModelsFieldBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('v1FieldIdPut', 'id', id)
             // verify required parameter 'request' is not null or undefined
@@ -1424,11 +1446,11 @@ export const FieldApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Create field
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldPost: async (request: FieldBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldPost: async (request: ModelsFieldBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'request' is not null or undefined
             assertParamExists('v1FieldPost', 'request', request)
             const localVarPath = `/v1/field`;
@@ -1476,7 +1498,7 @@ export const FieldApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldGet(contentId: number, page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayFieldField>> {
+        async v1FieldGet(contentId: number, page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayModelsField>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldGet(contentId, page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1498,7 +1520,7 @@ export const FieldApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldField>> {
+        async v1FieldIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsField>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldIdGet(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1506,22 +1528,22 @@ export const FieldApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update field
          * @param {number} id ID
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldIdPut(id: number, request: FieldBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldField>> {
+        async v1FieldIdPut(id: number, request: ModelsFieldBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsField>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldIdPut(id, request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Create field
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldPost(request: FieldBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async v1FieldPost(request: ModelsFieldBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldPost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1544,7 +1566,7 @@ export const FieldApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldGet(contentId: number, page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayFieldField> {
+        v1FieldGet(contentId: number, page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayModelsField> {
             return localVarFp.v1FieldGet(contentId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1564,28 +1586,28 @@ export const FieldApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldIdGet(id: number, options?: any): AxiosPromise<FieldField> {
+        v1FieldIdGet(id: number, options?: any): AxiosPromise<ModelsField> {
             return localVarFp.v1FieldIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update field
          * @param {number} id ID
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldIdPut(id: number, request: FieldBody, options?: any): AxiosPromise<FieldField> {
+        v1FieldIdPut(id: number, request: ModelsFieldBody, options?: any): AxiosPromise<ModelsField> {
             return localVarFp.v1FieldIdPut(id, request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create field
-         * @param {FieldBody} request query params
+         * @param {ModelsFieldBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldPost(request: FieldBody, options?: any): AxiosPromise<string> {
+        v1FieldPost(request: ModelsFieldBody, options?: any): AxiosPromise<string> {
             return localVarFp.v1FieldPost(request, options).then((request) => request(axios, basePath));
         },
     };
@@ -1640,24 +1662,24 @@ export class FieldApi extends BaseAPI {
      * 
      * @summary Update field
      * @param {number} id ID
-     * @param {FieldBody} request query params
+     * @param {ModelsFieldBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldApi
      */
-    public v1FieldIdPut(id: number, request: FieldBody, options?: AxiosRequestConfig) {
+    public v1FieldIdPut(id: number, request: ModelsFieldBody, options?: AxiosRequestConfig) {
         return FieldApiFp(this.configuration).v1FieldIdPut(id, request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create field
-     * @param {FieldBody} request query params
+     * @param {ModelsFieldBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldApi
      */
-    public v1FieldPost(request: FieldBody, options?: AxiosRequestConfig) {
+    public v1FieldPost(request: ModelsFieldBody, options?: AxiosRequestConfig) {
         return FieldApiFp(this.configuration).v1FieldPost(request, options).then((request) => request(this.axios, this.basePath));
     }
 }
@@ -1747,11 +1769,11 @@ export const FieldTypeApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Update field type
          * @param {number} id ID
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypeIdPut: async (id: number, request: FieldtypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldTypeIdPut: async (id: number, request: ModelsFieldTypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('v1FieldTypeIdPut', 'id', id)
             // verify required parameter 'request' is not null or undefined
@@ -1786,11 +1808,11 @@ export const FieldTypeApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Create field type
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypePost: async (request: FieldtypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        v1FieldTypePost: async (request: ModelsFieldTypeBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'request' is not null or undefined
             assertParamExists('v1FieldTypePost', 'request', request)
             const localVarPath = `/v1/fieldType`;
@@ -1837,7 +1859,7 @@ export const FieldTypeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldTypeGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayFieldtypeFieldType>> {
+        async v1FieldTypeGet(page?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsPaginationModelArrayModelsFieldType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldTypeGet(page, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1856,22 +1878,22 @@ export const FieldTypeApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update field type
          * @param {number} id ID
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldTypeIdPut(id: number, request: FieldtypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldtypeFieldType>> {
+        async v1FieldTypeIdPut(id: number, request: ModelsFieldTypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsFieldType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldTypeIdPut(id, request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Create field type
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async v1FieldTypePost(request: FieldtypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldtypeFieldType>> {
+        async v1FieldTypePost(request: ModelsFieldTypeBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelsFieldType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.v1FieldTypePost(request, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1893,7 +1915,7 @@ export const FieldTypeApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypeGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayFieldtypeFieldType> {
+        v1FieldTypeGet(page?: number, limit?: number, options?: any): AxiosPromise<ModelsPaginationModelArrayModelsFieldType> {
             return localVarFp.v1FieldTypeGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1910,21 +1932,21 @@ export const FieldTypeApiFactory = function (configuration?: Configuration, base
          * 
          * @summary Update field type
          * @param {number} id ID
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypeIdPut(id: number, request: FieldtypeBody, options?: any): AxiosPromise<FieldtypeFieldType> {
+        v1FieldTypeIdPut(id: number, request: ModelsFieldTypeBody, options?: any): AxiosPromise<ModelsFieldType> {
             return localVarFp.v1FieldTypeIdPut(id, request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create field type
-         * @param {FieldtypeBody} request query params
+         * @param {ModelsFieldTypeBody} request query params
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        v1FieldTypePost(request: FieldtypeBody, options?: any): AxiosPromise<FieldtypeFieldType> {
+        v1FieldTypePost(request: ModelsFieldTypeBody, options?: any): AxiosPromise<ModelsFieldType> {
             return localVarFp.v1FieldTypePost(request, options).then((request) => request(axios, basePath));
         },
     };
@@ -1966,24 +1988,24 @@ export class FieldTypeApi extends BaseAPI {
      * 
      * @summary Update field type
      * @param {number} id ID
-     * @param {FieldtypeBody} request query params
+     * @param {ModelsFieldTypeBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldTypeApi
      */
-    public v1FieldTypeIdPut(id: number, request: FieldtypeBody, options?: AxiosRequestConfig) {
+    public v1FieldTypeIdPut(id: number, request: ModelsFieldTypeBody, options?: AxiosRequestConfig) {
         return FieldTypeApiFp(this.configuration).v1FieldTypeIdPut(id, request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create field type
-     * @param {FieldtypeBody} request query params
+     * @param {ModelsFieldTypeBody} request query params
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FieldTypeApi
      */
-    public v1FieldTypePost(request: FieldtypeBody, options?: AxiosRequestConfig) {
+    public v1FieldTypePost(request: ModelsFieldTypeBody, options?: AxiosRequestConfig) {
         return FieldTypeApiFp(this.configuration).v1FieldTypePost(request, options).then((request) => request(this.axios, this.basePath));
     }
 }

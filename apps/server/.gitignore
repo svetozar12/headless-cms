@@ -12,3 +12,4 @@ bazel-bin
 bazel-out
 bazel-server
 bazel-testlogs
+e2e/sdk

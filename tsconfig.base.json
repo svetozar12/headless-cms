@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@init/sdk": ["libs/sdk/src/index.ts"]
+      "@init/sdk": ["libs/sdk/src/index.ts"],
+      "@init/server-e2e": ["libs/server-e2e/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

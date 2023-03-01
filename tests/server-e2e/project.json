@@ -1,0 +1,39 @@
+{
+  "name": "server-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tests/server-e2e/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tests/server-e2e",
+        "main": "tests/server-e2e/src/index.ts",
+        "tsConfig": "tests/server-e2e/tsconfig.lib.json",
+        "assets": ["tests/server-e2e/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["tests/server-e2e/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/tests/server-e2e"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/tests/server-e2e"
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

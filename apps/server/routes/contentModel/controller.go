@@ -25,8 +25,9 @@ func getContentModelById(c *fiber.Ctx) error {
 // Content godoc
 // @Summary      Get all content models
 // @Tags         contentModel
-// @Param        page    query     int  false  "page"  default(1)
+// @Param        page     query     int  false  "page"  default(1)
 // @Param        limit    query     int  false  "limit"  default(10)
+// @Param        userId  query     string  true   "userId"
 // @Accept       json
 // @Success      200  {object} models.PaginationModel[[]models.ContentType]
 // @Router       /v1/contentModel [get]
@@ -35,9 +36,10 @@ func getContentModel(c *fiber.Ctx) error {
 	var total int64
 	page, _ := strconv.Atoi(c.Query("page"))
 	limit, _ := strconv.Atoi(c.Query("limit"))
+	userId := c.Query("userId")
 	offSet := (page - 1) * limit
-	db.DB.Preload("FieldTypes").Find(&contentModels).Count(&total)
-	db.DB.Preload("FieldTypes").Offset(offSet).Limit(limit).Find(&contentModels)
+	db.DB.Where("user_id = ?", userId).Preload("FieldTypes").Find(&contentModels).Count(&total)
+	db.DB.Where("user_id = ?", userId).Preload("FieldTypes").Offset(offSet).Limit(limit).Find(&contentModels)
 	return c.Status(fiber.StatusOK).JSON(models.PaginationModel[[]models.ContentType]{Pagination: models.Pagination{Total: total, Offset: page, Limit: limit}, Data: contentModels})
 }
 
@@ -45,7 +47,7 @@ func getContentModel(c *fiber.Ctx) error {
 // @Summary      Create content model
 // @Tags         contentModel
 // @Accept       json
-// @Param request body models.ContentBody true "query params""
+// @Param request body models.ContentTypeBody true "query params""
 // @Success      201  {object} models.ContentType
 // @Router       /v1/contentModel [post]
 func createContentModel(c *fiber.Ctx) error {
