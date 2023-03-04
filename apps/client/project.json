@@ -4,13 +4,6 @@
   "sourceRoot": "apps/client",
   "projectType": "application",
   "targets": {
-    "postinstall": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx prisma generate",
-        "cwd": "apps/client"
-      }
-    },
     "build": {
       "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
@@ -19,7 +12,6 @@
         "root": "apps/client",
         "outputPath": "dist/apps/client"
       },
-      "dependsOn": ["postinstall"],
       "configurations": {
         "development": {
           "outputPath": "apps/client"
@@ -34,7 +26,6 @@
         "buildTarget": "client:build",
         "dev": true
       },
-      "dependsOn": ["postinstall"],
       "configurations": {
         "development": {
           "buildTarget": "client:build:development",
