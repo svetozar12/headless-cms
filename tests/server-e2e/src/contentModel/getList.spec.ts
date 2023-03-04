@@ -1,5 +1,5 @@
 import { sdk } from '../utils/sdk';
-describe('getList (contentModel)', () => {
+describe('getContentList (contentModel)', () => {
   const contentModelIds: number[] = [];
   const testModel = {
     name: 'test',

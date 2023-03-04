@@ -29,7 +29,6 @@ const ContentTable: FC = () => {
     pagination: { limit: 8, offSet: parseInt(query.page as string) || 1 },
     userId: session && session!.user!.id,
   });
-  console.log(data);
 
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [content, setContent] = useState<{ id: number | null; title: string }>({

@@ -18,7 +18,10 @@ import (
 func getContentModelById(c *fiber.Ctx) error {
 	var contentModel models.ContentType
 	id := c.Params("id")
-	db.DB.Preload("FieldTypes").Where("id = ?", id).First(&contentModel)
+
+	if err := db.DB.Preload("FieldTypes").Where("id = ?", id).First(&contentModel); err != nil {
+		return c.Status(fiber.StatusNotFound).SendString("Not Found")
+	}
 	return c.Status(fiber.StatusOK).JSON(contentModel)
 }
 

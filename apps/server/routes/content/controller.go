@@ -20,7 +20,10 @@ func GetContentById(c *fiber.Ctx) error {
 	var content models.Content
 	id := c.Params("id")
 
-	db.DB.Preload("ContentModel").First(&content, id)
+	if err := db.DB.Preload("ContentModel").First(&content, id); err != nil {
+
+		return c.Status(fiber.StatusNotFound).SendString("Not Found")
+	}
 	return c.Status(fiber.StatusOK).JSON(content)
 }
 
