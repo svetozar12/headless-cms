@@ -1,0 +1,18 @@
+Executing command: go build -o dist/apps/server apps/server/main.go
+Failed to execute command: go build -o dist/apps/server apps/server/main.go Error: Command failed: go build -o dist/apps/server apps/server/main.go
+[90m    at checkExecSyncError (node:child_process:885:11)[39m
+[90m    at execSync (node:child_process:957:15)[39m
+    at runGoCommand [90m(/home/sgospodinov/Desktop/coding-journey/headless-cms/[39mnode_modules/[4m@nx-go[24m/nx-go/src/utils/run-go-command.helper.js:15:38[90m)[39m
+    at [90m/home/sgospodinov/Desktop/coding-journey/headless-cms/[39mnode_modules/[4m@nx-go[24m/nx-go/src/executors/build/executor.js:20:41
+    at Generator.next (<anonymous>)
+    at [90m/home/sgospodinov/Desktop/coding-journey/headless-cms/[39mnode_modules/[4mtslib[24m/tslib.js:169:75
+    at new Promise (<anonymous>)
+    at __awaiter [90m(/home/sgospodinov/Desktop/coding-journey/headless-cms/[39mnode_modules/[4mtslib[24m/tslib.js:165:16[90m)[39m
+    at runExecutor [90m(/home/sgospodinov/Desktop/coding-journey/headless-cms/[39mnode_modules/[4m@nx-go[24m/nx-go/src/executors/build/executor.js:6:34[90m)[39m {
+  status: [33m1[39m,
+  signal: [1mnull[22m,
+  output: [ [1mnull[22m, [1mnull[22m, [1mnull[22m ],
+  pid: [33m8362[39m,
+  stdout: [1mnull[22m,
+  stderr: [1mnull[22m
+}

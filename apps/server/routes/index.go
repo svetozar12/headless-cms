@@ -2,6 +2,7 @@ package routes
 
 import (
 	_ "svetozar12/headless-cms-be/docs"
+	"svetozar12/headless-cms-be/routes/auth/github"
 	"svetozar12/headless-cms-be/routes/content"
 	"svetozar12/headless-cms-be/routes/contentModel"
 	"svetozar12/headless-cms-be/routes/field"
@@ -31,4 +32,5 @@ func InitRoutes(app *fiber.App) {
 	contentModel.ContentModelRoutes(v1)
 	content.ContentRoutes(v1)
 	field.FieldRoutes(v1)
+	github.AuthGithubRoutes(v1)
 }

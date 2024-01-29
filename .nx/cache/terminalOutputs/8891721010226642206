@@ -1,0 +1,343 @@
+[32mready[39m - started server on 0.0.0.0:4200, url: http://localhost:4200
+[36minfo[39m  - Loaded env from /home/sgospodinov/Desktop/coding-journey/headless-cms/apps/client/.env.local
+[35mevent[39m - compiled client and server successfully in 3s (1478 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 329 ms (1413 modules)
+[36mwait[39m  - compiling /auth/signin (client and server)...
+[35mevent[39m - compiled client and server successfully in 788 ms (1499 modules)
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/providers',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/session',
+  message: 'fetch failed'
+}
+TypeError: Cannot convert undefined or null to object
+    at Function.values (<anonymous>)
+    at SignIn (webpack-internal:///./src/components/SignIn.tsx:123:42)
+    at renderWithHooks (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5658:16)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5731:15)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderNode (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6259:12)
+    at renderChildrenArray (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6211:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6141:7)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+[31merror[39m - src/components/SignIn.tsx (61:18) @ values
+[31merror[39m - Error [TypeError]: Cannot convert undefined or null to object
+    at Function.values (<anonymous>)
+    at SignIn (webpack-internal:///./src/components/SignIn.tsx:123:42)
+    at renderWithHooks (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5658:16)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5731:15)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderNode (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6259:12)
+    at renderChildrenArray (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6211:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6141:7)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/home/sgospodinov/Desktop/coding-journey/headless-cms/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11) {
+  digest: undefined
+}
+[0m [90m 59 | [39m        [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 60 | [39m        [33m<[39m[33mdiv[39m className[33m=[39m[32m" flex flex-col h-full justify-center items-center"[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 61 | [39m          {[33mObject[39m[33m.[39mvalues(providers)[33m.[39mmap((provider) [33m=>[39m ([0m
+[0m [90m    | [39m                 [31m[1m^[22m[39m[0m
+[0m [90m 62 | [39m            [33m<[39m[33mdiv[39m[0m
+[0m [90m 63 | [39m              key[33m=[39m{provider[33m.[39mname}[0m
+[0m [90m 64 | [39m              onClick[33m=[39m{() [33m=>[39m signIn(provider[33m.[39mid)}[0m
+[36mwait[39m  - compiling /_error (client and server)...
+[35mevent[39m - compiled client and server successfully in 165 ms (1500 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 556 ms (1479 modules)
+[33mwarn[39m  - Fast Refresh had to perform a full reload due to a runtime error.
+[36mwait[39m  - compiling /auth/signin (client and server)...
+[35mevent[39m - compiled client and server successfully in 408 ms (1500 modules)
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/providers',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/session',
+  message: 'fetch failed'
+}
+[36mwait[39m  - compiling /api/auth/[...nextauth] (client and server)...
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/sgospodinov/Desktop/coding-journey/headless-cms/apps/client/.next/cache/webpack/client-development-fallback/0.pack_' -> '/home/sgospodinov/Desktop/coding-journey/headless-cms/apps/client/.next/cache/webpack/client-development-fallback/0.pack'
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 463 ms (1499 modules)
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/providers',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/session',
+  message: 'fetch failed'
+}
+[36mwait[39m  - compiling /api/auth/[...nextauth] (client and server)...
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+[36mwait[39m  - compiling /_error (client and server)...
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+[36mwait[39m  - compiling...
+[31merror[39m - ../../libs/envs/src/lib/client.ts:2:0
+[31m[1mModule not found[22m[39m: Can't resolve '[32m./schema.js[39m'
+[0m [90m 1 | [39m[90m// @ts-check[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m[36mimport[39m { clientEnv[33m,[39m clientSchema } [36mfrom[39m [32m'./schema.js'[39m[33m;[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mconst[39m _clientEnv [33m=[39m clientSchema[33m.[39msafeParse(clientEnv)[33m;[39m[0m
+[0m [90m 5 | [39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+../../libs/envs/src/index.ts
+./src/pages/api/auth/[...nextauth].ts
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled successfully in 281 ms (1414 modules)
+[36mwait[39m  - compiling...
+[35mevent[39m - compiled client and server successfully in 371 ms (1479 modules)
+[33mwarn[39m  - Fast Refresh had to perform a full reload due to a runtime error.
+[36mwait[39m  - compiling /auth/signin (client and server)...
+[35mevent[39m - compiled client and server successfully in 662 ms (1500 modules)
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/providers',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/session',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/providers',
+  message: 'fetch failed'
+}
+[next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error fetch failed {
+  error: {
+    message: 'fetch failed',
+    stack: 'TypeError: fetch failed\n' +
+      '    at Object.fetch (node:internal/deps/undici/undici:11457:11)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)',
+    name: 'TypeError'
+  },
+  url: 'http://localhost:3000/api/auth/session',
+  message: 'fetch failed'
+}
+
+ [31m>[39m [0m[7m[1m[31m NX [39m[22m[27m[0m  [31mNext.js app exited with code null[39m
+
+   Pass --verbose to see the stacktrace.
+

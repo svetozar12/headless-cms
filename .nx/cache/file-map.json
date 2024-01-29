@@ -1,0 +1,1487 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.5",
+    "@mui/x-date-pickers": "^5.0.17",
+    "@next-auth/prisma-adapter": "^1.0.5",
+    "@prisma/client": "^4.8.0",
+    "@tanstack/react-query": "^4.20.0",
+    "@trpc/client": "^10.8.1",
+    "@trpc/next": "^10.8.1",
+    "@trpc/react-query": "^10.8.1",
+    "@trpc/server": "^10.8.1",
+    "@types/nprogress": "^0.2.0",
+    "@zodios/core": "^10.7.3",
+    "axios": "^1.2.3",
+    "dayjs": "^1.11.7",
+    "moment": "^2.29.4",
+    "next": "13.3.0",
+    "next-auth": "^4.18.7",
+    "next-cookie": "^2.8.0",
+    "nprogress": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "superjson": "1.9.1",
+    "tslib": "^2.3.0",
+    "uuid": "^9.0.0",
+    "zod": "^3.20.2",
+    "@babel/preset-react": "^7.14.5",
+    "@nrwl/cypress": "17.2.8",
+    "@nrwl/eslint-plugin-nx": "17.2.8",
+    "@nrwl/jest": "17.2.8",
+    "@nrwl/js": "17.2.8",
+    "@nrwl/linter": "17.2.8",
+    "@nrwl/next": "17.2.8",
+    "@nrwl/nx-cloud": "16.5.2",
+    "@nrwl/react": "17.2.8",
+    "@nrwl/vite": "17.2.8",
+    "@nrwl/workspace": "17.2.8",
+    "@nx-go/nx-go": "^2.7.0",
+    "@testing-library/react": "14.0.0",
+    "@types/jest": "29.4.4",
+    "@types/node": "18.16.9",
+    "@types/react": "18.2.24",
+    "@types/react-dom": "18.2.9",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "@typescript-eslint/parser": "6.19.1",
+    "@vitest/coverage-c8": "0.31.4",
+    "@vitest/ui": "0.31.4",
+    "autoprefixer": "^10.4.13",
+    "babel-jest": "29.4.3",
+    "cypress": "12.17.4",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.1.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-cypress": "2.15.1",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "29.4.3",
+    "jest-environment-jsdom": "29.4.3",
+    "jsdom": "22.1.0",
+    "nx": "17.2.8",
+    "postcss": "8.4.21",
+    "prettier": "^2.6.2",
+    "prisma": "^4.8.0",
+    "react-test-renderer": "18.2.0",
+    "tailwindcss": "3.2.7",
+    "ts-jest": "29.1.2",
+    "ts-node": "10.9.1",
+    "typescript": "5.2.2",
+    "vite": "5.0.12",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-tsconfig-paths": "4.3.1",
+    "vitest": "0.31.4"
+  },
+  "pathMappings": {
+    "@init/envs": [
+      "libs/envs/src/index.ts"
+    ],
+    "@init/prisma": [
+      "libs/prisma/src/index.ts"
+    ],
+    "@init/sdk": [
+      "libs/sdk/src/index.ts"
+    ],
+    "@init/server-e2e": [
+      "libs/server-e2e/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "jest.config.ts",
+        "hash": "2950215254536237782"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "11353561121240694244"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "17733650430415207254"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "4197408354180673697"
+      },
+      {
+        "file": "package.json",
+        "hash": "17296854664060778980"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "15388041757782744192"
+      },
+      {
+        "file": "openapitools.json",
+        "hash": "17381585805734847183"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "8774003175783316600"
+      },
+      {
+        "file": "README.md",
+        "hash": "14148377989414430895"
+      },
+      {
+        "file": "libs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "nx.json",
+        "hash": "543276893569015769"
+      },
+      {
+        "file": "babel.config.json",
+        "hash": "5546405625092116747"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "12132901369968695411"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "2772139696069860212"
+      }
+    ],
+    "projectFileMap": {
+      "client": [
+        {
+          "file": "apps/client/.eslintrc.json",
+          "hash": "2651490067626774514"
+        },
+        {
+          "file": "apps/client/.gitignore",
+          "hash": "7443124592661016552"
+        },
+        {
+          "file": "apps/client/README.md",
+          "hash": "2132381724909127820"
+        },
+        {
+          "file": "apps/client/codegen.sh",
+          "hash": "2321123800464190752"
+        },
+        {
+          "file": "apps/client/dockerfile",
+          "hash": "4325396923373100263"
+        },
+        {
+          "file": "apps/client/jest.config.ts",
+          "hash": "8899109934419105064"
+        },
+        {
+          "file": "apps/client/next.config.js",
+          "hash": "14834207361478156235",
+          "deps": [
+            "npm:@nrwl/next/plugins/with-nx"
+          ]
+        },
+        {
+          "file": "apps/client/postcss.config.js",
+          "hash": "13598591179375906364",
+          "deps": [
+            "npm:path"
+          ]
+        },
+        {
+          "file": "apps/client/project.json",
+          "hash": "12968721503316901125"
+        },
+        {
+          "file": "apps/client/public/favicon.ico",
+          "hash": "11493153707516010581"
+        },
+        {
+          "file": "apps/client/src/components/ActionButtons.tsx",
+          "hash": "13463612483043358232",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Button.tsx",
+          "hash": "6184346615086687469",
+          "deps": [
+            "npm:react",
+            "npm:react-icons/lib"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ClientOnly.tsx",
+          "hash": "1150239870879355583",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Content/Content.tsx",
+          "hash": "4828549682975165730",
+          "deps": [
+            "npm:next/router",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Content/index.tsx",
+          "hash": "179482686212208670"
+        },
+        {
+          "file": "apps/client/src/components/Content/subcomponents/Field/Field.tsx",
+          "hash": "189392863002378494",
+          "deps": [
+            "npm:@mui/material",
+            "npm:@mui/x-date-pickers/MobileDatePicker",
+            "npm:react",
+            "npm:@mui/material/TextField"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Content/subcomponents/Field/index.tsx",
+          "hash": "6512421098652428103"
+        },
+        {
+          "file": "apps/client/src/components/Content/subcomponents/Heading/Heading.tsx",
+          "hash": "11920845180940162785",
+          "deps": [
+            "npm:@mui/material",
+            "npm:next/router",
+            "npm:react",
+            "npm:react-icons/fa"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Content/subcomponents/Heading/index.tsx",
+          "hash": "4285794300645750968"
+        },
+        {
+          "file": "apps/client/src/components/ContentList/ContentList.tsx",
+          "hash": "6118916188090300713",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentList/index.tsx",
+          "hash": "2815227601560108169"
+        },
+        {
+          "file": "apps/client/src/components/ContentList/subcomponents/ContentHeader.tsx",
+          "hash": "4269964424805750987",
+          "deps": [
+            "npm:react",
+            "npm:react-icons/fa",
+            "npm:@mui/material",
+            "npm:react-icons/md",
+            "npm:next-auth/react",
+            "npm:next/router"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentList/subcomponents/ContentTable/ContentTable.tsx",
+          "hash": "349415015825256077",
+          "deps": [
+            "npm:dayjs",
+            "npm:next/router",
+            "npm:react",
+            "npm:react-icons/md",
+            "npm:dayjs/plugin/relativeTime",
+            "sdk",
+            "npm:next-auth/react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentList/subcomponents/ContentTable/index.tsx",
+          "hash": "4332650763578717051"
+        },
+        {
+          "file": "apps/client/src/components/ContentList/subcomponents/ContentTable/subcomponents/ConfirmDeleteModal.tsx",
+          "hash": "6521783222273709018",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/ContentModel.module.css",
+          "hash": "864037131081433084"
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/ContentModel.tsx",
+          "hash": "5998855230805525725",
+          "deps": [
+            "npm:next/router",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/ContentModelTable/ContentModelTable.tsx",
+          "hash": "10550622161777594477",
+          "deps": [
+            "npm:next/router",
+            "npm:react",
+            "npm:react-icons/md",
+            "sdk"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/ContentModelTable/subcomponents/ConfirmDeleteModal.tsx",
+          "hash": "334505087092516302",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/FieldModal.tsx",
+          "hash": "271972365852787753",
+          "deps": [
+            "npm:@mui/material",
+            "npm:next/router",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/FieldModalEdit.tsx",
+          "hash": "11112576806894713805",
+          "deps": [
+            "npm:@mui/material",
+            "npm:next/router",
+            "npm:react",
+            "sdk"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/Heading/Heading.tsx",
+          "hash": "17658525649751172953",
+          "deps": [
+            "npm:@mui/material/Breadcrumbs",
+            "npm:@mui/material/Link",
+            "npm:next/router",
+            "npm:react",
+            "npm:react-icons/fa"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModel/subcomponents/Heading/index.tsx",
+          "hash": "4285794300645750968"
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/ContentModelList.tsx",
+          "hash": "4518941856727748479",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/index.tsx",
+          "hash": "3171433452402094419"
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/subcomponents/ModelHeader.tsx",
+          "hash": "1304949510484572652",
+          "deps": [
+            "npm:react",
+            "npm:react-icons/fa"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/subcomponents/ModelModal.tsx",
+          "hash": "8997204133764719130",
+          "deps": [
+            "npm:@mui/material",
+            "npm:next-auth/react",
+            "npm:next/router",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/subcomponents/ModelTable/ModelTable.tsx",
+          "hash": "10738019768736862235",
+          "deps": [
+            "npm:dayjs",
+            "npm:next/router",
+            "npm:react",
+            "npm:react-icons/md",
+            "npm:dayjs/plugin/relativeTime",
+            "sdk"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/subcomponents/ModelTable/index.tsx",
+          "hash": "552770626973687481"
+        },
+        {
+          "file": "apps/client/src/components/ContentModelList/subcomponents/ModelTable/subcomponents/ConfirmDeleteModal.tsx",
+          "hash": "1094725330816019292",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Heading.tsx",
+          "hash": "17644127112932983746"
+        },
+        {
+          "file": "apps/client/src/components/Input/Input.tsx",
+          "hash": "3551538882400346048",
+          "deps": [
+            "npm:@mui/material",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Input/index.tsx",
+          "hash": "10256734152706566086"
+        },
+        {
+          "file": "apps/client/src/components/Input/subcomponents/Switch.tsx",
+          "hash": "17990957328872487115",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Modal/Modal.module.css",
+          "hash": "13358323781901808713"
+        },
+        {
+          "file": "apps/client/src/components/Modal/Modal.tsx",
+          "hash": "17592057157173726724",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Modal/index.ts",
+          "hash": "15129384429590002848"
+        },
+        {
+          "file": "apps/client/src/components/Navbar/Navbar.tsx",
+          "hash": "8226037379557406256",
+          "deps": [
+            "npm:react",
+            "npm:@mui/material/AppBar",
+            "npm:@mui/material/Box",
+            "npm:@mui/material/Toolbar",
+            "npm:@mui/material/IconButton",
+            "npm:@mui/material/Typography",
+            "npm:@mui/material/Menu",
+            "npm:@mui/icons-material/Menu",
+            "npm:@mui/material/Container",
+            "npm:@mui/material/Avatar",
+            "npm:@mui/material/Button",
+            "npm:@mui/material/Tooltip",
+            "npm:@mui/material/MenuItem",
+            "npm:@mui/icons-material/Adb",
+            "npm:next-auth/react",
+            "npm:next/router"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Navbar/subcomponents/Dropdown.tsx",
+          "hash": "6977013075177909932",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/PageHeader/PageHeader.module.css",
+          "hash": "9183993208224172128"
+        },
+        {
+          "file": "apps/client/src/components/PageHeader/PageHeader.tsx",
+          "hash": "7324223180754944345",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/PageHeader/index.ts",
+          "hash": "3340384580240523379"
+        },
+        {
+          "file": "apps/client/src/components/SignIn.tsx",
+          "hash": "10952809406852269792",
+          "deps": [
+            "npm:@mui/material",
+            "npm:next-auth",
+            "npm:next",
+            "npm:react",
+            "npm:react-icons"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Spinner.tsx",
+          "hash": "13103418108609199410",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Table/Table.tsx",
+          "hash": "9032840379286328282",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Table/index.ts",
+          "hash": "7134716906190125681"
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/BlankState.tsx",
+          "hash": "17247226235133283648",
+          "deps": [
+            "npm:react",
+            "npm:react-icons/fa"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Content/Content.module.css",
+          "hash": "4390285654681442235"
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Content/Content.tsx",
+          "hash": "4226069819467118413",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Content/index.tsx",
+          "hash": "179482686212208670"
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Content/utils.ts",
+          "hash": "5414155287163695570"
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Heading.tsx",
+          "hash": "3204342533361803310",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/components/Table/subcomponents/Pagination.tsx",
+          "hash": "8605972093920689759",
+          "deps": [
+            "npm:react",
+            "npm:react-icons/bs"
+          ]
+        },
+        {
+          "file": "apps/client/src/constants/routes.ts",
+          "hash": "15576813452456838268"
+        },
+        {
+          "file": "apps/client/src/hooks/useCookies.tsx",
+          "hash": "2273613732633069766",
+          "deps": [
+            "npm:next-cookie"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/_app.tsx",
+          "hash": "12195995790486921375",
+          "deps": [
+            "npm:@tanstack/react-query",
+            "npm:next/app",
+            "npm:next-auth/react",
+            "npm:next-auth",
+            "npm:nprogress",
+            "npm:nprogress/nprogress.css",
+            "npm:next/router",
+            "npm:@mui/x-date-pickers",
+            "npm:@mui/x-date-pickers/AdapterMoment",
+            "npm:@mui/material"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/app/content/[id]/index.tsx",
+          "hash": "2874924760474972817",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/app/content/index.tsx",
+          "hash": "13864911638592559",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/app/model/[id]/index.tsx",
+          "hash": "318933899775237438",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/app/model/index.tsx",
+          "hash": "11604859712239326794",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/auth/signin.tsx",
+          "hash": "7792200780745103150",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react",
+            "npm:next-cookie"
+          ]
+        },
+        {
+          "file": "apps/client/src/pages/index.tsx",
+          "hash": "11294615812517427466",
+          "deps": [
+            "npm:next",
+            "npm:next-auth/react",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/common/pagination.ts",
+          "hash": "4034601379720766562",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/common/zod.ts",
+          "hash": "231561390669791323",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/root.ts",
+          "hash": "540374641088444035"
+        },
+        {
+          "file": "apps/client/src/server/api/routers/content.ts",
+          "hash": "12803592008774961453",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/routers/contentModel.ts",
+          "hash": "2415628781313959567",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/routers/field.ts",
+          "hash": "1415587692523843681",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/routers/fieldType.ts",
+          "hash": "12549993541668755211",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/api/routers/fieldTypeEnums.ts",
+          "hash": "10121493217945918528"
+        },
+        {
+          "file": "apps/client/src/server/api/trpc.ts",
+          "hash": "6416037394753506417",
+          "deps": [
+            "npm:@trpc/server/adapters/next",
+            "npm:next-auth",
+            "prisma",
+            "npm:@trpc/server",
+            "npm:superjson"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/auth.ts",
+          "hash": "802960065519668302",
+          "deps": [
+            "npm:next",
+            "npm:next-auth"
+          ]
+        },
+        {
+          "file": "apps/client/src/server/rest-api-sdk.ts",
+          "hash": "18412283702739401823",
+          "deps": [
+            "sdk"
+          ]
+        },
+        {
+          "file": "apps/client/src/styles/globals.css",
+          "hash": "2971108414436635266"
+        },
+        {
+          "file": "apps/client/src/types/next-auth.d.ts",
+          "hash": "9791920525697138404",
+          "deps": [
+            "npm:next-auth"
+          ]
+        },
+        {
+          "file": "apps/client/src/utils/api.ts",
+          "hash": "16080776937235656149",
+          "deps": [
+            "npm:@trpc/client",
+            "npm:@trpc/next",
+            "npm:@trpc/server",
+            "npm:superjson"
+          ]
+        },
+        {
+          "file": "apps/client/src/utils/common.d.ts",
+          "hash": "13526355332414439138"
+        },
+        {
+          "file": "apps/client/src/utils/redirect.ts",
+          "hash": "16344145078287347784",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/client/tailwind.config.js",
+          "hash": "2235424867464725089",
+          "deps": [
+            "npm:@nrwl/react/tailwind",
+            "npm:path"
+          ]
+        },
+        {
+          "file": "apps/client/tsconfig.json",
+          "hash": "10622235928137887514"
+        },
+        {
+          "file": "apps/client/tsconfig.spec.json",
+          "hash": "6922413205408300107"
+        },
+        {
+          "file": "apps/client/.next/package.json",
+          "hash": "11338307439248427064"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/index.pack.old",
+          "hash": "152238528970754901"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/6.pack",
+          "hash": "11498560135569130589"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/5.pack",
+          "hash": "18370881676929055453"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/7.pack",
+          "hash": "9397292285163964311"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/server-development/index.pack.old",
+          "hash": "17090349775127415476"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/server-development/7.pack",
+          "hash": "4922182217103191878"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/server-development/1.pack",
+          "hash": "15187584955970845063"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/4.pack",
+          "hash": "10535755825189297552"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/8.pack",
+          "hash": "8015066767059123742"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/amp.js",
+          "hash": "17442274289322255265"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/webpack.js",
+          "hash": "11097840106778542617"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/polyfills.js",
+          "hash": "3837536670243305325"
+        },
+        {
+          "file": "apps/client/.next/server/next-font-manifest.js",
+          "hash": "5679515833791060948"
+        },
+        {
+          "file": "apps/client/.next/react-loadable-manifest.json",
+          "hash": "3706195859628932749"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/node_modules_react-dom_server_browser_js.js",
+          "hash": "10746135115141556475"
+        },
+        {
+          "file": "apps/client/.next/server/next-font-manifest.json",
+          "hash": "8927915864298715861"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/pages/_error.js",
+          "hash": "6916705719246238453"
+        },
+        {
+          "file": "apps/client/.next/server/middleware-react-loadable-manifest.js",
+          "hash": "17944773613850350101"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/pages/_app.js",
+          "hash": "15996839122263164779"
+        },
+        {
+          "file": "apps/client/.next/static/development/_buildManifest.js",
+          "hash": "5081102354792613066"
+        },
+        {
+          "file": "apps/client/.next/server/middleware-build-manifest.js",
+          "hash": "4621187229582272604"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/main.js",
+          "hash": "3056276139690195942"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/react-refresh.js",
+          "hash": "2259533332924015683"
+        },
+        {
+          "file": "apps/client/.next/build-manifest.json",
+          "hash": "5249759198621825508"
+        },
+        {
+          "file": "apps/client/.next/static/development/_ssgManifest.js",
+          "hash": "17018243955171961484"
+        },
+        {
+          "file": "apps/client/.next/server/pages/_document.js",
+          "hash": "8073422207152937313",
+          "deps": [
+            [
+              "npm:next",
+              "dynamic"
+            ],
+            [
+              "npm:react",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/client/.next/server/pages/_app.js",
+          "hash": "2687293008693807562",
+          "deps": [
+            [
+              "npm:@mui/icons-material",
+              "dynamic"
+            ],
+            [
+              "npm:@mui/material",
+              "dynamic"
+            ],
+            [
+              "npm:@mui/x-date-pickers",
+              "dynamic"
+            ],
+            [
+              "npm:next-auth",
+              "dynamic"
+            ],
+            [
+              "npm:next",
+              "dynamic"
+            ],
+            [
+              "npm:nprogress",
+              "dynamic"
+            ],
+            [
+              "npm:react",
+              "dynamic"
+            ],
+            [
+              "npm:react-dom",
+              "dynamic"
+            ],
+            [
+              "npm:superjson",
+              "dynamic"
+            ],
+            [
+              "npm:@tanstack/react-query",
+              "dynamic"
+            ],
+            [
+              "npm:@trpc/client",
+              "dynamic"
+            ],
+            [
+              "npm:@trpc/react-query",
+              "dynamic"
+            ],
+            [
+              "npm:@trpc/server",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/client/.next/server/pages/_error.js",
+          "hash": "2965734490338790622",
+          "deps": [
+            [
+              "npm:next",
+              "dynamic"
+            ],
+            [
+              "npm:react",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/client/.next/server/pages-manifest.json",
+          "hash": "4797477269601554725"
+        },
+        {
+          "file": "apps/client/.next/server/middleware-manifest.json",
+          "hash": "11919384916463558595"
+        },
+        {
+          "file": "apps/client/.next/server/webpack-runtime.js",
+          "hash": "9172118266130656536"
+        },
+        {
+          "file": "apps/client/.next/trace",
+          "hash": "546199993362739533"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/9.pack",
+          "hash": "5605457415709628838"
+        },
+        {
+          "file": "apps/client/.next/static/webpack/webpack.e0c4e4ee3b7eed9b.hot-update.js",
+          "hash": "2573019223859689093"
+        },
+        {
+          "file": "apps/client/.next/static/webpack/e0c4e4ee3b7eed9b.webpack.hot-update.json",
+          "hash": "13405125561290911638"
+        },
+        {
+          "file": "apps/client/.next/static/chunks/pages/auth/signin.js",
+          "hash": "11473496442475124"
+        },
+        {
+          "file": "apps/client/.next/server/pages/auth/signin.js",
+          "hash": "15295813817409156137",
+          "deps": [
+            [
+              "npm:@mui/material",
+              "dynamic"
+            ],
+            [
+              "npm:next-auth",
+              "dynamic"
+            ],
+            [
+              "npm:next-cookie",
+              "dynamic"
+            ],
+            [
+              "npm:next",
+              "dynamic"
+            ],
+            [
+              "npm:react",
+              "dynamic"
+            ],
+            [
+              "npm:react-icons",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/2.pack",
+          "hash": "210246143385906089"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/11.pack",
+          "hash": "13045116614785581941"
+        },
+        {
+          "file": "apps/client/.next/cache/webpack/client-development/10.pack",
+          "hash": "17769555180150984000"
+        },
+        {
+          "file": "apps/client/.next/static/webpack/webpack.f376c73fff235e9c.hot-update.js",
+          "hash": "10874411400198076089"
+        },
+        {
+          "file": "apps/client/.next/server/_error.js",
+          "hash": "14097726953539755858",
+          "deps": [
+            [
+              "npm:next",
+              "dynamic"
+            ],
+            [
+              "npm:react",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "apps/client/.next/static/chunks/_error.js",
+          "hash": "9933737277730973498"
+        },
+        {
+          "file": "apps/client/.next/static/webpack/f376c73fff235e9c.webpack.hot-update.json",
+          "hash": "13405125561290911638"
+        }
+      ],
+      "sdk": [
+        {
+          "file": "libs/sdk/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "libs/sdk/README.md",
+          "hash": "3615995257148272675"
+        },
+        {
+          "file": "libs/sdk/openapitools.json",
+          "hash": "17381585805734847183"
+        },
+        {
+          "file": "libs/sdk/package.json",
+          "hash": "4508203876979721809"
+        },
+        {
+          "file": "libs/sdk/project.json",
+          "hash": "9874311657951413592"
+        },
+        {
+          "file": "libs/sdk/src/index.ts",
+          "hash": "1202652368713358152"
+        },
+        {
+          "file": "libs/sdk/src/sdk/.gitignore",
+          "hash": "14031326617291468971"
+        },
+        {
+          "file": "libs/sdk/src/sdk/.npmignore",
+          "hash": "9470206609760406689"
+        },
+        {
+          "file": "libs/sdk/src/sdk/.openapi-generator-ignore",
+          "hash": "5921108589004068994"
+        },
+        {
+          "file": "libs/sdk/src/sdk/.openapi-generator/FILES",
+          "hash": "14844632436296116986"
+        },
+        {
+          "file": "libs/sdk/src/sdk/.openapi-generator/VERSION",
+          "hash": "10546735421467177418"
+        },
+        {
+          "file": "libs/sdk/src/sdk/api.ts",
+          "hash": "2452898666987541053",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "libs/sdk/src/sdk/base.ts",
+          "hash": "14430830830252900436",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "libs/sdk/src/sdk/common.ts",
+          "hash": "4018573298459290858",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "libs/sdk/src/sdk/configuration.ts",
+          "hash": "823593983762943964"
+        },
+        {
+          "file": "libs/sdk/src/sdk/git_push.sh",
+          "hash": "257268719382818012"
+        },
+        {
+          "file": "libs/sdk/src/sdk/index.ts",
+          "hash": "3589616644118504365"
+        },
+        {
+          "file": "libs/sdk/tsconfig.json",
+          "hash": "634795086719220447"
+        },
+        {
+          "file": "libs/sdk/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        }
+      ],
+      "server": [
+        {
+          "file": "apps/server/.air.toml",
+          "hash": "5650291736048066900"
+        },
+        {
+          "file": "apps/server/.env",
+          "hash": "3373014078489987416"
+        },
+        {
+          "file": "apps/server/.gitignore",
+          "hash": "710351478859956218"
+        },
+        {
+          "file": "apps/server/Taskfile.yaml",
+          "hash": "4097702326290274842"
+        },
+        {
+          "file": "apps/server/config/config.go",
+          "hash": "8442085847803270088"
+        },
+        {
+          "file": "apps/server/db/db.go",
+          "hash": "4125791987928198850"
+        },
+        {
+          "file": "apps/server/dockerfile",
+          "hash": "3552434841546521687"
+        },
+        {
+          "file": "apps/server/go.mod",
+          "hash": "2848716492777364995"
+        },
+        {
+          "file": "apps/server/go.sum",
+          "hash": "7228064105610462970"
+        },
+        {
+          "file": "apps/server/headless-cms-be",
+          "hash": "13051983665861849378"
+        },
+        {
+          "file": "apps/server/main.go",
+          "hash": "5306165963745493819"
+        },
+        {
+          "file": "apps/server/models/content.go",
+          "hash": "17257763538388893462"
+        },
+        {
+          "file": "apps/server/models/contentType.go",
+          "hash": "2770791188383891425"
+        },
+        {
+          "file": "apps/server/models/fieldModel.go",
+          "hash": "14262695004372943103"
+        },
+        {
+          "file": "apps/server/models/fieldType.go",
+          "hash": "11495121994403627896"
+        },
+        {
+          "file": "apps/server/models/generic.go",
+          "hash": "16062354272229213120"
+        },
+        {
+          "file": "apps/server/project.json",
+          "hash": "9420638585935253306"
+        },
+        {
+          "file": "apps/server/routes/auth/github/controller.go",
+          "hash": "556527779677254366"
+        },
+        {
+          "file": "apps/server/routes/auth/github/service.go",
+          "hash": "1463924918538900506"
+        },
+        {
+          "file": "apps/server/routes/content/controller.go",
+          "hash": "8334647538738346743"
+        },
+        {
+          "file": "apps/server/routes/content/service.go",
+          "hash": "15824285360294163435"
+        },
+        {
+          "file": "apps/server/routes/contentModel/controller.go",
+          "hash": "1982204406863984264"
+        },
+        {
+          "file": "apps/server/routes/contentModel/service.go",
+          "hash": "6801525110133104927"
+        },
+        {
+          "file": "apps/server/routes/field/controller.go",
+          "hash": "5500730992647701498"
+        },
+        {
+          "file": "apps/server/routes/field/service.go",
+          "hash": "4444639998138392529"
+        },
+        {
+          "file": "apps/server/routes/fieldType/controller.go",
+          "hash": "6863979622307449243"
+        },
+        {
+          "file": "apps/server/routes/fieldType/service.go",
+          "hash": "10731462616666660849"
+        },
+        {
+          "file": "apps/server/routes/index.go",
+          "hash": "13107827748762779393"
+        },
+        {
+          "file": "apps/server/routes/auth/jwt/service.go",
+          "hash": "1551386563160012030"
+        },
+        {
+          "file": "apps/server/middlewares/jwt/isValidToken.go",
+          "hash": "12360440118510169466"
+        },
+        {
+          "file": "apps/server/routes/auth/github/utils.go",
+          "hash": "13689340988760361950"
+        }
+      ],
+      "server-e2e": [
+        {
+          "file": "tests/server-e2e/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "tests/server-e2e/README.md",
+          "hash": "5068009461693007972"
+        },
+        {
+          "file": "tests/server-e2e/package.json",
+          "hash": "9087474524695735077"
+        },
+        {
+          "file": "tests/server-e2e/project.json",
+          "hash": "4753281731379570924"
+        },
+        {
+          "file": "tests/server-e2e/src/content/getList.spec.ts",
+          "hash": "15441466322694082730",
+          "deps": [
+            "prisma"
+          ]
+        },
+        {
+          "file": "tests/server-e2e/src/contentModel/create.spec.ts",
+          "hash": "16707406000149067970"
+        },
+        {
+          "file": "tests/server-e2e/src/contentModel/delete.spec.ts",
+          "hash": "6324681040556624012",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "tests/server-e2e/src/contentModel/get.temp.ts",
+          "hash": "3703692373621258766",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "tests/server-e2e/src/contentModel/getList.spec.ts",
+          "hash": "16871503229160400717"
+        },
+        {
+          "file": "tests/server-e2e/src/contentModel/update.spec.ts",
+          "hash": "2055997384622680247"
+        },
+        {
+          "file": "tests/server-e2e/src/utils/sdk.ts",
+          "hash": "18412283702739401823",
+          "deps": [
+            "sdk"
+          ]
+        },
+        {
+          "file": "tests/server-e2e/tsconfig.json",
+          "hash": "8130618945393307719"
+        },
+        {
+          "file": "tests/server-e2e/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        },
+        {
+          "file": "tests/server-e2e/tsconfig.spec.json",
+          "hash": "1570027403592923527"
+        },
+        {
+          "file": "tests/server-e2e/vite.config.ts",
+          "hash": "16699961252461059639",
+          "deps": [
+            "npm:vite",
+            "npm:vite-tsconfig-paths"
+          ]
+        }
+      ],
+      "prisma": [
+        {
+          "file": "libs/prisma/.env",
+          "hash": "13699665779718381606"
+        },
+        {
+          "file": "libs/prisma/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "libs/prisma/README.md",
+          "hash": "17553041786630873690"
+        },
+        {
+          "file": "libs/prisma/package.json",
+          "hash": "2958946427292686698"
+        },
+        {
+          "file": "libs/prisma/prisma/migrations/20230117211315_init/migration.sql",
+          "hash": "8988712288973510222"
+        },
+        {
+          "file": "libs/prisma/prisma/migrations/migration_lock.toml",
+          "hash": "11493296588214560035"
+        },
+        {
+          "file": "libs/prisma/prisma/schema.prisma",
+          "hash": "4315596340943595655"
+        },
+        {
+          "file": "libs/prisma/project.json",
+          "hash": "11676331208323373717"
+        },
+        {
+          "file": "libs/prisma/src/index.ts",
+          "hash": "15247671632539578085"
+        },
+        {
+          "file": "libs/prisma/src/lib/prisma.ts",
+          "hash": "15543077648727468862",
+          "deps": [
+            "npm:@prisma/client",
+            "envs"
+          ]
+        },
+        {
+          "file": "libs/prisma/tsconfig.json",
+          "hash": "634795086719220447"
+        },
+        {
+          "file": "libs/prisma/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        }
+      ],
+      "envs": [
+        {
+          "file": "libs/envs/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "libs/envs/README.md",
+          "hash": "830053621217335293"
+        },
+        {
+          "file": "libs/envs/package.json",
+          "hash": "16925782449469158733"
+        },
+        {
+          "file": "libs/envs/project.json",
+          "hash": "7999629130344937682"
+        },
+        {
+          "file": "libs/envs/src/index.ts",
+          "hash": "8395554216174151847"
+        },
+        {
+          "file": "libs/envs/src/lib/client.ts",
+          "hash": "12042342571620837711"
+        },
+        {
+          "file": "libs/envs/src/lib/schema.ts",
+          "hash": "16216311243324207533",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "libs/envs/src/lib/server.ts",
+          "hash": "11996172476289962556"
+        },
+        {
+          "file": "libs/envs/src/lib/utils.ts",
+          "hash": "6873977599951468716"
+        },
+        {
+          "file": "libs/envs/tsconfig.json",
+          "hash": "634795086719220447"
+        },
+        {
+          "file": "libs/envs/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        }
+      ]
+    }
+  }
+}

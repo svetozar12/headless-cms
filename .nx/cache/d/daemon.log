@@ -1,0 +1,759 @@
+[NX Daemon Server] - 2024-01-28T21:29:22.986Z - Started listening on: /tmp/3757b8824a52e9373595/d.sock
+[NX Daemon Server] - 2024-01-28T21:29:22.989Z - [WATCHER]: Subscribed to changes within: /home/sgospodinov/Desktop/coding-journey/headless-cms (native)
+[NX Daemon Server] - 2024-01-28T21:29:23.000Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:23.001Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-28T21:29:23.007Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-28T21:29:23.030Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:23.030Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-28T21:29:23.030Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:23.152Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-28T21:29:23.158Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-28T21:29:23.158Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 145. Response time: 6.
+[NX Daemon Server] - 2024-01-28T21:29:23.159Z - Time taken for 'total for creating and serializing project graph' 144.80157300038263ms
+[NX Daemon Server] - 2024-01-28T21:29:23.159Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:23.173Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-01-28T21:29:28.931Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:28.932Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-01-28T21:29:28.933Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:28.934Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-28T21:29:28.934Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-28T21:29:28.936Z - Time taken for 'total for creating and serializing project graph' 0.13539000041782856ms
+[NX Daemon Server] - 2024-01-28T21:29:28.937Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-28T21:29:28.937Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-01-28T21:29:28.947Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-01-28T21:29:30.616Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:30.617Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-01-28T21:29:30.618Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:30.620Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-28T21:29:30.620Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-28T21:29:30.622Z - Time taken for 'total for creating and serializing project graph' 0.14627999998629093ms
+[NX Daemon Server] - 2024-01-28T21:29:30.623Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-28T21:29:30.623Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-01-28T21:29:30.706Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-01-28T21:29:30.706Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-01-28T21:29:30.707Z - Handled HASH_TASKS. Handling time: 11. Response time: 1.
+[NX Daemon Server] - 2024-01-28T21:29:32.944Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:41.744Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-28T21:29:41.745Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-28T21:29:41.746Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-28T21:29:41.748Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-28T21:29:41.748Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-28T21:29:41.751Z - Time taken for 'total for creating and serializing project graph' 0.360899000428617ms
+[NX Daemon Server] - 2024-01-28T21:29:41.752Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-28T21:29:41.753Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 5.
+[NX Daemon Server] - 2024-01-28T21:29:41.833Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-01-28T21:29:41.834Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-01-28T21:29:41.834Z - Handled HASH_TASKS. Handling time: 7. Response time: 1.
+[NX Daemon Server] - 2024-01-28T21:29:44.216Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:44.218Z - [WATCHER]: 1 file(s) created or restored, 0 file(s) modified, 50 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:44.320Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:44.320Z - [REQUEST]: apps/client/.next/package.json
+[NX Daemon Server] - 2024-01-28T21:29:44.320Z - [REQUEST]: apps/client/.next/static/chunks/pages/_app.js,apps/client/.next/static/webpack/7d2c91da035a944e.webpack.hot-update.json,apps/client/.next/static/webpack/a0cb5552f336110d.webpack.hot-update.json,apps/client/.next/static/chunks/pages/auth/signin.js,apps/client/.next/build-manifest.json,apps/client/.next/trace,apps/client/.next/server/pages/_app.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/webpack/webpack.7c2031b1ddf47dd9.hot-update.js,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/static/webpack/webpack.a0cb5552f336110d.hot-update.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/static/webpack/webpack.7d2c91da035a944e.hot-update.js,apps/client/.next/static/webpack/webpack.38036d4925ef623b.hot-update.js,apps/client/.next/static/webpack/webpack.119f5d5ecfc1a7a9.hot-update.js,apps/client/.next/static/webpack/cb28cb9808dd5594.webpack.hot-update.json,apps/client/.next/static/chunks/fallback/react-refresh.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/static/chunks/node_modules_react-dom_server_browser_js.js,apps/client/.next/server/pages/auth/signin.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/static/webpack/38036d4925ef623b.webpack.hot-update.json,apps/client/.next/static/chunks/fallback/amp.js,apps/client/.next/fallback-build-manifest.json,apps/client/.next/static/chunks/fallback/pages/_error.js,apps/client/.next/server/_error.js,apps/client/.next/static/webpack/8d121dd52b5a7257.webpack.hot-update.json,apps/client/.next/server/pages-manifest.json,apps/client/.next/static/webpack/7c2031b1ddf47dd9.webpack.hot-update.json,apps/client/.next/server/webpack-runtime.js,apps/client/.next/static/chunks/_error.js,apps/client/.next/static/webpack/webpack.d8693d0c41c6a80d.hot-update.js,apps/client/.next/static/webpack/webpack.8d121dd52b5a7257.hot-update.js,apps/client/.next/static/webpack/119f5d5ecfc1a7a9.webpack.hot-update.json,apps/client/.next/static/chunks/polyfills.js,apps/client/.next/static/chunks/main.js,apps/client/.next/static/chunks/amp.js,apps/client/.next/static/chunks/fallback/webpack.js,apps/client/.next/static/chunks/react-refresh.js,apps/client/.next/static/chunks/pages/_error.js,apps/client/.next/static/chunks/fallback/pages/_app.js,apps/client/.next/server/middleware-manifest.json,apps/client/.next/server/next-font-manifest.js,apps/client/.next/server/pages/_document.js,apps/client/.next/static/chunks/fallback/main.js,apps/client/.next/static/webpack/webpack.cb28cb9808dd5594.hot-update.js,apps/client/.next/static/webpack/d8693d0c41c6a80d.webpack.hot-update.json,apps/client/.next/server/pages/_error.js
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:44.382Z - Time taken for 'hash changed files from watcher' 0.4912000000476837ms
+[NX Daemon Server] - 2024-01-28T21:29:46.954Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:46.956Z - [WATCHER]: 14 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:47.031Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:47.032Z - [WATCHER]: 2 file(s) created or restored, 1 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:47.066Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:47.066Z - [REQUEST]: apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/static/chunks/amp.js,apps/client/.next/build-manifest.json,apps/client/.next/static/chunks/react-refresh.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/static/chunks/main.js,apps/client/.next/static/chunks/node_modules_react-dom_server_browser_js.js,apps/client/.next/static/chunks/polyfills.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/chunks/pages/_error.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/static/chunks/pages/_app.js,apps/client/.next/server/next-font-manifest.json
+[NX Daemon Server] - 2024-01-28T21:29:47.066Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:47.229Z - Time taken for 'hash changed files from watcher' 8.51359000010416ms
+[NX Daemon Server] - 2024-01-28T21:29:47.823Z - [WATCHER]: 6 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:47.824Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:47.907Z - [WATCHER]: apps/client/.next/trace was created or restored
+[NX Daemon Server] - 2024-01-28T21:29:47.907Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:47.925Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:47.925Z - [REQUEST]: apps/client/.next/server/pages/_error.js,apps/client/.next/server/webpack-runtime.js,apps/client/.next/server/pages-manifest.json,apps/client/.next/server/pages/_app.js,apps/client/.next/server/pages/_document.js,apps/client/.next/server/middleware-manifest.json,apps/client/.next/trace
+[NX Daemon Server] - 2024-01-28T21:29:47.925Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:48.081Z - Time taken for 'hash changed files from watcher' 0.7715989998541772ms
+[NX Daemon Server] - 2024-01-28T21:29:48.201Z - [WATCHER]: 0 file(s) created or restored, 9 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:48.202Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:48.402Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:48.402Z - [REQUEST]: apps/client/.next/static/development/_buildManifest.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/trace,apps/client/.next/build-manifest.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/next-font-manifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/server/middleware-build-manifest.js
+[NX Daemon Server] - 2024-01-28T21:29:48.402Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:48.540Z - Time taken for 'hash changed files from watcher' 0.5287399999797344ms
+[NX Daemon Server] - 2024-01-28T21:29:49.791Z - [WATCHER]: 4 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:49.792Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:49.859Z - [WATCHER]: 1 file(s) created or restored, 2 file(s) modified, 1 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:49.859Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:49.901Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:49.901Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/6.pack_,apps/client/.next/cache/webpack/client-development/index.pack_,apps/client/.next/cache/webpack/client-development/5.pack_,apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/index.pack.old
+[NX Daemon Server] - 2024-01-28T21:29:49.901Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/index.pack
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:50.062Z - [WATCHER]: 4 file(s) created or restored, 0 file(s) modified, 4 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:50.062Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:50.063Z - Time taken for 'hash changed files from watcher' 9.659868000075221ms
+[NX Daemon Server] - 2024-01-28T21:29:50.217Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:50.217Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/5.pack,apps/client/.next/cache/webpack/client-development/index.pack,apps/client/.next/cache/webpack/client-development/7.pack,apps/client/.next/cache/webpack/client-development/6.pack
+[NX Daemon Server] - 2024-01-28T21:29:50.217Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/index.pack_,apps/client/.next/cache/webpack/client-development/6.pack_,apps/client/.next/cache/webpack/client-development/5.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:50.355Z - Time taken for 'hash changed files from watcher' 54.64388700015843ms
+[NX Daemon Server] - 2024-01-28T21:29:57.946Z - [WATCHER]: 3 file(s) created or restored, 9 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:57.947Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:58.041Z - [WATCHER]: 1 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:58.041Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:58.049Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:58.049Z - [REQUEST]: apps/client/.next/static/chunks/pages/auth/signin.js,apps/client/.next/static/webpack/webpack.e0c4e4ee3b7eed9b.hot-update.js,apps/client/.next/static/webpack/e0c4e4ee3b7eed9b.webpack.hot-update.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/next-font-manifest.js,apps/client/.next/build-manifest.json,apps/client/.next/server/next-font-manifest.json,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/server/pages/auth/signin.js,apps/client/.next/server/pages-manifest.json,apps/client/.next/trace
+[NX Daemon Server] - 2024-01-28T21:29:58.049Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:58.179Z - Time taken for 'hash changed files from watcher' 1.730657999869436ms
+[NX Daemon Server] - 2024-01-28T21:29:59.066Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:29:59.066Z - [WATCHER]: 3 file(s) created or restored, 0 file(s) modified, 4 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:29:59.168Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:29:59.168Z - [REQUEST]: apps/client/.next/cache/webpack/server-development/index.pack.old,apps/client/.next/cache/webpack/server-development/7.pack,apps/client/.next/cache/webpack/server-development/1.pack
+[NX Daemon Server] - 2024-01-28T21:29:59.168Z - [REQUEST]: apps/client/.next/cache/webpack/server-development/1.pack_,apps/client/.next/cache/webpack/server-development/index.pack_,apps/client/.next/cache/webpack/server-development/index.pack,apps/client/.next/cache/webpack/server-development/7.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:29:59.315Z - Time taken for 'hash changed files from watcher' 0.9341589999385178ms
+[NX Daemon Server] - 2024-01-28T21:30:01.292Z - [WATCHER]: 4 file(s) created or restored, 10 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:30:01.292Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:30:01.393Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:30:01.393Z - [REQUEST]: apps/client/.next/static/webpack/webpack.f376c73fff235e9c.hot-update.js,apps/client/.next/server/_error.js,apps/client/.next/static/webpack/f376c73fff235e9c.webpack.hot-update.json,apps/client/.next/static/chunks/_error.js,apps/client/.next/server/pages-manifest.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/build-manifest.json,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/server/next-font-manifest.json
+[NX Daemon Server] - 2024-01-28T21:30:01.393Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:30:01.521Z - [WATCHER]: 0 file(s) created or restored, 10 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:30:01.521Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:30:01.521Z - Time taken for 'hash changed files from watcher' 0.744078999850899ms
+[NX Daemon Server] - 2024-01-28T21:30:01.722Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:30:01.722Z - [REQUEST]: apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/build-manifest.json,apps/client/.next/trace,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/pages-manifest.json,apps/client/.next/server/next-font-manifest.js
+[NX Daemon Server] - 2024-01-28T21:30:01.723Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:30:01.850Z - Time taken for 'hash changed files from watcher' 0.9527389998547733ms
+[NX Daemon Server] - 2024-01-28T21:30:07.661Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-28T21:30:07.661Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:30:08.062Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:30:08.062Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-28T21:30:08.062Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:30:08.211Z - Time taken for 'hash changed files from watcher' 0.37447999976575375ms
+[NX Daemon Server] - 2024-01-28T21:30:08.817Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:31:01.503Z - [WATCHER]: 2 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:31:01.503Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:31:01.563Z - [WATCHER]: 2 file(s) created or restored, 0 file(s) modified, 1 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:31:01.563Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:31:01.603Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:31:01.604Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/4.pack_,apps/client/.next/cache/webpack/client-development/8.pack_,apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/index.pack_
+[NX Daemon Server] - 2024-01-28T21:31:01.604Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/index.pack
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:31:01.645Z - [WATCHER]: 5 file(s) created or restored, 0 file(s) modified, 4 file(s) deleted
+[NX Daemon Server] - 2024-01-28T21:31:01.645Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-28T21:31:01.645Z - Time taken for 'hash changed files from watcher' 0.41789899999275804ms
+[NX Daemon Server] - 2024-01-28T21:31:01.775Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-28T21:31:01.776Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/7.pack,apps/client/.next/cache/webpack/client-development/index.pack.old,apps/client/.next/cache/webpack/client-development/4.pack,apps/client/.next/cache/webpack/client-development/index.pack,apps/client/.next/cache/webpack/client-development/8.pack
+[NX Daemon Server] - 2024-01-28T21:31:01.776Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/8.pack_,apps/client/.next/cache/webpack/client-development/4.pack_,apps/client/.next/cache/webpack/client-development/index.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-28T21:31:01.941Z - Time taken for 'hash changed files from watcher' 29.70568499993533ms
+[NX Daemon Server] - 2024-01-29T00:31:01.731Z - There are 2 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-01-29T03:31:01.772Z - There are 2 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-01-29T06:31:01.834Z - There are 2 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-01-29T09:31:01.932Z - There are 2 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-01-29T12:31:02.032Z - There are 2 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-01-29T13:48:26.496Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-29T13:48:26.589Z - [WATCHER]: apps/client/.next/_events.json was created or restored
+[NX Daemon Server] - 2024-01-29T13:48:26.590Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:48:26.689Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:48:26.689Z - [REQUEST]: apps/client/.next/_events.json
+[NX Daemon Server] - 2024-01-29T13:48:26.690Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:48:26.846Z - Time taken for 'hash changed files from watcher' 0.5226999968290329ms
+[NX Daemon Server] - 2024-01-29T13:48:29.788Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:48:29.788Z - [WATCHER]: 0 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T13:48:29.989Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:48:29.989Z - [REQUEST]: apps/server/go.mod,apps/server/go.sum
+[NX Daemon Server] - 2024-01-29T13:48:29.989Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:48:30.153Z - Time taken for 'hash changed files from watcher' 0.3336009979248047ms
+[NX Daemon Server] - 2024-01-29T13:49:43.918Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was created or restored
+[NX Daemon Server] - 2024-01-29T13:49:43.918Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:49:44.019Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:49:44.019Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:49:44.019Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:49:44.216Z - Time taken for 'hash changed files from watcher' 0.3438899964094162ms
+[NX Daemon Server] - 2024-01-29T13:49:55.260Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:49:55.260Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:49:55.461Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:49:55.461Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:49:55.461Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:49:55.606Z - Time taken for 'hash changed files from watcher' 0.3001900017261505ms
+[NX Daemon Server] - 2024-01-29T13:50:05.561Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:50:05.561Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:50:05.962Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:50:05.962Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:50:05.962Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:50:06.112Z - Time taken for 'hash changed files from watcher' 0.3371810019016266ms
+[NX Daemon Server] - 2024-01-29T13:50:39.787Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:50:39.787Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:50:40.588Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:50:40.588Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:50:40.588Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:50:40.750Z - Time taken for 'hash changed files from watcher' 0.3131000027060509ms
+[NX Daemon Server] - 2024-01-29T13:50:41.177Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:50:43.153Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:50:43.153Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:50:44.755Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:50:44.756Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:50:44.756Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:50:44.949Z - Time taken for 'hash changed files from watcher' 0.3429500013589859ms
+[NX Daemon Server] - 2024-01-29T13:50:50.079Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:50:50.079Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:50:53.280Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:50:53.280Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:50:53.281Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:50:53.415Z - Time taken for 'hash changed files from watcher' 0.6258499994874ms
+[NX Daemon Server] - 2024-01-29T13:51:09.855Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:51:09.856Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:51:16.260Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:51:16.260Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:51:16.260Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:51:16.403Z - Time taken for 'hash changed files from watcher' 0.33063000440597534ms
+[NX Daemon Server] - 2024-01-29T13:51:51.633Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:51:51.633Z - [WATCHER]: apps/server/middlewares/jwt/isValidToken.go was created or restored
+[NX Daemon Server] - 2024-01-29T13:51:51.734Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:51:51.734Z - [REQUEST]: apps/server/middlewares/jwt/isValidToken.go
+[NX Daemon Server] - 2024-01-29T13:51:51.734Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:51:51.924Z - Time taken for 'hash changed files from watcher' 0.3211999982595444ms
+[NX Daemon Server] - 2024-01-29T13:51:55.424Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:51:55.425Z - [WATCHER]: apps/server/middlewares/jwt/isValidToken.go was modified
+[NX Daemon Server] - 2024-01-29T13:51:55.625Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:51:55.625Z - [REQUEST]: apps/server/middlewares/jwt/isValidToken.go
+[NX Daemon Server] - 2024-01-29T13:51:55.625Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:51:55.770Z - Time taken for 'hash changed files from watcher' 0.2715499997138977ms
+[NX Daemon Server] - 2024-01-29T13:52:02.613Z - [WATCHER]: apps/server/middlewares/jwt/isValidToken.go was modified
+[NX Daemon Server] - 2024-01-29T13:52:02.613Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:52:03.014Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:52:03.014Z - [REQUEST]: apps/server/middlewares/jwt/isValidToken.go
+[NX Daemon Server] - 2024-01-29T13:52:03.014Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:52:03.146Z - Time taken for 'hash changed files from watcher' 0.3950809985399246ms
+[NX Daemon Server] - 2024-01-29T13:52:30.293Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:52:30.294Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:52:31.096Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:52:31.096Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:52:31.096Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:52:31.279Z - Time taken for 'hash changed files from watcher' 0.6041409969329834ms
+[NX Daemon Server] - 2024-01-29T13:52:36.617Z - [WATCHER]: apps/server/middlewares was deleted
+[NX Daemon Server] - 2024-01-29T13:52:36.617Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:52:38.219Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:52:38.219Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-29T13:52:38.220Z - [REQUEST]: apps/server/middlewares
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:52:38.261Z - Time taken for 'hash changed files from watcher' 0.5729210004210472ms
+[NX Daemon Server] - 2024-01-29T13:52:47.016Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:52:47.016Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:52:50.220Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:52:50.220Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:52:50.220Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:52:50.403Z - Time taken for 'hash changed files from watcher' 0.5553810000419617ms
+[NX Daemon Server] - 2024-01-29T13:52:53.471Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:52:53.471Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:52:59.879Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:52:59.879Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:52:59.879Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:53:00.043Z - Time taken for 'hash changed files from watcher' 0.7195010036230087ms
+[NX Daemon Server] - 2024-01-29T13:53:17.416Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:53:17.416Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:53:23.820Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:53:23.820Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:53:23.821Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:53:24.004Z - Time taken for 'hash changed files from watcher' 0.6199310049414635ms
+[NX Daemon Server] - 2024-01-29T13:53:38.455Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:53:38.456Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:53:44.860Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:53:44.860Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:53:44.860Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:53:45.024Z - Time taken for 'hash changed files from watcher' 0.2897699996829033ms
+[NX Daemon Server] - 2024-01-29T13:53:57.129Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:53:57.129Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:53:57.448Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:54:03.532Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:54:03.532Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:54:03.532Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:54:03.709Z - Time taken for 'hash changed files from watcher' 0.5520009994506836ms
+[NX Daemon Server] - 2024-01-29T13:55:27.448Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:55:27.448Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:55:27.760Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:55:33.854Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:55:33.854Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:55:33.854Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:55:34.059Z - Time taken for 'hash changed files from watcher' 0.6544310003519058ms
+[NX Daemon Server] - 2024-01-29T13:55:58.842Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:55:58.842Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:05.248Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:56:05.248Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:56:05.248Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:56:05.414Z - Time taken for 'hash changed files from watcher' 0.39329999685287476ms
+[NX Daemon Server] - 2024-01-29T13:56:14.774Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:56:14.775Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:15.020Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:21.180Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:56:21.180Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:56:21.180Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:56:21.342Z - Time taken for 'hash changed files from watcher' 0.3026610016822815ms
+[NX Daemon Server] - 2024-01-29T13:56:39.640Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:39.641Z - [WATCHER]: apps/server/routes/auth/jwt/service.go was modified
+[NX Daemon Server] - 2024-01-29T13:56:39.896Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:46.048Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:56:46.048Z - [REQUEST]: apps/server/routes/auth/jwt/service.go
+[NX Daemon Server] - 2024-01-29T13:56:46.048Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:56:46.268Z - Time taken for 'hash changed files from watcher' 0.5702210068702698ms
+[NX Daemon Server] - 2024-01-29T13:56:49.469Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:56:49.469Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:50.688Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:55.872Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:56:55.872Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:56:55.873Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:56:56.001Z - Time taken for 'hash changed files from watcher' 0.5597309991717339ms
+[NX Daemon Server] - 2024-01-29T13:56:58.000Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:56:58.001Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:56:59.145Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:04.404Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:57:04.404Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:57:04.404Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:57:04.531Z - Time taken for 'hash changed files from watcher' 0.31954099982976913ms
+[NX Daemon Server] - 2024-01-29T13:57:08.006Z - [WATCHER]: apps/server/routes/auth/github/utils.go was created or restored
+[NX Daemon Server] - 2024-01-29T13:57:08.006Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:08.075Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:08.107Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:57:08.107Z - [REQUEST]: apps/server/routes/auth/github/utils.go
+[NX Daemon Server] - 2024-01-29T13:57:08.107Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:57:08.321Z - Time taken for 'hash changed files from watcher' 0.4176810011267662ms
+[NX Daemon Server] - 2024-01-29T13:57:19.379Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:19.380Z - [WATCHER]: apps/server/routes/auth/github/utils.go was modified
+[NX Daemon Server] - 2024-01-29T13:57:19.449Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:19.581Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:57:19.581Z - [REQUEST]: apps/server/routes/auth/github/utils.go
+[NX Daemon Server] - 2024-01-29T13:57:19.581Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:57:19.735Z - Time taken for 'hash changed files from watcher' 0.4354510009288788ms
+[NX Daemon Server] - 2024-01-29T13:57:23.706Z - [WATCHER]: apps/server/routes/auth/github/utils.go was modified
+[NX Daemon Server] - 2024-01-29T13:57:23.706Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:24.047Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:24.106Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:57:24.106Z - [REQUEST]: apps/server/routes/auth/github/utils.go
+[NX Daemon Server] - 2024-01-29T13:57:24.106Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:57:24.256Z - Time taken for 'hash changed files from watcher' 0.36354999989271164ms
+[NX Daemon Server] - 2024-01-29T13:57:24.758Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T13:57:24.759Z - [WATCHER]: apps/server/routes/auth/github/controller.go was modified
+[NX Daemon Server] - 2024-01-29T13:57:25.560Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T13:57:25.560Z - [REQUEST]: apps/server/routes/auth/github/controller.go
+[NX Daemon Server] - 2024-01-29T13:57:25.560Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T13:57:25.734Z - Time taken for 'hash changed files from watcher' 0.5476410016417503ms
+[NX Daemon Server] - 2024-01-29T13:57:26.100Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:34.174Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-29T14:12:34.177Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-29T14:12:34.177Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-29T14:12:34.179Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-29T14:12:34.179Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-29T14:12:34.181Z - Time taken for 'total for creating and serializing project graph' 0.36142099648714066ms
+[NX Daemon Server] - 2024-01-29T14:12:34.183Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-29T14:12:34.183Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-01-29T14:12:34.326Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-01-29T14:12:34.328Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-01-29T14:12:34.332Z - Handled HASH_TASKS. Handling time: 17. Response time: 6.
+[NX Daemon Server] - 2024-01-29T14:12:43.135Z - [WATCHER]: 1 file(s) created or restored, 0 file(s) modified, 32 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:43.135Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:43.236Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:43.236Z - [REQUEST]: apps/client/.next/package.json
+[NX Daemon Server] - 2024-01-29T14:12:43.236Z - [REQUEST]: apps/client/.next/server/pages/_app.js,apps/client/.next/static/chunks/node_modules_react-dom_server_browser_js.js,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/build-manifest.json,apps/client/.next/trace,apps/client/.next/static/webpack/webpack.f376c73fff235e9c.hot-update.js,apps/client/.next/server/webpack-runtime.js,apps/client/.next/static/chunks/amp.js,apps/client/.next/server/pages/_error.js,apps/client/.next/static/webpack/f376c73fff235e9c.webpack.hot-update.json,apps/client/.next/static/chunks/pages/_error.js,apps/client/.next/server/pages-manifest.json,apps/client/.next/server/pages/_document.js,apps/client/.next/server/middleware-manifest.json,apps/client/.next/static/chunks/pages/auth/signin.js,apps/client/.next/static/chunks/_error.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/_events.json,apps/client/.next/server/_error.js,apps/client/.next/static/chunks/main.js,apps/client/.next/static/webpack/webpack.e0c4e4ee3b7eed9b.hot-update.js,apps/client/.next/static/chunks/polyfills.js,apps/client/.next/static/webpack/e0c4e4ee3b7eed9b.webpack.hot-update.json,apps/client/.next/server/next-font-manifest.js,apps/client/.next/static/chunks/pages/_app.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/pages/auth/signin.js,apps/client/.next/static/chunks/react-refresh.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/server/middleware-react-loadable-manifest.js
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:43.287Z - Time taken for 'hash changed files from watcher' 0.5615620017051697ms
+[NX Daemon Server] - 2024-01-29T14:12:46.619Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:46.620Z - [WATCHER]: 16 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:46.729Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:46.729Z - [REQUEST]: apps/client/.next/static/chunks/polyfills.js,apps/client/.next/static/chunks/amp.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/static/chunks/pages/_app.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/chunks/main.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/static/chunks/pages/_error.js,apps/client/.next/build-manifest.json,apps/client/.next/static/chunks/node_modules_react-dom_server_browser_js.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/static/chunks/webpack.js,apps/client/.next/static/chunks/react-refresh.js
+[NX Daemon Server] - 2024-01-29T14:12:46.729Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:46.892Z - Time taken for 'hash changed files from watcher' 8.60597299784422ms
+[NX Daemon Server] - 2024-01-29T14:12:47.644Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:47.645Z - [WATCHER]: 5 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:47.696Z - [WATCHER]: apps/client/.next/server/middleware-manifest.json was created or restored
+[NX Daemon Server] - 2024-01-29T14:12:47.696Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:47.746Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:47.746Z - [REQUEST]: apps/client/.next/server/pages/_document.js,apps/client/.next/server/pages/_error.js,apps/client/.next/server/pages-manifest.json,apps/client/.next/server/pages/_app.js,apps/client/.next/server/webpack-runtime.js,apps/client/.next/server/middleware-manifest.json
+[NX Daemon Server] - 2024-01-29T14:12:47.746Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:47.905Z - [WATCHER]: apps/client/.next/trace was created or restored
+[NX Daemon Server] - 2024-01-29T14:12:47.905Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:47.907Z - Time taken for 'hash changed files from watcher' 0.6732219979166985ms
+[NX Daemon Server] - 2024-01-29T14:12:48.006Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:48.006Z - [REQUEST]: apps/client/.next/trace
+[NX Daemon Server] - 2024-01-29T14:12:48.006Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:48.179Z - [WATCHER]: 0 file(s) created or restored, 9 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:48.179Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:48.182Z - Time taken for 'hash changed files from watcher' 0.39900100231170654ms
+[NX Daemon Server] - 2024-01-29T14:12:48.380Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:48.380Z - [REQUEST]: apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/trace,apps/client/.next/build-manifest.json,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/next-font-manifest.json
+[NX Daemon Server] - 2024-01-29T14:12:48.380Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:48.552Z - Time taken for 'hash changed files from watcher' 0.8501320034265518ms
+[NX Daemon Server] - 2024-01-29T14:12:49.243Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:49.245Z - [WATCHER]: 4 file(s) created or restored, 0 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:49.328Z - [WATCHER]: 1 file(s) created or restored, 0 file(s) modified, 1 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:49.328Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:49.353Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:49.361Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/9.pack_,apps/client/.next/cache/webpack/client-development/8.pack_,apps/client/.next/cache/webpack/client-development/index.pack_,apps/client/.next/cache/webpack/client-development/index.pack.old
+[NX Daemon Server] - 2024-01-29T14:12:49.361Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/index.pack
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:49.527Z - [WATCHER]: 4 file(s) created or restored, 0 file(s) modified, 4 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:12:49.528Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:12:49.534Z - Time taken for 'hash changed files from watcher' 7.98378200083971ms
+[NX Daemon Server] - 2024-01-29T14:12:49.671Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:12:49.671Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/9.pack,apps/client/.next/cache/webpack/client-development/7.pack,apps/client/.next/cache/webpack/client-development/8.pack,apps/client/.next/cache/webpack/client-development/index.pack
+[NX Daemon Server] - 2024-01-29T14:12:49.671Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/9.pack_,apps/client/.next/cache/webpack/client-development/7.pack_,apps/client/.next/cache/webpack/client-development/8.pack_,apps/client/.next/cache/webpack/client-development/index.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:12:49.821Z - Time taken for 'hash changed files from watcher' 43.05324700474739ms
+[NX Daemon Server] - 2024-01-29T14:13:02.968Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:02.969Z - [WATCHER]: 3 file(s) created or restored, 9 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:03.074Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:13:03.074Z - [REQUEST]: apps/client/.next/static/webpack/webpack.e0c4e4ee3b7eed9b.hot-update.js,apps/client/.next/static/webpack/e0c4e4ee3b7eed9b.webpack.hot-update.json,apps/client/.next/static/chunks/pages/auth/signin.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/react-loadable-manifest.json,apps/client/.next/build-manifest.json,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/chunks/webpack.js
+[NX Daemon Server] - 2024-01-29T14:13:03.074Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:13:03.243Z - [WATCHER]: 1 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:03.244Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:03.245Z - Time taken for 'hash changed files from watcher' 4.0459809973835945ms
+[NX Daemon Server] - 2024-01-29T14:13:03.344Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:13:03.344Z - [REQUEST]: apps/client/.next/server/pages/auth/signin.js,apps/client/.next/trace,apps/client/.next/server/pages-manifest.json
+[NX Daemon Server] - 2024-01-29T14:13:03.344Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:13:03.551Z - Time taken for 'hash changed files from watcher' 0.722341999411583ms
+[NX Daemon Server] - 2024-01-29T14:13:04.120Z - [WATCHER]: 5 file(s) created or restored, 0 file(s) modified, 6 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:04.120Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:04.227Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:13:04.227Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/10.pack,apps/client/.next/cache/webpack/client-development/11.pack,apps/client/.next/cache/webpack/client-development/9.pack,apps/client/.next/cache/webpack/client-development/2.pack,apps/client/.next/cache/webpack/client-development/index.pack.old
+[NX Daemon Server] - 2024-01-29T14:13:04.227Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/10.pack_,apps/client/.next/cache/webpack/client-development/9.pack_,apps/client/.next/cache/webpack/client-development/11.pack_,apps/client/.next/cache/webpack/client-development/index.pack,apps/client/.next/cache/webpack/client-development/index.pack_,apps/client/.next/cache/webpack/client-development/2.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:13:04.391Z - Time taken for 'hash changed files from watcher' 6.826967999339104ms
+[NX Daemon Server] - 2024-01-29T14:13:09.420Z - [WATCHER]: 3 file(s) created or restored, 9 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:09.420Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:09.485Z - [WATCHER]: 1 file(s) created or restored, 1 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:09.485Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:09.521Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:13:09.521Z - [REQUEST]: apps/client/.next/static/chunks/_error.js,apps/client/.next/static/webpack/f376c73fff235e9c.webpack.hot-update.json,apps/client/.next/static/webpack/webpack.f376c73fff235e9c.hot-update.js,apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/server/next-font-manifest.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/build-manifest.json,apps/client/.next/static/chunks/webpack.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/server/_error.js,apps/client/.next/server/pages-manifest.json
+[NX Daemon Server] - 2024-01-29T14:13:09.521Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:13:09.743Z - [WATCHER]: 0 file(s) created or restored, 8 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:09.743Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:09.744Z - Time taken for 'hash changed files from watcher' 0.8674729987978935ms
+[NX Daemon Server] - 2024-01-29T14:13:09.748Z - [WATCHER]: 0 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:13:09.753Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:13:09.944Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:13:09.944Z - [REQUEST]: apps/client/.next/server/middleware-react-loadable-manifest.js,apps/client/.next/static/development/_buildManifest.js,apps/client/.next/react-loadable-manifest.json,apps/client/.next/static/development/_ssgManifest.js,apps/client/.next/build-manifest.json,apps/client/.next/server/next-font-manifest.js,apps/client/.next/server/middleware-build-manifest.js,apps/client/.next/server/next-font-manifest.json,apps/client/.next/server/pages-manifest.json,apps/client/.next/trace
+[NX Daemon Server] - 2024-01-29T14:13:09.944Z - [REQUEST]: 
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:13:10.107Z - Time taken for 'hash changed files from watcher' 0.7949119955301285ms
+[NX Daemon Server] - 2024-01-29T14:14:09.746Z - [WATCHER]: 2 file(s) created or restored, 0 file(s) modified, 3 file(s) deleted
+[NX Daemon Server] - 2024-01-29T14:14:09.746Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-29T14:14:09.858Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-29T14:14:09.858Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/index.pack.old,apps/client/.next/cache/webpack/client-development/10.pack
+[NX Daemon Server] - 2024-01-29T14:14:09.858Z - [REQUEST]: apps/client/.next/cache/webpack/client-development/index.pack,apps/client/.next/cache/webpack/client-development/10.pack_,apps/client/.next/cache/webpack/client-development/index.pack_
+
+ >  NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+   Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+   For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-01-29T14:14:10.007Z - Time taken for 'hash changed files from watcher' 11.578959003090858ms
